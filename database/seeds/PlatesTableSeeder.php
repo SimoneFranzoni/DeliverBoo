@@ -1,6 +1,9 @@
 <?php
 
+use App\Plate;
 use Illuminate\Database\Seeder;
+use Faker\Generator as Faker;
+use Illuminate\Support\Str;
 
 class PlatesTableSeeder extends Seeder
 {
@@ -9,8 +12,23 @@ class PlatesTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(Faker $faker)
     {
-        //
+
+      $categories = [
+        'Antipasto', 'Primo', 'Secondo', 'Contorno', 'Frutta', 'Dessert'
+      ];
+
+        for ($i = 0; $i < 30; $i++) {
+          $newPlate = new Plate();
+          $newPlate->name = $faker->sentence(4);
+          $newPlate->slug = Str::slug($newPlate->name, '-');
+          $newPlate->description = $faker->sentence(10);
+          $newPlate->is_available = $faker->boolean(80);
+          $newPlate->price = $faker->randomFloat(2, 0, 99);
+          $newPlate->ingrediants = $faker->words(5);
+          $newPlate->category = $categories[array_rand($categories, 1)];
+          $newPlate->save();
+        }
     }
 }
