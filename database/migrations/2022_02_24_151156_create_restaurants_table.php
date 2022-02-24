@@ -15,6 +15,7 @@ class CreateRestaurantsTable extends Migration
     {
         Schema::create('restaurants', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->string('slug');
             $table->string('city');
@@ -25,6 +26,10 @@ class CreateRestaurantsTable extends Migration
             $table->string('cover')->nullable();
             $table->string('cover_original_name')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')
+                  ->references('id')
+                  ->on('users');
         });
     }
 

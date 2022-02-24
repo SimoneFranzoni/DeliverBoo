@@ -26,6 +26,10 @@ class CreatePlatesTable extends Migration
             $table->string('cover')->nullable();
             $table->string('cover_original_name')->nullable();
             $table->timestamps();
+
+            $table->foreign('restaurant_id')
+                  ->references('id')
+                  ->on('restaurants');
         });
     }
 
