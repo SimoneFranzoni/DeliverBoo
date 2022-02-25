@@ -13,6 +13,8 @@ class UpdateRestaurantsTableSeeder extends Seeder
      */
     public function run()
     {
+    
+
         
         $restaurants = Restaurant::all();
         foreach($restaurants as $singRest) {
