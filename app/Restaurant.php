@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 
 class Restaurant extends Model
 {
+   
     public function plates() {
       return $this->hasMany('App\Plate');
     }
