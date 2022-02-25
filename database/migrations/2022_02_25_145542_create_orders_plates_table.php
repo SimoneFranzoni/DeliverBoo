@@ -14,14 +14,14 @@ class CreateOrdersPlatesTable extends Migration
     public function up()
     {
         Schema::create('orders_plates', function (Blueprint $table) {
-            $table->integer('plate_id')->unsigned();
+            $table->unsignedBigInteger('plate_id');
     
             $table->foreign('plate_id')
             ->references('id')
             ->on('plates')
             ->onDelete('cascade');
     
-            $table->integer('order_id')->unsigned();
+            $table->unsignedBigInteger('order_id');
     
             $table->foreign('order_id')
             ->references('id')
@@ -39,6 +39,6 @@ class CreateOrdersPlatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('order_plate');
+        Schema::dropIfExists('orders_plates');
     }
 }
