@@ -15,7 +15,7 @@ class UpdateRestaurantsTableSeeder extends Seeder
     {
       $restaurants = Restaurant::all();
       foreach($restaurants as $singRest) {
-         $user = User::inRandomOrder()->first()->id;
+          $user = User::inRandomOrder()->first()->id;
           $singRest->user_id = $user;
           $singRest->update();
         }
