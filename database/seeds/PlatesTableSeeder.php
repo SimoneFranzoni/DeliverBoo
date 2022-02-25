@@ -19,7 +19,7 @@ class PlatesTableSeeder extends Seeder
         'Antipasto', 'Primo', 'Secondo', 'Contorno', 'Frutta', 'Dessert'
       ];
 
-        for ($i = 0; $i < 30; $i++) {
+        for ($i = 0; $i < 10; $i++) {
           $newPlate = new Plate();
           $newPlate->name = $faker->sentence(4);
           $newPlate->slug = Str::slug($newPlate->name, '-');
