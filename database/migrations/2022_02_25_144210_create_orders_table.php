@@ -23,7 +23,7 @@ class CreateOrdersTable extends Migration
             $table->string('address');
             
             $table->date('date_delivery');
-            $table->times('time_delivery');
+            $table->time('time_delivery');
             $table->integer('total_price');
             $table->text('note');
 
