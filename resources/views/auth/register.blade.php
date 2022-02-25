@@ -33,10 +33,10 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="date" class="col-md-4 col-form-label text-md-right">{{ __('Date of Birth') }}</label>
+                            <label for="date_of_birth" class="col-md-4 col-form-label text-md-right">{{ __('Date of Birth') }}</label>
 
                             <div class="col-md-6">
-                                <input id="date" type="date" class="form-control " name="date" value="" required autocomplete="date" autofocus>
+                                <input id="date_of_birth" type="date" class="form-control " name="date_of_birth" value="" required autocomplete="date_of_birth" autofocus>
 
                             </div>
                         </div>
