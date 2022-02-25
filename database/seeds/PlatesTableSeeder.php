@@ -26,7 +26,7 @@ class PlatesTableSeeder extends Seeder
           $newPlate->description = $faker->sentence(10);
           $newPlate->is_available = $faker->boolean(80);
           $newPlate->price = $faker->randomFloat(2, 0, 99);
-          $newPlate->ingrediants = $faker->words(5);
+          $newPlate->ingrediants = $faker->words(5, true);
           $newPlate->category = $categories[array_rand($categories, 1)];
           $newPlate->save();
         }

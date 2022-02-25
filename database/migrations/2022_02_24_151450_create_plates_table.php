@@ -15,7 +15,6 @@ class CreatePlatesTable extends Migration
     {
         Schema::create('plates', function (Blueprint $table) {
             $table->id();
-            // $table->unsignedBigInteger('restaurant_id');
             $table->string('name');
             $table->string('slug');
             $table->text('description');
@@ -27,9 +26,7 @@ class CreatePlatesTable extends Migration
             $table->string('cover_original_name')->nullable();
             $table->timestamps();
 
-            // $table->foreign('restaurant_id')
-            //       ->references('id')
-            //       ->on('restaurants');
+           
         });
     }
 

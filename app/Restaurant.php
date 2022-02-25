@@ -28,4 +28,17 @@ class Restaurant extends Model
       }
       return $slug;
     }
+
+
+    public static function randomNumber($length) {
+      $result = '';
+  
+      for($i = 0; $i < $length; $i++) {
+          $result .= mt_rand(0, 9);
+      }
+  
+      return $result;
+  }
+  
+
 }
