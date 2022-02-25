@@ -27,4 +27,10 @@ Route::middleware('auth')
     ->prefix('admin')
     ->group(function(){
         Route::get('/', 'HomeController@index')->name('index');
+        
+        // Rotte dei ristoranti
+        Route::resource('miei-ristoranti','RestaurantsController');
+
+        // Rotte dei piatti in relazione al singolo ristorante
+        Route::resource('miei-ristoranti.piatti','RestaurantPlatesController');
     });
