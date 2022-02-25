@@ -13,10 +13,14 @@ class UpdateRestaurantsTableSeeder extends Seeder
      */
     public function run()
     {
-        $user = User::inRandomOrder()->first()->id;
+    
+
+        
         $restaurants = Restaurant::all();
         foreach($restaurants as $singRest) {
+          $user = User::inRandomOrder()->first()->id;
           $singRest->user_id = $user;
+          $singRest->update();
         }
     }
 }
