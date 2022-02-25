@@ -14,8 +14,6 @@ class CreateOrdersPlatesTable extends Migration
     public function up()
     {
         Schema::create('orders_plates', function (Blueprint $table) {
-            $table->id();
-    
             $table->integer('plate_id')->unsigned();
     
             $table->foreign('plate_id')
