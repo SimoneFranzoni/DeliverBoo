@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@dd($ristorante)
+{{-- @dd($ristorante) --}}
 @section('content')
 <div class="container">
   <h1>{{$ristorante->name}}</h1>
