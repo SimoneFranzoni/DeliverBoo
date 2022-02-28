@@ -34,3 +34,8 @@ Route::middleware('auth')
         // Rotte dei piatti in relazione al singolo ristorante
         Route::resource('miei-ristoranti.piatti','RestaurantPlatesController');
     });
+
+    Route::get('{any?}', function() {
+      return view('guest.home');
+    })->where('any', '.*')->name('home');
+    

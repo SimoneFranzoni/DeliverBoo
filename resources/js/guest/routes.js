@@ -6,6 +6,9 @@ Vue.use(VueRouter);
 //import vari
 import Home from '../components/pages/Home';
 
+
+import Error404 from '../components/pages/Error404'
+
 const router = new VueRouter({
   mode: 'history',
   linkExactActiveClass: 'active',
@@ -15,6 +18,12 @@ const router = new VueRouter({
       name: 'home',
       component: Home
     },
+
+    
+    {
+      path: '*',
+      component: Error404
+    }
     
   ]
 })

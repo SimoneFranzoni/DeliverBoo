@@ -1,8 +1,8 @@
 <template>
   <div class="wrapper">
 
-    <!-- header -->
-    <Header />
+    <!-- header da home.blade.php per controlli auth-->
+
     <!-- jumbotron -->
     <Jumbotron />
 
@@ -20,12 +20,10 @@
 
 <script>
 import Jumbotron from '../partials/Jumbotron.vue'
-import Header from '../partials/Header.vue'
 import Searchbar from '../partials/Searchbar.vue'
 export default {
   name: 'Home',
   components: {
-    Header,
     Jumbotron,
     Searchbar
   }

@@ -1,5 +1,6 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
 
 // Variables
 @import '../variables';
@@ -16,3 +17,25 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: 'PT Sans', sans-serif;
+}
+
+header {
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  .logo {
+    width: 100px;
+    height: 100%;
+    cursor: pointer;
+    img {
+      height: 100%;
+    }
+  }
+  .logo, .header-content {
+    padding: 0 20px;
+  }
+}
