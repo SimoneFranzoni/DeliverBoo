@@ -16,9 +16,10 @@ class RestaurantPlatesController extends Controller
      */
     public function index($id)
        {
-            $ristorante= Restaurant::find($id)->first();
-            $piatti = Plate::where('restaurant_id',$id)->get();                
-            return view('admin.plates.index',compact('piatti','ristorante'));
+            $ristorante= Restaurant::find($id)->with(['plates'])->first();
+            // $piatti = Plate::where('restaurant_id',$id)->get();  
+            // $piatti = $ristorante->plates();              
+            return view('admin.plates.index',compact('ristorante'));
             
         }
     
