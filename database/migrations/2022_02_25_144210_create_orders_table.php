@@ -26,6 +26,7 @@ class CreateOrdersTable extends Migration
             $table->time('time_delivery');
             $table->integer('total_price');
             $table->text('note');
+            $table->string('slug');
 
             $table->timestamps();
         });
