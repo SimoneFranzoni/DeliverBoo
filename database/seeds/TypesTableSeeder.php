@@ -53,7 +53,7 @@ class TypesTableSeeder extends Seeder
           foreach ($typologies as $tipology){
               $new_type = new Type();
               $new_type->name = $tipology;
-              $new_type->description = $faker->paragraphs(3);
+              $new_type->description = $faker->paragraphs(3, true);
               $new_type->slug = Str::slug($new_type->name, '-');
               $new_type->save();
           }
