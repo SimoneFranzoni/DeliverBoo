@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Restaurant;
 use Illuminate\Http\Request;
 
 class RestaurantsController extends Controller
@@ -82,7 +83,7 @@ class RestaurantsController extends Controller
          
          ] 
         ];
-      
+    
         return view('admin.restaurants.index',compact('ristoranti'));
     }
 

@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    <a href="{{route('admin.miei-ristoranti.index')}}">I miei ristoranti</a>
+                    <a href="{{route('admin.miei-ristoranti.index',$user->id)}}">Ciao {{$user->name}} benvenuto nella tua Dashboard </a>
                 </div>
             </div>
         </div>
