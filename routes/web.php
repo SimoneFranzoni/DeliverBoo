@@ -35,14 +35,7 @@ Route::middleware('auth')
         Route::resource('miei-ristoranti.piatti','RestaurantPlatesController');
     });
 
-<<<<<<< HEAD
     Route::get('{any?}', function() {
       return view('guest.home');
     })->where('any', '.*')->name('home');
     
-=======
-
-Route::get('{any?}', function() {
-  return view('guest.home');
-})->where('any', '.*')->name('home');
->>>>>>> main
