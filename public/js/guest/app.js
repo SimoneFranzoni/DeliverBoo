@@ -1948,13 +1948,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
- // import Searchbar from '../partials/Searchbar.vue'
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Home',
   components: {
-    Jumbotron: _partials_Jumbotron_vue__WEBPACK_IMPORTED_MODULE_0__["default"] // Searchbar
+    Jumbotron: _partials_Jumbotron_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  mounted: function mounted() {
+    this.getApiTypes();
+  },
+  data: function data() {
+    return {
+      types: null
+    };
+  },
+  methods: {
+    getApiTypes: function getApiTypes() {
+      var _this = this;
 
+      this.types = null;
+      axios.get('http://127.0.0.1:8000/api/tipo/').then(function (res) {
+        _this.types = res.data.types;
+      });
+    }
   }
 });
 
@@ -6463,7 +6488,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, "h3 {\n  margin-top: 150px;\n}\n.types-wrapper {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 5px;\n}\n.types-wrapper .type {\n  background-color: khaki;\n  cursor: pointer;\n}", ""]);
 
 // exports
 
@@ -38478,7 +38503,27 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "wrapper" }, [_c("Jumbotron")], 1)
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
+      _c("Jumbotron"),
+      _vm._v(" "),
+      _c("h3", [_vm._v("Non sai cosa scegliere? Dai un'occhiata")]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "types-wrapper" },
+        _vm._l(_vm.types, function (type, index) {
+          return _c("div", { key: "type" + index, staticClass: "type" }, [
+            _vm._v("\n      " + _vm._s(type.name) + "\n    "),
+          ])
+        }),
+        0
+      ),
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -54027,6 +54072,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__(/*! ../bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 
 var app = new Vue({
