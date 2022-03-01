@@ -1987,21 +1987,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Jumbotron'
 });
@@ -6447,7 +6432,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".ac-jumbotron {\n  height: 400px;\n  position: relative;\n}\n.ac-jumbotron .video-bg {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 500px;\n  z-index: -100;\n  direction: flex;\n  align-items: center;\n  justify-content: center;\n}\n.ac-jumbotron .video-bg video {\n  -o-object-fit: cover;\n     object-fit: cover;\n  display: block;\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  left: 0px;\n  top: 0px;\n  z-index: -100;\n  overflow: hidden;\n}\n.ac-jumbotron .slogan-left, .ac-jumbotron .slogan-right {\n  background-color: white;\n  position: absolute;\n  bottom: -425px;\n  left: 0px;\n  padding: 10px 15px;\n  border-radius: 15px;\n  transition: all 0.3s;\n  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);\n}\n.ac-jumbotron .slogan-left:hover, .ac-jumbotron .slogan-right:hover {\n  transform: translateY(-10px);\n}\n.ac-jumbotron .slogan-left h2, .ac-jumbotron .slogan-right h2 {\n  color: #bb8d1c;\n  cursor: default;\n  font-size: 36px;\n  padding: 0;\n  margin: 0;\n}", ""]);
+exports.push([module.i, ".ac-jumbotron {\n  height: 400px;\n}\n.ac-jumbotron .video-bg {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 500px;\n  z-index: -100;\n  direction: flex;\n  align-items: center;\n  justify-content: center;\n}\n.ac-jumbotron .video-bg video {\n  -o-object-fit: cover;\n     object-fit: cover;\n  display: block;\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  left: 0px;\n  top: 0px;\n  z-index: -100;\n  overflow: hidden;\n}\n@media only screen and (max-width: 991px) {\n.row.ac-row {\n    bottom: 190px;\n}\n}", ""]);
 
 // exports
 
@@ -38451,45 +38436,16 @@ var render = function () {
               autoplay: "",
               muted: "",
               loop: "",
-              src: "videos/pexels-vanessa-loring-5866268.mp4",
+              src: "videos/pexels-ron-lach-8879537.mp4",
             },
             domProps: { muted: true },
           }),
         ]),
-        _vm._v(" "),
-        _vm._m(0),
-        _vm._v(" "),
-        _vm._m(1),
       ]),
     ]),
   ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm-12 col-md-6" }, [
-      _c("div", { staticClass: "slogan-left" }, [
-        _c("h2", [
-          _vm._v("\n            I piatti che ami, a domicilio.\n          "),
-        ]),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm-12 col-md-6" }, [
-      _c("div", { staticClass: "slogan-right" }, [
-        _c("h2", [
-          _vm._v("\n            Hai fame? Ci pensa #deliveBoo!\n          "),
-        ]),
-      ]),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
