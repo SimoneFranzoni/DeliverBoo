@@ -13054,6 +13054,7 @@ h3 {
 
 body {
   font-family: "PT Sans", sans-serif;
+  background-color: #fafafa;
 }
 
 header {
@@ -13061,7 +13062,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #fff;
+  background-color: #fff;
 }
 header .logo {
   width: 100px;
@@ -13073,4 +13074,54 @@ header .logo img {
 }
 header .logo, header .header-content {
   padding: 0 20px;
+}
+
+ul {
+  list-style: none;
+}
+
+a, a:visited, a:hover {
+  text-decoration: none;
+}
+
+.ac-btn {
+  padding: 5px 10px;
+  border-radius: 10px;
+  background-color: #45CCBC;
+  color: white;
+}
+
+.border-bot {
+  width: 100%;
+  height: 1px;
+  margin: 20px 0;
+  background-color: #424747;
+}
+
+footer {
+  background-color: #2D3333;
+  padding: 30px 0;
+}
+footer .footer-top {
+  display: flex;
+  justify-content: space-between;
+}
+footer .footer-top .footer-section {
+  padding: 15px;
+  background-color: #424747;
+  min-height: 250px;
+}
+footer .footer-top .footer-section h4 {
+  color: #fafafa;
+  border-bottom: 1px solid #fafafa;
+  padding-bottom: 10px;
+}
+footer .footer-top .footer-section ul {
+  padding-top: 10px;
+}
+footer .footer-top .footer-section ul li a {
+  color: white;
+}
+footer .footer-bot {
+  height: 60px;
 }

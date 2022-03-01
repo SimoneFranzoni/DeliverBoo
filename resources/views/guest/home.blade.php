@@ -4,41 +4,17 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>DeliveBoo</title>
-       <link rel="stylesheet" href="{{asset('css/guest/style.css')}}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.5.0-1/css/all.min.css" integrity="sha512-xEGx3E22YcUzfX525T3KV7SqNexb09E2CckB6lBB/dT930VlbSX9JnQlLiogtSLAl9yGAJGKDu7O1ZanrqljGg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="{{asset('css/guest/style.css')}}">
     </head>
     <body>
-      <div class="flex-center position-ref full-height">
+        @include('guest.partials.header')
 
-        <header>
-
-          <div class="logo">
-              <img src="img/logoDeliveBoo.png" alt="logo deliveboo">
-          </div>
-          <div class="header-content">
-            {{-- nav login --}}
-              @if (Route::has('login'))
-                  <div class="top-right links">
-                      @auth
-                          <a href="{{ route('admin.index') }}">Il Tuo Profilo</a>
-                      @else
-                          <a href="{{ route('login') }}">Login</a>
-    
-                          @if (Route::has('register'))
-                              <a href="{{ route('register') }}">Register</a>
-                          @endif
-                      @endauth
-                  </div>
-              @endif
-          </div>
-
-        </header>
-
-
-            <div id="app">
-                
-            </div>
-
-            <script src="{{asset('js/guest/app.js')}}"></script>
+        <div id="app">
+            {{-- app vue per front end --}}
         </div>
+
+        @include('guest.partials.footer')
+        <script src="{{asset('js/guest/app.js')}}"></script>
     </body>
 </html>
