@@ -17,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//Chiamo il JSON di Restaurant
+Route::get('ristoranti','Api\RestaurantController@index');
+
+
+//Chiamo il JSON di Type
+Route::get('tipo','Api\TypeController@index');
