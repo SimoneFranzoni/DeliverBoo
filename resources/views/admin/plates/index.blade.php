@@ -2,6 +2,11 @@
 
 @section('content')
 <div class="container">
+  @if(session('deleted'))
+  <div class="alert alert-danger" role="alert">
+    {{session('deleted')}}
+  </div>
+  @endif
   <div class="d-md-flex justify-content-between mb-5">
     <div class="col-md-8">
       <h1>{{$ristorante->name}}</h1>
@@ -23,7 +28,7 @@
   
     <li class="d-flex flex-wrap justify-content-between mb-3">
       <div class="col-12 col-md-8  ">
-        <strong>{{$piatto->category}}- </strong>
+        <strong>{{$piatto->category}} : </strong>
         
        
         <a href="{{route('admin.miei-ristoranti.piatti.show',[$ristorante->slug,$piatto->slug])}}">{{$piatto->name}} </a>
@@ -33,7 +38,13 @@
         <a  href="{{route('admin.miei-ristoranti.piatti.edit',[$ristorante->slug,$piatto->slug])}}">
           <button type="button" class="btn btn-info"> Modifica</button>
         </a> 
-        <button type="button" class="btn btn-danger">Cancella</button>
+        
+        <form class="d-inline-block" action="{{route('admin.miei-ristoranti.piatti.destroy',[$ristorante,$piatto])}}"  method="POST" onsubmit="return confirm('confermare elimizione {{$piatto->name}}')">
+          @csrf
+          @method('DELETE')
+        <button type="submit" class="btn btn-danger">Cancella</button>
+        </form>
+        
       </div>
     </li>
    
@@ -45,7 +56,9 @@
   <h2 >
     <a  href="{{route('admin.miei-ristoranti.index')}}">Back <<</a>
   </h2>
-   
+  <div>
+    {{$piatti->links()}}
+  </div>
 </div>  
 </div>
 @endsection
