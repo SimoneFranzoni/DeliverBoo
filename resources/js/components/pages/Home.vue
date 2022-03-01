@@ -55,18 +55,22 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../../../sass/_variables.scss';
   h3 {
     margin-top: 180px;
     font-weight: bold;
     font-size: 32px;
+    color: $footer-dark;
   }
   .types-wrapper {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     margin-top: 20px;
+    padding-bottom: 150px;
     .type {
       background-color: #eeebeb;
+      color: $footer-dark;
       padding: 0 5px;
       font-size: 20px;
       font-weight: bold;
