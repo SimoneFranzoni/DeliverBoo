@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Restaurant;
+use App\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,7 +19,8 @@ class RestaurantsController extends Controller
     {
         
         $user = Auth::user();
-        $ristoranti = Restaurant::where('user_id',$user->id)->get();
+        $ristoranti = Restaurant::where('user_id',$user->id)->paginate(5);
+    
         
         return view('admin.restaurants.index',compact('ristoranti'));
     }
@@ -30,7 +32,9 @@ class RestaurantsController extends Controller
      */
     public function create()
     {
-        //
+        $types = Type::all();
+
+        return view('admin.restaurants.create', compact('types'));
     }
 
     /**
@@ -41,7 +45,16 @@ class RestaurantsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = Auth::user();
+
+        $data = $request->all();
+        $new_restaurant = new Restaurant();
+        $new_restaurant->user_id = $user->id;
+        $new_restaurant->fill($data);
+        $new_restaurant->slug = Restaurant::generateSlug($new_restaurant->name);
+        $new_restaurant->save();
+
+        return redirect()->route('admin.miei-ristoranti.index');
     }
 
     /**
@@ -63,7 +76,10 @@ class RestaurantsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $restaurant = Restaurant::find($id);
+
+        return view('admin.restaurants.edit', compact('restaurant'));
+
     }
 
     /**
@@ -75,7 +91,14 @@ class RestaurantsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $restaurant = Restaurant::where('id', $id)->first();
+        $form_data = $request->all();
+        if($form_data['name'] != $restaurant->name  ){
+            $form_data['slug'] = Restaurant::generateSlug($form_data['name']);
+        }
+        $restaurant->update($form_data);
+
+        return redirect()->route('admin.miei-ristoranti.index');
     }
 
     /**
@@ -86,6 +109,10 @@ class RestaurantsController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $restaurant = Restaurant::where('id', $id)->first();
+      $restaurant->delete();
+
+      return redirect()->route('admin.miei-ristoranti.index')->with('deleted', 'Post eliminato correttamente');
+    
     }
 }

@@ -3,7 +3,6 @@
 use App\Plate;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
-use Illuminate\Support\Str;
 
 class PlatesTableSeeder extends Seeder
 {

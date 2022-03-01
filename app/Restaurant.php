@@ -7,7 +7,15 @@ use Illuminate\Support\Str;
 
 class Restaurant extends Model
 {
-   
+  protected $fillable = [
+    'name',
+    'city',
+    'address',
+    'zip_code',
+    'phone_number',
+    'p_iva',
+  ];
+
     public function plates() {
       return $this->hasMany('App\Plate');
     }
