@@ -1,21 +1,26 @@
 <template>
   <div class="box">
+    <!--:style="{ backgroundImage: `url(${restaurant.cover})`}"-->
     <div class="restaurant-img float-left"></div>
     <div class="container">  
       <div class="row">
         <div class="col-6">
           <div class="name">
+            <!--{{restaurant.name}}-->
             Pizzeria a caso
           </div>
           <div class="città">
+            <!--{{restaurant.city}}-->
             Brescia
           </div>    
         </div> 
         <div class="col-6">
           <div>
+            <!--{{restaurant.address}}-->
             Via fasulla 0
           </div>
           <div>
+            <!--{{restaurant.phone_number}}-->
             338 5847545
           </div>
         </div> 

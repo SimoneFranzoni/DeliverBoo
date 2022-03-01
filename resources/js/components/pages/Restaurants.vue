@@ -1,17 +1,13 @@
 <template>
     <div class="container-fluid">
         <div class="row types-row py-4">
-            <div class="types-box d-flex justify-content-start align-items-end">
-                <div class="text">Tipologia</div>
-            </div>
-            <div class="types-box d-flex justify-content-start align-items-end">
-                <div class="text">Tipologia</div>
-            </div>
-            <div class="types-box d-flex justify-content-start align-items-end">
-                <div class="text">Tipologia</div>
-            </div>
+            <TypeBox 
+            v-for="type in typesList"
+            :key="type.id"
+            />
+            <TypeBox />
+            <TypeBox />
             
-
         </div>
         <div class="row">
             <div class="col-3 filter-column">
@@ -27,7 +23,9 @@
                 <div class="pt-4"> XXX risultati trovati </div>
 
                 <div class="restaurant-box-row">
-                    <RestaurantBox />
+                    <RestaurantBox 
+                    v-for="restaurant in restaurantsList"
+                    :key="restaurant.id"/>
                     <RestaurantBox />
                     <RestaurantBox />
                 </div>
@@ -37,11 +35,14 @@
 </template>
 
 <script>
+
+import TypeBox from './TypeBox.vue';
 import RestaurantBox from './RestaurantBox.vue';
 
 export default {
     name: 'Restaurants',
     components:  {
+        TypeBox,
         RestaurantBox,
     }
 }
@@ -49,6 +50,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+    
     .container-fluid{
         padding: 0 5%;
     }
@@ -59,29 +61,6 @@ export default {
         display: flex;
         align-items: center;
         flex-wrap: nowrap;
-
-    }
-
-    .types-box{
-        height: 100px;
-        width: 150px;
-        border-radius: 20px;
-        background-color: orange;
-        box-shadow: 0 1px 2px rgba(0,0,0,0.15);
-        transition: box-shadow 0.3s ease-in-out;
-        margin-right: 10px;
-        transition: height 0.3s, width 0.3s;
-
-        &:hover {
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            height: 110px;
-            width: 160px;
-            font-weight: bold;
-        }
-
-        .text{
-            padding: 0 10px;
-        }
     }
 
     .filter-column{
