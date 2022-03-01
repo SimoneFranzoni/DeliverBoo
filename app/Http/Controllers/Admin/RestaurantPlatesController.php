@@ -131,7 +131,7 @@ class RestaurantPlatesController extends Controller
                 "name"=>"required|max:100|min:3",
                 "description"=>"required|max:1000|min:10",
                 "ingrediants"=>"required|max:1000|min:5",
-                "price"=>"required|numeric|min:0|max:1000",
+                "price"=>"required|numeric|min:0|max:99.99",
                 "category"=>"required",
                 ],
             "messages"=>[
@@ -149,7 +149,7 @@ class RestaurantPlatesController extends Controller
 
                 "price.required"=>"Il prezzo è obbligatorio",
                 "price.min"=>"Il prezzo non puo' essere negativo",
-                "price.max"=>"Il prezzo non puo' essere superiore a 1000 euro",
+                "price.max"=>"Il prezzo non puo' essere superiore a 99.99 euro",
                
                 
                 
