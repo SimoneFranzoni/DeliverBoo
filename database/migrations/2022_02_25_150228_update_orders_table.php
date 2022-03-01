@@ -21,6 +21,7 @@ class UpdateOrdersTable extends Migration
                   ->on('restaurants')
                   ->onDelete('set null');
           });
+
     }
 
     /**

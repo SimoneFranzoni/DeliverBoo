@@ -5,6 +5,7 @@ Vue.use(VueRouter);
 
 //import vari
 import Home from '../components/pages/Home';
+import Restaurants from '../components/pages/Restaurants.vue'
 
 
 import Error404 from '../components/pages/Error404'
@@ -18,12 +19,15 @@ const router = new VueRouter({
       name: 'home',
       component: Home
     },
-
-    
+    {
+      path: '/restaurants',
+      name: 'restaurants',
+      component: Restaurants
+    },
     {
       path: '*',
       component: Error404
-    }
+    },
     
   ]
 })
