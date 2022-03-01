@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Restaurant;
+use App\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,6 +20,7 @@ class RestaurantsController extends Controller
         
         $user = Auth::user();
         $ristoranti = Restaurant::where('user_id',$user->id)->get();
+    
         
         return view('admin.restaurants.index',compact('ristoranti'));
     }
@@ -30,7 +32,9 @@ class RestaurantsController extends Controller
      */
     public function create()
     {
-        //
+        $types = Type::all();
+
+        return view('admin.restaurants.create', compact('types'));
     }
 
     /**
@@ -41,7 +45,16 @@ class RestaurantsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = Auth::user();
+
+        $data = $request->all();
+        $new_restaurant = new Restaurant();
+        $new_restaurant->user_id = $user->id;
+        $new_restaurant->fill($data);
+        $new_restaurant->slug = Restaurant::generateSlug($new_restaurant->name);
+        $new_restaurant->save();
+
+        return redirect()->route('admin.miei-ristoranti.index');
     }
 
     /**
@@ -63,7 +76,10 @@ class RestaurantsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $restaurant = Restaurant::find($id);
+
+        return view('admin.restaurants.edit', compact('restaurant'));
+
     }
 
     /**
@@ -75,7 +91,7 @@ class RestaurantsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd($request->all());
     }
 
     /**
