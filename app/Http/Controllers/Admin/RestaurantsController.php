@@ -45,6 +45,8 @@ class RestaurantsController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate($this->validationData(), $this->validationError());
+
         $user = Auth::user();
 
         $data = $request->all();
@@ -114,5 +116,40 @@ class RestaurantsController extends Controller
 
       return redirect()->route('admin.miei-ristoranti.index')->with('deleted', 'Post eliminato correttamente');
     
+    }
+
+    public function validationData(){
+        return[
+            'name' => 'required',
+            'city' => 'required | min:2',
+            'address' => 'required | min:5',
+            'zip_code' => 'required| size:5',
+            'phone_number' => 'required | min:5 | max:20',
+            'p_iva' => 'required | size:11 ',
+        ]; 
+    }
+
+    public function validationError(){
+        return[
+            'name.required' => 'Inserire il nome del ristorante',
+
+            'city.required'=> 'Inserire la città',
+            'city.min'=> 'Il nome della città non è valido',
+
+            'address.required'=> "Inserire l'indirizzo",
+            'address.min'=> 'Inserire un indirizzo valido',
+
+            'zip_code.required'=> 'Inserire il CAP',
+            // 'zip_code.integer'=> 'Inserire un CAP valido (solo numeri)',
+            'zip_code.size'=> 'Inserire un CAP valido (5 numeri)',
+
+            'phone_number.required'=> 'Inserire un numero di telefono',
+            'phone_number.min'=> 'Inserire un numero di telefono valido',
+            'phone_number.max'=> 'Inserire un numero di telefono valido',
+
+            'p_iva.required'=> 'Inserire la Partita IVA',
+            'p_iva.size'=> 'Partita IVA non valida(11 numeri)',
+            // 'p_iva.integer'=> 'Partita IVA non valida (solo numeri)',
+        ];
     }
 }
