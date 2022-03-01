@@ -91,7 +91,14 @@ class RestaurantsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request->all());
+        $restaurant = Restaurant::where('id', $id)->first();
+        $form_data = $request->all();
+        if($form_data['name'] != $restaurant->name  ){
+            $form_data['slug'] = Restaurant::generateSlug($form_data['name']);
+        }
+        $restaurant->update($form_data);
+
+        return redirect()->route('admin.miei-ristoranti.index');
     }
 
     /**
