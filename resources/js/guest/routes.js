@@ -7,6 +7,9 @@ Vue.use(VueRouter);
 import Home from '../components/pages/Home';
 import Restaurants from '../components/pages/Restaurants.vue'
 
+
+import Error404 from '../components/pages/Error404'
+
 const router = new VueRouter({
   mode: 'history',
   linkExactActiveClass: 'active',
@@ -20,6 +23,10 @@ const router = new VueRouter({
       path: '/restaurants',
       name: 'restaurants',
       component: Restaurants
+    },
+    {
+      path: '*',
+      component: Error404
     },
     
   ]
