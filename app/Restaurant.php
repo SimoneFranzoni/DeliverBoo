@@ -13,7 +13,11 @@ class Restaurant extends Model
     }
 
     public function user() {
-      return $this->belongsTo('App\User');
+      return $this->belongsToMany('App\User');
+    }
+
+    public function types() {
+      return $this->belongsToMany('App\Type');
     }
 
     public static function generateSlug($name) {
@@ -43,3 +47,7 @@ class Restaurant extends Model
   
 
 }
+
+
+
+

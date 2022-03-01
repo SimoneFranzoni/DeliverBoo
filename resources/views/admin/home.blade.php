@@ -13,8 +13,8 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    <a href="{{route('admin.miei-ristoranti.index')}}">I miei ristoranti</a>
+                    <div>Ciao {{$user->name}} benvenuto nella tua Dashboard</div>
+                    <a href="{{route('admin.miei-ristoranti.index',$user->id)}}">Accedi ai tuoi ristoranti</a>
                 </div>
             </div>
         </div>
