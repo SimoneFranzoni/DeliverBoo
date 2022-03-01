@@ -12,7 +12,9 @@
         <header>
 
           <div class="logo">
+            <a href="{{route('home')}}">
               <img src="img/logoDeliveBoo.png" alt="logo deliveboo">
+            </a> 
           </div>
           <div class="header-content">
             {{-- nav login --}}

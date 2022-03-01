@@ -7,14 +7,21 @@
             src="videos/pexels-ron-lach-8879537.mp4"></video>
           </div>
       </div>
+      <div class="row searchbar-slogan">
+        <Searchbar />
+      </div>
      
     </div>
   </section>
 </template>
 
 <script>
+import Searchbar from './Searchbar.vue'
 export default {
-  name: 'Jumbotron'
+  name: 'Jumbotron',
+  components: {
+    Searchbar
+  }
 }
 </script>
 
@@ -47,14 +54,14 @@ export default {
      }
    }
    
+  .searchbar-slogan {
+    padding-top: 340px;
+  }
+
   }
 
 
- @media only screen and (max-width: 991px) {
-   .row.ac-row{
-     bottom: 190px;
-   }
- }
+ 
 
 
 </style>

@@ -13074,3 +13074,10 @@ header .logo img {
 header .logo, header .header-content {
   padding: 0 20px;
 }
+
+.ac-btn {
+  padding: 5px 10px;
+  border-radius: 10px;
+  background-color: #45CCBC;
+  color: white;
+}

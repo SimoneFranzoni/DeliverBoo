@@ -1,6 +1,16 @@
 <template>
   <div class="searchbar">
-    barra di ricerca
+    <div class="slogan">
+      <h2>I piatti che ami, comodamente a casa tua con <span class="name">#deliveBoo</span></h2>
+    </div>
+
+    <div class="search-input">
+      <input type="text" name="restsearch" id="restsearch" placeholder="Cerca qui una tipologia di ristorante...">
+      <router-link :to="{name: 'restaurants'}">
+       <div class="ac-btn">Vai</div>
+      </router-link>
+    </div>
+
   </div>
 </template>
 
@@ -11,9 +21,58 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../../../sass/_variables.scss';
 .searchbar {
-  height: 200px;
-  background-color: khaki;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 180px;
+  max-width: 850px;
+  width: 50%;
+  min-width: 450px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 3px 3px 3px 3px rgba($color: #000000, $alpha: .5);
+  .slogan {
+    margin-bottom: 20px;
+    text-align: center;
+    h2 {
+      color: $primary-color;
+      font-weight: bold;
+      .name {
+        font-size: 34px;
+        color: $logo-color;
+      }
+    }
+  }
+  .search-input {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    input {
+      width: 90%;
+      margin-right: 5px;
+      padding: 5px 10px;
+      border-radius: 10px;
+      border: 1px solid rgba($color: #000000, $alpha: .3);
+    }
+    .ac-btn {
+     width: 60px;
+     text-align: center;
+     font-size: 16px;
+    }
+  }
+
 }
+
+
+
+@media only screen and (max-width: 991px) {
+  .slogan h2 {
+    font-size: 24px;
+  }
+ }
 
 </style>

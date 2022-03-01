@@ -3,13 +3,10 @@
 
     <!-- header da home.blade.php per controlli auth-->
 
-    <!-- jumbotron -->
+    <!-- jumbotron con ricerca-->
     <Jumbotron />
 
-    <!-- ricerca -->
-    <Searchbar />
-      <!-- per tipologia -->
-      <!-- lista tipologie -->
+    <!-- elenco tipologie -->
 
     <!-- footer -->
 
@@ -20,16 +17,18 @@
 
 <script>
 import Jumbotron from '../partials/Jumbotron.vue'
-import Searchbar from '../partials/Searchbar.vue'
+// import Searchbar from '../partials/Searchbar.vue'
 export default {
   name: 'Home',
   components: {
     Jumbotron,
-    Searchbar
+    // Searchbar
   }
 }
 </script>
 
 <style lang="scss">
-  
+  section.search-slogan {
+    // position: relative;
+  }
 </style>
