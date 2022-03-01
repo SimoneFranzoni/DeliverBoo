@@ -34,7 +34,9 @@ export default {
   background-color: white;
   padding: 20px;
   border-radius: 15px;
-  box-shadow: 3px 3px 3px 3px rgba($color: #000000, $alpha: .5);
+  outline: 1px solid $primary-color;
+  outline-offset: 2px;
+  // box-shadow: 3px 3px 3px 3px rgba($color: #000000, $alpha: .5);
   .slogan {
     margin-bottom: 20px;
     text-align: center;
@@ -57,6 +59,10 @@ export default {
       padding: 5px 10px;
       border-radius: 10px;
       border: 1px solid rgba($color: #000000, $alpha: .3);
+      caret-color: $primary-color;
+      &:focus {
+        outline: 2px solid $primary-color;
+      }
     }
     .ac-btn {
      width: 60px;

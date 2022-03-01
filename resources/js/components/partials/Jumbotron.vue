@@ -55,7 +55,7 @@ export default {
    }
    
   .searchbar-slogan {
-    padding-top: 340px;
+    padding-top: 320px;
   }
 
   }

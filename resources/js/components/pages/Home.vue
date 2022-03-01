@@ -56,15 +56,27 @@ export default {
 
 <style lang="scss">
   h3 {
-    margin-top: 150px;
+    margin-top: 180px;
+    font-weight: bold;
+    font-size: 32px;
   }
   .types-wrapper {
     display: flex;
     flex-wrap: wrap;
-    gap: 5px;
+    gap: 10px;
+    margin-top: 20px;
     .type {
-      background-color: khaki;
+      background-color: #eeebeb;
+      padding: 0 5px;
+      font-size: 20px;
+      font-weight: bold;
       cursor: pointer;
+      transition: all .2s;
+      &:hover {
+        background-color: lighten(#eeebeb, 2.5);
+        transform: scale(1.1);
+        border-radius: 10px;
+      }
     }
   }
 

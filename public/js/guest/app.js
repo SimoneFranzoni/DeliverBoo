@@ -6488,7 +6488,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "h3 {\n  margin-top: 150px;\n}\n.types-wrapper {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 5px;\n}\n.types-wrapper .type {\n  background-color: khaki;\n  cursor: pointer;\n}", ""]);
+exports.push([module.i, "h3 {\n  margin-top: 180px;\n  font-weight: bold;\n  font-size: 32px;\n}\n.types-wrapper {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 10px;\n  margin-top: 20px;\n}\n.types-wrapper .type {\n  background-color: #eeebeb;\n  padding: 0 5px;\n  font-size: 20px;\n  font-weight: bold;\n  cursor: pointer;\n  transition: all 0.2s;\n}\n.types-wrapper .type:hover {\n  background-color: #f4f2f2;\n  transform: scale(1.1);\n  border-radius: 10px;\n}", ""]);
 
 // exports
 
@@ -6507,7 +6507,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".ac-jumbotron {\n  height: 400px;\n}\n.ac-jumbotron .video-bg {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 500px;\n  z-index: -100;\n  direction: flex;\n  align-items: center;\n  justify-content: center;\n}\n.ac-jumbotron .video-bg video {\n  -o-object-fit: cover;\n     object-fit: cover;\n  display: block;\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  left: 0px;\n  top: 0px;\n  z-index: -100;\n  overflow: hidden;\n}\n.ac-jumbotron .searchbar-slogan {\n  padding-top: 340px;\n}", ""]);
+exports.push([module.i, ".ac-jumbotron {\n  height: 400px;\n}\n.ac-jumbotron .video-bg {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 500px;\n  z-index: -100;\n  direction: flex;\n  align-items: center;\n  justify-content: center;\n}\n.ac-jumbotron .video-bg video {\n  -o-object-fit: cover;\n     object-fit: cover;\n  display: block;\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  left: 0px;\n  top: 0px;\n  z-index: -100;\n  overflow: hidden;\n}\n.ac-jumbotron .searchbar-slogan {\n  padding-top: 320px;\n}", ""]);
 
 // exports
 
@@ -6526,7 +6526,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".searchbar {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  height: 180px;\n  max-width: 850px;\n  width: 50%;\n  min-width: 450px;\n  margin: 0 auto;\n  background-color: white;\n  padding: 20px;\n  border-radius: 15px;\n  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.5);\n}\n.searchbar .slogan {\n  margin-bottom: 20px;\n  text-align: center;\n}\n.searchbar .slogan h2 {\n  color: #45CCBC;\n  font-weight: bold;\n}\n.searchbar .slogan h2 .name {\n  font-size: 34px;\n  color: #54BFBC;\n}\n.searchbar .search-input {\n  display: flex;\n  align-items: center;\n  width: 100%;\n}\n.searchbar .search-input input {\n  width: 90%;\n  margin-right: 5px;\n  padding: 5px 10px;\n  border-radius: 10px;\n  border: 1px solid rgba(0, 0, 0, 0.3);\n}\n.searchbar .search-input .ac-btn {\n  width: 60px;\n  text-align: center;\n  font-size: 16px;\n}\n@media only screen and (max-width: 991px) {\n.slogan h2 {\n    font-size: 24px;\n}\n}", ""]);
+exports.push([module.i, ".searchbar {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  height: 180px;\n  max-width: 850px;\n  width: 50%;\n  min-width: 450px;\n  margin: 0 auto;\n  background-color: white;\n  padding: 20px;\n  border-radius: 15px;\n  outline: 1px solid #45CCBC;\n  outline-offset: 2px;\n}\n.searchbar .slogan {\n  margin-bottom: 20px;\n  text-align: center;\n}\n.searchbar .slogan h2 {\n  color: #45CCBC;\n  font-weight: bold;\n}\n.searchbar .slogan h2 .name {\n  font-size: 34px;\n  color: #54BFBC;\n}\n.searchbar .search-input {\n  display: flex;\n  align-items: center;\n  width: 100%;\n}\n.searchbar .search-input input {\n  width: 90%;\n  margin-right: 5px;\n  padding: 5px 10px;\n  border-radius: 10px;\n  border: 1px solid rgba(0, 0, 0, 0.3);\n  caret-color: #45CCBC;\n}\n.searchbar .search-input input:focus {\n  outline: 2px solid #45CCBC;\n}\n.searchbar .search-input .ac-btn {\n  width: 60px;\n  text-align: center;\n  font-size: 16px;\n}\n@media only screen and (max-width: 991px) {\n.slogan h2 {\n    font-size: 24px;\n}\n}", ""]);
 
 // exports
 

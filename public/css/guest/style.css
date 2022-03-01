@@ -13054,6 +13054,7 @@ h3 {
 
 body {
   font-family: "PT Sans", sans-serif;
+  background-color: #fafafa;
 }
 
 header {
@@ -13061,7 +13062,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #fff;
+  background-color: #fff;
 }
 header .logo {
   width: 100px;
