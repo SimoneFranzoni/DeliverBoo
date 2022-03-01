@@ -8,20 +8,31 @@
     </head>
     <body>
       <div class="flex-center position-ref full-height">
-          {{-- nav login --}}
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ route('admin.index') }}">Il Tuo Profilo</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
+        <header>
+
+          <div class="logo">
+              <img src="img/logoDeliveBoo.png" alt="logo deliveboo">
+          </div>
+          <div class="header-content">
+            {{-- nav login --}}
+              @if (Route::has('login'))
+                  <div class="top-right links">
+                      @auth
+                          <a href="{{ route('admin.index') }}">Il Tuo Profilo</a>
+                      @else
+                          <a href="{{ route('login') }}">Login</a>
+    
+                          @if (Route::has('register'))
+                              <a href="{{ route('register') }}">Register</a>
+                          @endif
+                      @endauth
+                  </div>
+              @endif
+          </div>
+
+        </header>
+
 
             <div id="app">
                 

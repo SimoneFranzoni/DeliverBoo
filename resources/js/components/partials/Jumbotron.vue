@@ -1,0 +1,60 @@
+<template>
+  <section class="ac-jumbotron">
+    <div class="container">
+      <div class="row">
+          <div class="video-bg">
+            <video autoplay muted loop
+            src="videos/pexels-ron-lach-8879537.mp4"></video>
+          </div>
+      </div>
+     
+    </div>
+  </section>
+</template>
+
+<script>
+export default {
+  name: 'Jumbotron'
+}
+</script>
+
+<style lang="scss">
+// @import 'resources/sass/guest/style.scss';
+@import 'resources/sass/_variables.scss';
+ .ac-jumbotron {
+  height: 400px;
+  //  background-color: rgba($color: black, $alpha: 0.3);
+   .video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 500px;
+    z-index: -100;
+    direction: flex;
+    align-items: center;
+    justify-content: center;
+     video {
+      object-fit: cover;
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      z-index: -100;
+      overflow: hidden;
+     }
+   }
+   
+  }
+
+
+ @media only screen and (max-width: 991px) {
+   .row.ac-row{
+     bottom: 190px;
+   }
+ }
+
+
+</style>
