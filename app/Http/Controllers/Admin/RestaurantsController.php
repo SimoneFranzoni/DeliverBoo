@@ -19,7 +19,7 @@ class RestaurantsController extends Controller
     {
         
         $user = Auth::user();
-        $ristoranti = Restaurant::where('user_id',$user->id)->get();
+        $ristoranti = Restaurant::where('user_id',$user->id)->paginate(5);
     
         
         return view('admin.restaurants.index',compact('ristoranti'));
@@ -109,6 +109,10 @@ class RestaurantsController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $restaurant = Restaurant::where('id', $id)->first();
+      $restaurant->delete();
+
+      return redirect()->route('admin.miei-ristoranti.index')->with('deleted', 'Post eliminato correttamente');
+    
     }
 }
