@@ -14,12 +14,12 @@ class RestaurantPlatesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index($slug)
        {
-            $ristorante= Restaurant::find($id)->with(['plates'])->first();
-            // $piatti = Plate::where('restaurant_id',$id)->get();  
-            // $piatti = $ristorante->plates();              
-            return view('admin.plates.index',compact('ristorante'));
+          
+            $ristorante= Restaurant::where('slug',$slug)->first();
+            $piatti = Plate::where('restaurant_id',$ristorante->id)->orderBy('category')->get();           
+            return view('admin.plates.index',compact('ristorante','piatti'));
             
         }
     
@@ -29,9 +29,10 @@ class RestaurantPlatesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($slug)
     {
-        return view('admin.plates.create');
+        $ristorante= Restaurant::where('slug',$slug)->first();
+        return view('admin.plates.create',compact('ristorante'));
     }
 
     /**
@@ -42,7 +43,7 @@ class RestaurantPlatesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
     }
 
     /**
@@ -51,12 +52,14 @@ class RestaurantPlatesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($piatto,$nomeRistorante)
+    public function show($slugRistorante,$slugPiatto)
     {
-       
-       return view('admin.plates.show',compact('piatto','nomeRistorante'));
-      
+        $ristorante= Restaurant::where('slug',$slugRistorante)->first();
+        $piatto = Plate::where('slug',$slugPiatto)->first();
+        return view('admin.plates.show',compact('piatto','ristorante'));
     }
+        
+      
 
     /**
      * Show the form for editing the specified resource.
@@ -64,9 +67,11 @@ class RestaurantPlatesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slugRistorante,$slugPiatto)
     {
-        //
+        $ristorante= Restaurant::where('slug',$slugRistorante)->first();
+        $piatto = Plate::where('slug',$slugPiatto)->first();
+        return view('admin.plates.edit',compact('piatto','ristorante'));
     }
 
     /**

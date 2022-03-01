@@ -2,8 +2,17 @@
 @section('content')
 <div class="container">
 
-  <h2>Descrizione: </h2>
-  <p>{{$piatto}}</p>
-  <div><a href="{{route('admin.miei-ristoranti.piatti.index',$nomeRistorante)}}">Back <<</a></div>
+  <h3>Nome del piatto </h3>
+  <p>{{$piatto->name}}</p>
+  <h3>Categoria </h3>
+  <p>{{$piatto->category}}</p>
+  <h3>Ingredienti </h3>
+  <p>{{$piatto->ingrediants}}</p>
+  <h3>Descrizione</h3>
+  <p>{{$piatto->description}}</p>
+  <h3>Prezzo</h3>
+  <p>{{$piatto->price}}</p>
+  <div><a href="{{route('admin.miei-ristoranti.piatti.index',$ristorante->slug)}}">Back <<</a></div>
+
 </div>
 @endsection
