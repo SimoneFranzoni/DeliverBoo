@@ -36,6 +36,4 @@ class Plate extends Model
     }
 
   }
-
-
-   
+}
