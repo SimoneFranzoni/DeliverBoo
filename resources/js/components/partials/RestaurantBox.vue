@@ -37,6 +37,7 @@ export default {
 
 <style lang="scss" scoped>
 
+@import '../../../sass/_variables.scss';
   .box{
     width: 98%;
     height: 120px;
@@ -47,24 +48,30 @@ export default {
     transition: box-shadow 0.3s ease-in-out;
     transition: height 0.3s, width 0.3s;
     box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    transition: transform 0.3s;
 
     &:hover{
       box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-      height: 130px;
-      width: 100%;
       font-weight: bold;
-      
+      transform: scale(1.05, 1.1);
 
     }
 
     .restaurant-img{
       //background-image: url(".../public/img/pexels-marcus-herzberg-1058277.jpg");
-      background-color: blue; 
+      background-color: $primary-color; 
       height: 90%;
       width: 25%;
       margin-left: 5px;
       border-radius: 20px;
     }
+  
+    .name{
+      font-size: 20px;
+    }
+
   }
+
+  
 
 </style>
