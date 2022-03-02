@@ -3,24 +3,17 @@
 @section('content')
 <div class="container">
 
-  @if ($errors->any())
-    <div class="alert alert-danger" role="alert">
-      <ul>
-          @foreach ($errors->all() as $error)
-            <li>{{  $error }}</li>
-          @endforeach
-      </ul>
-    </div>
-  @endif
-
 
   <div class="row">
     <div class="col-6 offset-3">
  
       <h1>Modificare piatto : {{$piatto->name}}</h1>
+      
+      {{-- si passano due parametri causa utilizzo CRUD innestata(vedi rotte con route:list) --}}
       <form action="{{route('admin.miei-ristoranti.piatti.update',[$ristorante,$piatto])}}" method="POST">
         @csrf
         @method('PUT')
+        {{--  nome piatto--}}
         <div class="mb-3">
           <label for="name" class="form-label">Nome</label>
           <input 
@@ -31,11 +24,13 @@
             aria-describedby="emailHelp"
             value="{{old('name',$piatto->name)}}"
           >
-          @error('name') 
-            <p>{{$message}} </p>
-          @enderror  
         </div>
+        {{-- messaggio errore --}}
+        @error('name') 
+          <div class="alert alert-danger">{{$message}} </div>
+        @enderror  
 
+        {{-- ingredienti piatto --}}
         <div class="mb-3">
           <label for="ingrediants" class="form-label">Ingredienti</label>
           <input 
@@ -46,19 +41,25 @@
             aria-describedby="emailHelp"
             value="{{old('ingrediants',$piatto->ingrediants)}}"
           >
-          @error('ingrediants') 
-            <p>{{$message}} </p>
-          @enderror
         </div>
+        {{-- messaggio errore --}}
+        @error('ingrediants') 
+          <div class="alert alert-danger">{{$message}} </div>
+        @enderror
 
+
+        {{-- descrizione piatto --}}
         <div class="form-group">
           <label for="description">Descrizione</label>
-          <textarea class="form-control" class="form-control @error('description') is-invalid  @enderror" name="description" id="description" rows="3">{{old('description',$piatto->description)}}</textarea>
-          @error('description') 
-            <p>{{$message}} </p>
-          @enderror
+          <textarea class="form-control @error('description') is-invalid  @enderror" name="description" id="description" rows="3">{{old('description',$piatto->description)}}</textarea>
         </div>
+        {{-- messaggio errore --}}
+        @error('description') 
+          <div class="alert alert-danger">{{$message}} </div>
+        @enderror
        
+
+        {{-- prezzo piatto --}}
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text">€</span>
@@ -70,14 +71,16 @@
           id="price" 
           aria-describedby="emailHelp"
           value="{{old('price',$piatto->price)}}"
-        >
-        @error('price') 
-          <p>{{$message}} </p>
-        @enderror
+          >
         </div>
+        {{-- messaggio errore --}}
+        @error('price') 
+          <div class="alert alert-danger">{{$message}} </div>
+        @enderror
 
+        
+        {{-- categoria piatto (select) --}}
         <div>
-
           <select 
           name="category"
           id="category"
@@ -90,11 +93,14 @@
              value="{{$category}}">{{$category}}</option>
             @endforeach
           </select>
-          @error('category') 
-            <p>{{$message}} </p>
-          @enderror
         </div>
+        {{-- messaggio errore --}}
+        @error('category') 
+          <div class="alert alert-danger">{{$message}} </div>
+        @enderror
         
+
+        {{-- disponibilita' piatto (boxradio) --}}
         <div class="form-check">
           <input class="form-check-input" type="radio" name="is_available" id="is_available" value="{{old('is_available',1)}}" @if($piatto->is_available==1) checked @endif>
           <label class="form-check-label" for="is_available">
@@ -107,7 +113,9 @@
             Non disponibile
           </label>
         </div>
-     
+        
+
+        {{-- pulsanti --}}
         <button type="submit" class="btn btn-primary">Submit</button>
         <button type="reset" class="btn btn-danger">reset</button>
       </form>
