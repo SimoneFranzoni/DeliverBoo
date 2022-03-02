@@ -21,24 +21,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link href="{{ asset('css/admin/style.css') }}" rel="stylesheet">
-<<<<<<< HEAD
-    {{-- <link href="{{ asset('css/guest/style.css') }}" rel="stylesheet"> --}}
-=======
     <link href="{{ asset('css/guest/style.css') }}" rel="stylesheet">
->>>>>>> 9af7438dcbb1574b425c59c29dad7f5717dc6faa
 </head>
 <body>
     <div id="app">
 
-<<<<<<< HEAD
-       {{-- @include('guest.partials.header') --}}
-
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-=======
        @include('guest.partials.header')
 
         {{-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
->>>>>>> 9af7438dcbb1574b425c59c29dad7f5717dc6faa
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}" style="width: 100px">
                   <img src="img/logoDeliveBoo.png" alt="" width="100px"> 
