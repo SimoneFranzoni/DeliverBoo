@@ -5,7 +5,10 @@
     </div>
 
     <div class="search-input">
-      <input type="text" name="restsearch" id="restsearch" placeholder="Cerca qui una tipologia di ristorante...">
+      <input 
+      type="text" name="restsearch" id="restsearch" placeholder="Cerca qui una tipologia di ristorante..."
+      v-model="searchedValue"
+      @keyup="$emit('triggerSearch', searchedValue)">
       <router-link :to="{name: 'restaurants'}">
        <div class="ac-btn">Vai</div>
       </router-link>
@@ -16,7 +19,12 @@
 
 <script>
 export default {
-  name: 'Searchbar'
+  name: 'Searchbar',
+  data() {
+    return {
+      searchedValue: ''
+    }
+  }
 }
 </script>
 
