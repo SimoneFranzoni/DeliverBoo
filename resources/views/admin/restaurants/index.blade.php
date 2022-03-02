@@ -10,7 +10,6 @@
 
     @else
       @foreach ($ristoranti as $ristorante)
-      @dump($ristorante->name)
       <div >
         <h1><a href="{{route('admin.miei-ristoranti.piatti.index',$ristorante->slug)}}">{{$ristorante->name}}</a></h1>
 
