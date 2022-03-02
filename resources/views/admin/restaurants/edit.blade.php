@@ -113,7 +113,11 @@
       <button type="submit" class="btn btn-primary">Submit</button>
       <button type="reset" class="btn btn-primary">Reset</button>
    </form>
-
+  
+   {{-- link di pagina precedente --}}
+   <h2 class="mt-4">
+      <a  href="{{route('admin.miei-ristoranti.index')}}">Back <<</a>
+    </h2>
 </div>   
 
 
