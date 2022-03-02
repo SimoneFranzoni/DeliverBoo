@@ -10,6 +10,10 @@ class TypeController extends Controller
 {
     public function index(){
         $types = Type::all();
+
+        foreach ($types as $type) {
+          $type["isVisible"] = true;
+        }
         return response()->json(compact('types'));
     }
 }
