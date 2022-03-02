@@ -18,9 +18,13 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/admin/style.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('css/guest/style.css') }}" rel="stylesheet"> --}}
 </head>
 <body>
     <div id="app">
+
+       {{-- @include('guest.partials.header') --}}
+
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">

@@ -10,12 +10,12 @@
       @if (Route::has('login'))
           <div class="top-right links">
               @auth
-                  <a href="{{ route('admin.index') }}">Il Tuo Profilo</a>
+                  <a href="{{ route('admin.index') }}" class="ac-btn">Il Tuo Profilo</a>
               @else
-                  <a href="{{ route('login') }}">Login</a>
+                  <a href="{{ route('login') }}"class="ac-btn">Login</a>
 
                   @if (Route::has('register'))
-                      <a href="{{ route('register') }}">Register</a>
+                      <a href="{{ route('register') }}"class="ac-btn">Register</a>
                   @endif
               @endauth
           </div>

@@ -11,6 +11,7 @@
 // Font Awesome
 @import '~font-awesome/scss/font-awesome.scss';
 
+
 * {
   margin: 0;
   padding: 0;
@@ -54,6 +55,9 @@ a, a:visited, a:hover {
   border-radius: 10px;
   background-color: $primary-color;
   color: white;
+  &:hover {
+    color: white;
+  }
 }
 
 .border-bot {

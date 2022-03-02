@@ -13090,6 +13090,9 @@ a, a:visited, a:hover {
   background-color: #45CCBC;
   color: white;
 }
+.ac-btn:hover {
+  color: white;
+}
 
 .border-bot {
   width: 100%;
