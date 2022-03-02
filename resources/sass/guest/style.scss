@@ -8,9 +8,6 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-// Font Awesome
-@import '~font-awesome/scss/font-awesome.scss';
-
 
 * {
   margin: 0;
@@ -102,6 +99,17 @@ footer {
         #g-play {
           width: 230px;
           margin-left: -13px;
+        }
+      }
+    }
+    .footer-section.social {
+      i {
+        font-size: 26px;
+        margin-right: 5px;
+        color: lighten($footer-light,20);
+        cursor: pointer;
+        &:hover {
+          color: lighten($footer-light,40);
         }
       }
     }
