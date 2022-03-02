@@ -4,20 +4,23 @@
     <!-- header da home.blade.php per controlli auth-->
 
     <!-- jumbotron con ricerca-->
-    <Jumbotron />
+    <Jumbotron @triggerSearch="triggerSearch"/>
 
     <!-- elenco tipologie -->
     <h3>Non sai cosa scegliere? Dai un'occhiata</h3>
     <div class="types-wrapper">
       <div class="type"
       v-for="(type, index) in types" 
-      :key="`type${index}`">
-        {{type.name}}
+      :key="`type${index}`"
+      v-show="type.isVisible">
+        <span v-if="type.isVisible">
+          {{type.name}}
+        </span>
       </div>
     </div>
 
 
-    <!-- footer -->
+    <!-- footer da home.blade.php-->
 
 
     
@@ -50,6 +53,16 @@ export default {
         this.types = res.data.types;
       console.log(this.types);
       })
+    },
+    triggerSearch(searchedValue) {
+      for (let type of this.types) {
+        if (!type.name.toLowerCase().includes(searchedValue.toLowerCase())) {
+          type.isVisible = false;
+        }
+        if (searchedValue === '') {
+          type.isVisible = true;
+        }
+      }
     }
   }
 }
@@ -70,12 +83,15 @@ export default {
     margin-top: 20px;
     padding-bottom: 150px;
     .type {
+      span {
+        display: inline-block;
+        padding: 0 5px;
+        font-size: 20px;
+        font-weight: bold;
+        cursor: pointer;
+      }
       background-color: #eeebeb;
       color: $footer-dark;
-      padding: 0 5px;
-      font-size: 20px;
-      font-weight: bold;
-      cursor: pointer;
       transition: all .2s;
       &:hover {
         background-color: lighten(#eeebeb, 2.5);
