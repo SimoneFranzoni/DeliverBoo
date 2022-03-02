@@ -4,14 +4,15 @@
     <!-- header da home.blade.php per controlli auth-->
 
     <!-- jumbotron con ricerca-->
-    <Jumbotron />
+    <Jumbotron @triggerSearch="triggerSearch"/>
 
     <!-- elenco tipologie -->
     <h3>Non sai cosa scegliere? Dai un'occhiata</h3>
     <div class="types-wrapper">
       <div class="type"
       v-for="(type, index) in types" 
-      :key="`type${index}`">
+      :key="`type${index}`"
+      v-if="type.isVisible === true">
         {{type.name}}
       </div>
     </div>
@@ -50,6 +51,16 @@ export default {
         this.types = res.data.types;
       console.log(this.types);
       })
+    },
+    triggerSearch(searchedValue) {
+      for (let type of this.types) {
+        if (!type.name.toLowerCase().includes(searchedValue.toLowerCase())) {
+          type.isVisible = false;
+        }
+        if (searchedValue === '') {
+          type.isVisible = true;
+        }
+      }
     }
   }
 }

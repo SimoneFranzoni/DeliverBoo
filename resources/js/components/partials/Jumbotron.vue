@@ -8,7 +8,7 @@
           </div>
       </div>
       <div class="row searchbar-slogan">
-        <Searchbar />
+        <Searchbar @triggerSearch="triggerSearch"/>
       </div>
      
     </div>
@@ -21,6 +21,11 @@ export default {
   name: 'Jumbotron',
   components: {
     Searchbar
+  },
+  methods: {
+    triggerSearch(searchedValue) {
+      this.$emit('triggerSearch', searchedValue)
+    }
   }
 }
 </script>
