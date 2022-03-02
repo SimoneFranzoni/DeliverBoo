@@ -18,9 +18,11 @@ class OrdersController extends Controller
     {
 
         $restaurant= Restaurant::where('slug',$slug)->first();
-        $orders = Order::where('restaurant_id',$restaurant->id)->get();
-        dd($orders);
-        return view('admin.orders.index',compact('restaurant'));
+        $orders = Order::where('restaurant_id',$restaurant->id)->with('plates')->get();
+      
+        
+        
+        return view('admin.orders.index',compact('restaurant','orders'));
     }
 
     /**

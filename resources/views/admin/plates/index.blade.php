@@ -19,19 +19,14 @@
       @empty
       @endforelse
     </div>
-    <div>
-    </div>
+    
           
     <div class="col-2 col-md-4">
       <a  href="{{route('admin.miei-ristoranti.piatti.create',$ristorante->slug)}}">
         <button type="button" class="btn btn-success">Nuovo piatto</button>
       </a>
     </div>
-    <div class="col-2 col-md-4">
-      <a  href="{{route('admin.miei-ristoranti.ordini.index',$ristorante->slug)}}">
-        <button type="button" class="btn btn-info">Vedi Ordini</button>
-      </a>
-    </div>
+    
   </div>
  
   
@@ -64,6 +59,15 @@
     </li>
     @endforeach
   </ul>
+
+
+  <div class="col-2 col-md-4 offset-8">
+    <a  href="{{route('admin.miei-ristoranti.ordini.index',$ristorante->slug)}}">
+      <button type="button" class="btn btn-info">Vedi Ordini</button>
+    </a>
+  </div> 
+
+
    {{-- link di pagina precedente --}}
   <h2 >
     <a  href="{{route('admin.miei-ristoranti.index')}}">Back <<</a>
@@ -73,7 +77,7 @@
   <div>
     {{$piatti->links()}}
   </div>
-</div>  
+</div> 
 </div>
 @endsection
       
