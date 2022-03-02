@@ -36,10 +36,14 @@
       <div class="col-sm-12 col-md-3">
         <div class="footer-section social">
           <h4>Porta #deliveBoo con te</h4>
-          <i class="fa-brands fa-facebook"></i>
-          <i class="fa-brands fa-instagram"></i>
-          <i class="fa-brands fa-twitter"></i>
-
+          <i class="fab fa-facebook"></i>
+          <i class="fab fa-instagram"></i>
+          <i class="fab fa-twitter"></i>
+          <div class="mobile-app d-flex flex-column">
+            <img src="img/1200px-Download_on_the_App_Store_Badge_IT_RGB_blk.svg.png" alt="app store" id="app-store">
+            <img src="img/g-play.png" alt="google play" id="g-play">
+          </div>
+         
         </div>
       </div>
 
@@ -50,9 +54,7 @@
 
   <div class="border-bot"></div>
 
-  <div class="container">
-    <div class="row footer-bot">
-    
+    <div class="footer-bot d-flex justify-content-center align-items-center">
+      &copy; 2022 deliveBoo
     </div>
-  </div>
 </footer>

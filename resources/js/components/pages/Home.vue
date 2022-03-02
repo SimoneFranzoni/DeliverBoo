@@ -48,6 +48,7 @@ export default {
       axios.get('http://127.0.0.1:8000/api/tipo/')
       .then(res => {
         this.types = res.data.types;
+      console.log(this.types);
       })
     }
   }
