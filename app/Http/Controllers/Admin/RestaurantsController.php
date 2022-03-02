@@ -33,7 +33,6 @@ class RestaurantsController extends Controller
     public function create()
     {
         $types = Type::all();
-
         return view('admin.restaurants.create', compact('types'));
     }
 
@@ -46,17 +45,21 @@ class RestaurantsController extends Controller
     public function store(Request $request)
     {
         $request->validate($this->validationData(), $this->validationError());
-
         $user = Auth::user();
-
+        
         $data = $request->all();
+       
         $new_restaurant = new Restaurant();
         $new_restaurant->user_id = $user->id;
         $new_restaurant->fill($data);
         $new_restaurant->slug = Restaurant::generateSlug($new_restaurant->name);
         $new_restaurant->save();
 
-        return redirect()->route('admin.miei-ristoranti.index');
+        if (array_key_exists('types',$data)){
+            $new_restaurant->types()->attach($data['types']);
+        }
+    
+        return redirect()->route('admin.miei-ristoranti.index',compact($new_restaurant->types));
     }
 
     /**
@@ -79,8 +82,8 @@ class RestaurantsController extends Controller
     public function edit($id)
     {
         $restaurant = Restaurant::find($id);
-
-        return view('admin.restaurants.edit', compact('restaurant'));
+        $types = Type::all();
+        return view('admin.restaurants.edit', compact('restaurant','types'));
 
     }
 
@@ -93,12 +96,19 @@ class RestaurantsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate($this->validationData(), $this->validationError());
         $restaurant = Restaurant::where('id', $id)->first();
         $form_data = $request->all();
         if($form_data['name'] != $restaurant->name  ){
             $form_data['slug'] = Restaurant::generateSlug($form_data['name']);
         }
         $restaurant->update($form_data);
+
+        if(array_key_exists('types',$form_data)){
+            $restaurant->types()->sync($form_data['types']);
+        }else{
+            $restaurant->types()->detach();
+        }
 
         return redirect()->route('admin.miei-ristoranti.index');
     }
@@ -126,6 +136,7 @@ class RestaurantsController extends Controller
             'zip_code' => 'required| size:5',
             'phone_number' => 'required | min:5 | max:20',
             'p_iva' => 'required | size:11 ',
+            'types' => 'required',
         ]; 
     }
 
@@ -150,6 +161,7 @@ class RestaurantsController extends Controller
             'p_iva.required'=> 'Inserire la Partita IVA',
             'p_iva.size'=> 'Partita IVA non valida(11 numeri)',
             // 'p_iva.integer'=> 'Partita IVA non valida (solo numeri)',
+            'types.required'=>'Inserire almeno una categoria'
         ];
     }
 }
