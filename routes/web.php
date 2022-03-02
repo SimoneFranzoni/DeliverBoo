@@ -33,6 +33,9 @@ Route::middleware('auth')
 
         // Rotte dei piatti in relazione al singolo ristorante
         Route::resource('miei-ristoranti.piatti','RestaurantPlatesController');
+
+        // Rette ordini
+        Route::resource('miei-ristoranti.ordini','OrdersController');
     });
 
 
