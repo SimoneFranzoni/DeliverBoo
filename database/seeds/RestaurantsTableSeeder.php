@@ -12,7 +12,9 @@ class RestaurantsTableSeeder extends Seeder
      * @return void
      */
     public function run(Faker $faker)
-    { 
+    {
+      
+
         for($i = 0; $i < 5; $i++) {
           $newRestaurant = new Restaurant();
           $newRestaurant->name = $faker->sentence(3);

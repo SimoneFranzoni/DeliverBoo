@@ -16,6 +16,10 @@ class Restaurant extends Model
     'p_iva',
   ];
 
+  public function orders(){
+    return $this->hasMany('App\Restaurant');
+  }
+
     public function plates() {
       return $this->hasMany('App\Plate');
     }
