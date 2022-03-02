@@ -18,9 +18,18 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//Chiamo il JSON di Restaurant
-Route::get('ristoranti','Api\RestaurantController@index');
+// //Chiamo il JSON di Restaurant
+// Route::get('ristoranti','Api\RestaurantController@index');
 
 
 //Chiamo il JSON di Type
 Route::get('tipo','Api\TypeController@index');
+
+//Chiamata Json Ristoranti
+// Chiamata Json Ristoranti cliccando su Type
+Route::namespace('Api')
+    ->prefix('ristoranti')
+    ->group(function(){
+    Route::get('/','RestaurantController@index');
+    Route::get('tiporistorante/{slug}', 'RestaurantController@getRestaurantsByTypes');
+    });
