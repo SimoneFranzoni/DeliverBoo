@@ -1978,6 +1978,7 @@ __webpack_require__.r(__webpack_exports__);
       this.types = null;
       axios.get('http://127.0.0.1:8000/api/tipo/').then(function (res) {
         _this.types = res.data.types;
+        console.log(_this.types);
       });
     }
   }

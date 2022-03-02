@@ -2,18 +2,26 @@
 
 @section('content')
 <div class="container">
+  {{-- messaggio di cancellazione elemento (qualora venisse cancellato) --}}
   @if(session('deleted'))
   <div class="alert alert-danger" role="alert">
     {{session('deleted')}}
   </div>
   @endif
+  {{-- info ristorante --}}
   <div class="d-md-flex justify-content-between mb-5">
     <div class="col-md-8">
       <h1>{{$ristorante->name}}</h1>
       <h6>Indirizzo :{{$ristorante->address}}</h6>
       <h6>Teleforno :{{$ristorante->phone_number}}</h6>
+      @forelse ($ristorante->types as $type)
+          <span class="badge bg-primary">{{$type->name}}</span>
+      @empty
+      @endforelse
     </div>
-    
+    <div>
+    </div>
+          
     <div class="col-2 col-md-4">
       <a  href="{{route('admin.miei-ristoranti.piatti.create',$ristorante->slug)}}">
         <button type="button" class="btn btn-success">Nuovo piatto</button>
@@ -21,19 +29,21 @@
     </div>
   </div>
  
-  <ul style="padding:0px;">
- 
-    
-    @foreach ($piatti as  $piatto)
   
+  
+  <ul style="padding:0px;">
+    @foreach ($piatti as  $piatto)
     <li class="d-flex flex-wrap justify-content-between mb-3">
-      <div class="col-12 col-md-8  ">
-        <strong>{{$piatto->category}} : </strong>
+      <div class="col-12 col-md-8 d-flex align-items-center ">
         
-       
-        <a href="{{route('admin.miei-ristoranti.piatti.show',[$ristorante->slug,$piatto->slug])}}">{{$piatto->name}} </a>
+        {{-- categoria --}}
+        <span>{{$piatto->category}} : </span> 
+        
+        {{-- nome piatto --}}
+        <a href="{{route('admin.miei-ristoranti.piatti.show',[$ristorante->slug,$piatto->slug])}}"> {{$piatto->name}}</a>
       </div>
-
+       
+        {{-- pulsanti di modifica e cancellazione --}}
       <div class="col-12 col-md-4">
         <a  href="{{route('admin.miei-ristoranti.piatti.edit',[$ristorante->slug,$piatto->slug])}}">
           <button type="button" class="btn btn-info"> Modifica</button>
@@ -47,18 +57,19 @@
         
       </div>
     </li>
-   
     @endforeach
-      
-    
   </ul>
-
+   {{-- link di pagina precedente --}}
   <h2 >
     <a  href="{{route('admin.miei-ristoranti.index')}}">Back <<</a>
   </h2>
+
+  {{-- paginazione bootstrap --}}
   <div>
     {{$piatti->links()}}
   </div>
 </div>  
 </div>
 @endsection
+      
+    

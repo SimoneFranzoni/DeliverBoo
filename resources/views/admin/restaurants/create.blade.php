@@ -6,7 +6,9 @@
    
    <form action="{{route('admin.miei-ristoranti.store')}}"
    method="POST">
-    @csrf
+   @csrf
+
+   
             {{-- Label Name --}}
          <div class="mb-3">
             <label for="name" class="form-label">Nome ristorante</label>
@@ -92,6 +94,32 @@
          </div>
          {{-- Messaggio di Errore --}}
          @error('p_iva')
+            <div class="alert alert-danger">
+               {{ $message }}
+            </div>
+         @enderror
+         
+
+         {{-- Checkbox Types --}}
+         <div class="my-3">
+            <h5>Categorie</h5>
+            @foreach ($types as $type)
+              <span class="d-inline-block mr-4" style="width:120px">
+                <input 
+                type="checkbox"
+                name="types[]"
+                value="{{ $type->id }}"
+                id="type{{$loop->iteration}}"
+                @if (in_array($type->id,old("types",[])))
+                  checked
+                @endif
+                >
+                <label for="category{{$loop->iteration}}">{{$type->name}}</label>
+              </span>
+            @endforeach
+         </div>
+         {{-- Messaggio di Errore --}}
+         @error('types')
             <div class="alert alert-danger">
                {{ $message }}
             </div>
