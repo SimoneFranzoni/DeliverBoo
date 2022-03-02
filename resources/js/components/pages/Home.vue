@@ -12,13 +12,15 @@
       <div class="type"
       v-for="(type, index) in types" 
       :key="`type${index}`"
-      v-if="type.isVisible === true">
-        {{type.name}}
+      v-show="type.isVisible">
+        <span v-if="type.isVisible">
+          {{type.name}}
+        </span>
       </div>
     </div>
 
 
-    <!-- footer -->
+    <!-- footer da home.blade.php-->
 
 
     
@@ -81,12 +83,15 @@ export default {
     margin-top: 20px;
     padding-bottom: 150px;
     .type {
+      span {
+        display: inline-block;
+        padding: 0 5px;
+        font-size: 20px;
+        font-weight: bold;
+        cursor: pointer;
+      }
       background-color: #eeebeb;
       color: $footer-dark;
-      padding: 0 5px;
-      font-size: 20px;
-      font-weight: bold;
-      cursor: pointer;
       transition: all .2s;
       &:hover {
         background-color: lighten(#eeebeb, 2.5);

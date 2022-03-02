@@ -1964,6 +1964,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Home',
@@ -6643,7 +6645,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "h3 {\n  margin-top: 180px;\n  font-weight: bold;\n  font-size: 32px;\n  color: #2D3333;\n}\n.types-wrapper {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 10px;\n  margin-top: 20px;\n  padding-bottom: 150px;\n}\n.types-wrapper .type {\n  background-color: #eeebeb;\n  color: #2D3333;\n  padding: 0 5px;\n  font-size: 20px;\n  font-weight: bold;\n  cursor: pointer;\n  transition: all 0.2s;\n}\n.types-wrapper .type:hover {\n  background-color: #f4f2f2;\n  transform: scale(1.1);\n  border-radius: 10px;\n}", ""]);
+exports.push([module.i, "h3 {\n  margin-top: 180px;\n  font-weight: bold;\n  font-size: 32px;\n  color: #2D3333;\n}\n.types-wrapper {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 10px;\n  margin-top: 20px;\n  padding-bottom: 150px;\n}\n.types-wrapper .type {\n  background-color: #eeebeb;\n  color: #2D3333;\n  transition: all 0.2s;\n}\n.types-wrapper .type span {\n  display: inline-block;\n  padding: 0 5px;\n  font-size: 20px;\n  font-weight: bold;\n  cursor: pointer;\n}\n.types-wrapper .type:hover {\n  background-color: #f4f2f2;\n  transform: scale(1.1);\n  border-radius: 10px;\n}", ""]);
 
 // exports
 
@@ -38817,11 +38819,28 @@ var render = function () {
         "div",
         { staticClass: "types-wrapper" },
         _vm._l(_vm.types, function (type, index) {
-          return type.isVisible === true
-            ? _c("div", { key: "type" + index, staticClass: "type" }, [
-                _vm._v("\n      " + _vm._s(type.name) + "\n    "),
-              ])
-            : _vm._e()
+          return _c(
+            "div",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: type.isVisible,
+                  expression: "type.isVisible",
+                },
+              ],
+              key: "type" + index,
+              staticClass: "type",
+            },
+            [
+              type.isVisible
+                ? _c("span", [
+                    _vm._v("\n        " + _vm._s(type.name) + "\n      "),
+                  ])
+                : _vm._e(),
+            ]
+          )
         }),
         0
       ),
