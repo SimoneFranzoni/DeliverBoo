@@ -1,6 +1,6 @@
 <template>
     <div class="container-fluid">
-        <h4>Le cucine più richieste</h4>
+        <div>Le cucine più richieste</div>
         <div class="row types-row pb-4">
             <div class="typebox">
                 <div class="title">Italiano</div>
@@ -26,6 +26,7 @@
         </div>
         <div class="row">
             <div class="col-3 filter-column">
+                <div>Tutte le cucine (A, Z)</div>
                 <ul>
                     <li v-for="(type, index) in types" 
                     :key="`type${index}`">

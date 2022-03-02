@@ -2054,6 +2054,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Restaurants',
@@ -38772,12 +38773,14 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-fluid" }, [
-    _c("h4", [_vm._v("Le cucine più richieste")]),
+    _c("div", [_vm._v("Le cucine più richieste")]),
     _vm._v(" "),
     _vm._m(0),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-3 filter-column" }, [
+        _c("div", [_vm._v("Tutte le cucine (A, Z)")]),
+        _vm._v(" "),
         _c(
           "ul",
           _vm._l(_vm.types, function (type, index) {
