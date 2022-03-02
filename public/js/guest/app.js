@@ -1931,6 +1931,15 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _partials_Jumbotron_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../partials/Jumbotron.vue */ "./resources/js/components/partials/Jumbotron.vue");
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+//
+//
+//
 //
 //
 //
@@ -1980,6 +1989,28 @@ __webpack_require__.r(__webpack_exports__);
         _this.types = res.data.types;
         console.log(_this.types);
       });
+    },
+    triggerSearch: function triggerSearch(searchedValue) {
+      var _iterator = _createForOfIteratorHelper(this.types),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var type = _step.value;
+
+          if (!type.name.toLowerCase().includes(searchedValue.toLowerCase())) {
+            type.isVisible = false;
+          }
+
+          if (searchedValue === '') {
+            type.isVisible = true;
+          }
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
     }
   }
 });
@@ -2116,6 +2147,11 @@ __webpack_require__.r(__webpack_exports__);
   name: 'Jumbotron',
   components: {
     Searchbar: _Searchbar_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  methods: {
+    triggerSearch: function triggerSearch(searchedValue) {
+      this.$emit('triggerSearch', searchedValue);
+    }
   }
 });
 
@@ -2192,8 +2228,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Searchbar'
+  name: 'Searchbar',
+  data: function data() {
+    return {
+      searchedValue: ''
+    };
+  }
 });
 
 /***/ }),
@@ -6616,7 +6660,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "h3 {\n  margin-top: 180px;\n  font-weight: bold;\n  font-size: 32px;\n  color: #2D3333;\n}\n.types-wrapper {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 10px;\n  margin-top: 20px;\n  padding-bottom: 150px;\n}\n.types-wrapper .type {\n  background-color: #eeebeb;\n  color: #2D3333;\n  padding: 0 5px;\n  font-size: 20px;\n  font-weight: bold;\n  cursor: pointer;\n  transition: all 0.2s;\n}\n.types-wrapper .type:hover {\n  background-color: #f4f2f2;\n  transform: scale(1.1);\n  border-radius: 10px;\n}", ""]);
+exports.push([module.i, "h3 {\n  margin-top: 180px;\n  font-weight: bold;\n  font-size: 32px;\n  color: #2D3333;\n}\n.types-wrapper {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 10px;\n  margin-top: 20px;\n  padding-bottom: 150px;\n}\n.types-wrapper .type {\n  background-color: #eeebeb;\n  color: #2D3333;\n  transition: all 0.2s;\n}\n.types-wrapper .type span {\n  display: inline-block;\n  padding: 0 5px;\n  font-size: 20px;\n  font-weight: bold;\n  cursor: pointer;\n}\n.types-wrapper .type:hover {\n  background-color: #f4f2f2;\n  transform: scale(1.1);\n  border-radius: 10px;\n}", ""]);
 
 // exports
 
@@ -38733,7 +38777,7 @@ var render = function () {
     "div",
     { staticClass: "container" },
     [
-      _c("Jumbotron"),
+      _c("Jumbotron", { on: { triggerSearch: _vm.triggerSearch } }),
       _vm._v(" "),
       _c("h3", [_vm._v("Non sai cosa scegliere? Dai un'occhiata")]),
       _vm._v(" "),
@@ -38741,9 +38785,28 @@ var render = function () {
         "div",
         { staticClass: "types-wrapper" },
         _vm._l(_vm.types, function (type, index) {
-          return _c("div", { key: "type" + index, staticClass: "type" }, [
-            _vm._v("\n      " + _vm._s(type.name) + "\n    "),
-          ])
+          return _c(
+            "div",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: type.isVisible,
+                  expression: "type.isVisible",
+                },
+              ],
+              key: "type" + index,
+              staticClass: "type",
+            },
+            [
+              type.isVisible
+                ? _c("span", [
+                    _vm._v("\n        " + _vm._s(type.name) + "\n      "),
+                  ])
+                : _vm._e(),
+            ]
+          )
         }),
         0
       ),
@@ -38912,7 +38975,12 @@ var render = function () {
         ]),
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "row searchbar-slogan" }, [_c("Searchbar")], 1),
+      _c(
+        "div",
+        { staticClass: "row searchbar-slogan" },
+        [_c("Searchbar", { on: { triggerSearch: _vm.triggerSearch } })],
+        1
+      ),
     ]),
   ])
 }
@@ -38999,11 +39067,31 @@ var render = function () {
       { staticClass: "search-input" },
       [
         _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.searchedValue,
+              expression: "searchedValue",
+            },
+          ],
           attrs: {
             type: "text",
             name: "restsearch",
             id: "restsearch",
             placeholder: "Cerca qui una tipologia di ristorante...",
+          },
+          domProps: { value: _vm.searchedValue },
+          on: {
+            keyup: function ($event) {
+              return _vm.$emit("triggerSearch", _vm.searchedValue)
+            },
+            input: function ($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.searchedValue = $event.target.value
+            },
           },
         }),
         _vm._v(" "),
