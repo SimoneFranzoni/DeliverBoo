@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 class Plate extends Model
 {
     protected $fillable = [
-      'name','price','description','ingrediants','category','is_available'
+      'name','price','description','ingrediants','category','is_available', 'cover', 'cover_original_name'
     ];
     public function restaurant() {
       return $this->belongsToMany('App\Restaurant');
