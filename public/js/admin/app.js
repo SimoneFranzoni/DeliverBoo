@@ -37352,6 +37352,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /***/ (function(module, exports, __webpack_require__) {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 __webpack_require__(/*! C:\Users\franz_u4goo5x\OneDrive\Desktop\DeliverBoo\resources\js\admin\app.js */"./resources/js/admin/app.js");
 __webpack_require__(/*! C:\Users\franz_u4goo5x\OneDrive\Desktop\DeliverBoo\resources\sass\admin\style.scss */"./resources/sass/admin/style.scss");
 module.exports = __webpack_require__(/*! C:\Users\franz_u4goo5x\OneDrive\Desktop\DeliverBoo\resources\sass\guest\style.scss */"./resources/sass/guest/style.scss");
@@ -37359,4 +37360,14 @@ module.exports = __webpack_require__(/*! C:\Users\franz_u4goo5x\OneDrive\Desktop
 __webpack_require__(/*! /Users/albertonicolaciufici/Desktop/Boolean/Progetto Finale/DeliverBoo/resources/sass/admin/style.scss */"./resources/sass/admin/style.scss");
 module.exports = __webpack_require__(/*! /Users/albertonicolaciufici/Desktop/Boolean/Progetto Finale/DeliverBoo/resources/sass/guest/style.scss */"./resources/sass/guest/style.scss");
 >>>>>>> 74c13b1088b2a87eca69c985de2a85a7577b07b5
+=======
+__webpack_require__(/*! C:\Users\ssimo\Documents\boolean\html\lara\progetto-finale\DeliverBoo\resources\js\admin\app.js */"./resources/js/admin/app.js");
+__webpack_require__(/*! C:\Users\ssimo\Documents\boolean\html\lara\progetto-finale\DeliverBoo\resources\sass\admin\style.scss */"./resources/sass/admin/style.scss");
+module.exports = __webpack_require__(/*! C:\Users\ssimo\Documents\boolean\html\lara\progetto-finale\DeliverBoo\resources\sass\guest\style.scss */"./resources/sass/guest/style.scss");
+=======
+__webpack_require__(/*! C:\Users\Simone\Desktop\ProgettoFinale\DeliverBoo\resources\js\admin\app.js */"./resources/js/admin/app.js");
+__webpack_require__(/*! C:\Users\Simone\Desktop\ProgettoFinale\DeliverBoo\resources\sass\admin\style.scss */"./resources/sass/admin/style.scss");
+module.exports = __webpack_require__(/*! C:\Users\Simone\Desktop\ProgettoFinale\DeliverBoo\resources\sass\guest\style.scss */"./resources/sass/guest/style.scss");
+>>>>>>> 4f2056c9fce6d967fc6164566c58c0a223676008
+>>>>>>> fb349fc8918ea031680fd9ef284b318f603ebe71
 
