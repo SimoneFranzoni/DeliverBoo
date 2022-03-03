@@ -38826,6 +38826,7 @@ var render = function () {
               _c(
                 "router-link",
                 {
+                  staticClass: "type-link",
                   attrs: {
                     to: { name: "restaurants", params: { slug: type.slug } },
                   },
