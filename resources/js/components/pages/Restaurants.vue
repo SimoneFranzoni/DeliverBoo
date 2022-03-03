@@ -31,7 +31,8 @@
                 <ul>
                     <li v-for="(type, index) in types" 
                     :key="`type${index}`"
-                    @click="changeActiveRestaurants(type)">
+                    @click="changeActiveRestaurants(type), counter = index"
+                    :class="{active: counter === index}">
                   
                         <span>v</span>
                         {{type.name}}
@@ -80,7 +81,8 @@ export default {
         return {
             types: null,
             activeRestaurants: null,
-            activeRestaurantsUrl: 'http://127.0.0.1:8000/api/ristoranti/tiporistorante/'
+            activeRestaurantsUrl: 'http://127.0.0.1:8000/api/ristoranti/tiporistorante/',
+            counter: -1
         }
     },
     methods: {
@@ -89,6 +91,11 @@ export default {
             axios.get('http://127.0.0.1:8000/api/tipo/')
             .then(res => {
                 this.types = res.data.types;
+                for (let type of this.types) {
+                  if(type.slug === this.$route.params.slug) {
+                    this.counter = type.id-1;
+                  }
+                }
             })
         },
         getActiveRestaurants() {
@@ -127,6 +134,11 @@ export default {
             margin: 10px 0;
             z-index: 3;  
             cursor: pointer;
+            &.active {
+              border: 1px solid black;
+              font-weight: bold;
+              font-size: 18px;
+            }
             span{
                 transition: opacity 0.5s ease-out;
                 opacity: 0;
