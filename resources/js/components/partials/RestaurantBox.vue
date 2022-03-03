@@ -6,22 +6,22 @@
       <div class="row">
         <div class="col-6">
           <div class="name">
-            <!--{{restaurant.name}}-->
-            Pizzeria a caso
+            {{restaurant.name}}
+            <!-- Pizzeria a caso -->
           </div>
           <div class="città">
-            <!--{{restaurant.city}}-->
-            Brescia
+            {{restaurant.city}}
+            <!-- Brescia -->
           </div>    
         </div> 
         <div class="col-6">
           <div>
-            <!--{{restaurant.address}}-->
-            Via fasulla 0
+            {{restaurant.address}}
+            <!-- Via fasulla 0 -->
           </div>
           <div>
-            <!--{{restaurant.phone_number}}-->
-            338 5847545
+            {{restaurant.phone_number}}
+            <!-- 338 5847545 -->
           </div>
         </div> 
       </div>
@@ -31,7 +31,10 @@
 
 <script>
 export default {
-    name:'RestaurantBox'
+    name:'RestaurantBox',
+    props: {
+      restaurant: Object
+    }
 }
 </script>
 

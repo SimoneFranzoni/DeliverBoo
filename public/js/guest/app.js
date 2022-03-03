@@ -1966,6 +1966,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Home',
@@ -1977,7 +1979,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   },
   data: function data() {
     return {
-      types: null
+      types: null,
+      apiUrl: 'http://127.0.0.1:8000/api/ristoranti/tiporistorante/',
+      type: {}
     };
   },
   methods: {
@@ -1986,8 +1990,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
       this.types = null;
       axios.get('http://127.0.0.1:8000/api/tipo/').then(function (res) {
-        _this.types = res.data.types;
-        console.log(_this.types);
+        _this.types = res.data.types; // console.log(this.types);
       });
     },
     triggerSearch: function triggerSearch(searchedValue) {
@@ -2089,6 +2092,18 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _partials_RestaurantBox_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../partials/RestaurantBox.vue */ "./resources/js/components/partials/RestaurantBox.vue");
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2157,10 +2172,14 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.getApiTypes();
+    this.getActiveRestaurants();
   },
   data: function data() {
     return {
-      types: null
+      types: null,
+      activeRestaurants: null,
+      activeRestaurantsUrl: 'http://127.0.0.1:8000/api/ristoranti/tiporistorante/',
+      counter: -1
     };
   },
   methods: {
@@ -2170,6 +2189,38 @@ __webpack_require__.r(__webpack_exports__);
       this.types = null;
       axios.get('http://127.0.0.1:8000/api/tipo/').then(function (res) {
         _this.types = res.data.types;
+
+        var _iterator = _createForOfIteratorHelper(_this.types),
+            _step;
+
+        try {
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {
+            var type = _step.value;
+
+            if (type.slug === _this.$route.params.slug) {
+              _this.counter = type.id - 1;
+            }
+          }
+        } catch (err) {
+          _iterator.e(err);
+        } finally {
+          _iterator.f();
+        }
+      });
+    },
+    getActiveRestaurants: function getActiveRestaurants() {
+      var _this2 = this;
+
+      this.activeRestaurants = null;
+      axios.get(this.activeRestaurantsUrl + this.$route.params.slug).then(function (res) {
+        _this2.activeRestaurants = res.data.type.restaurants;
+      });
+    },
+    changeActiveRestaurants: function changeActiveRestaurants(type) {
+      var _this3 = this;
+
+      axios.get(this.activeRestaurantsUrl + type.slug).then(function (res) {
+        _this3.activeRestaurants = res.data.type.restaurants;
       });
     }
   }
@@ -2209,6 +2260,9 @@ __webpack_require__.r(__webpack_exports__);
   name: 'Jumbotron',
   components: {
     Searchbar: _Searchbar_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  props: {
+    type: Object
   },
   methods: {
     triggerSearch: function triggerSearch(searchedValue) {
@@ -2283,7 +2337,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'RestaurantBox'
+  name: 'RestaurantBox',
+  props: {
+    restaurant: Object
+  }
 });
 
 /***/ }),
@@ -2316,12 +2373,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Searchbar',
   data: function data() {
     return {
-      searchedValue: ''
+      searchedValue: '',
+      apiUrl: 'http://127.0.0.1:8000/api/ristoranti/tiporistorante/',
+      type: {}
     };
+  },
+  methods: {// getApi(){
+    //   axios.get(this.apiUrl + this.$route.params.slug)
+    //       .then(res => {
+    //         this.type = res.data;
+    //         console.log('TIPO >>>>>>',this.type);
+    //       })
+    // }
+  },
+  mounted: function mounted() {// this.getApi();
   }
 });
 
@@ -2336,6 +2406,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -6745,7 +6816,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "h3 {\n  margin-top: 180px;\n  font-weight: bold;\n  font-size: 32px;\n  color: #2D3333;\n}\n.types-wrapper {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 10px;\n  margin-top: 20px;\n  padding-bottom: 150px;\n}\n.types-wrapper .type {\n  background-color: #eeebeb;\n  color: #2D3333;\n  transition: all 0.2s;\n}\n.types-wrapper .type span {\n  display: inline-block;\n  padding: 0 5px;\n  font-size: 20px;\n  font-weight: bold;\n  cursor: pointer;\n}\n.types-wrapper .type:hover {\n  background-color: #f4f2f2;\n  transform: scale(1.1);\n  border-radius: 10px;\n}", ""]);
+exports.push([module.i, "h3 {\n  margin-top: 180px;\n  font-weight: bold;\n  font-size: 32px;\n  color: #2D3333;\n}\n.types-wrapper {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 10px;\n  margin-top: 20px;\n  padding-bottom: 150px;\n}\n.types-wrapper .type {\n  background-color: #eeebeb;\n  transition: all 0.2s;\n}\n.types-wrapper .type router-link span {\n  display: inline-block;\n  padding: 0 5px;\n  cursor: pointer;\n}\n.types-wrapper .type:hover {\n  background-color: #f4f2f2;\n  transform: scale(1.1);\n  border-radius: 10px;\n}", ""]);
 
 // exports
 
@@ -6783,7 +6854,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".container-fluid[data-v-31969ab0] {\n  padding: 0 10%;\n}\n.filter-column[data-v-31969ab0] {\n  width: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n}\n.filter-column li[data-v-31969ab0] {\n  border-radius: 20px;\n  border: 0.5px solid grey;\n  padding: 10px;\n  margin: 10px 0;\n}\n.filter-column li span[data-v-31969ab0] {\n  transition: opacity 0.5s ease-out;\n  opacity: 0;\n  height: 0;\n  overflow: hidden;\n  color: #45CCBC;\n}\n.filter-column li[data-v-31969ab0]:hover {\n  transform: translate(20px);\n  transition: transform 0.5s;\n}\n.filter-column li:hover span[data-v-31969ab0] {\n  opacity: 1;\n  height: auto;\n}\n.restaurant-column .restaurant-box-row[data-v-31969ab0] {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  padding: 10px 0;\n}\n.search-input[data-v-31969ab0] {\n  display: flex;\n  align-items: center;\n  width: 100%;\n}\n.search-input input[data-v-31969ab0] {\n  width: 90%;\n  margin-right: 5px;\n  padding: 5px 10px;\n  border-radius: 10px;\n  border: 1px solid rgba(0, 0, 0, 0.3);\n  caret-color: #45CCBC;\n}\n.search-input input[data-v-31969ab0]:focus {\n  outline: 2px solid #45CCBC;\n}\n.search-input .ac-btn[data-v-31969ab0] {\n  width: 60px;\n  text-align: center;\n  font-size: 16px;\n}\n.types-row[data-v-31969ab0] {\n  width: 100%;\n  height: 150px;\n  margin: 0 1px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  flex-wrap: nowrap;\n}\n.typebox[data-v-31969ab0] {\n  height: 100px;\n  width: 180px;\n  border-radius: 20px;\n  background-color: #45CCBC;\n  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);\n  margin-right: 10px;\n  transition: transform 0.3s;\n  position: relative;\n}\n.typebox .title[data-v-31969ab0] {\n  position: absolute;\n  bottom: 5%;\n  left: 5%;\n  font-size: 15px;\n  color: white;\n}\n.typebox[data-v-31969ab0]:hover {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  transform: scale(1.05, 1.1);\n  font-weight: bold;\n}", ""]);
+exports.push([module.i, ".filter-column[data-v-31969ab0] {\n  width: 100%;\n  height: 700px;\n  overflow-y: auto;\n  z-index: 1;\n}\n.filter-column li[data-v-31969ab0] {\n  border-radius: 20px;\n  border: 0.5px solid grey;\n  padding: 10px;\n  margin: 10px 0;\n  z-index: 3;\n  cursor: pointer;\n}\n.filter-column li.active[data-v-31969ab0] {\n  border: 1px solid black;\n  font-weight: bold;\n  font-size: 18px;\n}\n.filter-column li span[data-v-31969ab0] {\n  transition: opacity 0.5s ease-out;\n  opacity: 0;\n  height: 0;\n  overflow: hidden;\n  color: #45CCBC;\n}\n.filter-column li[data-v-31969ab0]:hover {\n  transform: translate(20px);\n  transition: transform 0.5s;\n}\n.filter-column li:hover span[data-v-31969ab0] {\n  opacity: 1;\n  height: auto;\n}\n.restaurant-column[data-v-31969ab0] {\n  z-index: 1;\n}\n.restaurant-column .restaurant-box-row[data-v-31969ab0] {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  padding: 10px 0;\n  cursor: pointer;\n}\n.search-input[data-v-31969ab0] {\n  display: flex;\n  align-items: center;\n  width: 100%;\n}\n.search-input input[data-v-31969ab0] {\n  width: 90%;\n  margin-right: 5px;\n  padding: 5px 10px;\n  border-radius: 10px;\n  border: 1px solid rgba(0, 0, 0, 0.3);\n  caret-color: #45CCBC;\n}\n.search-input input[data-v-31969ab0]:focus {\n  outline: 2px solid #45CCBC;\n}\n.search-input .ac-btn[data-v-31969ab0] {\n  width: 60px;\n  text-align: center;\n  font-size: 16px;\n}\n.types-row[data-v-31969ab0] {\n  width: 100%;\n  height: 150px;\n  margin: 0 1px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  flex-wrap: nowrap;\n}\n.typebox[data-v-31969ab0] {\n  height: 100px;\n  width: 180px;\n  border-radius: 20px;\n  background-color: #45CCBC;\n  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);\n  margin-right: 10px;\n  transition: transform 0.3s;\n  position: relative;\n}\n.typebox .title[data-v-31969ab0] {\n  position: absolute;\n  bottom: 5%;\n  left: 5%;\n  font-size: 15px;\n  color: white;\n}\n.typebox[data-v-31969ab0]:hover {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  transform: scale(1.05, 1.1);\n  font-weight: bold;\n}", ""]);
 
 // exports
 
@@ -38983,12 +39054,24 @@ var render = function () {
               staticClass: "type",
             },
             [
-              type.isVisible
-                ? _c("span", [
-                    _vm._v("\n        " + _vm._s(type.name) + "\n      "),
-                  ])
-                : _vm._e(),
-            ]
+              _c(
+                "router-link",
+                {
+                  staticClass: "type-link",
+                  attrs: {
+                    to: { name: "restaurants", params: { slug: type.slug } },
+                  },
+                },
+                [
+                  type.isVisible
+                    ? _c("span", [
+                        _vm._v("\n        " + _vm._s(type.name) + "\n      "),
+                      ])
+                    : _vm._e(),
+                ]
+              ),
+            ],
+            1
           )
         }),
         0
@@ -39113,7 +39196,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container-fluid" }, [
+  return _c("div", { staticClass: "container" }, [
     _c("div", [_vm._v("Le cucine più richieste")]),
     _vm._v(" "),
     _vm._m(0),
@@ -39125,14 +39208,26 @@ var render = function () {
         _c(
           "ul",
           _vm._l(_vm.types, function (type, index) {
-            return _c("li", { key: "type" + index }, [
-              _c("span", [_vm._v("v")]),
-              _vm._v(
-                "\n                    " +
-                  _vm._s(type.name) +
-                  "\n                "
-              ),
-            ])
+            return _c(
+              "li",
+              {
+                key: "type" + index,
+                class: { active: _vm.counter === index },
+                on: {
+                  click: function ($event) {
+                    _vm.changeActiveRestaurants(type), (_vm.counter = index)
+                  },
+                },
+              },
+              [
+                _c("span", [_vm._v("v")]),
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(type.name) +
+                    "\n\n                "
+                ),
+              ]
+            )
           }),
           0
         ),
@@ -39164,16 +39259,13 @@ var render = function () {
         _c(
           "div",
           { staticClass: "restaurant-box-row" },
-          [
-            _vm._l(_vm.restaurantsList, function (restaurant) {
-              return _c("RestaurantBox", { key: restaurant.id })
-            }),
-            _vm._v(" "),
-            _c("RestaurantBox"),
-            _vm._v(" "),
-            _c("RestaurantBox"),
-          ],
-          2
+          _vm._l(_vm.activeRestaurants, function (restaurant) {
+            return _c("RestaurantBox", {
+              key: restaurant.id,
+              attrs: { restaurant: restaurant },
+            })
+          }),
+          1
         ),
       ]),
     ]),
@@ -39320,38 +39412,45 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "box" }, [
-      _c("div", { staticClass: "restaurant-img float-left" }),
-      _vm._v(" "),
-      _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-6" }, [
-            _c("div", { staticClass: "name" }, [
-              _vm._v("\n          Pizzeria a caso\n        "),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "città" }, [
-              _vm._v("\n          Brescia\n        "),
-            ]),
+  return _c("div", { staticClass: "box" }, [
+    _c("div", { staticClass: "restaurant-img float-left" }),
+    _vm._v(" "),
+    _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-6" }, [
+          _c("div", { staticClass: "name" }, [
+            _vm._v(
+              "\n          " + _vm._s(_vm.restaurant.name) + "\n          "
+            ),
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-6" }, [
-            _c("div", [_vm._v("\n          Via fasulla 0\n        ")]),
-            _vm._v(" "),
-            _c("div", [_vm._v("\n          338 5847545\n        ")]),
+          _c("div", { staticClass: "città" }, [
+            _vm._v(
+              "\n          " + _vm._s(_vm.restaurant.city) + "\n          "
+            ),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-6" }, [
+          _c("div", [
+            _vm._v(
+              "\n          " + _vm._s(_vm.restaurant.address) + "\n          "
+            ),
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _vm._v(
+              "\n          " +
+                _vm._s(_vm.restaurant.phone_number) +
+                "\n          "
+            ),
           ]),
         ]),
       ]),
-    ])
-  },
-]
+    ]),
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -55176,7 +55275,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     name: 'home',
     component: _components_pages_Home__WEBPACK_IMPORTED_MODULE_2__["default"]
   }, {
-    path: '/restaurants',
+    path: '/restaurants/:slug',
     name: 'restaurants',
     component: _components_pages_Restaurants_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
   }, {
@@ -55199,11 +55298,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-module.exports = __webpack_require__(/*! C:\Users\franz_u4goo5x\OneDrive\Desktop\DeliverBoo\resources\js\guest\app.js */"./resources/js/guest/app.js");
-=======
-module.exports = __webpack_require__(/*! C:\Users\Simone\Desktop\ProgettoFinale\DeliverBoo\resources\js\guest\app.js */"./resources/js/guest/app.js");
->>>>>>> 57c1e6b01f69ed4f7e28acded35944e6eeb9c9b1
+module.exports = __webpack_require__(/*! /Users/albertonicolaciufici/Desktop/Boolean/Progetto Finale/DeliverBoo/resources/js/guest/app.js */"./resources/js/guest/app.js");
 
 
 /***/ })

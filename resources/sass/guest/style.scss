@@ -51,7 +51,13 @@ ul {
   margin: 0 !important;
 }
 
-a, a:visited, a:hover {
+a.type-link, a.type-link:visited, a.type-link:hover {
+  text-decoration: none;
+  color: $footer-dark;
+  font-size: 20px;
+  font-weight: bold;
+}
+a, a:hover, a:visited {
   text-decoration: none;
 }
 
