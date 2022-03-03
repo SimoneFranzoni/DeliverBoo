@@ -5,8 +5,8 @@ Vue.use(VueRouter);
 
 //import vari
 import Home from '../components/pages/Home';
-import Restaurants from '../components/pages/Restaurants.vue'
-
+import Restaurants from '../components/pages/Restaurants.vue';
+import Restaurantdetail from '../components/pages/Restaurantdetail.vue';
 
 import Error404 from '../components/pages/Error404'
 
@@ -23,6 +23,11 @@ const router = new VueRouter({
       path: '/restaurants',
       name: 'restaurants',
       component: Restaurants
+    },
+    {
+      path: '/restaurantdetail',
+      name: 'restaurantdetail',
+      component: Restaurantdetail
     },
     {
       path: '*',
