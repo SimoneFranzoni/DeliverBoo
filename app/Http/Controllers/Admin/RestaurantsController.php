@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Plate;
 use App\Restaurant;
 use App\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class RestaurantsController extends Controller
 {
@@ -44,16 +46,30 @@ class RestaurantsController extends Controller
      */
     public function store(Request $request)
     {
+    
         $request->validate($this->validationData(), $this->validationError());
         $user = Auth::user();
         
         $data = $request->all();
-       
+        
+        
+        if(array_key_exists('cover', $data)){
+            
+            // preno il nome originale dell'immagine
+            $data['cover_original_name'] = $request->file('cover')->getClientOriginalName();
+            
+            // salvare l'immagine e salvare il percorso
+            $image_path = Storage::put('uploads', $data['cover']);
+            $data['cover'] = $image_path;
+        }
+
+
         $new_restaurant = new Restaurant();
         $new_restaurant->user_id = $user->id;
         $new_restaurant->fill($data);
         $new_restaurant->slug = Restaurant::generateSlug($new_restaurant->name);
         $new_restaurant->save();
+
 
         if (array_key_exists('types',$data)){
             $new_restaurant->types()->attach($data['types']);
@@ -99,6 +115,20 @@ class RestaurantsController extends Controller
         $request->validate($this->validationData(), $this->validationError());
         $restaurant = Restaurant::where('id', $id)->first();
         $form_data = $request->all();
+
+        if(array_key_exists('cover', $form_data)){
+            // elimino la vecchia immagine (se esiste)
+            if($restaurant->cover){
+                Storage::delete($restaurant->cover);
+            }
+            //  prendere il nome della vecchia immagine
+            $form_data['cover_original_name'] = $request->file('cover')->getClientOriginalName(); 
+            //  salvare l'immagine da salvare e prendere il percorso da fillare
+            $image_path = Storage::put('uploads', $form_data['cover']);
+            $form_data['cover'] = $image_path;
+
+        }
+
         if($form_data['name'] != $restaurant->name  ){
             $form_data['slug'] = Restaurant::generateSlug($form_data['name']);
         }
@@ -122,6 +152,16 @@ class RestaurantsController extends Controller
     public function destroy($id)
     {
       $restaurant = Restaurant::where('id', $id)->first();
+      $piattiMenu = Plate::where('restaurant_id', $id)->get();
+      if($piattiMenu){
+          foreach ($piattiMenu as $imgPiatto) {
+              Storage::delete($imgPiatto->cover);
+          }
+      }
+      if($restaurant->cover){
+          Storage::delete($restaurant->cover);
+      }
+
       $restaurant->delete();
 
       return redirect()->route('admin.miei-ristoranti.index')->with('deleted', 'Post eliminato correttamente');
@@ -137,6 +177,7 @@ class RestaurantsController extends Controller
             'phone_number' => 'required | min:5 | max:20',
             'p_iva' => 'required | size:11 ',
             'types' => 'required',
+            'cover' => 'nullable|mimes:jpeg,jpg,bmp,svg,webp,png|max:32000'
         ]; 
     }
 
@@ -161,7 +202,10 @@ class RestaurantsController extends Controller
             'p_iva.required'=> 'Inserire la Partita IVA',
             'p_iva.size'=> 'Partita IVA non valida(11 numeri)',
             // 'p_iva.integer'=> 'Partita IVA non valida (solo numeri)',
-            'types.required'=>'Inserire almeno una categoria'
+            'types.required'=>'Inserire almeno una categoria',
+
+            'cover.mimes' => 'Il file deve essere una immagine jpeg, jpg, bmp, svg, webp o png',
+            'cover.max' => 'Dimensione del file troppo grande'
         ];
     }
 }

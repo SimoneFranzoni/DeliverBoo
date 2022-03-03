@@ -7,7 +7,7 @@ use App\Order;
 use App\Restaurant;
 use Illuminate\Http\Request;
 
-class OrdersController extends Controller
+class OrdersController extends Controller 
 {
     /**
      * Display a listing of the resource.

@@ -5,6 +5,7 @@
    <h1 class="">Crea il tuo ristorante</h1>
    
    <form action="{{route('admin.miei-ristoranti.store')}}"
+   enctype="multipart/form-data"
    method="POST">
    @csrf
 
@@ -120,6 +121,17 @@
          </div>
          {{-- Messaggio di Errore --}}
          @error('types')
+            <div class="alert alert-danger">
+               {{ $message }}
+            </div>
+         @enderror
+
+         <div class="my-3">
+            <label for="cover">Carica un'immagine:</label>
+            <input type="file" class="form-control" name="cover" id="cover">
+         </div>
+         {{-- Messaggio di Errore --}}
+         @error('cover')
             <div class="alert alert-danger">
                {{ $message }}
             </div>
