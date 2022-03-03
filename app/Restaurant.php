@@ -14,6 +14,8 @@ class Restaurant extends Model
     'zip_code',
     'phone_number',
     'p_iva',
+    'cover',
+    'cover_original_name'
   ];
 
   public function orders(){

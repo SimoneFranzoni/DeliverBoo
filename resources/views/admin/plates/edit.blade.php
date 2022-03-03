@@ -10,7 +10,9 @@
       <h1>Modificare piatto : {{$piatto->name}}</h1>
       
       {{-- si passano due parametri causa utilizzo CRUD innestata(vedi rotte con route:list) --}}
-      <form action="{{route('admin.miei-ristoranti.piatti.update',[$ristorante,$piatto])}}" method="POST">
+      <form action="{{route('admin.miei-ristoranti.piatti.update',[$ristorante,$piatto])}}" 
+      enctype="multipart/form-data"
+      method="POST">
         @csrf
         @method('PUT')
         {{--  nome piatto--}}
@@ -113,6 +115,22 @@
             Non disponibile
           </label>
         </div>
+
+        <div class="my-3">
+          @if ($piatto->cover)
+             <div>
+                <img width="150" src="{{asset('storage/' . $piatto->cover)}}" alt="{{$piatto->name}}">
+             </div>
+          @endif
+          <label for="cover">Carica un'immagine:</label>
+          <input type="file" class="form-control" name="cover" id="cover">
+       </div>
+       {{-- Messaggio di Errore --}}
+       @error('cover')
+          <div class="alert alert-danger">
+             {{ $message }}
+          </div>
+       @enderror
         
 
         {{-- pulsanti --}}
