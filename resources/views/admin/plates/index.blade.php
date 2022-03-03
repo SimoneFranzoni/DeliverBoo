@@ -21,13 +21,23 @@
 
       @if ($ristorante->cover !== "https://via.placeholder.com/350x290/45CCBC/FFFFFF?Text=DeliverBoo+plates")
       <div class="img">
+<<<<<<< HEAD
           <img width="400" src="{{asset('storage/'. $ristorante->cover)}}" alt="{{ $ristorante->cover_original_name }}">
       </div>
       @else
       <div class="img">
           <img width="400" src="https://via.placeholder.com/350x290/45CCBC/FFFFFF?Text=DeliverBoo+plates" alt="DeliveBoo">
+=======
+        <img width="400" src="{{asset('storage/' . $ristorante->cover)}}" alt="{{$ristorante->name}}">
+      </div>
+      @else
+      <div class="img">
+        <img width="400" src="https://via.placeholder.com/350x290/45CCBC/FFFFFF?Text=DeliverBoo+restaurant" alt="{{$ristorante->name}}">
+>>>>>>> fb19d06c2d3083481acb896c367ba128cd1c6e95
       </div>
       @endif
+      
+      
 
     </div>
     

@@ -55299,7 +55299,11 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 module.exports = __webpack_require__(/*! C:\Users\franc\Documents\Francesco\BOOLEAN\Esercizi\PORTFOLIO\progetto finale\DeliverBoo\resources\js\guest\app.js */"./resources/js/guest/app.js");
+=======
+module.exports = __webpack_require__(/*! C:\Users\Simone\Desktop\ProgettoFinale\DeliverBoo\resources\js\guest\app.js */"./resources/js/guest/app.js");
+>>>>>>> fb19d06c2d3083481acb896c367ba128cd1c6e95
 
 
 /***/ })

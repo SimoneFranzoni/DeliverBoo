@@ -22,10 +22,7 @@ class RestaurantsController extends Controller
         
         $user = Auth::user();
         $ristoranti = Restaurant::where('user_id',$user->id)->paginate(5);
-
         return view('admin.restaurants.index',compact('ristoranti'));
-
-
     }
 
     /**
