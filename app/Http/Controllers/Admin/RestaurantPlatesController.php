@@ -144,6 +144,10 @@ class RestaurantPlatesController extends Controller
     {
         $ristorante= Restaurant::where('id',$idRistorante)->first();
         $piattoDaEliminare = Plate::where('id',$idPiatto)->first();
+
+        if($piattoDaEliminare->cover){
+            Storage::delete($piattoDaEliminare->cover);
+        }
         
         $piattoDaEliminare->delete();
         return redirect()->route('admin.miei-ristoranti.piatti.index',[$ristorante->slug])->with('deleted',"il piatto $piattoDaEliminare->name è stato eliminato");;

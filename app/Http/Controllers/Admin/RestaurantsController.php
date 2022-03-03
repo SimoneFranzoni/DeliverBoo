@@ -151,6 +151,10 @@ class RestaurantsController extends Controller
     public function destroy($id)
     {
       $restaurant = Restaurant::where('id', $id)->first();
+
+      if($restaurant->cover){
+          Storage::delete($restaurant->cover);
+      }
       $restaurant->delete();
 
       return redirect()->route('admin.miei-ristoranti.index')->with('deleted', 'Post eliminato correttamente');
