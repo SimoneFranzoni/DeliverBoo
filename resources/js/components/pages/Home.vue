@@ -13,8 +13,7 @@
         v-for="(type, index) in types" 
         :key="`type${index}`"
         v-show="type.isVisible">
-      <router-link class="type-link" :to="{name: 'restaurants', params: {slug: type.slug}}"
-      @click="clickfunction(type)">
+      <router-link class="type-link" :to="{name: 'restaurants', params: {slug: type.slug}}">
         <span v-if="type.isVisible">
           {{type.name}}
         </span>
@@ -69,12 +68,7 @@ export default {
         }
       }
     },
-    clickfunction(type) {
-      axios.get(this.apiUrl + type.slug)
-      .then(res => {
-        let data = res.data;
-      })
-    }
+    
   }
 }
 </script>
