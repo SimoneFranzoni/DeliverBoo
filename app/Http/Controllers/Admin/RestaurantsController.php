@@ -67,7 +67,7 @@ class RestaurantsController extends Controller
             
             // salvare l'immagine e salvare il percorso
             $image_path = Storage::put('uploads', $data['cover']);
-            $data['cover'] = $image_path;
+            $data['cover'] = url('storage/' . $image_path);
         }else{
             $data['cover'] = 'https://via.placeholder.com/350x290/45CCBC/FFFFFF?Text=DeliverBoo+plates';
             $data['cover_original_name'] = "DeliveBoo Plate";
