@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Plate;
 use App\Restaurant;
 use App\Type;
 use Illuminate\Http\Request;
@@ -151,10 +152,16 @@ class RestaurantsController extends Controller
     public function destroy($id)
     {
       $restaurant = Restaurant::where('id', $id)->first();
-
+      $piattiMenu = Plate::where('restaurant_id', $id)->get();
+      if($piattiMenu){
+          foreach ($piattiMenu as $imgPiatto) {
+              Storage::delete($imgPiatto->cover);
+          }
+      }
       if($restaurant->cover){
           Storage::delete($restaurant->cover);
       }
+
       $restaurant->delete();
 
       return redirect()->route('admin.miei-ristoranti.index')->with('deleted', 'Post eliminato correttamente');
