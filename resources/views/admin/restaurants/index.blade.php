@@ -6,7 +6,9 @@
 
   @if (count($ristoranti)=== 0)
     <h1>Non hai ristoranti</h1>
-    
+    <a href="{{route('admin.miei-ristoranti.create')}}">
+      <button type="button" class="btn btn-success">Nuovo Ristorante</button>
+    </a>
     
     
     @else
