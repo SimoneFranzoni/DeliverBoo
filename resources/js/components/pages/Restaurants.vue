@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid">
+    <div class="container">
         <div>Le cucine più richieste</div>
         <div class="row types-row pb-4">
             <div class="typebox">
@@ -47,9 +47,9 @@
                 <div class="pt-4"> XXX risultati trovati </div>
 
                 <div class="restaurant-box-row">
-                    <RestaurantBox 
+                    <!-- <RestaurantBox 
                     v-for="restaurant in restaurantsList"
-                    :key="restaurant.id"/>
+                    :key="restaurant.id"/> -->
                     <RestaurantBox />
                     <RestaurantBox />
                 </div>
@@ -92,20 +92,20 @@ export default {
 
 @import '../../../sass/_variables.scss';
 
-    .container-fluid{
-        padding: 0 10%;
-    }
-
+  
     .filter-column{
         width: 100%;
-        height: fit-content;
+        height: 700px;
+        overflow-y: auto;
+        z-index: 1;
         
         li{
             border-radius: 20px;
             border: 0.5px solid grey;
             padding: 10px;
             margin: 10px 0;
-            
+            z-index: 3;  
+            cursor: pointer;
             span{
                 transition: opacity 0.5s ease-out;
                 opacity: 0;
@@ -128,6 +128,7 @@ export default {
     }
 
     .restaurant-column{
+        z-index: 1;
       
         .restaurant-box-row{
             display: flex;
@@ -135,6 +136,8 @@ export default {
             justify-content: center;
             align-items: center;
             padding: 10px 0;
+            cursor: pointer;
+
         }
     }
 

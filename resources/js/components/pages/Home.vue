@@ -9,14 +9,16 @@
     <!-- elenco tipologie -->
     <h3>Non sai cosa scegliere? Dai un'occhiata</h3>
     <div class="types-wrapper">
-      <div class="type"
-      v-for="(type, index) in types" 
-      :key="`type${index}`"
-      v-show="type.isVisible">
-        <span v-if="type.isVisible">
-          {{type.name}}
-        </span>
-      </div>
+        <div class="type"
+        v-for="(type, index) in types" 
+        :key="`type${index}`"
+        v-show="type.isVisible">
+      <router-link :to="{name: 'restaurants', params: {slug: type.slug}}">
+          <span v-if="type.isVisible">
+            {{type.name}}
+          </span>
+      </router-link>
+        </div>
     </div>
 
 
@@ -42,7 +44,8 @@ export default {
   data(){
     return {
       types: null,
-
+      apiUrl: 'http://127.0.0.1:8000/api/ristoranti/tiporistorante/',
+      type: {}
     }
   },
   methods: {
@@ -56,6 +59,7 @@ export default {
     },
     triggerSearch(searchedValue) {
       for (let type of this.types) {
+
         if (!type.name.toLowerCase().includes(searchedValue.toLowerCase())) {
           type.isVisible = false;
         }
@@ -77,21 +81,21 @@ export default {
     color: $footer-dark;
   }
   .types-wrapper {
+    
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     margin-top: 20px;
     padding-bottom: 150px;
     .type {
-      span {
-        display: inline-block;
-        padding: 0 5px;
-        font-size: 20px;
-        font-weight: bold;
-        cursor: pointer;
+      router-link {
+        span {
+          display: inline-block;
+          padding: 0 5px;
+          cursor: pointer;
+        }
       }
       background-color: #eeebeb;
-      color: $footer-dark;
       transition: all .2s;
       &:hover {
         background-color: lighten(#eeebeb, 2.5);

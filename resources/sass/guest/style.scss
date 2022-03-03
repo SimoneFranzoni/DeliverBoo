@@ -53,6 +53,9 @@ ul {
 
 a, a:visited, a:hover {
   text-decoration: none;
+  color: $footer-dark;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .ac-btn {
