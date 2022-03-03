@@ -18,18 +18,18 @@
           <span class="badge bg-primary">{{$type->name}}</span>
       @empty
       @endforelse
+      
 
-      @if ($ristorante->cover)
+
+      @if ($ristorante->cover !== "https://via.placeholder.com/350x290/45CCBC/FFFFFF?Text=DeliverBoo+plates")
       <div class="img">
-        <img width="400" src="{{asset('storage/' . $ristorante->cover)}}" alt="{{$ristorante->name}}">
+          <img width="400" src="{{asset('storage/'. $ristorante->cover)}}" alt="{{ $ristorante->cover_original_name }}">
       </div>
       @else
       <div class="img">
-        <img width="400" src="https://via.placeholder.com/350x290/45CCBC/FFFFFF?Text=DeliverBoo+restaurant" alt="{{$ristorante->name}}">
+          <img width="400" src="https://via.placeholder.com/350x290/45CCBC/FFFFFF?Text=DeliverBoo+plates" alt="DeliveBoo">
       </div>
       @endif
-      
-      
 
     </div>
     
