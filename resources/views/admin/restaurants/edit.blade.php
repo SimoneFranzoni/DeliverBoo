@@ -7,6 +7,7 @@
    <h1 class="">Crea il tuo ristorante</h1>
   
    <form action="{{route('admin.miei-ristoranti.update', $restaurant)}}"
+   enctype="multipart/form-data"
    method="POST">
     @csrf
     @method('PUT')
@@ -105,6 +106,22 @@
          </div>
            {{-- Messaggio di Errore --}}
          @error('types')
+            <div class="alert alert-danger">
+               {{ $message }}
+            </div>
+         @enderror
+
+         <div class="my-3">
+            @if ($restaurant->cover)
+               <div>
+                  <img width="150" src="{{asset('storage/' . $restaurant->cover)}}" alt="{{$restaurant->name}}">
+               </div>
+            @endif
+            <label for="cover">Carica un'immagine:</label>
+            <input type="file" class="form-control" name="cover" id="cover">
+         </div>
+         {{-- Messaggio di Errore --}}
+         @error('cover')
             <div class="alert alert-danger">
                {{ $message }}
             </div>

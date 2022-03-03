@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Plate;
 use App\Restaurant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class RestaurantPlatesController extends Controller
 {
@@ -49,6 +50,18 @@ class RestaurantPlatesController extends Controller
         $request->validate($this->generateErrorMessages()['field'],$this->generateErrorMessages()['messages']);
         $ristorante= Restaurant::where('id',$idRistorante)->first();
         $data = $request->all();
+
+        if(array_key_exists('cover', $data)){
+            
+            // preno il nome originale dell'immagine
+            $data['cover_original_name'] = $request->file('cover')->getClientOriginalName();
+            
+            // salvare l'immagine e salvare il percorso
+            $image_path = Storage::put('uploads', $data['cover']);
+            $data['cover'] = $image_path;
+        }
+
+
         $nuovoPiatto = new Plate();
         $nuovoPiatto->fill($data);
         $nuovoPiatto->slug = Plate::generateSlug($nuovoPiatto->name);
@@ -102,6 +115,19 @@ class RestaurantPlatesController extends Controller
         $ristorante= Restaurant::where('id',$idRistorante)->first();
         $piattoDaModificare = Plate::where('id',$idPiatto)->first();
         $data = $request->all();
+
+        if(array_key_exists('cover', $data)){
+            // elimino la vecchia immagine (se esiste)
+            if($piattoDaModificare->cover){
+                Storage::delete($piattoDaModificare->cover);
+            }
+            //  prendere il nome della vecchia immagine
+            $data['cover_original_name'] = $request->file('cover')->getClientOriginalName(); 
+            //  salvare l'immagine da salvare e prendere il percorso da fillare
+            $image_path = Storage::put('uploads', $data['cover']);
+            $data['cover'] = $image_path;
+
+        }
         $piattoModificato = $piattoDaModificare->update($data);
 
         return redirect()->route('admin.miei-ristoranti.piatti.index',[$ristorante->slug,$piattoModificato]);
@@ -133,6 +159,7 @@ class RestaurantPlatesController extends Controller
                 "ingrediants"=>"required|max:1000|min:5",
                 "price"=>"required|numeric|min:0|max:99.99",
                 "category"=>"required",
+                'cover' => 'nullable|mimes:jpeg,jpg,bmp,svg,webp,png|max:32000'
                 ],
             "messages"=>[
                 "name.required"=>"Il nome è obbligatorio",
@@ -150,10 +177,11 @@ class RestaurantPlatesController extends Controller
                 "price.required"=>"Il prezzo è obbligatorio",
                 "price.min"=>"Il prezzo non puo' essere negativo",
                 "price.max"=>"Il prezzo non puo' essere superiore a 99.99 euro",
-               
                 
+                "category.required"=>"La categoria è obbligatoria",   
                 
-                "category.required"=>"La categoria è obbligatoria",       
+                'cover.mimes' => 'Il file deve essere una immagine jpeg, jpg, bmp, svg, webp o png',
+                'cover.max' => 'Dimensione del file troppo grande'
                 ]
         ];
     }

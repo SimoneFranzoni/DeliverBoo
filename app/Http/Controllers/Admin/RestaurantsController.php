@@ -114,6 +114,20 @@ class RestaurantsController extends Controller
         $request->validate($this->validationData(), $this->validationError());
         $restaurant = Restaurant::where('id', $id)->first();
         $form_data = $request->all();
+
+        if(array_key_exists('cover', $form_data)){
+            // elimino la vecchia immagine (se esiste)
+            if($restaurant->cover){
+                Storage::delete($restaurant->cover);
+            }
+            //  prendere il nome della vecchia immagine
+            $form_data['cover_original_name'] = $request->file('cover')->getClientOriginalName(); 
+            //  salvare l'immagine da salvare e prendere il percorso da fillare
+            $image_path = Storage::put('uploads', $form_data['cover']);
+            $form_data['cover'] = $image_path;
+
+        }
+
         if($form_data['name'] != $restaurant->name  ){
             $form_data['slug'] = Restaurant::generateSlug($form_data['name']);
         }
