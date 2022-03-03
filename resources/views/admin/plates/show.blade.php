@@ -14,5 +14,11 @@
   <p>{{$piatto->price}}</p>
   <div><a href="{{route('admin.miei-ristoranti.piatti.index',$ristorante->slug)}}">Back <<</a></div>
 
+  @if ($piatto->cover)
+  <div class="img">
+      <img width="400" src="{{ asset('storage/' . $piatto->cover ) }}" alt="{{ $piatto->name }}">
+  </div>
+  @endif
+
 </div>
 @endsection

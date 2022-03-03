@@ -21,9 +21,9 @@
 
       @if ($ristorante->cover)
       <div class="img">
-          <img width="800" src="{{ asset('storage/' . $ristorante->cover ) }}" alt="{{ $ristorante->name }}">
+          <img width="400" src="{{ asset('storage/' . $ristorante->cover ) }}" alt="{{ $ristorante->name }}">
       </div>
-  @endif
+      @endif
 
     </div>
     

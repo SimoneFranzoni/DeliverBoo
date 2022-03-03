@@ -8,7 +8,9 @@
     <div class="col-6 offset-3">
  
       <h1>Nuovo piatto</h1>
-      <form action="{{route('admin.miei-ristoranti.piatti.store',$ristorante)}}" method="POST">
+      <form action="{{route('admin.miei-ristoranti.piatti.store',$ristorante)}}"
+      enctype="multipart/form-data"
+      method="POST">
         @csrf
            {{-- nome piatto --}}
         <div class="mb-3">
@@ -110,6 +112,17 @@
             </label>
           </div>
         </div>
+
+        <div class="my-3">
+          <label for="cover">Carica un'immagine:</label>
+          <input type="file" class="form-control" name="cover" id="cover">
+       </div>
+       {{-- Messaggio di Errore --}}
+       @error('cover')
+          <div class="alert alert-danger">
+             {{ $message }}
+          </div>
+       @enderror
      
         <button type="submit" class="btn btn-primary">Submit</button>
         <button type="reset" class="btn btn-danger">reset</button>
