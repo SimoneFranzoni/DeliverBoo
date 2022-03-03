@@ -21,7 +21,7 @@
 
       @if ($ristorante->cover)
       <div class="img">
-          <img width="400" src="{{ asset('storage/' . $ristorante->cover ) }}" alt="{{ $ristorante->name }}">
+          <img width="400" src="{{$ristorante->cover}}" alt="{{ $ristorante->name }}">
       </div>
       @endif
 
