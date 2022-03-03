@@ -21,6 +21,8 @@ export default {
   name: 'Jumbotron',
   components: {
     Searchbar
+  }, props: {
+    type: Object
   },
   methods: {
     triggerSearch(searchedValue) {

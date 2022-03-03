@@ -1,5 +1,6 @@
 <template>
-    <div class="container-fluid">
+    <div class="container">
+
         <div>Le cucine più richieste</div>
         <div class="row types-row pb-4">
             <div class="typebox">
@@ -29,9 +30,13 @@
                 <div>Tutte le cucine (A, Z)</div>
                 <ul>
                     <li v-for="(type, index) in types" 
-                    :key="`type${index}`">
+                    :key="`type${index}`"
+                    @click="changeActiveRestaurants(type), counter = index"
+                    :class="{active: counter === index}">
+                  
                         <span>v</span>
                         {{type.name}}
+
                     </li>
                 </ul>
             </div>
@@ -47,11 +52,12 @@
                 <div class="pt-4"> XXX risultati trovati </div>
 
                 <div class="restaurant-box-row">
+                    
                     <RestaurantBox 
-                    v-for="restaurant in restaurantsList"
-                    :key="restaurant.id"/>
-                    <RestaurantBox />
-                    <RestaurantBox />
+                      v-for="restaurant in activeRestaurants" 
+                      :key="restaurant.id" 
+                      :restaurant="restaurant"/>
+
                 </div>
             </div>
         </div>
@@ -69,10 +75,14 @@ export default {
     },
     mounted(){
         this.getApiTypes();
+        this.getActiveRestaurants();
     },
     data(){
         return {
             types: null,
+            activeRestaurants: null,
+            activeRestaurantsUrl: 'http://127.0.0.1:8000/api/ristoranti/tiporistorante/',
+            counter: -1
         }
     },
     methods: {
@@ -81,7 +91,26 @@ export default {
             axios.get('http://127.0.0.1:8000/api/tipo/')
             .then(res => {
                 this.types = res.data.types;
+                for (let type of this.types) {
+                  if(type.slug === this.$route.params.slug) {
+                    this.counter = type.id-1;
+                  }
+                }
             })
+        },
+        getActiveRestaurants() {
+          this.activeRestaurants = null;
+          axios.get(this.activeRestaurantsUrl + this.$route.params.slug)
+          .then(res => {
+            this.activeRestaurants = res.data.type.restaurants;
+          })
+        },
+        changeActiveRestaurants(type) {
+          axios.get(this.activeRestaurantsUrl + type.slug)
+          .then(res => {
+            this.activeRestaurants = res.data.type.restaurants;
+          })
+          this.$router.push(type.slug);
         }
     }
 }
@@ -92,20 +121,25 @@ export default {
 
 @import '../../../sass/_variables.scss';
 
-    .container-fluid{
-        padding: 0 10%;
-    }
-
+  
     .filter-column{
         width: 100%;
-        height: fit-content;
+        height: 700px;
+        overflow-y: auto;
+        z-index: 1;
         
         li{
             border-radius: 20px;
             border: 0.5px solid grey;
             padding: 10px;
             margin: 10px 0;
-            
+            z-index: 3;  
+            cursor: pointer;
+            &.active {
+              border: 1px solid black;
+              font-weight: bold;
+              font-size: 18px;
+            }
             span{
                 transition: opacity 0.5s ease-out;
                 opacity: 0;
@@ -128,6 +162,7 @@ export default {
     }
 
     .restaurant-column{
+        z-index: 1;
       
         .restaurant-box-row{
             display: flex;
@@ -135,6 +170,8 @@ export default {
             justify-content: center;
             align-items: center;
             padding: 10px 0;
+            cursor: pointer;
+
         }
     }
 

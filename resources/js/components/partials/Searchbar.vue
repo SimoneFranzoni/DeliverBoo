@@ -9,6 +9,7 @@
       type="text" name="restsearch" id="restsearch" placeholder="Cerca qui una tipologia di ristorante..."
       v-model="searchedValue"
       @keyup="$emit('triggerSearch', searchedValue)">
+      <!-- <router-link :to="{name: 'restaurants', params: {slug: type.slug}}"> -->
       <router-link :to="{name: 'restaurants'}">
        <div class="ac-btn">Vai</div>
       </router-link>
@@ -22,8 +23,22 @@ export default {
   name: 'Searchbar',
   data() {
     return {
-      searchedValue: ''
+      searchedValue: '', 
+      apiUrl: 'http://127.0.0.1:8000/api/ristoranti/tiporistorante/',
+      type: {}
     }
+  },
+  methods: {
+    // getApi(){
+    //   axios.get(this.apiUrl + this.$route.params.slug)
+    //       .then(res => {
+    //         this.type = res.data;
+    //         console.log('TIPO >>>>>>',this.type);
+    //       })
+    // }
+  },
+  mounted() {
+    // this.getApi();
   }
 }
 </script>
