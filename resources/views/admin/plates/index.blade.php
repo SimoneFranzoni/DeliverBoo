@@ -18,6 +18,13 @@
           <span class="badge bg-primary">{{$type->name}}</span>
       @empty
       @endforelse
+
+      @if ($ristorante->cover)
+      <div class="img">
+          <img width="800" src="{{ asset('storage/' . $ristorante->cover ) }}" alt="{{ $ristorante->name }}">
+      </div>
+  @endif
+
     </div>
     <div>
     </div>
