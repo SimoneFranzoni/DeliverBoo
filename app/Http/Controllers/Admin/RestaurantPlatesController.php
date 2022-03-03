@@ -21,9 +21,9 @@ class RestaurantPlatesController extends Controller
             $ristorante= Restaurant::where('slug',$slug)->first();
             $piatti = Plate::where('restaurant_id',$ristorante->id)->orderBy('category')->paginate(3);      
             
-            $piatti->each(function($piatto){
-                $piatto->cover = $this->makeImagePath($piatto->cover);
-            });
+            // $piatti->each(function($piatto){
+            //     $piatto->cover = $this->makeImagePath($piatto->cover);
+            // });
 
             return view('admin.plates.index',compact('ristorante','piatti'));
             
@@ -41,7 +41,7 @@ class RestaurantPlatesController extends Controller
             'Antipasto', 'Primo', 'Secondo', 'Contorno', 'Frutta', 'Dessert'
           ];
         $ristorante= Restaurant::where('slug',$slug)->first();
-        $ristorante->cover = $this->makeImagePath($ristorante->cover);
+        // $ristorante->cover = $this->makeImagePath($ristorante->cover);
 
         return view('admin.plates.create',compact('ristorante','categories'));
     }
@@ -65,8 +65,9 @@ class RestaurantPlatesController extends Controller
             
             // salvare l'immagine e salvare il percorso
             $image_path = Storage::put('uploads', $data['cover']);
-            $data['cover'] = url('storage/' . $image_path);
-        }else{
+            $data['cover'] = $image_path;
+        }
+        else{
             $data['cover'] = 'https://via.placeholder.com/350x290/45CCBC/FFFFFF?Text=DeliverBoo+plates';
             $data['cover_original_name'] = "DeliveBoo Restaurant";
         }
@@ -199,14 +200,14 @@ class RestaurantPlatesController extends Controller
         ];
     }
 
-    private function makeImagePath($cover){
-            if($cover){
-                $cover = url('storage/' . $cover);
-            }else{
-                $cover = 'https://via.placeholder.com/350x290/45CCBC/FFFFFF?Text=DeliverBoo+plates';
-            }
+    // private function makeImagePath($cover){
+    //         if($cover){
+    //             $cover = url('storage/' . $cover);
+    //         }else{
+    //             $cover = 'https://via.placeholder.com/350x290/45CCBC/FFFFFF?Text=DeliverBoo+plates';
+    //         }
         
-        return $cover;
-    }
+    //     return $cover;
+    // }
     
 }
