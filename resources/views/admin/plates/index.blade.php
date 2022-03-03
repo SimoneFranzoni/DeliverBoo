@@ -63,7 +63,7 @@
 
   <div class="col-2 col-md-4 offset-8">
     <a  href="{{route('admin.miei-ristoranti.ordini.index',$ristorante->slug)}}">
-      <button type="button" class="btn btn-info">Vedi Ordini</button>
+      <button type="button" class="btn btn-warning">Vedi Ordini</button>
     </a>
   </div> 
 
