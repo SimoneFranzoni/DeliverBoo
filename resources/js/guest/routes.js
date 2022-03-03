@@ -22,7 +22,10 @@ const router = new VueRouter({
     {
       path: '/restaurants/:slug',
       name: 'restaurants',
-      component: Restaurants
+      component: Restaurants,
+      props: {
+        provaProp: String
+      }
     },
     {
       path: '*',

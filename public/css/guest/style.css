@@ -10064,6 +10064,10 @@ a.type-link, a.type-link:visited, a.type-link:hover {
   font-weight: bold;
 }
 
+a, a:hover, a:visited {
+  text-decoration: none;
+}
+
 .ac-btn {
   padding: 5px 10px;
   text-align: center;

@@ -1968,6 +1968,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Home',
@@ -1990,8 +1991,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
       this.types = null;
       axios.get('http://127.0.0.1:8000/api/tipo/').then(function (res) {
-        _this.types = res.data.types;
-        console.log(_this.types);
+        _this.types = res.data.types; // console.log(this.types);
       });
     },
     triggerSearch: function triggerSearch(searchedValue) {
@@ -2015,6 +2015,11 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       } finally {
         _iterator.f();
       }
+    },
+    clickfunction: function clickfunction(type) {
+      axios.get(this.apiUrl + type.slug).then(function (res) {
+        var data = res.data;
+      });
     }
   }
 });
@@ -2091,6 +2096,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Restaurants',
@@ -2098,7 +2104,7 @@ __webpack_require__.r(__webpack_exports__);
     RestaurantBox: _partials_RestaurantBox_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   mounted: function mounted() {
-    this.getApiTypes();
+    this.getApiTypes(); // this.getApi();
   },
   data: function data() {
     return {
@@ -2113,7 +2119,14 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('http://127.0.0.1:8000/api/tipo/').then(function (res) {
         _this.types = res.data.types;
       });
-    }
+    } //     getApi(){
+    //   axios.get(this.apiUrl + this.$route.params.slug)
+    //       .then(res => {
+    //         this.type = res.data;
+    //         console.log('TIPO >>>>>>',this.type);
+    //       })
+    // }
+
   }
 });
 
@@ -2248,18 +2261,15 @@ __webpack_require__.r(__webpack_exports__);
       type: {}
     };
   },
-  methods: {
-    getApi: function getApi() {
-      var _this = this;
-
-      axios.get(this.apiUrl + this.$route.params.slug).then(function (res) {
-        _this.type = res.data;
-        console.log('TIPO >>>>>>', _this.type);
-      });
-    }
+  methods: {// getApi(){
+    //   axios.get(this.apiUrl + this.$route.params.slug)
+    //       .then(res => {
+    //         this.type = res.data;
+    //         console.log('TIPO >>>>>>',this.type);
+    //       })
+    // }
   },
-  mounted: function mounted() {
-    this.getApi();
+  mounted: function mounted() {// this.getApi();
   }
 });
 
@@ -2280,7 +2290,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'App',
-  components: {}
+  components: {},
+  data: function data() {
+    return {
+      prova: 'ciao'
+    };
+  }
 });
 
 /***/ }),
@@ -38830,13 +38845,16 @@ var render = function () {
                   attrs: {
                     to: { name: "restaurants", params: { slug: type.slug } },
                   },
+                  on: {
+                    click: function ($event) {
+                      return _vm.clickfunction(type)
+                    },
+                  },
                 },
                 [
                   type.isVisible
                     ? _c("span", [
-                        _vm._v(
-                          "\n          " + _vm._s(type.name) + "\n        "
-                        ),
+                        _vm._v("\n        " + _vm._s(type.name) + "\n      "),
                       ])
                     : _vm._e(),
                 ]
@@ -38874,6 +38892,8 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
+    _c("h1", [_vm._v(_vm._s(_vm.provaProp))]),
+    _vm._v(" "),
     _c("div", [_vm._v("Le cucine più richieste")]),
     _vm._v(" "),
     _vm._m(0),
@@ -39166,7 +39186,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("router-view")
+  return _c("router-view", { attrs: { prova: _vm.prova } })
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -54717,7 +54737,10 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   }, {
     path: '/restaurants/:slug',
     name: 'restaurants',
-    component: _components_pages_Restaurants_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+    component: _components_pages_Restaurants_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    props: {
+      provaProp: String
+    }
   }, {
     path: '*',
     component: _components_pages_Error404__WEBPACK_IMPORTED_MODULE_4__["default"]

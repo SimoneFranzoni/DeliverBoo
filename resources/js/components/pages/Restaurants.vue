@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+      <h1>{{provaProp}}</h1>
         <div>Le cucine più richieste</div>
         <div class="row types-row pb-4">
             <div class="typebox">
@@ -69,6 +70,7 @@ export default {
     },
     mounted(){
         this.getApiTypes();
+        // this.getApi();
     },
     data(){
         return {
@@ -82,7 +84,14 @@ export default {
             .then(res => {
                 this.types = res.data.types;
             })
-        }
+        },
+    //     getApi(){
+    //   axios.get(this.apiUrl + this.$route.params.slug)
+    //       .then(res => {
+    //         this.type = res.data;
+    //         console.log('TIPO >>>>>>',this.type);
+    //       })
+    // }
     }
 }
 

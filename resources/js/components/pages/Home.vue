@@ -13,10 +13,11 @@
         v-for="(type, index) in types" 
         :key="`type${index}`"
         v-show="type.isVisible">
-      <router-link class="type-link" :to="{name: 'restaurants', params: {slug: type.slug}}">
-          <span v-if="type.isVisible">
-            {{type.name}}
-          </span>
+      <router-link class="type-link" :to="{name: 'restaurants', params: {slug: type.slug}}"
+      @click="clickfunction(type)">
+        <span v-if="type.isVisible">
+          {{type.name}}
+        </span>
       </router-link>
         </div>
     </div>
@@ -54,7 +55,7 @@ export default {
       axios.get('http://127.0.0.1:8000/api/tipo/')
       .then(res => {
         this.types = res.data.types;
-      console.log(this.types);
+      // console.log(this.types);
       })
     },
     triggerSearch(searchedValue) {
@@ -67,6 +68,12 @@ export default {
           type.isVisible = true;
         }
       }
+    },
+    clickfunction(type) {
+      axios.get(this.apiUrl + type.slug)
+      .then(res => {
+        let data = res.data;
+      })
     }
   }
 }

@@ -29,16 +29,16 @@ export default {
     }
   },
   methods: {
-    getApi(){
-      axios.get(this.apiUrl + this.$route.params.slug)
-          .then(res => {
-            this.type = res.data;
-            console.log('TIPO >>>>>>',this.type);
-          })
-    }
+    // getApi(){
+    //   axios.get(this.apiUrl + this.$route.params.slug)
+    //       .then(res => {
+    //         this.type = res.data;
+    //         console.log('TIPO >>>>>>',this.type);
+    //       })
+    // }
   },
   mounted() {
-    this.getApi();
+    // this.getApi();
   }
 }
 </script>
