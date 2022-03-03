@@ -110,6 +110,7 @@ export default {
           .then(res => {
             this.activeRestaurants = res.data.type.restaurants;
           })
+          this.$router.push(type.slug);
         }
     }
 }

@@ -2222,6 +2222,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       axios.get(this.activeRestaurantsUrl + type.slug).then(function (res) {
         _this3.activeRestaurants = res.data.type.restaurants;
       });
+      this.$router.push(type.slug);
     }
   }
 });
