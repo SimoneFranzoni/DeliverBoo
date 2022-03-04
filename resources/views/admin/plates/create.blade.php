@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('admin.home')
 
-@section('content')
+@section('dashboard-content')
 <div class="container">
  
  
   <div class="row">
-    <div class="col-6 offset-3">
+    <div class="col-6 offset-3 offset-lg-0">
  
       <h1>Nuovo piatto</h1>
       <form action="{{route('admin.miei-ristoranti.piatti.store',$ristorante)}}"

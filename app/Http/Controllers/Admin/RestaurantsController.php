@@ -22,7 +22,7 @@ class RestaurantsController extends Controller
         
         $user = Auth::user();
         $ristoranti = Restaurant::where('user_id',$user->id)->paginate(5);
-        return view('admin.restaurants.index',compact('ristoranti'));
+        return view('admin.restaurants.index',compact('ristoranti','user'));
     }
 
     /**
@@ -32,8 +32,9 @@ class RestaurantsController extends Controller
      */
     public function create()
     {
+        $user = Auth::user();
         $types = Type::all();
-        return view('admin.restaurants.create', compact('types'));
+        return view('admin.restaurants.create', compact('types','user'));
     }
 
     /**
@@ -98,9 +99,10 @@ class RestaurantsController extends Controller
      */
     public function edit($id)
     {
+        $user = Auth::user();
         $restaurant = Restaurant::find($id);
         $types = Type::all();
-        return view('admin.restaurants.edit', compact('restaurant','types'));
+        return view('admin.restaurants.edit', compact('restaurant','types','user'));
 
     }
 

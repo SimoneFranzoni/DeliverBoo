@@ -9,3 +9,27 @@
 
 // Font-Awesome
 @import '~font-awesome/scss/font-awesome';
+
+
+@import '../variables';
+
+
+@import 'partials/button/button';
+
+// style per la adminHome
+@import 'adminHome';
+
+
+// style per crud ristoranti
+@import 'partials/restaurants/indexRestaurants.scss';
+@import 'partials/restaurants/showRestaurant.scss';
+@import 'partials/restaurants/editRestaurant.scss';
+@import 'partials/restaurants/createRestaurant.scss';
+
+
+
+//style per crud piatti
+@import 'partials/plates/indexPlates.scss';
+@import 'partials/plates/showPlate.scss';
+@import 'partials/plates/editPlate.scss';
+@import 'partials/plates/createPlate.scss';
