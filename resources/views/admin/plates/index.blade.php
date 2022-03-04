@@ -55,9 +55,9 @@
       <div class="flip-card col-6 col-sm-4 col-md-3">
         <div class="flip-card-inner">
           <div class="flip-card-front">
-              @if ($ristorante->cover)
+              @if ($piatto->cover)
               <div class="img-team5">
-                <img src="{{asset('storage/' . $ristorante->cover)}}" alt="{{$ristorante->name}}">
+                <img src="{{asset('storage/' . $piatto->cover)}}" alt="{{$piatto->name}}">
               </div>
               @else
               <div class="img-team5">
