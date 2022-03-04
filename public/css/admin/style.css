@@ -13050,8 +13050,8 @@ h3 {
   border-radius: 20px;
   padding: 5px 15px;
   color: white;
-  border-bottom: 4px solid #0f3631;
-  border-top: 1px solid white;
+  border: none;
+  box-shadow: 3px 3px 10px #272727;
   margin: 5px;
   background-color: #32b6a7;
   transition: all 0.18s;
@@ -13066,7 +13066,8 @@ h3 {
 }
 
 .btn-back-team5 {
-  background-color: #719a1e !important;
+  color: #0f3631;
+  background-color: #e5f8f6 !important;
   transition: all 0.18s;
 }
 .btn-back-team5:hover {
@@ -13076,15 +13077,14 @@ h3 {
 
 .background-team5 {
   min-height: calc(100vh - 80px);
-  background: linear-gradient(110deg, #d0eb99 60%, #45CCBC 60%);
+  background: linear-gradient(110deg, #e5f8f6 60%, #45CCBC 60%);
   background: image("img/logoDeliveBoo.png");
 }
 .background-team5 .dash-board-team5 {
   border-radius: 40px;
   background-color: #45CCBC;
   padding: 50px 0;
-  border-top: 1px solid white;
-  border-bottom: 6px solid #0f3631;
+  box-shadow: 3px 3px 10px #6a6a6a;
 }
 .background-team5 .dash-board-team5 .dash-board-top-team5 {
   color: white;
@@ -13098,20 +13098,19 @@ h3 {
   border-bottom: 1px solid black;
 }
 .card-team5 h1 {
-  color: #719a1e;
+  color: #30ae9f;
 }
-.card-team5 h2 {
+.card-team5 h3 {
   padding: 0 20px;
   transition: all 0.2s;
 }
-.card-team5 h2:hover {
+.card-team5 h3:hover {
   transform: scale(1.1) !important;
   border-radius: 25px;
-  border-bottom: 3px solid #719a1e;
-  border-top: 1px solid white;
+  box-shadow: 3px 3px 10px #6a6a6a;
 }
-.card-team5 h2 a {
-  color: #526f16 !important;
+.card-team5 h3 a {
+  color: #1a5e56 !important;
 }
 
 .badge-team5 {
@@ -13136,12 +13135,14 @@ h3 {
   color: darkens(#45CCBC, 40);
   padding: 10px;
   border-radius: 25px;
+  box-shadow: 3px 3px 10px #6f6f6f;
 }
 
 .right-dashboard-plates-team5 {
   border-top: 6px solid #0f3631;
+  max-height: 200px;
   border-bottom: 1px solid #ffffff;
-  background-color: #d0eb99;
+  background-color: #e5f8f6;
   border-radius: 25px;
 }
 
@@ -13186,6 +13187,7 @@ h3 {
 
 /* Style the back side */
 .flip-card-back {
+  text-align: center;
   background-color: white;
   color: black;
   transform: rotateY(180deg);

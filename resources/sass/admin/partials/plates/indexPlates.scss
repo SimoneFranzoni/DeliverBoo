@@ -23,13 +23,15 @@
   color:darkens($primary-color,40);
   padding: 10px;
   border-radius: 25px;
+  box-shadow: 3px 3px 10px rgb(111, 111, 111)
 }
 
 
 .right-dashboard-plates-team5{
   border-top: 6px solid darken($primary-color, 40);
+  max-height: 200px;
   border-bottom: 1px solid #ffffff;
-  background-color: $secondary-color;
+  background-color: lighten($primary-color,40);
   border-radius: 25px;
 
 }
@@ -76,6 +78,7 @@
 
 /* Style the back side */
 .flip-card-back {
+  text-align: center;
   background-color: white;
   color:black;
   transform: rotateY(180deg);
