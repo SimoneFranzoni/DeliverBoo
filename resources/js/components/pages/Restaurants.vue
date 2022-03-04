@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-
+ <!-- commmento -->
         <div>Le cucine più richieste</div>
         <div class="row types-row pb-4">
             <div class="typebox" >
