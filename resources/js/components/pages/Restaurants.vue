@@ -50,16 +50,18 @@
                     </router-link>
                 </div>
 
-                <div class="pt-4"> {{activeRestaurants.length}} risultati trovati </div>
+                <!-- <div class="pt-4"> {{activeRestaurants.length}} risultati trovati </div> -->
                 
 
                 <div class="restaurant-box-row">
                     
-                    <RestaurantBox 
-                      v-for="restaurant in activeRestaurants" 
-                      :key="restaurant.id" 
-                      :restaurant="restaurant"
-                      :type="activeType"/>
+                    
+                      <RestaurantBox 
+                        v-for="restaurant in activeRestaurants" 
+                        :key="restaurant.id" 
+                        :restaurant="restaurant"
+                        :type="activeType"/>
+                   
                     
 
                 </div>
@@ -82,6 +84,7 @@ export default {
     mounted(){
         this.getApiTypes();
         this.getActiveRestaurants();
+        console.log(this.activeRestaurants);
     },
     data(){
         return {
@@ -106,7 +109,7 @@ export default {
             })
         },
         getActiveRestaurants() {
-          this.activeRestaurants = null;
+          // this.activeRestaurants = null;
           this.activeType = null;
           axios.get(this.activeRestaurantsUrl + this.$route.params.slug)
           .then(res => {

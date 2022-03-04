@@ -1,5 +1,7 @@
 <template>
-  <div class="box">
+
+ <router-link class="box" :to="{name: 'restaurantdetail', params: {slug: restaurant.slug}}">
+
     <!--:style="{ backgroundImage: `url(${restaurant.cover})`}"-->
     <div class="restaurant-img float-left"></div>
     <div class="container">  
@@ -26,7 +28,8 @@
         </div> 
       </div>
     </div>
-  </div>
+
+ </router-link>
 </template>
 
 <script>
@@ -42,6 +45,9 @@ export default {
 <style lang="scss" scoped>
 
 @import '../../../sass/_variables.scss';
+
+
+
   .box{
     width: 98%;
     height: 120px;
@@ -53,6 +59,7 @@ export default {
     transition: height 0.3s, width 0.3s;
     box-shadow: 0 3px 10px rgba(0,0,0,0.3);
     transition: transform 0.3s;
+    color: black;
 
     &:hover{
       box-shadow: 0 5px 15px rgba(0,0,0,0.3);
@@ -82,6 +89,6 @@ export default {
 
   }
 
-  
+
 
 </style>

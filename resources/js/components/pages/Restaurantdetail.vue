@@ -1,9 +1,9 @@
 <template>
     <div>
         <div class="bg"></div>
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
-                <div class="col-2 nav-menu">
+                <div class="col-2 nav-menu" id="stickyMenu">
                     <ul class="pt-5">
                         <li>
                             <div class="bar"></div>
@@ -109,6 +109,9 @@ export default {
     components:  {
         PlateBox,
     },
+    mounted() {
+     
+}
 }
 </script>
 
@@ -119,7 +122,7 @@ export default {
 .bg{
     width: 100%;
     height: 400px;
-    background-color: orange;
+    background-color: $primary-color;
 }
 
 .container-fluid{
@@ -127,7 +130,9 @@ export default {
 }
 
 .nav-menu{
-    
+    position: sticky;
+    top: 400px;
+    left: 0;
     ul{
         //position: fixed;
         li{
