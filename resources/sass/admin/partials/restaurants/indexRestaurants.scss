@@ -1,0 +1,25 @@
+
+.card-team5{
+  color:$primary-color;
+  
+  margin-bottom: 30px;
+  border-bottom: 1px solid rgb(0, 0, 0);
+  h1{
+    color:darken($secondary-color, 40)
+  }
+  h2{
+    padding: 0 20px;
+
+    &:hover{
+      transform: scale(1.1) !important;
+      border-radius: 25px;
+      border-bottom: 3px solid darken($secondary-color,40);
+      border-top: 1px solid white;
+      
+    }
+    transition: all 0.2s;
+    a{
+      color:darken($secondary-color, 50) !important;
+    }
+  }
+}

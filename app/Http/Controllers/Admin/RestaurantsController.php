@@ -28,7 +28,7 @@ class RestaurantsController extends Controller
         // });
 
         
-        return view('admin.restaurants.index',compact('ristoranti'));
+        return view('admin.restaurants.index',compact('ristoranti','user'));
 
         // Immagini placeholder:
         // https://via.placeholder.com/350x290/45CCBC/FFFFFF?Text=DeliverBoo+restaurant
@@ -41,8 +41,9 @@ class RestaurantsController extends Controller
      */
     public function create()
     {
+        $user = Auth::user();
         $types = Type::all();
-        return view('admin.restaurants.create', compact('types'));
+        return view('admin.restaurants.create', compact('types','user'));
     }
 
     /**
@@ -107,10 +108,11 @@ class RestaurantsController extends Controller
      */
     public function edit($id)
     {
+        $user = Auth::user();
         $restaurant = Restaurant::find($id);
         // $restaurant->cover = $this->makeImagePath($restaurant->cover);
         $types = Type::all();
-        return view('admin.restaurants.edit', compact('restaurant','types'));
+        return view('admin.restaurants.edit', compact('restaurant','types','user'));
 
     }
 

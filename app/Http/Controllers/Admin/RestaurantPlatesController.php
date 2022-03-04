@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Plate;
 use App\Restaurant;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class RestaurantPlatesController extends Controller
      */
     public function index($slug)
        {
-          
+        $user = Auth::user();
             $ristorante= Restaurant::where('slug',$slug)->first();
             $piatti = Plate::where('restaurant_id',$ristorante->id)->orderBy('category')->paginate(3);      
             
@@ -25,7 +26,7 @@ class RestaurantPlatesController extends Controller
                 $piatto->cover = $this->makeImagePath($piatto->cover);
             });
 
-            return view('admin.plates.index',compact('ristorante','piatti'));
+            return view('admin.plates.index',compact('ristorante','piatti','user'));
             
         }
     
@@ -37,13 +38,14 @@ class RestaurantPlatesController extends Controller
      */
     public function create($slug)
     {
+        $user = Auth::user();
         $categories = [
             'Antipasto', 'Primo', 'Secondo', 'Contorno', 'Frutta', 'Dessert'
           ];
         $ristorante= Restaurant::where('slug',$slug)->first();
         $ristorante->cover = $this->makeImagePath($ristorante->cover);
 
-        return view('admin.plates.create',compact('ristorante','categories'));
+        return view('admin.plates.create',compact('ristorante','categories','user'));
     }
 
     /**
@@ -77,7 +79,7 @@ class RestaurantPlatesController extends Controller
         $nuovoPiatto->restaurant_id = $ristorante->id;
         $nuovoPiatto->save();
         
-        return redirect()->route('admin.miei-ristoranti.piatti.index',[$ristorante->slug,$nuovoPiatto]);
+        return redirect()->route('admin.miei-ristoranti.piatti.index',[$ristorante->slug]);
     }
 
     /**
@@ -88,9 +90,10 @@ class RestaurantPlatesController extends Controller
      */
     public function show($slugRistorante,$slugPiatto)
     {
+        $user = Auth::user();
         $ristorante= Restaurant::where('slug',$slugRistorante)->first();
         $piatto = Plate::where('slug',$slugPiatto)->first();
-        return view('admin.plates.show',compact('piatto','ristorante'));
+        return view('admin.plates.show',compact('piatto','ristorante','user'));
     }
         
       
@@ -103,12 +106,13 @@ class RestaurantPlatesController extends Controller
      */
     public function edit($slugRistorante,$slugPiatto)
     {
+        $user = Auth::user();
         $categories = [
             'Antipasto', 'Primo', 'Secondo', 'Contorno', 'Frutta', 'Dessert'
           ];
         $ristorante= Restaurant::where('slug',$slugRistorante)->first();
         $piatto = Plate::where('slug',$slugPiatto)->first();
-        return view('admin.plates.edit',compact('piatto','ristorante','categories'));
+        return view('admin.plates.edit',compact('piatto','ristorante','categories','user'));
     }
 
     /**
