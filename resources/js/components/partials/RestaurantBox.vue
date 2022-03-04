@@ -7,7 +7,7 @@
         <div class="col-6">
           <div class="name">
             {{restaurant.name}}
-            <!-- Pizzeria a caso -->
+            <small>Tipologia: {{type.name}}</small>
           </div>
           <div class="città">
             {{restaurant.city}}
@@ -33,7 +33,8 @@
 export default {
     name:'RestaurantBox',
     props: {
-      restaurant: Object
+      restaurant: Object, 
+      type: Object
     }
 }
 </script>
@@ -71,6 +72,12 @@ export default {
   
     .name{
       font-size: 20px;
+      small {
+        display: block;
+        font-style: italic;
+        font-size: 12px;
+        padding-bottom: 10px;
+      }
     }
 
   }

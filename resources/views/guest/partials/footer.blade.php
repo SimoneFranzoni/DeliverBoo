@@ -40,8 +40,8 @@
           <i class="fab fa-instagram"></i>
           <i class="fab fa-twitter"></i>
           <div class="mobile-app d-flex flex-column">
-            <img src="img/1200px-Download_on_the_App_Store_Badge_IT_RGB_blk.svg.png" alt="app store" id="app-store">
-            <img src="img/g-play.png" alt="google play" id="g-play">
+            <img src="{{asset('img/1200px-Download_on_the_App_Store_Badge_IT_RGB_blk.svg.png')}}" alt="app store" id="app-store">
+            <img src="{{asset('img/g-play.png')}}" alt="google play" id="g-play">
           </div>
          
         </div>
