@@ -1,7 +1,8 @@
 <template>
+<div class="wrapper">
+
     <div class="container">
- <!-- commmento -->
-        <div>Le cucine più richieste</div>
+         <div>Le cucine più richieste</div>
         <div class="row types-row pb-4">
             <div class="typebox" >
                 <div class="title">Italiano</div>
@@ -43,25 +44,29 @@
             
             <div class="col-9 restaurant-column">
                 <div class="search-input">
-                    <input type="text" name="restsearch" id="restsearch" placeholder="Cerca qui una tipologia di ristorante...">
+                    <input type="text" name="restsearch" placeholder="Cerca qui una tipologia di ristorante...">
                     <router-link :to="{name: 'restaurants'}">
                         <div class="ac-btn">Vai</div>
                     </router-link>
                 </div>
 
-                <div class="pt-4"> XXX risultati trovati </div>
+                <div class="pt-4"> {{activeRestaurants.length}} risultati trovati </div>
+                
 
                 <div class="restaurant-box-row">
                     
                     <RestaurantBox 
                       v-for="restaurant in activeRestaurants" 
                       :key="restaurant.id" 
-                      :restaurant="restaurant"/>
+                      :restaurant="restaurant"
+                      :type="activeType"/>
 
                 </div>
             </div>
         </div>
     </div>
+</div>
+
 </template>
 
 <script>
@@ -82,6 +87,7 @@ export default {
             types: null,
             activeRestaurants: null,
             activeRestaurantsUrl: 'http://127.0.0.1:8000/api/ristoranti/tiporistorante/',
+            activeType: null,
             counter: -1
         }
     },
@@ -100,15 +106,18 @@ export default {
         },
         getActiveRestaurants() {
           this.activeRestaurants = null;
+          this.activeType = null;
           axios.get(this.activeRestaurantsUrl + this.$route.params.slug)
           .then(res => {
             this.activeRestaurants = res.data.type.restaurants;
+            this.activeType = res.data.type;
           })
         },
         changeActiveRestaurants(type) {
           axios.get(this.activeRestaurantsUrl + type.slug)
           .then(res => {
             this.activeRestaurants = res.data.type.restaurants;
+            this.activeType = res.data.type;
           })
           this.$router.push(type.slug);
         }
@@ -121,7 +130,8 @@ export default {
 
 @import '../../../sass/_variables.scss';
 
-  
+  .wrapper {
+    padding-top: 50px;
     .filter-column{
         width: 100%;
         height: 700px;
@@ -239,6 +249,6 @@ export default {
         font-weight: bold;
     }
 
-    
+  }
 
 </style>

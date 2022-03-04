@@ -2164,6 +2164,11 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Restaurants',
@@ -2179,6 +2184,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       types: null,
       activeRestaurants: null,
       activeRestaurantsUrl: 'http://127.0.0.1:8000/api/ristoranti/tiporistorante/',
+      activeType: null,
       counter: -1
     };
   },
@@ -2212,8 +2218,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       var _this2 = this;
 
       this.activeRestaurants = null;
+      this.activeType = null;
       axios.get(this.activeRestaurantsUrl + this.$route.params.slug).then(function (res) {
         _this2.activeRestaurants = res.data.type.restaurants;
+        _this2.activeType = res.data.type;
       });
     },
     changeActiveRestaurants: function changeActiveRestaurants(type) {
@@ -2221,6 +2229,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
       axios.get(this.activeRestaurantsUrl + type.slug).then(function (res) {
         _this3.activeRestaurants = res.data.type.restaurants;
+        _this3.activeType = res.data.type;
       });
       this.$router.push(type.slug);
     }
@@ -2340,7 +2349,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'RestaurantBox',
   props: {
-    restaurant: Object
+    restaurant: Object,
+    type: Object
   }
 });
 
@@ -6855,7 +6865,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".filter-column[data-v-31969ab0] {\n  width: 100%;\n  height: 700px;\n  overflow-y: auto;\n  z-index: 1;\n}\n.filter-column li[data-v-31969ab0] {\n  border-radius: 20px;\n  border: 0.5px solid grey;\n  padding: 10px;\n  margin: 10px 0;\n  z-index: 3;\n  cursor: pointer;\n}\n.filter-column li.active[data-v-31969ab0] {\n  border: 1px solid black;\n  font-weight: bold;\n  font-size: 18px;\n}\n.filter-column li span[data-v-31969ab0] {\n  transition: opacity 0.5s ease-out;\n  opacity: 0;\n  height: 0;\n  overflow: hidden;\n  color: #45CCBC;\n}\n.filter-column li[data-v-31969ab0]:hover {\n  transform: translate(20px);\n  transition: transform 0.5s;\n}\n.filter-column li:hover span[data-v-31969ab0] {\n  opacity: 1;\n  height: auto;\n}\n.restaurant-column[data-v-31969ab0] {\n  z-index: 1;\n}\n.restaurant-column .restaurant-box-row[data-v-31969ab0] {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  padding: 10px 0;\n  cursor: pointer;\n}\n.search-input[data-v-31969ab0] {\n  display: flex;\n  align-items: center;\n  width: 100%;\n}\n.search-input input[data-v-31969ab0] {\n  width: 90%;\n  margin-right: 5px;\n  padding: 5px 10px;\n  border-radius: 10px;\n  border: 1px solid rgba(0, 0, 0, 0.3);\n  caret-color: #45CCBC;\n}\n.search-input input[data-v-31969ab0]:focus {\n  outline: 2px solid #45CCBC;\n}\n.search-input .ac-btn[data-v-31969ab0] {\n  width: 60px;\n  text-align: center;\n  font-size: 16px;\n}\n.types-row[data-v-31969ab0] {\n  width: 100%;\n  height: 150px;\n  margin: 0 1px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  flex-wrap: nowrap;\n}\n.typebox[data-v-31969ab0] {\n  height: 100px;\n  width: 180px;\n  border-radius: 20px;\n  background-color: #45CCBC;\n  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);\n  margin-right: 10px;\n  transition: transform 0.3s;\n  position: relative;\n}\n.typebox .title[data-v-31969ab0] {\n  position: absolute;\n  bottom: 5%;\n  left: 5%;\n  font-size: 15px;\n  color: white;\n}\n.typebox[data-v-31969ab0]:hover {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  transform: scale(1.05, 1.1);\n  font-weight: bold;\n}", ""]);
+exports.push([module.i, ".wrapper[data-v-31969ab0] {\n  padding-top: 50px;\n}\n.wrapper .filter-column[data-v-31969ab0] {\n  width: 100%;\n  height: 700px;\n  overflow-y: auto;\n  z-index: 1;\n}\n.wrapper .filter-column li[data-v-31969ab0] {\n  border-radius: 20px;\n  border: 0.5px solid grey;\n  padding: 10px;\n  margin: 10px 0;\n  z-index: 3;\n  cursor: pointer;\n}\n.wrapper .filter-column li.active[data-v-31969ab0] {\n  border: 1px solid black;\n  font-weight: bold;\n  font-size: 18px;\n}\n.wrapper .filter-column li span[data-v-31969ab0] {\n  transition: opacity 0.5s ease-out;\n  opacity: 0;\n  height: 0;\n  overflow: hidden;\n  color: #45CCBC;\n}\n.wrapper .filter-column li[data-v-31969ab0]:hover {\n  transform: translate(20px);\n  transition: transform 0.5s;\n}\n.wrapper .filter-column li:hover span[data-v-31969ab0] {\n  opacity: 1;\n  height: auto;\n}\n.wrapper .restaurant-column[data-v-31969ab0] {\n  z-index: 1;\n}\n.wrapper .restaurant-column .restaurant-box-row[data-v-31969ab0] {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  padding: 10px 0;\n  cursor: pointer;\n}\n.wrapper .search-input[data-v-31969ab0] {\n  display: flex;\n  align-items: center;\n  width: 100%;\n}\n.wrapper .search-input input[data-v-31969ab0] {\n  width: 90%;\n  margin-right: 5px;\n  padding: 5px 10px;\n  border-radius: 10px;\n  border: 1px solid rgba(0, 0, 0, 0.3);\n  caret-color: #45CCBC;\n}\n.wrapper .search-input input[data-v-31969ab0]:focus {\n  outline: 2px solid #45CCBC;\n}\n.wrapper .search-input .ac-btn[data-v-31969ab0] {\n  width: 60px;\n  text-align: center;\n  font-size: 16px;\n}\n.wrapper .types-row[data-v-31969ab0] {\n  width: 100%;\n  height: 150px;\n  margin: 0 1px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  flex-wrap: nowrap;\n}\n.wrapper .typebox[data-v-31969ab0] {\n  height: 100px;\n  width: 180px;\n  border-radius: 20px;\n  background-color: #45CCBC;\n  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);\n  margin-right: 10px;\n  transition: transform 0.3s;\n  position: relative;\n}\n.wrapper .typebox .title[data-v-31969ab0] {\n  position: absolute;\n  bottom: 5%;\n  left: 5%;\n  font-size: 15px;\n  color: white;\n}\n.wrapper .typebox[data-v-31969ab0]:hover {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  transform: scale(1.05, 1.1);\n  font-weight: bold;\n}", ""]);
 
 // exports
 
@@ -6912,7 +6922,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".box[data-v-5d5bd708] {\n  width: 98%;\n  height: 120px;\n  display: flex;\n  align-items: center;\n  margin: 10px 0;\n  border-radius: 20px;\n  transition: box-shadow 0.3s ease-in-out;\n  transition: height 0.3s, width 0.3s;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  transition: transform 0.3s;\n}\n.box[data-v-5d5bd708]:hover {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  font-weight: bold;\n  transform: scale(1.05, 1.1);\n}\n.box .restaurant-img[data-v-5d5bd708] {\n  background-color: #45CCBC;\n  height: 90%;\n  width: 25%;\n  margin-left: 5px;\n  border-radius: 20px;\n}\n.box .name[data-v-5d5bd708] {\n  font-size: 20px;\n}", ""]);
+exports.push([module.i, ".box[data-v-5d5bd708] {\n  width: 98%;\n  height: 120px;\n  display: flex;\n  align-items: center;\n  margin: 10px 0;\n  border-radius: 20px;\n  transition: box-shadow 0.3s ease-in-out;\n  transition: height 0.3s, width 0.3s;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  transition: transform 0.3s;\n}\n.box[data-v-5d5bd708]:hover {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  font-weight: bold;\n  transform: scale(1.05, 1.1);\n}\n.box .restaurant-img[data-v-5d5bd708] {\n  background-color: #45CCBC;\n  height: 90%;\n  width: 25%;\n  margin-left: 5px;\n  border-radius: 20px;\n}\n.box .name[data-v-5d5bd708] {\n  font-size: 20px;\n}\n.box .name small[data-v-5d5bd708] {\n  display: block;\n  font-style: italic;\n  font-size: 12px;\n  padding-bottom: 10px;\n}", ""]);
 
 // exports
 
@@ -39197,77 +39207,82 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", [_vm._v("Le cucine più richieste")]),
-    _vm._v(" "),
-    _vm._m(0),
-    _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-3 filter-column" }, [
-        _c("div", [_vm._v("Tutte le cucine (A, Z)")]),
-        _vm._v(" "),
-        _c(
-          "ul",
-          _vm._l(_vm.types, function (type, index) {
-            return _c(
-              "li",
-              {
-                key: "type" + index,
-                class: { active: _vm.counter === index },
-                on: {
-                  click: function ($event) {
-                    _vm.changeActiveRestaurants(type), (_vm.counter = index)
+  return _c("div", { staticClass: "wrapper" }, [
+    _c("div", { staticClass: "container" }, [
+      _c("div", [_vm._v("Le cucine più richieste")]),
+      _vm._v(" "),
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-3 filter-column" }, [
+          _c("div", [_vm._v("Tutte le cucine (A, Z)")]),
+          _vm._v(" "),
+          _c(
+            "ul",
+            _vm._l(_vm.types, function (type, index) {
+              return _c(
+                "li",
+                {
+                  key: "type" + index,
+                  class: { active: _vm.counter === index },
+                  on: {
+                    click: function ($event) {
+                      _vm.changeActiveRestaurants(type), (_vm.counter = index)
+                    },
                   },
                 },
-              },
-              [
-                _c("span", [_vm._v("v")]),
-                _vm._v(
-                  "\n                       " +
-                    _vm._s(type.name) +
-                    "\n\n                   "
-                ),
-              ]
-            )
-          }),
-          0
-        ),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-9 restaurant-column" }, [
-        _c(
-          "div",
-          { staticClass: "search-input" },
-          [
-            _c("input", {
-              attrs: {
-                type: "text",
-                name: "restsearch",
-                id: "restsearch",
-                placeholder: "Cerca qui una tipologia di ristorante...",
-              },
+                [
+                  _c("span", [_vm._v("v")]),
+                  _vm._v(
+                    "\n                        " +
+                      _vm._s(type.name) +
+                      "\n\n                    "
+                  ),
+                ]
+              )
             }),
-            _vm._v(" "),
-            _c("router-link", { attrs: { to: { name: "restaurants" } } }, [
-              _c("div", { staticClass: "ac-btn" }, [_vm._v("Vai")]),
-            ]),
-          ],
-          1
-        ),
+            0
+          ),
+        ]),
         _vm._v(" "),
-        _c("div", { staticClass: "pt-4" }, [_vm._v(" XXX risultati trovati ")]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "restaurant-box-row" },
-          _vm._l(_vm.activeRestaurants, function (restaurant) {
-            return _c("RestaurantBox", {
-              key: restaurant.id,
-              attrs: { restaurant: restaurant },
-            })
-          }),
-          1
-        ),
+        _c("div", { staticClass: "col-9 restaurant-column" }, [
+          _c(
+            "div",
+            { staticClass: "search-input" },
+            [
+              _c("input", {
+                attrs: {
+                  type: "text",
+                  name: "restsearch",
+                  placeholder: "Cerca qui una tipologia di ristorante...",
+                },
+              }),
+              _vm._v(" "),
+              _c("router-link", { attrs: { to: { name: "restaurants" } } }, [
+                _c("div", { staticClass: "ac-btn" }, [_vm._v("Vai")]),
+              ]),
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "pt-4" }, [
+            _vm._v(
+              " " + _vm._s(_vm.activeRestaurants.length) + " risultati trovati "
+            ),
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "restaurant-box-row" },
+            _vm._l(_vm.activeRestaurants, function (restaurant) {
+              return _c("RestaurantBox", {
+                key: restaurant.id,
+                attrs: { restaurant: restaurant, type: _vm.activeType },
+              })
+            }),
+            1
+          ),
+        ]),
       ]),
     ]),
   ])
@@ -39423,6 +39438,7 @@ var render = function () {
             _vm._v(
               "\n          " + _vm._s(_vm.restaurant.name) + "\n          "
             ),
+            _c("small", [_vm._v("Tipologia: " + _vm._s(_vm.type.name))]),
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "città" }, [
