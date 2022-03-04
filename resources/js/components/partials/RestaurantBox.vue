@@ -3,7 +3,9 @@
  <router-link class="box" :to="{name: 'restaurantdetail', params: {slug: restaurant.slug}}">
 
     <!--:style="{ backgroundImage: `url(${restaurant.cover})`}"-->
-    <div class="restaurant-img float-left"></div>
+    <div class="restaurant-img float-left">
+      <img :src="restaurant.cover" :alt="restaurant.name">
+    </div>
     <div class="container">  
       <div class="row">
         <div class="col-6">
@@ -13,17 +15,14 @@
           </div>
           <div class="città">
             {{restaurant.city}}
-            <!-- Brescia -->
           </div>    
         </div> 
         <div class="col-6">
           <div>
             {{restaurant.address}}
-            <!-- Via fasulla 0 -->
           </div>
           <div>
             {{restaurant.phone_number}}
-            <!-- 338 5847545 -->
           </div>
         </div> 
       </div>
@@ -54,27 +53,33 @@ export default {
     display: flex;
     align-items: center;
     margin: 10px 0;
+    padding-left: 12px;
     border-radius: 20px;
     transition: box-shadow 0.3s ease-in-out;
     transition: height 0.3s, width 0.3s;
     box-shadow: 0 3px 10px rgba(0,0,0,0.3);
     transition: transform 0.3s;
     color: black;
+    cursor: pointer;
 
     &:hover{
       box-shadow: 0 5px 15px rgba(0,0,0,0.3);
       font-weight: bold;
-      transform: scale(1.05, 1.1);
+      transform: scale(1.02);
 
     }
 
     .restaurant-img{
       //background-image: url(".../public/img/pexels-marcus-herzberg-1058277.jpg");
-      background-color: $primary-color; 
+      // background-color: $primary-color; 
       height: 90%;
       width: 25%;
-      margin-left: 5px;
+      // margin-left: 10px;
       border-radius: 20px;
+      img {
+        width: 100%;
+        object-fit: contain;
+      }
     }
   
     .name{

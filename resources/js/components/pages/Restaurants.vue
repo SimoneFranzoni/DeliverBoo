@@ -2,9 +2,9 @@
 <div class="wrapper">
 
     <div class="container">
-         <div>Le cucine più richieste</div>
+         <div>Scelti per te</div>
         <div class="row types-row pb-4">
-            <div class="typebox" >
+            <div class="typebox" @click="changeActiveRestaurants(type)">
                 <div class="title">Italiano</div>
             </div>
             <div class="typebox">
@@ -50,7 +50,7 @@
                     </router-link>
                 </div>
 
-                <!-- <div class="pt-4"> {{activeRestaurants.length}} risultati trovati </div> -->
+                <div class="pt-4"> {{activeRestaurants.length}} risultati trovati </div>
                 
 
                 <div class="restaurant-box-row">
@@ -88,16 +88,16 @@ export default {
     },
     data(){
         return {
-            types: null,
-            activeRestaurants: null,
+            types: [],
+            activeRestaurants: [],
             activeRestaurantsUrl: 'http://127.0.0.1:8000/api/ristoranti/tiporistorante/',
-            activeType: null,
+            activeType: {},
             counter: -1
         }
     },
     methods: {
         getApiTypes() {
-            this.types = null;
+            this.types = [];
             axios.get('http://127.0.0.1:8000/api/tipo/')
             .then(res => {
                 this.types = res.data.types;
@@ -109,8 +109,8 @@ export default {
             })
         },
         getActiveRestaurants() {
-          // this.activeRestaurants = null;
-          this.activeType = null;
+          this.activeRestaurants = [];
+          this.activeType = {};
           axios.get(this.activeRestaurantsUrl + this.$route.params.slug)
           .then(res => {
             this.activeRestaurants = res.data.type.restaurants;
@@ -240,6 +240,7 @@ export default {
         margin-right: 10px;
         transition: transform 0.3s;
         position: relative;
+        cursor: pointer;
 
         .title{
             position: absolute;
