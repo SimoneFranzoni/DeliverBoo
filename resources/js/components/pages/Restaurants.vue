@@ -60,6 +60,7 @@
                       :key="restaurant.id" 
                       :restaurant="restaurant"
                       :type="activeType"/>
+                    
 
                 </div>
             </div>
@@ -173,6 +174,9 @@ export default {
 
     .restaurant-column{
         z-index: 1;
+        height: 700px;
+        overflow-y: auto;
+        
       
         .restaurant-box-row{
             display: flex;
