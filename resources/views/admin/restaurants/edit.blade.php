@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('admin.home')
 
-@section('content')
+@section('dashboard-content')
 
 
 <div class="container">
