@@ -16,7 +16,11 @@
 
   @if ($piatto->cover)
   <div class="img">
-      <img width="400" src="{{$piatto->cover}}" alt="{{ $piatto->name }}">
+      <img width="400" src="{{asset('storage/'. $piatto->cover)}}" alt="{{ $piatto->cover_original_name }}">
+  </div>
+  @else
+  <div class="img">
+      <img width="400" src="https://via.placeholder.com/350x290/45CCBC/FFFFFF?Text=DeliverBoo+plates" alt="DeliveBoo">
   </div>
   @endif
 
