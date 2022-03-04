@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-3 filter-column">
+            <div class="d-none d-lg-block col-3 filter-column">
                 <div>Tutte le cucine (A, Z)</div>
                 <ul>
                     <li v-for="(type, index) in types" 
@@ -42,7 +42,7 @@
                 </ul>
             </div>
             
-            <div class="col-9 restaurant-column">
+            <div class="col-12 col-lg-9 restaurant-column">
                 <div class="search-input">
                     <input type="text" name="restsearch" placeholder="Cerca qui una tipologia di ristorante...">
                     <router-link :to="{name: 'restaurants'}">
@@ -60,7 +60,6 @@
                       :key="restaurant.id" 
                       :restaurant="restaurant"
                       :type="activeType"/>
-                    
 
                 </div>
             </div>

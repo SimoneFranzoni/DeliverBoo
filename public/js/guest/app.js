@@ -2130,8 +2130,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Restaurantdetail',
@@ -2158,7 +2156,6 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-//
 //
 //
 //
@@ -39191,14 +39188,6 @@ var render = function () {
               _c("h4", { attrs: { id: "primi" } }, [_vm._v("Primi")]),
               _vm._v(" "),
               _c("PlateBox"),
-              _vm._v(" "),
-              _c("PlateBox"),
-              _vm._v(" "),
-              _c("PlateBox"),
-              _vm._v(" "),
-              _c("PlateBox"),
-              _vm._v(" "),
-              _c("PlateBox"),
             ],
             1
           ),
@@ -39396,7 +39385,7 @@ var render = function () {
       _vm._m(0),
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-3 filter-column" }, [
+        _c("div", { staticClass: "d-none d-lg-block col-3 filter-column" }, [
           _c("div", [_vm._v("Tutte le cucine (A, Z)")]),
           _vm._v(" "),
           _c(
@@ -39416,9 +39405,9 @@ var render = function () {
                 [
                   _c("span", [_vm._v("v")]),
                   _vm._v(
-                    "\n                        " +
+                    "\r\n                        " +
                       _vm._s(type.name) +
-                      "\n\n                    "
+                      "\r\n\r\n                    "
                   ),
                 ]
               )
@@ -39427,7 +39416,7 @@ var render = function () {
           ),
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-9 restaurant-column" }, [
+        _c("div", { staticClass: "col-12 col-lg-9 restaurant-column" }, [
           _c(
             "div",
             { staticClass: "search-input" },
@@ -55497,7 +55486,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/albertonicolaciufici/Desktop/Boolean/Progetto Finale/DeliverBoo/resources/js/guest/app.js */"./resources/js/guest/app.js");
+module.exports = __webpack_require__(/*! C:\Users\franz_u4goo5x\OneDrive\Desktop\DeliverBoo\resources\js\guest\app.js */"./resources/js/guest/app.js");
 
 
 /***/ })

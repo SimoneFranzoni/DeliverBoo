@@ -49,10 +49,8 @@
                     <div class="menu pt-5">
                         <h4 id="primi">Primi</h4>
                         <PlateBox />
-                        <PlateBox />
-                        <PlateBox />
-                        <PlateBox />
-                        <PlateBox />
+                       
+
                     </div>
                 </div>
                 <div class="col-4 right-column">
