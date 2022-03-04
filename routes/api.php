@@ -31,5 +31,6 @@ Route::namespace('Api')
     ->prefix('ristoranti')
     ->group(function(){
     Route::get('/','RestaurantController@index');
+    Route::get('/{slug}', 'RestaurantController@show');
     Route::get('tiporistorante/{slug}', 'RestaurantController@getRestaurantsByTypes');
     });

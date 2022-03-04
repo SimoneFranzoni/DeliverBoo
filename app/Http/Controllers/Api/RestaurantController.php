@@ -18,6 +18,16 @@ class RestaurantController extends Controller
         return response()->json(compact('restaurants'));
     }
 
+    public function show($slug){
+        $restaurant = Restaurant::where('slug', $slug)->with('plates')->first();
+        $restaurant->cover = $this->makeImagePath($restaurant->cover);
+
+        $restaurant->plates->each(function($plate){
+            $plate->cover = $this->makeImagePath($plate->cover);
+        });
+        return response()->json(compact('restaurant'));
+    }
+
     public function getRestaurantsByTypes($slug_type){
         $type = Type::where('slug', $slug_type)->with('restaurants')->first();
         $type->restaurants->each(function($restaurant){
