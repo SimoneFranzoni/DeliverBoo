@@ -92,10 +92,10 @@ export default {
       router-link {
         span {
           display: inline-block;
-          padding: 0 5px;
           cursor: pointer;
         }
       }
+      padding: 0 5px;
       background-color: #eeebeb;
       transition: all .2s;
       &:hover {
