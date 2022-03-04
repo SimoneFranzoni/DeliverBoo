@@ -1,15 +1,16 @@
 .background-team5{
   min-height: calc(100vh - 80px);
-  background: linear-gradient(110deg, $secondary-color 60%, $primary-color 60%);
+  background: linear-gradient(110deg, lighten($primary-color,40) 60%, $primary-color 60%);
   background: image('img/logoDeliveBoo.png');
   .dash-board-team5{
     border-radius: 40px;
   
     background-color: $primary-color;
     padding:50px 0;
-    border-top: 1px solid rgb(255, 255, 255);
+    // border-top: 1px solid rgb(255, 255, 255);
  
-    border-bottom: 6px solid darken($primary-color, 40);
+    box-shadow: 3px 3px 10px  rgb(106, 106, 106);
+    // border-bottom: 6px solid darken($primary-color, 40);
    
     .dash-board-top-team5{
       color:white;
