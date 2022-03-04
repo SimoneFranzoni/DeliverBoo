@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('admin.home')
 
-@section('content')
+@section('dashboard-content')
 <div class="container">
    <h1 class="">Crea il tuo ristorante</h1>
    

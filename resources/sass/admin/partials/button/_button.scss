@@ -1,0 +1,31 @@
+.btn-team5{
+  border-radius: 20px;
+  padding:5px 15px;
+  color:white;
+  border-bottom:4px solid darken($primary-color, 40);
+  border-top:1px solid white;
+  margin: 5px;
+  background-color:darken($primary-color,8);
+  &:hover{
+    transform: scale(1.05);
+  
+    background-color: lighten($primary-color,8);
+    
+  }
+  transition: all 0.18s;
+}
+
+.btn-dashboard-team5{
+  width: 180px;
+}
+  
+.btn-back-team5{
+  background-color:darken($secondary-color,40) !important;
+  &:hover{
+    transform: scale(1.05);
+  
+    background-color: lighten($secondary-color,8);
+    
+  }
+  transition: all 0.18s;
+}
