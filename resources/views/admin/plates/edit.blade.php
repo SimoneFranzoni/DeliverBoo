@@ -119,7 +119,7 @@
         <div class="my-3">
           @if ($piatto->cover)
              <div>
-                <img width="150" src="{{asset('storage/' . $piatto->cover)}}" alt="{{$piatto->name}}">
+                <img width="150" src="{{asset('storage/'. $piatto->cover)}}" alt="{{$piatto->cover_original_name}}">
              </div>
           @endif
           <label for="cover">Carica un'immagine:</label>

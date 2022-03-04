@@ -22,16 +22,7 @@ class RestaurantsController extends Controller
         
         $user = Auth::user();
         $ristoranti = Restaurant::where('user_id',$user->id)->paginate(5);
-        
-        // $ristoranti->each(function($ristorante){
-        //     $ristorante->cover = $this->makeImagePath($ristorante->cover);
-        // });
-
-        
-        return view('admin.restaurants.index',compact('ristoranti','user'));
-
-        // Immagini placeholder:
-        // https://via.placeholder.com/350x290/45CCBC/FFFFFF?Text=DeliverBoo+restaurant
+        return view('admin.restaurants.index',compact('ristoranti'));
     }
 
     /**
@@ -69,12 +60,12 @@ class RestaurantsController extends Controller
             // salvare l'immagine e salvare il percorso
             $image_path = Storage::put('uploads', $data['cover']);
             $data['cover'] = $image_path;
-        }else{
-            $data['cover'] = 'https://via.placeholder.com/350x290/45CCBC/FFFFFF?Text=DeliverBoo+plates';
-            $data['cover_original_name'] = "DeliveBoo Plate";
         }
-
-
+        else{
+            $data['cover'] = 'https://via.placeholder.com/350x290/45CCBC/FFFFFF?Text=DeliverBoo+plates';
+            $data['cover_original_name'] = "DeliveBoo Restaurant";
+        }
+        
         $new_restaurant = new Restaurant();
         $new_restaurant->user_id = $user->id;
         $new_restaurant->fill($data);
@@ -110,7 +101,6 @@ class RestaurantsController extends Controller
     {
         $user = Auth::user();
         $restaurant = Restaurant::find($id);
-        // $restaurant->cover = $this->makeImagePath($restaurant->cover);
         $types = Type::all();
         return view('admin.restaurants.edit', compact('restaurant','types','user'));
 
@@ -174,7 +164,6 @@ class RestaurantsController extends Controller
       if($restaurant->cover){
           Storage::delete($restaurant->cover);
       }
-
       $restaurant->delete();
 
       return redirect()->route('admin.miei-ristoranti.index')->with('deleted', 'Post eliminato correttamente');
@@ -223,8 +212,10 @@ class RestaurantsController extends Controller
     }
 
 //     private function makeImagePath($cover){
-//         if(!$cover){
-//             $cover = url('https://via.placeholder.com/350x290/45CCBC/FFFFFF?Text=DeliverBoo+plates');
+//         if($cover){
+//             $cover = url('storage/' . $cover);
+//         }else{
+//             $cover = 'https://via.placeholder.com/350x290/45CCBC/FFFFFF?Text=DeliverBoo+plates';
 //         }
     
 //     return $cover;

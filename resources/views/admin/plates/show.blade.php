@@ -16,10 +16,15 @@
       <div><a href="{{route('admin.miei-ristoranti.piatti.index',$ristorante->slug)}}">Back <<</a></div>
     </div>
   
-    @if ($piatto->cover)
-    <div class="col-12 col-sm-6 img">
-        <img style="width: 100%" src="{{$piatto->cover}}" alt="{{ $piatto->name }}">
-    </div>
+
+ 
+  @if ($piatto->cover)
+  <div class="col-12 col-sm-6 img">
+      <img width="100%" src="{{asset('storage/'. $piatto->cover)}}" alt="{{ $piatto->cover_original_name }}">
+  </div>
+  @else
+  <div class="col-12 col-sm-6 img">
+      <img width="100%" src="https://via.placeholder.com/350x290/45CCBC/FFFFFF?Text=DeliverBoo+plates" alt="DeliveBoo">
   </div>
   @endif
 
