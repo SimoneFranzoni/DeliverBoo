@@ -2250,20 +2250,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Restaurants',
@@ -2273,11 +2259,11 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   mounted: function mounted() {
     this.getApiTypes();
     this.getActiveRestaurants();
-    console.log(this.activeRestaurants);
   },
   data: function data() {
     return {
       types: [],
+      randomTypes: [],
       activeRestaurants: [],
       activeRestaurantsUrl: 'http://127.0.0.1:8000/api/ristoranti/tiporistorante/',
       activeType: {},
@@ -2308,7 +2294,30 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         } finally {
           _iterator.f();
         }
+
+        _this.getRandomTypes();
       });
+    },
+    getRandomTypes: function getRandomTypes() {
+      // console.log(this.types);
+      var count = 0;
+      var randomNumb = 0;
+      var randomType = {};
+
+      for (count = 0; count < 8; count++) {
+        randomNumb = this.getRandomNumber(0, this.types.length);
+        randomType = this.types[randomNumb];
+        console.log(randomNumb);
+        console.log(randomType);
+
+        if (!this.randomTypes.includes(randomType)) {
+          this.randomTypes.push(randomType);
+        } else {
+          count--;
+        }
+      }
+
+      console.log('RANDOM TYPES >>>', this.randomTypes);
     },
     getActiveRestaurants: function getActiveRestaurants() {
       var _this2 = this;
@@ -2328,6 +2337,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         _this3.activeType = res.data.type;
       });
       this.$router.push(type.slug);
+    },
+    getRandomNumber: function getRandomNumber(min, max) {
+      return Math.floor(Math.random() * (max - min + 1) + min);
     }
   }
 });
@@ -39445,32 +39457,26 @@ var render = function () {
     _c("div", { staticClass: "container" }, [
       _c("div", [_vm._v("Scelti per te")]),
       _vm._v(" "),
-      _c("div", { staticClass: "row types-row pb-4" }, [
-        _c(
-          "div",
-          {
-            staticClass: "typebox",
-            on: {
-              click: function ($event) {
-                return _vm.changeActiveRestaurants(_vm.type)
+      _c(
+        "div",
+        { staticClass: "row types-row pb-4" },
+        _vm._l(_vm.randomTypes, function (type, index) {
+          return _c(
+            "div",
+            {
+              key: "randomType" + index,
+              staticClass: "typebox",
+              on: {
+                click: function ($event) {
+                  return _vm.changeActiveRestaurants(type)
+                },
               },
             },
-          },
-          [_c("div", { staticClass: "title" }, [_vm._v("Italiano")])]
-        ),
-        _vm._v(" "),
-        _vm._m(0),
-        _vm._v(" "),
-        _vm._m(1),
-        _vm._v(" "),
-        _vm._m(2),
-        _vm._v(" "),
-        _vm._m(3),
-        _vm._v(" "),
-        _vm._m(4),
-        _vm._v(" "),
-        _vm._m(5),
-      ]),
+            [_c("div", { staticClass: "title" }, [_vm._v(_vm._s(type.name))])]
+          )
+        }),
+        0
+      ),
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-3 filter-column" }, [
@@ -39493,9 +39499,9 @@ var render = function () {
                 [
                   _c("span", [_vm._v("v")]),
                   _vm._v(
-                    "\r\n                        " +
+                    "\n                        " +
                       _vm._s(type.name) +
-                      "\r\n\r\n                    "
+                      "\n\n                    "
                   ),
                 ]
               )
@@ -39546,56 +39552,7 @@ var render = function () {
     ]),
   ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "typebox" }, [
-      _c("div", { staticClass: "title" }, [_vm._v("Cinese")]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "typebox" }, [
-      _c("div", { staticClass: "title" }, [_vm._v("Pizza")]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "typebox" }, [
-      _c("div", { staticClass: "title" }, [_vm._v("Hamburger")]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "typebox" }, [
-      _c("div", { staticClass: "title" }, [_vm._v("Poke")]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "typebox" }, [
-      _c("div", { staticClass: "title" }, [_vm._v("Kebab")]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "typebox" }, [
-      _c("div", { staticClass: "title" }, [_vm._v("Sushi")]),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -55606,7 +55563,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\ssimo\Documents\boolean\html\lara\progetto-finale\DeliverBoo\resources\js\guest\app.js */"./resources/js/guest/app.js");
+module.exports = __webpack_require__(/*! /Users/albertonicolaciufici/Desktop/Boolean/Progetto Finale/DeliverBoo/resources/js/guest/app.js */"./resources/js/guest/app.js");
 
 
 /***/ })

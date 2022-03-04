@@ -4,27 +4,13 @@
     <div class="container">
          <div>Scelti per te</div>
         <div class="row types-row pb-4">
-            <div class="typebox" @click="changeActiveRestaurants(type)">
-                <div class="title">Italiano</div>
+            <div class="typebox"
+            v-for="(type, index) in randomTypes"
+            :key="`randomType${index}`"
+            @click="changeActiveRestaurants(type)">
+                <div class="title">{{type.name}}</div>
             </div>
-            <div class="typebox">
-                <div class="title">Cinese</div>
-            </div>
-            <div class="typebox">
-                <div class="title">Pizza</div>
-            </div>
-            <div class="typebox">
-                <div class="title">Hamburger</div>
-            </div>
-            <div class="typebox">
-                <div class="title">Poke</div>
-            </div>
-            <div class="typebox">
-                <div class="title">Kebab</div>
-            </div>
-            <div class="typebox">
-                <div class="title">Sushi</div>
-            </div>
+            
         </div>
         <div class="row">
             <div class="col-3 filter-column">
@@ -84,15 +70,15 @@ export default {
     mounted(){
         this.getApiTypes();
         this.getActiveRestaurants();
-        console.log(this.activeRestaurants);
     },
     data(){
         return {
             types: [],
+            randomTypes: [],
             activeRestaurants: [],
             activeRestaurantsUrl: 'http://127.0.0.1:8000/api/ristoranti/tiporistorante/',
             activeType: {},
-            counter: -1
+            counter: -1,
         }
     },
     methods: {
@@ -106,7 +92,28 @@ export default {
                     this.counter = type.id-1;
                   }
                 }
+                this.getRandomTypes();
+
             })
+        },
+        getRandomTypes() {
+          // console.log(this.types);
+          let count = 0;
+          let randomNumb = 0;
+          let randomType = {};
+          for (count = 0; count < 8; count++) {
+            randomNumb = this.getRandomNumber(0, this.types.length);
+            randomType = this.types[randomNumb];
+            console.log(randomNumb);
+            console.log(randomType);
+            if (!this.randomTypes.includes(randomType)) {
+              this.randomTypes.push(randomType)
+            } else {
+              count--
+            }
+          }
+          console.log('RANDOM TYPES >>>', this.randomTypes);
+
         },
         getActiveRestaurants() {
           this.activeRestaurants = [];
@@ -124,6 +131,10 @@ export default {
             this.activeType = res.data.type;
           })
           this.$router.push(type.slug);
+        },
+
+        getRandomNumber(min, max) {
+           return Math.floor(Math.random() * (max - min + 1) + min);
         }
     }
 }
