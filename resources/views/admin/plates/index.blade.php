@@ -21,7 +21,7 @@
       
 
 
-      @if ($ristorante->cover !== "https://via.placeholder.com/350x290/45CCBC/FFFFFF?Text=DeliverBoo+plates")
+      @if ($ristorante->cover)
       <div class="img">
           <img width="400" src="{{asset('storage/'. $ristorante->cover)}}" alt="{{ $ristorante->cover_original_name }}">
       </div>
