@@ -2072,6 +2072,66 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Restaurantdetail',
@@ -6846,7 +6906,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".bg[data-v-0f5c5f38] {\n  width: 100%;\n  height: 300px;\n  background-color: orange;\n}\n.container-fluid[data-v-0f5c5f38] {\n  padding: 0 10%;\n}\n.nav-menu ul li[data-v-0f5c5f38] {\n  font-size: 25px;\n}\n.nav-menu ul li[data-v-0f5c5f38]:hover {\n  font-weight: bold;\n}\n.central-column[data-v-0f5c5f38] {\n  position: relative;\n}\n.central-column .box-ristorante[data-v-0f5c5f38] {\n  position: absolute;\n  width: 100%;\n  top: -10%;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  padding: 40px 0;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  border-radius: 20px;\n  background-color: white;\n}\n.central-column .type[data-v-0f5c5f38] {\n  background-color: #eeebeb;\n  transition: all 0.2s;\n  margin: 0 5px;\n  display: inline-block;\n  padding: 0 5px;\n  font-size: 20px;\n  font-weight: bold;\n  cursor: pointer;\n}\n.central-column .type[data-v-0f5c5f38]:hover {\n  background-color: #f4f2f2;\n  transform: scale(1.1);\n  border-radius: 10px;\n}\n.central-column .menu[data-v-0f5c5f38] {\n  margin-top: 100px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  align-items: center;\n  justify-content: center;\n}", ""]);
+exports.push([module.i, ".bg[data-v-0f5c5f38] {\n  width: 100%;\n  height: 400px;\n  background-color: orange;\n}\n.container-fluid[data-v-0f5c5f38] {\n  padding: 0 8%;\n}\n.nav-menu ul li[data-v-0f5c5f38] {\n  display: flex;\n  justify-content: flex-start;\n  align-items: center;\n}\n.nav-menu ul li .bar[data-v-0f5c5f38] {\n  width: 0.5px;\n  height: 50px;\n  background-color: grey;\n  margin-right: 10px;\n}\n.nav-menu ul li a[data-v-0f5c5f38] {\n  color: #333232;\n  text-decoration: none;\n  font-size: 15px;\n  transition: transform 0.5s;\n}\n.nav-menu ul li[data-v-0f5c5f38]:hover {\n  font-weight: bold;\n}\n.nav-menu ul li:hover a[data-v-0f5c5f38] {\n  transform: translateX(10px);\n}\n.nav-menu ul li:hover .bar[data-v-0f5c5f38] {\n  width: 2px;\n  background-color: black;\n}\n.central-column[data-v-0f5c5f38] {\n  position: relative;\n}\n.central-column .box-ristorante[data-v-0f5c5f38] {\n  position: absolute;\n  width: 95%;\n  top: -10%;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  padding: 40px 0;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  border-radius: 20px;\n  background-color: white;\n}\n.central-column .type[data-v-0f5c5f38] {\n  background-color: #eeebeb;\n  transition: all 0.2s;\n  margin: 0 5px;\n  display: inline-block;\n  padding: 0 5px;\n  font-size: 20px;\n  font-weight: bold;\n  cursor: pointer;\n}\n.central-column .type[data-v-0f5c5f38]:hover {\n  background-color: #f4f2f2;\n  transform: scale(1.1);\n  border-radius: 10px;\n}\n.central-column .menu[data-v-0f5c5f38] {\n  margin-top: 100px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  align-items: center;\n  justify-content: center;\n}\n.right-column[data-v-0f5c5f38] {\n  position: relative;\n}\n.right-column .carrello[data-v-0f5c5f38] {\n  position: absolute;\n  top: -10%;\n  width: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  border-radius: 20px;\n  padding-left: 10px;\n  background-color: white;\n  padding: 20px;\n}\n.right-column .carrello .line[data-v-0f5c5f38] {\n  background-color: grey;\n  width: 100%;\n  height: 0.5px;\n  margin: 10px 0;\n}\n.right-column .carrello .plate-order[data-v-0f5c5f38] {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  padding: 10px 10px;\n}\n.fw-bold[data-v-0f5c5f38] {\n  font-weight: bold;\n}", ""]);
 
 // exports
 
@@ -39120,7 +39180,7 @@ var render = function () {
       _c("div", { staticClass: "row" }, [
         _vm._m(0),
         _vm._v(" "),
-        _c("div", { staticClass: "col-7 central-column" }, [
+        _c("div", { staticClass: "col-6 central-column" }, [
           _vm._m(1),
           _vm._v(" "),
           _c(
@@ -39143,9 +39203,7 @@ var render = function () {
           ),
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-3" }, [
-          _vm._v("\n                carrello\n            "),
-        ]),
+        _vm._m(2),
       ]),
     ]),
   ])
@@ -39157,7 +39215,41 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-2 nav-menu" }, [
       _c("ul", { staticClass: "pt-5" }, [
-        _c("li", [_c("a", { attrs: { href: "#primi" } }, [_vm._v("Primi")])]),
+        _c("li", [
+          _c("div", { staticClass: "bar" }),
+          _vm._v(" "),
+          _c("a", { attrs: { href: "#antipasti" } }, [_vm._v("Antipasti")]),
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("div", { staticClass: "bar" }),
+          _vm._v(" "),
+          _c("a", { attrs: { href: "#primi" } }, [_vm._v("Primi")]),
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("div", { staticClass: "bar" }),
+          _vm._v(" "),
+          _c("a", { attrs: { href: "#secondi" } }, [_vm._v("Secondi")]),
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("div", { staticClass: "bar" }),
+          _vm._v(" "),
+          _c("a", { attrs: { href: "#contorni" } }, [_vm._v("Contorni")]),
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("div", { staticClass: "bar" }),
+          _vm._v(" "),
+          _c("a", { attrs: { href: "#dessert" } }, [_vm._v("Dessert")]),
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("div", { staticClass: "bar" }),
+          _vm._v(" "),
+          _c("a", { attrs: { href: "#bevande" } }, [_vm._v("Bevande")]),
+        ]),
       ]),
     ])
   },
@@ -39182,6 +39274,95 @@ var staticRenderFns = [
         _c("div", { staticClass: "px-3" }, [_vm._v("|")]),
         _vm._v(" "),
         _c("div", [_vm._v("Brescia")]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-4 right-column" }, [
+      _c("div", { staticClass: "carrello" }, [
+        _c(
+          "div",
+          { staticClass: "row justify-content-around align-items-center" },
+          [
+            _c("h2", { staticClass: "fw-bold" }, [_vm._v("Il tuo ordine")]),
+            _vm._v(" "),
+            _c("h2", { staticClass: "fw-bold" }, [_vm._v("7,50 €")]),
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "line mt-3" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "plate-order" }, [
+          _c("div", [_vm._v("Pizza Margherita")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "pr-2 minus-btn" }, [_vm._v("-")]),
+            _vm._v(" "),
+            _c("div", [_vm._v("1")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "pl-2 plus-btn" }, [_vm._v("+")]),
+          ]),
+          _vm._v(" "),
+          _c("div", [_vm._v("5,50 €")]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "plate-order" }, [
+          _c("div", [_vm._v("Pizza Margherita")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "pr-2 minus-btn" }, [_vm._v("-")]),
+            _vm._v(" "),
+            _c("div", [_vm._v("1")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "pl-2 plus-btn" }, [_vm._v("+")]),
+          ]),
+          _vm._v(" "),
+          _c("div", [_vm._v("5,50 €")]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "line" }),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "row px-5 pt-3 pb-2 justify-content-between align-items-center",
+          },
+          [
+            _c("div", { staticClass: "fw-bold" }, [_vm._v("Subtotale")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "fw-bold" }, [_vm._v("5,50 €")]),
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "row px-5 py-2 justify-content-between align-items-center",
+          },
+          [
+            _c("div", [_vm._v("Costo di consegna")]),
+            _vm._v(" "),
+            _c("div", [_vm._v("2,00 €")]),
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "row px-5 py-2 justify-content-between align-items-center",
+          },
+          [
+            _c("div", { staticClass: "fw-bold" }, [_vm._v("Totale")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "fw-bold" }, [_vm._v("7,50 €")]),
+          ]
+        ),
       ]),
     ])
   },
@@ -39234,9 +39415,9 @@ var render = function () {
                 [
                   _c("span", [_vm._v("v")]),
                   _vm._v(
-                    "\n                        " +
+                    "\r\n                        " +
                       _vm._s(type.name) +
-                      "\n\n                    "
+                      "\r\n\r\n                    "
                   ),
                 ]
               )
@@ -55315,7 +55496,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/albertonicolaciufici/Desktop/Boolean/Progetto Finale/DeliverBoo/resources/js/guest/app.js */"./resources/js/guest/app.js");
+module.exports = __webpack_require__(/*! C:\Users\franz_u4goo5x\OneDrive\Desktop\DeliverBoo\resources\js\guest\app.js */"./resources/js/guest/app.js");
 
 
 /***/ })
