@@ -3,7 +3,7 @@
 
         <div>Le cucine più richieste</div>
         <div class="row types-row pb-4">
-            <div class="typebox">
+            <div class="typebox" >
                 <div class="title">Italiano</div>
             </div>
             <div class="typebox">
