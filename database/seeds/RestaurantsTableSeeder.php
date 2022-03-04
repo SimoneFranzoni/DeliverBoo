@@ -13,6 +13,19 @@ class RestaurantsTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
+
+      foreach(config('restaurants') as $restaurant){
+        $newRestaurant = new Restaurant();
+        $newRestaurant->name = $restaurant['name'];
+        $newRestaurant->slug = Restaurant::generateSlug($restaurant['name']);
+        $newRestaurant->city = $restaurant['city'];
+        $newRestaurant->address = $restaurant['address'];
+        $newRestaurant->zip_code = $restaurant['zip_code'];
+        $newRestaurant->phone_number = $restaurant['phone_number'];
+        $newRestaurant->p_iva = strval(Restaurant::randomNumber(11));
+        $newRestaurant->save();
+      }
+
         for($i = 0; $i < 5; $i++) {
           $newRestaurant = new Restaurant();
           $newRestaurant->name = $faker->sentence(3);

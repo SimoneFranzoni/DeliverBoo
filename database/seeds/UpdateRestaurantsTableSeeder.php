@@ -3,6 +3,7 @@
 use App\Restaurant;
 use App\User;
 use Illuminate\Database\Seeder;
+use PhpOption\None;
 
 class UpdateRestaurantsTableSeeder extends Seeder
 {
@@ -13,14 +14,25 @@ class UpdateRestaurantsTableSeeder extends Seeder
      */
     public function run()
     {
-    
+        $ilGamberoRosso = Restaurant::where('name','Il Gambero Rosso')->first();
+        $user = User::where('email','team5@boolean.it')->first()->id;
+        $ilGamberoRosso->user_id = $user;
+        $ilGamberoRosso->update();
+
+        $laMuccaAssasina = Restaurant::where('name','La Mucca Assassina')->first();
+        $user = User::where('email','team5@boolean.it')->first()->id;
+        $laMuccaAssasina->user_id = $user;
+        $laMuccaAssasina->update();
 
         
         $restaurants = Restaurant::all();
         foreach($restaurants as $singRest) {
-          $user = User::inRandomOrder()->first()->id;
-          $singRest->user_id = $user;
-          $singRest->update();
-        }
+          if(is_null($singRest->user_id)){
+            $user = User::inRandomOrder()->first()->id;
+            $singRest->user_id = $user;
+            $singRest->update();
+          };
+        };
+        
     }
 }
