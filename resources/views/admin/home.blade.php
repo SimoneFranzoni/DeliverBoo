@@ -16,6 +16,9 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    <a href="{{route('admin.index')}}">
+                        <button class="btn-team5 btn-dashboard-team5">Home</button>
+                    </a>
                     <a href="{{route('admin.miei-ristoranti.index')}}">
                         <button class="btn-team5 btn-dashboard-team5">Vai ai ristoranti</button>
                     </a>

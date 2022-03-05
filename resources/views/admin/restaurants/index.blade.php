@@ -3,17 +3,18 @@
 @section('dashboard-content')
   <div class="">
     @if (count($ristoranti)=== 0)
-      <h1>Non hai ristoranti</h1>
-      <a href="{{route('admin.miei-ristoranti.create')}}">
-        <button type="button" class="btn btn-success">Nuovo Ristorante</button>
-      </a>
+    <div style="padding:50px; margin:100px;">
+
+      <h1 class="text-center">Non hai ancora registrato i tuoi ristoranti</h1>
+    </div>
+      
       
       
       @else
       <div class="d-flex">
         <h1  class="col-md-8 mb-5 text-center mt-3">I miei ristoranti</h1>
       </div>
-       
+    
 
       <div style="padding:0px;">
         @foreach ($ristoranti as $ristorante)
@@ -59,6 +60,3 @@
 @endsection
           
    
-
-
-  
