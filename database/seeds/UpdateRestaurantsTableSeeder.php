@@ -13,6 +13,8 @@ class UpdateRestaurantsTableSeeder extends Seeder
      * @return void
      */
     public function run()
+
+    //Assegno User ID 1 a due ristoranti specifici
     {
         $ilGamberoRosso = Restaurant::where('name','Il Gambero Rosso')->first();
         $user = User::where('email','team5@boolean.it')->first()->id;
