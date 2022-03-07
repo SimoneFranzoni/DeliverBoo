@@ -77,7 +77,7 @@ class RestaurantsController extends Controller
             $new_restaurant->types()->attach($data['types']);
         }
     
-        return redirect()->route('admin.miei-ristoranti.index',compact($new_restaurant->types));
+        return redirect()->route('admin.miei-ristoranti.piatti.index',$new_restaurant->slug);
     }
 
     /**
@@ -97,10 +97,10 @@ class RestaurantsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
         $user = Auth::user();
-        $restaurant = Restaurant::find($id);
+        $restaurant = Restaurant::where('slug',$slug)->first();
         $types = Type::all();
         return view('admin.restaurants.edit', compact('restaurant','types','user'));
 
@@ -143,7 +143,7 @@ class RestaurantsController extends Controller
             $restaurant->types()->detach();
         }
 
-        return redirect()->route('admin.miei-ristoranti.index');
+        return redirect()->route('admin.miei-ristoranti.piatti.index',$restaurant->slug);
     }
 
     /**

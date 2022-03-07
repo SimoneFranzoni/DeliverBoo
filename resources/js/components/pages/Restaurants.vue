@@ -1,37 +1,25 @@
 <template>
-    <div class="container">
+<div class="wrapper">
 
-        <div>Le cucine più richieste</div>
+    <div class="container">
+         <div>Scelti per te</div>
         <div class="row types-row pb-4">
-            <div class="typebox">
-                <div class="title">Italiano</div>
+            <div class="typebox"
+            v-for="(type, index) in randomTypes"
+            :key="`randomType${index}`"
+            @click="changeActiveRestaurants(type), randomTypeCounter = index, counter = -1"
+            :class="{active: randomTypeCounter === index}">
+                <div class="title">{{type.name}}</div>
             </div>
-            <div class="typebox">
-                <div class="title">Cinese</div>
-            </div>
-            <div class="typebox">
-                <div class="title">Pizza</div>
-            </div>
-            <div class="typebox">
-                <div class="title">Hamburger</div>
-            </div>
-            <div class="typebox">
-                <div class="title">Poke</div>
-            </div>
-            <div class="typebox">
-                <div class="title">Kebab</div>
-            </div>
-            <div class="typebox">
-                <div class="title">Sushi</div>
-            </div>
+            
         </div>
         <div class="row">
-            <div class="col-3 filter-column">
+            <div class="d-none d-lg-block col-3 filter-column">
                 <div>Tutte le cucine (A, Z)</div>
-                <ul>
+                <ul class="filter-list">
                     <li v-for="(type, index) in types" 
                     :key="`type${index}`"
-                    @click="changeActiveRestaurants(type), counter = index"
+                    @click="changeActiveRestaurants(type), counter = index, randomTypeCounter = -1"
                     :class="{active: counter === index}">
                   
                         <span>v</span>
@@ -41,27 +29,51 @@
                 </ul>
             </div>
             
-            <div class="col-9 restaurant-column">
+            <div v-if="filter_close">
+                <div @click="toggleMenu" class="filter d-block d-lg-none ml-3">Filtri</div>
+            </div>
+                <div v-else>
+                    <div class="hamburger">
+                        <div @click="toggleMenu" class="filter">X</div>
+                        <div>Tutte le cucine (A, Z)</div>
+                        <ul class="filter-list">
+                            <li v-for="(type, index) in types" 
+                            :key="`type${index}`"
+                            @click="changeActiveRestaurants(type), counter = index"
+                            :class="{active: counter === index}">        
+                            <span>v</span>
+                            {{type.name}}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                    
+
+            <div class="col-12 col-lg-9 restaurant-column">
                 <div class="search-input">
-                    <input type="text" name="restsearch" id="restsearch" placeholder="Cerca qui una tipologia di ristorante...">
+                    <input type="text" name="restsearch" placeholder="Cerca qui una tipologia di ristorante...">
                     <router-link :to="{name: 'restaurants'}">
                         <div class="ac-btn">Vai</div>
                     </router-link>
                 </div>
 
-                <div class="pt-4"> XXX risultati trovati </div>
+                <div class="pt-4"> {{activeRestaurants.length}} risultati trovati </div>
+                
 
                 <div class="restaurant-box-row">
                     
-                    <RestaurantBox 
-                      v-for="restaurant in activeRestaurants" 
-                      :key="restaurant.id" 
-                      :restaurant="restaurant"/>
-
+                    
+                      <RestaurantBox 
+                        v-for="(restaurant, index) in activeRestaurants" 
+                        :key="`restaurant${index}`" 
+                        :restaurant="restaurant"
+                        :type="activeType"/>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
 </template>
 
 <script>
@@ -79,15 +91,19 @@ export default {
     },
     data(){
         return {
-            types: null,
-            activeRestaurants: null,
+            types: [],
+            randomTypes: [],
+            activeRestaurants: [],
             activeRestaurantsUrl: 'http://127.0.0.1:8000/api/ristoranti/tiporistorante/',
-            counter: -1
+            activeType: {},
+            counter: -1,
+            filter_close: true,
+            randomTypeCounter: -1
         }
     },
     methods: {
         getApiTypes() {
-            this.types = null;
+            this.types = [];
             axios.get('http://127.0.0.1:8000/api/tipo/')
             .then(res => {
                 this.types = res.data.types;
@@ -96,21 +112,57 @@ export default {
                     this.counter = type.id-1;
                   }
                 }
+                this.getRandomTypes();
+
             })
         },
+        getRandomTypes() {
+          console.log('TIPI >>>>',this.types);
+          let count = 0;
+          let randomNumb = 0;
+          let randomType = {};
+          for (count = 0; count < 8; count++) {
+            randomNumb = this.getRandomNumber(0, this.types.length);
+            randomType = this.types[randomNumb];
+            // console.log(randomNumb);
+            // console.log(randomType);
+            if (!this.randomTypes.includes(randomType) && randomType != undefined) {
+              this.randomTypes.push(randomType)
+            } else {
+              count--
+            }
+          }
+          console.log('RANDOM TYPES >>>', this.randomTypes);
+
+        },
         getActiveRestaurants() {
-          this.activeRestaurants = null;
+          this.activeRestaurants = [];
+          this.activeType = {};
           axios.get(this.activeRestaurantsUrl + this.$route.params.slug)
           .then(res => {
             this.activeRestaurants = res.data.type.restaurants;
+            this.activeType = res.data.type;
           })
         },
         changeActiveRestaurants(type) {
           axios.get(this.activeRestaurantsUrl + type.slug)
           .then(res => {
             this.activeRestaurants = res.data.type.restaurants;
+            this.activeType = res.data.type;
           })
           this.$router.push(type.slug);
+        },
+
+        getRandomNumber(min, max) {
+           return Math.floor(Math.random() * (max - min + 1) + min);
+        },
+        
+        toggleMenu(){
+            if(this.filter_close === true){
+                this.filter_close = false;
+            } else {
+                this.filter_close = true;
+            }
         }
     }
 }
@@ -121,13 +173,16 @@ export default {
 
 @import '../../../sass/_variables.scss';
 
-  
+  .wrapper {
+    padding-top: 50px;
     .filter-column{
         width: 100%;
         height: 700px;
         overflow-y: auto;
         z-index: 1;
-        
+    }
+
+    .filter-list{
         li{
             border-radius: 20px;
             border: 0.5px solid grey;
@@ -135,23 +190,23 @@ export default {
             margin: 10px 0;
             z-index: 3;  
             cursor: pointer;
-            &.active {
-              border: 1px solid black;
-              font-weight: bold;
-              font-size: 18px;
-            }
-            span{
-                transition: opacity 0.5s ease-out;
-                opacity: 0;
-                height: 0;
-                overflow: hidden;
-                color: $primary-color;
-            }   
+                &:active{
+                    border: 1px solid black;
+                    font-weight: bold;
+                    font-size: 18px;
+                }
 
-            &:hover{
-                transform: translate(20px);
-                transition: transform 0.5s;
-               
+                span{
+                    transition: opacity 0.5s ease-out;
+                    opacity: 0;
+                    height: 0;
+                    overflow: hidden;
+                    color: $primary-color;
+                }   
+
+                &:hover{
+                    transform: translate(20px);
+                    transition: transform 0.5s;
 
                 span{
                     opacity: 1;
@@ -161,17 +216,42 @@ export default {
         }
     }
 
+    .filter{
+            background-color: $primary-color;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            padding-top: 5px;
+            margin-bottom: 5px;
+            border-radius: 10px;
+            width: 70px;
+            height: 35px;
+        
+        }
+
+    .hamburger{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: white;
+            z-index: 2000;
+            overflow-y: auto;
+            margin: 20px 0;
+        }
+
     .restaurant-column{
         z-index: 1;
-      
+        height: 700px;
+        overflow-y: auto;
+        
         .restaurant-box-row{
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            padding: 10px 0;
-            cursor: pointer;
-
+            
         }
     }
 
@@ -214,6 +294,9 @@ export default {
     }
 
     .typebox{
+      display: flex;
+      justify-content: center;
+      align-items: center;
         height: 100px;
         width: 180px;
         border-radius: 20px;
@@ -223,12 +306,16 @@ export default {
         margin-right: 10px;
         transition: transform 0.3s;
         position: relative;
+        cursor: pointer;
+        &.active {
+          box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+          transform: scale(1.05, 1.1);
+          font-weight: bold;
+          border: 2px solid white;
+        }
 
         .title{
-            position: absolute;
-            bottom: 5%;
-            left: 5%;
-            font-size: 15px;
+            font-size: 18px;
             color: white;
         }
     }
@@ -239,6 +326,6 @@ export default {
         font-weight: bold;
     }
 
-    
+  }
 
 </style>

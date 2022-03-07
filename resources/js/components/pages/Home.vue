@@ -14,6 +14,7 @@
         :key="`type${index}`"
         v-show="type.isVisible">
       <router-link class="type-link" :to="{name: 'restaurants', params: {slug: type.slug}}">
+      <!-- <router-link class="type-link" :to="{name: 'restaurants' }"> -->
         <span v-if="type.isVisible">
           {{type.name}}
         </span>
@@ -92,10 +93,10 @@ export default {
       router-link {
         span {
           display: inline-block;
-          padding: 0 5px;
           cursor: pointer;
         }
       }
+      padding: 0 5px;
       background-color: #eeebeb;
       transition: all .2s;
       &:hover {

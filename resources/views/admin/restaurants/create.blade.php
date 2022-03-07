@@ -2,7 +2,7 @@
 
 @section('dashboard-content')
 <div class="container">
-   <h1 class="">Crea il tuo ristorante</h1>
+   <h2 class="mt-4">Crea il tuo ristorante</h1>
    
    <form action="{{route('admin.miei-ristoranti.store')}}"
    enctype="multipart/form-data"
@@ -137,14 +137,16 @@
             </div>
          @enderror
 
-      <button type="submit" class="btn btn-primary">Submit</button>
-      <button type="reset" class="btn btn-primary">Reset</button>
+      <button type="submit" class="btn-team5">Submit</button>
+      <button type="reset" class="btn-team5">Reset</button>
    </form>
     
    {{-- link di pagina precedente --}}
-  <h2 class="mt-4">
-   <a  href="{{route('admin.miei-ristoranti.index')}}">Back <<</a>
- </h2>
+   <h2 class="mt-4">
+      <a  href="{{route('admin.miei-ristoranti.index')}}">
+         <button class="btn-team5 btn-back-team5">Back <<</button> 
+      </a>
+   </h2>
 </div>   
 
 @endsection
