@@ -30,25 +30,23 @@
             </div>
             
             <div v-if="filter_close">
-                        <div @click="toggleMenu" class="filter d-block d-lg-none ml-3">Filtri</div>
+                <div @click="toggleMenu" class="filter d-block d-lg-none ml-3">Filtri</div>
+            </div>
+                <div v-else>
+                    <div class="hamburger">
+                        <div @click="toggleMenu" class="filter">X</div>
+                        <div>Tutte le cucine (A, Z)</div>
+                        <ul class="filter-list">
+                            <li v-for="(type, index) in types" 
+                            :key="`type${index}`"
+                            @click="changeActiveRestaurants(type), counter = index"
+                            :class="{active: counter === index}">        
+                            <span>v</span>
+                            {{type.name}}
+                            </li>
+                        </ul>
                     </div>
-                    <div v-else>
-                        <div class="hamburger">
-                            <div @click="toggleMenu" class="filter">X</div>
-                            <div>Tutte le cucine (A, Z)</div>
-                                <ul class="filter-list">
-                                    <li v-for="(type, index) in types" 
-                                    :key="`type${index}`"
-                                    @click="changeActiveRestaurants(type), counter = index"
-                                    :class="{active: counter === index}">
-                                
-                                        <span>v</span>
-                                        {{type.name}}
-
-                                    </li>
-                                </ul>
-                        </div>
-                    </div>
+                </div>
                     
 
             <div class="col-12 col-lg-9 restaurant-column">
@@ -224,7 +222,8 @@ export default {
             font-size: 16px;
             cursor: pointer;
             text-align: center;
-            padding-top: px;
+            padding-top: 5px;
+            margin-bottom: 5px;
             border-radius: 10px;
             width: 70px;
             height: 35px;

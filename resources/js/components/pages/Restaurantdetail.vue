@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row">
               
-                <div class="col-2 nav-menu" id="stickyMenu">
+                <div class="d-none d-lg-block col-2 nav-menu" id="stickyMenu">
                     <ul class="pt-5">
                         <li>
                             <div class="bar"></div>
@@ -35,7 +35,7 @@
                     </ul>
                 </div>
 
-                <div class="col-6 central-column">
+                <div class="col-12 col-md-7 col-lg-6 central-column">
                     <div class="box-ristorante">
                         <h2 class="pb-3">{{activeRestaurant.name}}</h2>
                         <div class="pb-2">
@@ -70,7 +70,7 @@
                         
                     </div>
                 </div>
-                <div class="col-4 right-column">
+                <div class="d-none d-md-block col-5 col-lg-4 right-column">
                     <div class="carrello">
                         <div class="row justify-content-around align-items-center">
                             <h2 class="fw-bold">Il tuo ordine</h2>
