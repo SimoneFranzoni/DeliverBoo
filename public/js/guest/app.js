@@ -6923,7 +6923,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".wrapper[data-v-31969ab0] {\n  padding-top: 50px;\n}\n.wrapper .filter-column[data-v-31969ab0] {\n  width: 100%;\n  height: 700px;\n  overflow-y: auto;\n  z-index: 1;\n}\n.wrapper .filter-column li[data-v-31969ab0] {\n  border-radius: 20px;\n  border: 0.5px solid grey;\n  padding: 10px;\n  margin: 10px 0;\n  z-index: 3;\n  cursor: pointer;\n}\n.wrapper .filter-column li.active[data-v-31969ab0] {\n  border: 1px solid black;\n  font-weight: bold;\n  font-size: 18px;\n}\n.wrapper .filter-column li span[data-v-31969ab0] {\n  transition: opacity 0.5s ease-out;\n  opacity: 0;\n  height: 0;\n  overflow: hidden;\n  color: #45CCBC;\n}\n.wrapper .filter-column li[data-v-31969ab0]:hover {\n  transform: translate(20px);\n  transition: transform 0.5s;\n}\n.wrapper .filter-column li:hover span[data-v-31969ab0] {\n  opacity: 1;\n  height: auto;\n}\n.wrapper .restaurant-column[data-v-31969ab0] {\n  z-index: 1;\n  height: 700px;\n  overflow-y: auto;\n}\n.wrapper .restaurant-column .restaurant-box-row[data-v-31969ab0] {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  padding: 10px 0;\n  cursor: pointer;\n}\n.wrapper .search-input[data-v-31969ab0] {\n  display: flex;\n  align-items: center;\n  width: 100%;\n}\n.wrapper .search-input input[data-v-31969ab0] {\n  width: 90%;\n  margin-right: 5px;\n  padding: 5px 10px;\n  border-radius: 10px;\n  border: 1px solid rgba(0, 0, 0, 0.3);\n  caret-color: #45CCBC;\n}\n.wrapper .search-input input[data-v-31969ab0]:focus {\n  outline: 2px solid #45CCBC;\n}\n.wrapper .search-input .ac-btn[data-v-31969ab0] {\n  width: 60px;\n  text-align: center;\n  font-size: 16px;\n}\n.wrapper .types-row[data-v-31969ab0] {\n  width: 100%;\n  height: 150px;\n  margin: 0 1px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  flex-wrap: nowrap;\n}\n.wrapper .typebox[data-v-31969ab0] {\n  height: 100px;\n  width: 180px;\n  border-radius: 20px;\n  background-color: #45CCBC;\n  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);\n  margin-right: 10px;\n  transition: transform 0.3s;\n  position: relative;\n}\n.wrapper .typebox .title[data-v-31969ab0] {\n  position: absolute;\n  bottom: 5%;\n  left: 5%;\n  font-size: 15px;\n  color: white;\n}\n.wrapper .typebox[data-v-31969ab0]:hover {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  transform: scale(1.05, 1.1);\n  font-weight: bold;\n}", ""]);
+exports.push([module.i, ".wrapper[data-v-31969ab0] {\n  padding-top: 50px;\n}\n.wrapper .filter-column[data-v-31969ab0] {\n  width: 100%;\n  height: 700px;\n  overflow-y: auto;\n  z-index: 1;\n}\n.wrapper .filter-column li[data-v-31969ab0] {\n  border-radius: 20px;\n  border: 0.5px solid grey;\n  padding: 10px;\n  margin: 10px 0;\n  z-index: 3;\n  cursor: pointer;\n}\n.wrapper .filter-column li[data-v-31969ab0]:active {\n  border: 1px solid black;\n  font-weight: bold;\n  font-size: 18px;\n}\n.wrapper .filter-column li span[data-v-31969ab0] {\n  transition: opacity 0.5s ease-out;\n  opacity: 0;\n  height: 0;\n  overflow: hidden;\n  color: #45CCBC;\n}\n.wrapper .filter-column li[data-v-31969ab0]:hover {\n  transform: translate(20px);\n  transition: transform 0.5s;\n}\n.wrapper .filter-column li:hover span[data-v-31969ab0] {\n  opacity: 1;\n  height: auto;\n}\n.wrapper .restaurant-column[data-v-31969ab0] {\n  z-index: 1;\n  height: 700px;\n  overflow-y: auto;\n}\n.wrapper .restaurant-column .filter[data-v-31969ab0] {\n  background-color: #45CCBC;\n  color: white;\n  text-align: center;\n  font-size: 16px;\n  align-items: center;\n  padding: 10px 0;\n  cursor: pointer;\n  border-radius: 10px;\n  width: 70px;\n  height: 35px;\n}\n.wrapper .restaurant-column .restaurant-box-row[data-v-31969ab0] {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n}\n.wrapper .search-input[data-v-31969ab0] {\n  display: flex;\n  align-items: center;\n  width: 100%;\n}\n.wrapper .search-input input[data-v-31969ab0] {\n  width: 90%;\n  margin-right: 5px;\n  padding: 5px 10px;\n  border-radius: 10px;\n  border: 1px solid rgba(0, 0, 0, 0.3);\n  caret-color: #45CCBC;\n}\n.wrapper .search-input input[data-v-31969ab0]:focus {\n  outline: 2px solid #45CCBC;\n}\n.wrapper .search-input .ac-btn[data-v-31969ab0] {\n  width: 60px;\n  text-align: center;\n  font-size: 16px;\n}\n.wrapper .types-row[data-v-31969ab0] {\n  width: 100%;\n  height: 150px;\n  margin: 0 1px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  flex-wrap: nowrap;\n}\n.wrapper .typebox[data-v-31969ab0] {\n  height: 100px;\n  width: 180px;\n  border-radius: 20px;\n  background-color: #45CCBC;\n  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);\n  margin-right: 10px;\n  transition: transform 0.3s;\n  position: relative;\n}\n.wrapper .typebox .title[data-v-31969ab0] {\n  position: absolute;\n  bottom: 5%;\n  left: 5%;\n  font-size: 15px;\n  color: white;\n}\n.wrapper .typebox[data-v-31969ab0]:hover {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  transform: scale(1.05, 1.1);\n  font-weight: bold;\n}", ""]);
 
 // exports
 
@@ -39432,6 +39432,10 @@ var render = function () {
               _c("router-link", { attrs: { to: { name: "restaurants" } } }, [
                 _c("div", { staticClass: "ac-btn" }, [_vm._v("Vai")]),
               ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "filter d-block d-lg-none ml-3" }, [
+                _vm._v("Filtri"),
+              ]),
             ],
             1
           ),
@@ -55486,11 +55490,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
 module.exports = __webpack_require__(/*! C:\Users\franz_u4goo5x\OneDrive\Desktop\DeliverBoo\resources\js\guest\app.js */"./resources/js/guest/app.js");
-=======
-module.exports = __webpack_require__(/*! C:\Users\ssimo\Documents\boolean\html\lara\progetto-finale\DeliverBoo\resources\js\guest\app.js */"./resources/js/guest/app.js");
->>>>>>> 97b64b9f8dfbcd459d4c51de95c507de74e00170
 
 
 /***/ })

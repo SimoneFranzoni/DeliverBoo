@@ -48,6 +48,7 @@
                     <router-link :to="{name: 'restaurants'}">
                         <div class="ac-btn">Vai</div>
                     </router-link>
+                    <div class="filter d-block d-lg-none ml-3">Filtri</div>
                 </div>
 
                 <div class="pt-4"> {{activeRestaurants.length}} risultati trovati </div>
@@ -60,7 +61,6 @@
                       :key="restaurant.id" 
                       :restaurant="restaurant"
                       :type="activeType"/>
-
                 </div>
             </div>
         </div>
@@ -145,7 +145,7 @@ export default {
             margin: 10px 0;
             z-index: 3;  
             cursor: pointer;
-            &.active {
+            &:active{
               border: 1px solid black;
               font-weight: bold;
               font-size: 18px;
@@ -161,7 +161,6 @@ export default {
             &:hover{
                 transform: translate(20px);
                 transition: transform 0.5s;
-               
 
                 span{
                     opacity: 1;
@@ -176,15 +175,24 @@ export default {
         height: 700px;
         overflow-y: auto;
         
-      
+        .filter{
+            background-color: $primary-color;
+            color: white;
+            text-align: center;
+            font-size: 16px;
+            align-items: center;
+            padding: 10px 0;
+            cursor: pointer;
+            border-radius: 10px;
+            width: 70px;
+            height: 35px;
+        }
+    
         .restaurant-box-row{
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            padding: 10px 0;
-            cursor: pointer;
-
+            
         }
     }
 
