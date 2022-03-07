@@ -39516,9 +39516,9 @@ var render = function () {
                 [
                   _c("span", [_vm._v("v")]),
                   _vm._v(
-                    "\n                        " +
+                    "\r\n                        " +
                       _vm._s(type.name) +
-                      "\n\n                    "
+                      "\r\n\r\n                    "
                   ),
                 ]
               )
@@ -55579,5 +55579,10 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! C:\Users\ssimo\Documents\boolean\html\lara\progetto-finale\DeliverBoo\resources\js\guest\app.js */"./resources/js/guest/app.js");
+
+
+/***/ })
 
 /******/ });
