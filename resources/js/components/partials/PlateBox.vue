@@ -40,14 +40,21 @@ export default {
     data() {
       return {
         cartItemCounter: 0,
-        items: []
+        items: [],
+        singItem: {
+          name: '',
+          price: null
+        }
       }
     },
     methods: {
       saveItem(plate) {
-        this.items.push(plate.name, plate.price)
+
+        this.singItem.name = localStorage.setItem('name', plate.name);
+        this.singItem.price = localStorage.setItem('price', plate.price);
+        this.items.push(this.singItem);
         localStorage.setItem('items', JSON.stringify(this.items))
-        
+        this.$emit('cartArray', this.items);
         console.log(localStorage.getItem('items'));
       }
     }
