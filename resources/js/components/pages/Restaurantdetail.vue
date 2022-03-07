@@ -56,6 +56,7 @@
                         <PlateBox v-for="(plate, index) in activeRestaurant.plates"
                           :key="`plate${index}`"
                           :plate="plate"
+                          @cartArray="cartArray"
                         />
                         <!-- <PlateBox 
                         
@@ -76,13 +77,19 @@
                         </div>
                         <div class="line mt-3"></div>
                         <div class="plate-order">
-                            <div>{{ localStorageGet()[0] }}</div>
+
+                          <!-- elenco piatti con prezzi  -->
+
+                            <!-- <div v-for="(item, index) in localStorageGet()" :key="`item${index}`">
+                              {{ item }}
+                              </div> -->
+
                             <div class="row">
                                 <div class="pr-2 minus-btn">-</div>
                                 <div>1</div>
                                 <div class="pl-2 plus-btn">+</div>
                             </div>
-                            <div>{{ localStorageGet()[1] }}</div>
+                            <div>prezzo </div>
                         </div>
                         
                         <div class="line"></div>
@@ -119,7 +126,7 @@ export default {
         apiUrl: 'http://127.0.0.1:8000/api/ristoranti/',
         activeRestaurant: {},
         plates: [],
-        items: []
+        cartItems: []
       }
     },
     mounted() {
@@ -138,7 +145,13 @@ export default {
       },
 
       localStorageGet() {
-        
+        console.log(JSON.parse(localStorage.getItem('items')));
+        return JSON.parse(localStorage.getItem('items'))
+      },
+
+      cartArray(items) {
+        this.cartItems.push(items);
+        console.log('padre', this.cartItems);
       }
     }
 }
