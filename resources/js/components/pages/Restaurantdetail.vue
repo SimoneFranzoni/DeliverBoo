@@ -56,18 +56,9 @@
                         <PlateBox v-for="(plate, index) in activeRestaurant.plates"
                           :key="`plate${index}`"
                           :plate="plate"
-                          :carrello='carrello'
                           @cartArray="cartArray"
                         />
-                        <!-- <PlateBox 
-                        
-                        />
-                        <PlateBox 
-                        
-                        />
-                        <PlateBox 
-                        
-                        /> -->
+
                         
                     </div>
                 </div>
@@ -131,8 +122,7 @@ export default {
       }
     },
     mounted() {
-     this.getActiveRestaurant(),
-     this.localStorageGet()
+     this.getActiveRestaurant()
     },
     methods : {
       getActiveRestaurant() {
@@ -149,9 +139,11 @@ export default {
       cartArray(plate) {
         this.itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
 
+        // pusho l'elemento nell'array e trasformo gli elementi dell'array in stringa per caricarli nel localStorage
         this.itemsArray.push(plate);
         localStorage.setItem('items', JSON.stringify(this.itemsArray));
 
+        // inizializzo il carrello trasformando le stringhe del localStorage in oggetti
         const cart = JSON.parse(localStorage.getItem('items'));
         console.log('padre', cart);
         console.log('array', this.itemsArray);
