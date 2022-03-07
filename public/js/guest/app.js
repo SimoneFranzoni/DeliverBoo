@@ -2132,11 +2132,43 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Restaurantdetail',
   components: {
     PlateBox: _partials_PlateBox_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  data: function data() {
+    return {
+      apiUrl: 'http://127.0.0.1:8000/api/ristoranti/',
+      activeRestaurant: {},
+      plates: []
+    };
+  },
+  mounted: function mounted() {
+    this.getActiveRestaurant();
+  },
+  methods: {
+    getActiveRestaurant: function getActiveRestaurant() {
+      var _this = this;
+
+      this.activeRestaurant = {};
+      axios.get(this.apiUrl + this.$route.params.slug).then(function (res) {
+        _this.activeRestaurant = res.data.restaurant;
+
+        _this.plates.push(_this.activeRestaurant.plates);
+      });
+      console.log(this.plates);
+    }
   }
 });
 
@@ -2218,18 +2250,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Restaurants',
@@ -2242,10 +2262,11 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   },
   data: function data() {
     return {
-      types: null,
-      activeRestaurants: null,
+      types: [],
+      randomTypes: [],
+      activeRestaurants: [],
       activeRestaurantsUrl: 'http://127.0.0.1:8000/api/ristoranti/tiporistorante/',
-      activeType: null,
+      activeType: {},
       counter: -1
     };
   },
@@ -2253,7 +2274,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     getApiTypes: function getApiTypes() {
       var _this = this;
 
-      this.types = null;
+      this.types = [];
       axios.get('http://127.0.0.1:8000/api/tipo/').then(function (res) {
         _this.types = res.data.types;
 
@@ -2273,13 +2294,36 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         } finally {
           _iterator.f();
         }
+
+        _this.getRandomTypes();
       });
+    },
+    getRandomTypes: function getRandomTypes() {
+      // console.log(this.types);
+      var count = 0;
+      var randomNumb = 0;
+      var randomType = {};
+
+      for (count = 0; count < 8; count++) {
+        randomNumb = this.getRandomNumber(0, this.types.length);
+        randomType = this.types[randomNumb];
+        console.log(randomNumb);
+        console.log(randomType);
+
+        if (!this.randomTypes.includes(randomType)) {
+          this.randomTypes.push(randomType);
+        } else {
+          count--;
+        }
+      }
+
+      console.log('RANDOM TYPES >>>', this.randomTypes);
     },
     getActiveRestaurants: function getActiveRestaurants() {
       var _this2 = this;
 
-      this.activeRestaurants = null;
-      this.activeType = null;
+      this.activeRestaurants = [];
+      this.activeType = {};
       axios.get(this.activeRestaurantsUrl + this.$route.params.slug).then(function (res) {
         _this2.activeRestaurants = res.data.type.restaurants;
         _this2.activeType = res.data.type;
@@ -2293,6 +2337,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         _this3.activeType = res.data.type;
       });
       this.$router.push(type.slug);
+    },
+    getRandomNumber: function getRandomNumber(min, max) {
+      return Math.floor(Math.random() * (max - min + 1) + min);
     }
   }
 });
@@ -2361,8 +2408,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'PlateBox'
+  name: 'PlateBox',
+  props: {
+    plate: Object
+  }
 });
 
 /***/ }),
@@ -2376,6 +2435,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -6907,7 +6968,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".bg[data-v-0f5c5f38] {\n  width: 100%;\n  height: 400px;\n  background-color: orange;\n}\n.container-fluid[data-v-0f5c5f38] {\n  padding: 0 8%;\n}\n.nav-menu ul li[data-v-0f5c5f38] {\n  display: flex;\n  justify-content: flex-start;\n  align-items: center;\n}\n.nav-menu ul li .bar[data-v-0f5c5f38] {\n  width: 0.5px;\n  height: 50px;\n  background-color: grey;\n  margin-right: 10px;\n}\n.nav-menu ul li a[data-v-0f5c5f38] {\n  color: #333232;\n  text-decoration: none;\n  font-size: 15px;\n  transition: transform 0.5s;\n}\n.nav-menu ul li[data-v-0f5c5f38]:hover {\n  font-weight: bold;\n}\n.nav-menu ul li:hover a[data-v-0f5c5f38] {\n  transform: translateX(10px);\n}\n.nav-menu ul li:hover .bar[data-v-0f5c5f38] {\n  width: 2px;\n  background-color: black;\n}\n.central-column[data-v-0f5c5f38] {\n  position: relative;\n}\n.central-column .box-ristorante[data-v-0f5c5f38] {\n  position: absolute;\n  width: 95%;\n  top: -10%;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  padding: 40px 0;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  border-radius: 20px;\n  background-color: white;\n}\n.central-column .type[data-v-0f5c5f38] {\n  background-color: #eeebeb;\n  transition: all 0.2s;\n  margin: 0 5px;\n  display: inline-block;\n  padding: 0 5px;\n  font-size: 20px;\n  font-weight: bold;\n  cursor: pointer;\n}\n.central-column .type[data-v-0f5c5f38]:hover {\n  background-color: #f4f2f2;\n  transform: scale(1.1);\n  border-radius: 10px;\n}\n.central-column .menu[data-v-0f5c5f38] {\n  margin-top: 100px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  align-items: center;\n  justify-content: center;\n}\n.right-column[data-v-0f5c5f38] {\n  position: relative;\n}\n.right-column .carrello[data-v-0f5c5f38] {\n  position: absolute;\n  top: -10%;\n  width: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  border-radius: 20px;\n  padding-left: 10px;\n  background-color: white;\n  padding: 20px;\n}\n.right-column .carrello .line[data-v-0f5c5f38] {\n  background-color: grey;\n  width: 100%;\n  height: 0.5px;\n  margin: 10px 0;\n}\n.right-column .carrello .plate-order[data-v-0f5c5f38] {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  padding: 10px 10px;\n}\n.fw-bold[data-v-0f5c5f38] {\n  font-weight: bold;\n}", ""]);
+exports.push([module.i, ".bg[data-v-0f5c5f38] {\n  width: 100%;\n  height: 400px;\n  background-color: #45CCBC;\n}\n.container-fluid[data-v-0f5c5f38] {\n  padding: 0 8%;\n}\n.nav-menu[data-v-0f5c5f38] {\n  position: -webkit-sticky;\n  position: sticky;\n  top: 400px;\n  left: 0;\n}\n.nav-menu ul li[data-v-0f5c5f38] {\n  display: flex;\n  justify-content: flex-start;\n  align-items: center;\n}\n.nav-menu ul li .bar[data-v-0f5c5f38] {\n  width: 1px;\n  height: 50px;\n  background-color: lightgrey;\n  margin-right: 10px;\n}\n.nav-menu ul li a[data-v-0f5c5f38] {\n  color: #333232;\n  text-decoration: none;\n  font-size: 15px;\n  transition: transform 0.5s;\n}\n.nav-menu ul li[data-v-0f5c5f38]:hover {\n  font-weight: bold;\n}\n.nav-menu ul li:hover a[data-v-0f5c5f38] {\n  transform: translateX(10px);\n}\n.nav-menu ul li:hover .bar[data-v-0f5c5f38] {\n  width: 2px;\n  background-color: black;\n}\n.central-column[data-v-0f5c5f38] {\n  position: relative;\n  padding-bottom: 100px;\n}\n.central-column .box-ristorante[data-v-0f5c5f38] {\n  position: absolute;\n  width: 95%;\n  top: -100px;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  padding: 40px 0;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  border-radius: 20px;\n  background-color: white;\n}\n.central-column .type[data-v-0f5c5f38] {\n  background-color: #eeebeb;\n  transition: all 0.2s;\n  margin: 0 5px;\n  display: inline-block;\n  padding: 0 5px;\n  font-size: 20px;\n  font-weight: bold;\n  cursor: pointer;\n}\n.central-column .type[data-v-0f5c5f38]:hover {\n  background-color: #f4f2f2;\n  transform: scale(1.1);\n  border-radius: 10px;\n}\n.central-column .menu[data-v-0f5c5f38] {\n  margin-top: 100px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  align-items: center;\n  justify-content: center;\n}\n.right-column[data-v-0f5c5f38] {\n  position: relative;\n}\n.right-column .carrello[data-v-0f5c5f38] {\n  position: absolute;\n  top: -100px;\n  width: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  border-radius: 20px;\n  padding-left: 10px;\n  background-color: white;\n  padding: 20px;\n}\n.right-column .carrello .line[data-v-0f5c5f38] {\n  background-color: grey;\n  width: 100%;\n  height: 1px;\n  margin: 10px 0;\n}\n.right-column .carrello .plate-order[data-v-0f5c5f38] {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  padding: 10px 10px;\n}\n.fw-bold[data-v-0f5c5f38] {\n  font-weight: bold;\n}", ""]);
 
 // exports
 
@@ -6926,7 +6987,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".wrapper[data-v-31969ab0] {\n  padding-top: 50px;\n}\n.wrapper .filter-column[data-v-31969ab0] {\n  width: 100%;\n  height: 700px;\n  overflow-y: auto;\n  z-index: 1;\n}\n.wrapper .filter-column li[data-v-31969ab0] {\n  border-radius: 20px;\n  border: 0.5px solid grey;\n  padding: 10px;\n  margin: 10px 0;\n  z-index: 3;\n  cursor: pointer;\n}\n.wrapper .filter-column li.active[data-v-31969ab0] {\n  border: 1px solid black;\n  font-weight: bold;\n  font-size: 18px;\n}\n.wrapper .filter-column li span[data-v-31969ab0] {\n  transition: opacity 0.5s ease-out;\n  opacity: 0;\n  height: 0;\n  overflow: hidden;\n  color: #45CCBC;\n}\n.wrapper .filter-column li[data-v-31969ab0]:hover {\n  transform: translate(20px);\n  transition: transform 0.5s;\n}\n.wrapper .filter-column li:hover span[data-v-31969ab0] {\n  opacity: 1;\n  height: auto;\n}\n.wrapper .restaurant-column[data-v-31969ab0] {\n  z-index: 1;\n  height: 700px;\n  overflow-y: auto;\n}\n.wrapper .restaurant-column .restaurant-box-row[data-v-31969ab0] {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  padding: 10px 0;\n  cursor: pointer;\n}\n.wrapper .search-input[data-v-31969ab0] {\n  display: flex;\n  align-items: center;\n  width: 100%;\n}\n.wrapper .search-input input[data-v-31969ab0] {\n  width: 90%;\n  margin-right: 5px;\n  padding: 5px 10px;\n  border-radius: 10px;\n  border: 1px solid rgba(0, 0, 0, 0.3);\n  caret-color: #45CCBC;\n}\n.wrapper .search-input input[data-v-31969ab0]:focus {\n  outline: 2px solid #45CCBC;\n}\n.wrapper .search-input .ac-btn[data-v-31969ab0] {\n  width: 60px;\n  text-align: center;\n  font-size: 16px;\n}\n.wrapper .types-row[data-v-31969ab0] {\n  width: 100%;\n  height: 150px;\n  margin: 0 1px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  flex-wrap: nowrap;\n}\n.wrapper .typebox[data-v-31969ab0] {\n  height: 100px;\n  width: 180px;\n  border-radius: 20px;\n  background-color: #45CCBC;\n  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);\n  margin-right: 10px;\n  transition: transform 0.3s;\n  position: relative;\n}\n.wrapper .typebox .title[data-v-31969ab0] {\n  position: absolute;\n  bottom: 5%;\n  left: 5%;\n  font-size: 15px;\n  color: white;\n}\n.wrapper .typebox[data-v-31969ab0]:hover {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  transform: scale(1.05, 1.1);\n  font-weight: bold;\n}", ""]);
+exports.push([module.i, ".wrapper[data-v-31969ab0] {\n  padding-top: 50px;\n}\n.wrapper .filter-column[data-v-31969ab0] {\n  width: 100%;\n  height: 700px;\n  overflow-y: auto;\n  z-index: 1;\n}\n.wrapper .filter-column li[data-v-31969ab0] {\n  border-radius: 20px;\n  border: 0.5px solid grey;\n  padding: 10px;\n  margin: 10px 0;\n  z-index: 3;\n  cursor: pointer;\n}\n.wrapper .filter-column li.active[data-v-31969ab0] {\n  border: 1px solid black;\n  font-weight: bold;\n  font-size: 18px;\n}\n.wrapper .filter-column li span[data-v-31969ab0] {\n  transition: opacity 0.5s ease-out;\n  opacity: 0;\n  height: 0;\n  overflow: hidden;\n  color: #45CCBC;\n}\n.wrapper .filter-column li[data-v-31969ab0]:hover {\n  transform: translate(20px);\n  transition: transform 0.5s;\n}\n.wrapper .filter-column li:hover span[data-v-31969ab0] {\n  opacity: 1;\n  height: auto;\n}\n.wrapper .restaurant-column[data-v-31969ab0] {\n  z-index: 1;\n  height: 700px;\n  overflow-y: auto;\n}\n.wrapper .restaurant-column .restaurant-box-row[data-v-31969ab0] {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  padding: 10px 0;\n  cursor: pointer;\n}\n.wrapper .search-input[data-v-31969ab0] {\n  display: flex;\n  align-items: center;\n  width: 100%;\n}\n.wrapper .search-input input[data-v-31969ab0] {\n  width: 90%;\n  margin-right: 5px;\n  padding: 5px 10px;\n  border-radius: 10px;\n  border: 1px solid rgba(0, 0, 0, 0.3);\n  caret-color: #45CCBC;\n}\n.wrapper .search-input input[data-v-31969ab0]:focus {\n  outline: 2px solid #45CCBC;\n}\n.wrapper .search-input .ac-btn[data-v-31969ab0] {\n  width: 60px;\n  text-align: center;\n  font-size: 16px;\n}\n.wrapper .types-row[data-v-31969ab0] {\n  width: 100%;\n  height: 150px;\n  margin: 0 1px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  flex-wrap: nowrap;\n}\n.wrapper .typebox[data-v-31969ab0] {\n  height: 100px;\n  width: 180px;\n  border-radius: 20px;\n  background-color: #45CCBC;\n  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);\n  margin-right: 10px;\n  transition: transform 0.3s;\n  position: relative;\n  cursor: pointer;\n}\n.wrapper .typebox .title[data-v-31969ab0] {\n  position: absolute;\n  bottom: 5%;\n  left: 5%;\n  font-size: 15px;\n  color: white;\n}\n.wrapper .typebox[data-v-31969ab0]:hover {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  transform: scale(1.05, 1.1);\n  font-weight: bold;\n}", ""]);
 
 // exports
 
@@ -6964,7 +7025,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".box[data-v-77410197] {\n  width: 100%;\n  height: 120px;\n  padding: 0 5%;\n  margin: 10px 0;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  border-radius: 20px;\n  transition: box-shadow 0.3s ease-in-out;\n  transition: height 0.3s, width 0.3s;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  transition: transform 0.3s;\n}\n.box[data-v-77410197]:hover {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  font-weight: bold;\n  transform: scale(1.05, 1.1);\n}\n.box .name[data-v-77410197] {\n  font-weight: bold;\n  font-size: 20px;\n}\n.box .price[data-v-77410197] {\n  font-weight: bold;\n}", ""]);
+exports.push([module.i, ".box[data-v-77410197] {\n  width: 100%;\n  height: 120px;\n  padding: 0 5%;\n  margin: 10px 0;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  border-radius: 20px;\n  transition: box-shadow 0.3s ease-in-out;\n  transition: height 0.3s, width 0.3s;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  transition: transform 0.3s;\n  cursor: pointer;\n}\n.box[data-v-77410197]:hover {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  font-weight: bold;\n  transform: scale(1.05, 1.1);\n}\n.box .name[data-v-77410197] {\n  font-weight: bold;\n  font-size: 20px;\n}\n.box .price[data-v-77410197] {\n  font-weight: bold;\n}\n.box .image[data-v-77410197] {\n  width: 130px;\n}\n.box .image img[data-v-77410197] {\n  width: 100%;\n}", ""]);
 
 // exports
 
@@ -6983,7 +7044,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".box[data-v-5d5bd708] {\n  width: 98%;\n  height: 120px;\n  display: flex;\n  align-items: center;\n  margin: 10px 0;\n  border-radius: 20px;\n  transition: box-shadow 0.3s ease-in-out;\n  transition: height 0.3s, width 0.3s;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  transition: transform 0.3s;\n}\n.box[data-v-5d5bd708]:hover {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  font-weight: bold;\n  transform: scale(1.05, 1.1);\n}\n.box .restaurant-img[data-v-5d5bd708] {\n  background-color: #45CCBC;\n  height: 90%;\n  width: 25%;\n  margin-left: 5px;\n  border-radius: 20px;\n}\n.box .name[data-v-5d5bd708] {\n  font-size: 20px;\n}\n.box .name small[data-v-5d5bd708] {\n  display: block;\n  font-style: italic;\n  font-size: 12px;\n  padding-bottom: 10px;\n}", ""]);
+exports.push([module.i, ".box[data-v-5d5bd708] {\n  width: 98%;\n  height: 120px;\n  display: flex;\n  align-items: center;\n  margin: 10px 0;\n  padding-left: 12px;\n  border-radius: 20px;\n  transition: box-shadow 0.3s ease-in-out;\n  transition: height 0.3s, width 0.3s;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  transition: transform 0.3s;\n  color: black;\n  cursor: pointer;\n}\n.box[data-v-5d5bd708]:hover {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  font-weight: bold;\n  transform: scale(1.02);\n}\n.box .restaurant-img[data-v-5d5bd708] {\n  height: 90%;\n  width: 25%;\n  border-radius: 20px;\n}\n.box .restaurant-img img[data-v-5d5bd708] {\n  width: 100%;\n  -o-object-fit: contain;\n     object-fit: contain;\n}\n.box .name[data-v-5d5bd708] {\n  font-size: 20px;\n}\n.box .name small[data-v-5d5bd708] {\n  display: block;\n  font-style: italic;\n  font-size: 12px;\n  padding-bottom: 10px;\n}", ""]);
 
 // exports
 
@@ -39177,12 +39238,26 @@ var render = function () {
   return _c("div", [
     _c("div", { staticClass: "bg" }),
     _vm._v(" "),
-    _c("div", { staticClass: "container-fluid" }, [
+    _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row" }, [
         _vm._m(0),
         _vm._v(" "),
         _c("div", { staticClass: "col-6 central-column" }, [
-          _vm._m(1),
+          _c("div", { staticClass: "box-ristorante" }, [
+            _c("h2", { staticClass: "pb-3" }, [
+              _vm._v(_vm._s(_vm.activeRestaurant.name)),
+            ]),
+            _vm._v(" "),
+            _vm._m(1),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [
+              _c("div", [_vm._v(_vm._s(_vm.activeRestaurant.address))]),
+              _vm._v(" "),
+              _c("div", { staticClass: "px-3" }, [_vm._v("|")]),
+              _vm._v(" "),
+              _c("div", [_vm._v(_vm._s(_vm.activeRestaurant.city))]),
+            ]),
+          ]),
           _vm._v(" "),
           _c(
             "div",
@@ -39190,17 +39265,14 @@ var render = function () {
             [
               _c("h4", { attrs: { id: "primi" } }, [_vm._v("Primi")]),
               _vm._v(" "),
-              _c("PlateBox"),
-              _vm._v(" "),
-              _c("PlateBox"),
-              _vm._v(" "),
-              _c("PlateBox"),
-              _vm._v(" "),
-              _c("PlateBox"),
-              _vm._v(" "),
-              _c("PlateBox"),
+              _vm._l(_vm.activeRestaurant.plates, function (plate, index) {
+                return _c("PlateBox", {
+                  key: "plate" + index,
+                  attrs: { plate: plate },
+                })
+              }),
             ],
-            1
+            2
           ),
         ]),
         _vm._v(" "),
@@ -39214,67 +39286,59 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-2 nav-menu" }, [
-      _c("ul", { staticClass: "pt-5" }, [
-        _c("li", [
-          _c("div", { staticClass: "bar" }),
+    return _c(
+      "div",
+      { staticClass: "col-2 nav-menu", attrs: { id: "stickyMenu" } },
+      [
+        _c("ul", { staticClass: "pt-5" }, [
+          _c("li", [
+            _c("div", { staticClass: "bar" }),
+            _vm._v(" "),
+            _c("a", { attrs: { href: "#antipasti" } }, [_vm._v("Antipasti")]),
+          ]),
           _vm._v(" "),
-          _c("a", { attrs: { href: "#antipasti" } }, [_vm._v("Antipasti")]),
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _c("div", { staticClass: "bar" }),
+          _c("li", [
+            _c("div", { staticClass: "bar" }),
+            _vm._v(" "),
+            _c("a", { attrs: { href: "#primi" } }, [_vm._v("Primi")]),
+          ]),
           _vm._v(" "),
-          _c("a", { attrs: { href: "#primi" } }, [_vm._v("Primi")]),
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _c("div", { staticClass: "bar" }),
+          _c("li", [
+            _c("div", { staticClass: "bar" }),
+            _vm._v(" "),
+            _c("a", { attrs: { href: "#secondi" } }, [_vm._v("Secondi")]),
+          ]),
           _vm._v(" "),
-          _c("a", { attrs: { href: "#secondi" } }, [_vm._v("Secondi")]),
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _c("div", { staticClass: "bar" }),
+          _c("li", [
+            _c("div", { staticClass: "bar" }),
+            _vm._v(" "),
+            _c("a", { attrs: { href: "#contorni" } }, [_vm._v("Contorni")]),
+          ]),
           _vm._v(" "),
-          _c("a", { attrs: { href: "#contorni" } }, [_vm._v("Contorni")]),
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _c("div", { staticClass: "bar" }),
+          _c("li", [
+            _c("div", { staticClass: "bar" }),
+            _vm._v(" "),
+            _c("a", { attrs: { href: "#dessert" } }, [_vm._v("Dessert")]),
+          ]),
           _vm._v(" "),
-          _c("a", { attrs: { href: "#dessert" } }, [_vm._v("Dessert")]),
+          _c("li", [
+            _c("div", { staticClass: "bar" }),
+            _vm._v(" "),
+            _c("a", { attrs: { href: "#bevande" } }, [_vm._v("Bevande")]),
+          ]),
         ]),
-        _vm._v(" "),
-        _c("li", [
-          _c("div", { staticClass: "bar" }),
-          _vm._v(" "),
-          _c("a", { attrs: { href: "#bevande" } }, [_vm._v("Bevande")]),
-        ]),
-      ]),
-    ])
+      ]
+    )
   },
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "box-ristorante" }, [
-      _c("h2", { staticClass: "pb-3" }, [_vm._v("Pizzeria da Beppe")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "pb-2" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "type" }, [_vm._v("Pizza")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "type" }, [_vm._v("Italiano")]),
-        ]),
-      ]),
-      _vm._v(" "),
+    return _c("div", { staticClass: "pb-2" }, [
       _c("div", { staticClass: "row" }, [
-        _c("div", [_vm._v("Via fasulla 0")]),
+        _c("div", { staticClass: "type" }, [_vm._v("Pizza")]),
         _vm._v(" "),
-        _c("div", { staticClass: "px-3" }, [_vm._v("|")]),
-        _vm._v(" "),
-        _c("div", [_vm._v("Brescia")]),
+        _c("div", { staticClass: "type" }, [_vm._v("Italiano")]),
       ]),
     ])
   },
@@ -39391,9 +39455,28 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "wrapper" }, [
     _c("div", { staticClass: "container" }, [
-      _c("div", [_vm._v("Le cucine più richieste")]),
+      _c("div", [_vm._v("Scelti per te")]),
       _vm._v(" "),
-      _vm._m(0),
+      _c(
+        "div",
+        { staticClass: "row types-row pb-4" },
+        _vm._l(_vm.randomTypes, function (type, index) {
+          return _c(
+            "div",
+            {
+              key: "randomType" + index,
+              staticClass: "typebox",
+              on: {
+                click: function ($event) {
+                  return _vm.changeActiveRestaurants(type)
+                },
+              },
+            },
+            [_c("div", { staticClass: "title" }, [_vm._v(_vm._s(type.name))])]
+          )
+        }),
+        0
+      ),
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-3 filter-column" }, [
@@ -39416,9 +39499,9 @@ var render = function () {
                 [
                   _c("span", [_vm._v("v")]),
                   _vm._v(
-                    "\r\n                        " +
+                    "\n                        " +
                       _vm._s(type.name) +
-                      "\r\n\r\n                    "
+                      "\n\n                    "
                   ),
                 ]
               )
@@ -39469,42 +39552,7 @@ var render = function () {
     ]),
   ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row types-row pb-4" }, [
-      _c("div", { staticClass: "typebox" }, [
-        _c("div", { staticClass: "title" }, [_vm._v("Italiano")]),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "typebox" }, [
-        _c("div", { staticClass: "title" }, [_vm._v("Cinese")]),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "typebox" }, [
-        _c("div", { staticClass: "title" }, [_vm._v("Pizza")]),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "typebox" }, [
-        _c("div", { staticClass: "title" }, [_vm._v("Hamburger")]),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "typebox" }, [
-        _c("div", { staticClass: "title" }, [_vm._v("Poke")]),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "typebox" }, [
-        _c("div", { staticClass: "title" }, [_vm._v("Kebab")]),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "typebox" }, [
-        _c("div", { staticClass: "title" }, [_vm._v("Sushi")]),
-      ]),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -39573,22 +39621,27 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _vm.plate.is_available == 1
+    ? _c("div", { staticClass: "box" }, [
+        _c("div", { staticClass: "left" }, [
+          _c("div", { staticClass: "name" }, [_vm._v(_vm._s(_vm.plate.name))]),
+          _vm._v(" "),
+          _c("div", [_vm._v(_vm._s(_vm.plate.description))]),
+          _vm._v(" "),
+          _c("div", { staticClass: "price" }, [
+            _vm._v(_vm._s(_vm.plate.price)),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "right" }, [
+          _c("div", { staticClass: "image" }, [
+            _c("img", { attrs: { src: _vm.plate.cover, alt: _vm.plate.name } }),
+          ]),
+        ]),
+      ])
+    : _vm._e()
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "box" }, [
-      _c("div", { staticClass: "name" }, [_vm._v("Pizza margherita")]),
-      _vm._v(" "),
-      _c("div", [_vm._v("Lorem")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "price" }, [_vm._v("5.50 €")]),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -39610,44 +39663,57 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "box" }, [
-    _c("div", { staticClass: "restaurant-img float-left" }),
-    _vm._v(" "),
-    _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-6" }, [
-          _c("div", { staticClass: "name" }, [
-            _vm._v(
-              "\n          " + _vm._s(_vm.restaurant.name) + "\n          "
-            ),
-            _c("small", [_vm._v("Tipologia: " + _vm._s(_vm.type.name))]),
+  return _c(
+    "router-link",
+    {
+      staticClass: "box",
+      attrs: {
+        to: { name: "restaurantdetail", params: { slug: _vm.restaurant.slug } },
+      },
+    },
+    [
+      _c("div", { staticClass: "restaurant-img float-left" }, [
+        _c("img", {
+          attrs: { src: _vm.restaurant.cover, alt: _vm.restaurant.name },
+        }),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-6" }, [
+            _c("div", { staticClass: "name" }, [
+              _vm._v(
+                "\n           " + _vm._s(_vm.restaurant.name) + "\n           "
+              ),
+              _c("small", [_vm._v("Tipologia: " + _vm._s(_vm.type.name))]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "città" }, [
+              _vm._v(
+                "\n           " + _vm._s(_vm.restaurant.city) + "\n         "
+              ),
+            ]),
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "città" }, [
-            _vm._v(
-              "\n          " + _vm._s(_vm.restaurant.city) + "\n          "
-            ),
-          ]),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-6" }, [
-          _c("div", [
-            _vm._v(
-              "\n          " + _vm._s(_vm.restaurant.address) + "\n          "
-            ),
-          ]),
-          _vm._v(" "),
-          _c("div", [
-            _vm._v(
-              "\n          " +
-                _vm._s(_vm.restaurant.phone_number) +
-                "\n          "
-            ),
+          _c("div", { staticClass: "col-6" }, [
+            _c("div", [
+              _vm._v(
+                "\n           " + _vm._s(_vm.restaurant.address) + "\n         "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _vm._v(
+                "\n           " +
+                  _vm._s(_vm.restaurant.phone_number) +
+                  "\n         "
+              ),
+            ]),
           ]),
         ]),
       ]),
-    ]),
-  ])
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -55478,7 +55544,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     name: 'restaurants',
     component: _components_pages_Restaurants_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
   }, {
-    path: '/restaurantdetail',
+    path: '/restaurantdetail/:slug',
     name: 'restaurantdetail',
     component: _components_pages_Restaurantdetail_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
   }, {
@@ -55497,7 +55563,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\ssimo\Documents\boolean\html\lara\progetto-finale\DeliverBoo\resources\js\guest\app.js */"./resources/js/guest/app.js");
+module.exports = __webpack_require__(/*! /Users/albertonicolaciufici/Desktop/Boolean/Progetto Finale/DeliverBoo/resources/js/guest/app.js */"./resources/js/guest/app.js");
 
 
 /***/ })

@@ -2,29 +2,15 @@
 <div class="wrapper">
 
     <div class="container">
-         <div>Le cucine più richieste</div>
+         <div>Scelti per te</div>
         <div class="row types-row pb-4">
-            <div class="typebox" >
-                <div class="title">Italiano</div>
+            <div class="typebox"
+            v-for="(type, index) in randomTypes"
+            :key="`randomType${index}`"
+            @click="changeActiveRestaurants(type)">
+                <div class="title">{{type.name}}</div>
             </div>
-            <div class="typebox">
-                <div class="title">Cinese</div>
-            </div>
-            <div class="typebox">
-                <div class="title">Pizza</div>
-            </div>
-            <div class="typebox">
-                <div class="title">Hamburger</div>
-            </div>
-            <div class="typebox">
-                <div class="title">Poke</div>
-            </div>
-            <div class="typebox">
-                <div class="title">Kebab</div>
-            </div>
-            <div class="typebox">
-                <div class="title">Sushi</div>
-            </div>
+            
         </div>
         <div class="row">
             <div class="col-3 filter-column">
@@ -55,11 +41,13 @@
 
                 <div class="restaurant-box-row">
                     
-                    <RestaurantBox 
-                      v-for="restaurant in activeRestaurants" 
-                      :key="restaurant.id" 
-                      :restaurant="restaurant"
-                      :type="activeType"/>
+                    
+                      <RestaurantBox 
+                        v-for="restaurant in activeRestaurants" 
+                        :key="restaurant.id" 
+                        :restaurant="restaurant"
+                        :type="activeType"/>
+                   
                     
 
                 </div>
@@ -85,16 +73,17 @@ export default {
     },
     data(){
         return {
-            types: null,
-            activeRestaurants: null,
+            types: [],
+            randomTypes: [],
+            activeRestaurants: [],
             activeRestaurantsUrl: 'http://127.0.0.1:8000/api/ristoranti/tiporistorante/',
-            activeType: null,
-            counter: -1
+            activeType: {},
+            counter: -1,
         }
     },
     methods: {
         getApiTypes() {
-            this.types = null;
+            this.types = [];
             axios.get('http://127.0.0.1:8000/api/tipo/')
             .then(res => {
                 this.types = res.data.types;
@@ -103,11 +92,32 @@ export default {
                     this.counter = type.id-1;
                   }
                 }
+                this.getRandomTypes();
+
             })
         },
+        getRandomTypes() {
+          // console.log(this.types);
+          let count = 0;
+          let randomNumb = 0;
+          let randomType = {};
+          for (count = 0; count < 8; count++) {
+            randomNumb = this.getRandomNumber(0, this.types.length);
+            randomType = this.types[randomNumb];
+            console.log(randomNumb);
+            console.log(randomType);
+            if (!this.randomTypes.includes(randomType)) {
+              this.randomTypes.push(randomType)
+            } else {
+              count--
+            }
+          }
+          console.log('RANDOM TYPES >>>', this.randomTypes);
+
+        },
         getActiveRestaurants() {
-          this.activeRestaurants = null;
-          this.activeType = null;
+          this.activeRestaurants = [];
+          this.activeType = {};
           axios.get(this.activeRestaurantsUrl + this.$route.params.slug)
           .then(res => {
             this.activeRestaurants = res.data.type.restaurants;
@@ -121,6 +131,10 @@ export default {
             this.activeType = res.data.type;
           })
           this.$router.push(type.slug);
+        },
+
+        getRandomNumber(min, max) {
+           return Math.floor(Math.random() * (max - min + 1) + min);
         }
     }
 }
@@ -237,6 +251,7 @@ export default {
         margin-right: 10px;
         transition: transform 0.3s;
         position: relative;
+        cursor: pointer;
 
         .title{
             position: absolute;
