@@ -119,13 +119,13 @@
           
           <div class="img-frame-team5">
             <a href="{{route('admin.miei-ristoranti.piatti.show',[$ristorante->slug,$piatto->slug])}}" class="">
-              @if ($ristorante->cover)
+              @if ($piatto->cover)
               <div class="img-team5">
-                <img src="{{asset('storage/' . $ristorante->cover)}}" alt="{{$ristorante->name}}">
+                <img src="{{asset('storage/' . $piatto->cover)}}" alt="{{$piatto->name}}">
               </div>
               @else
               <div class="img-team5">
-                <img  src="https://via.placeholder.com/350x290/45CCBC/FFFFFF?Text=DeliverBoo+restaurant" alt="{{$ristorante->name}}">
+                <img  src="https://via.placeholder.com/350x290/45CCBC/FFFFFF?Text=DeliverBoo+restaurant" alt="{{$piatto->name}}">
               </div>
               @endif
               

@@ -80,6 +80,15 @@
     flex-wrap: wrap;
    
   }
+  .img-team5{
+    img{
+    object-fit: cover;
+    object-position: center;
+     height: 120px;
+     width: 100%;
+   }
+  }
+
 .flip-card {
  
   background-color: transparent;
@@ -169,6 +178,10 @@
        margin:20px auto;
        border-radius: 300px;
        border:4px solid white;
+       img{
+        height: 160px;
+        width: 100%;
+      }
      }
    }
     .plate-name{
@@ -189,13 +202,13 @@
   .restaurant-name-team5{
     background-image: linear-gradient(to left,$primary-color,darken($primary-color,40));
   }
-  .button-card-middle-view-team5{
-    display:none;
-  }
+ 
 
   .img-team5{
-    max-height: 238px;
-    
+    img{
+      // height: 400px;
+      width: 100%;
+    }
   
   }
 }
