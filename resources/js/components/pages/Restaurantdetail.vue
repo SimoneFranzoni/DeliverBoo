@@ -201,10 +201,11 @@ export default {
 .central-column{
     position: relative;
     padding-bottom: 100px;
+    
     .box-ristorante{
         position: absolute;
         width: 95%;
-        top: -100px;
+        top: -150px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -234,10 +235,12 @@ export default {
     }
 
     .menu{
+      // height: 700px;
+      // overflow: auto;
         margin-top: 100px;
+        padding-top: 200px;
         display: flex;
         flex-direction: column;
-        align-items: center;
         align-items: center;
         justify-content: center;
     }
@@ -251,7 +254,7 @@ export default {
         
         position: absolute;
         // top: -10%;
-        top: -100px;
+        top: -150px;
         width: 100%;
         height: fit-content;
         box-shadow: 0 3px 10px rgba(0,0,0,0.3);

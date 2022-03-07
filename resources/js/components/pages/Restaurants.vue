@@ -97,21 +97,35 @@ export default {
             })
         },
         getRandomTypes() {
-          // console.log(this.types);
+          console.log('TIPI >>>>',this.types);
           let count = 0;
           let randomNumb = 0;
           let randomType = {};
           for (count = 0; count < 8; count++) {
             randomNumb = this.getRandomNumber(0, this.types.length);
             randomType = this.types[randomNumb];
-            console.log(randomNumb);
-            console.log(randomType);
-            if (!this.randomTypes.includes(randomType)) {
+            // console.log(randomNumb);
+            // console.log(randomType);
+            if (!this.randomTypes.includes(randomType) && randomType != undefined) {
               this.randomTypes.push(randomType)
             } else {
               count--
             }
           }
+
+
+          // while (count < 8) {
+          //   randomNumb = this.getRandomNumber(0, this.types.length);
+          //   randomType = this.types[randomNumb];
+          //   if (!this.randomTypes.includes(randomType) && randomType != undefined) {
+          //     this.randomTypes.push(randomType)
+          //     count++
+          //   } else {
+          //     count--
+          //   }
+          // }
+
+
           console.log('RANDOM TYPES >>>', this.randomTypes);
 
         },
@@ -242,6 +256,9 @@ export default {
     }
 
     .typebox{
+      display: flex;
+      justify-content: center;
+      align-items: center;
         height: 100px;
         width: 180px;
         border-radius: 20px;
@@ -254,10 +271,7 @@ export default {
         cursor: pointer;
 
         .title{
-            position: absolute;
-            bottom: 5%;
-            left: 5%;
-            font-size: 15px;
+            font-size: 18px;
             color: white;
         }
     }
