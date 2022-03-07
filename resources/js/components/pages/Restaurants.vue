@@ -7,7 +7,8 @@
             <div class="typebox"
             v-for="(type, index) in randomTypes"
             :key="`randomType${index}`"
-            @click="changeActiveRestaurants(type)">
+            @click="changeActiveRestaurants(type), randomTypeCounter = index, counter = -1"
+            :class="{active: randomTypeCounter === index}">
                 <div class="title">{{type.name}}</div>
             </div>
             
@@ -18,7 +19,7 @@
                 <ul class="filter-list">
                     <li v-for="(type, index) in types" 
                     :key="`type${index}`"
-                    @click="changeActiveRestaurants(type), counter = index"
+                    @click="changeActiveRestaurants(type), counter = index, randomTypeCounter = -1"
                     :class="{active: counter === index}">
                   
                         <span>v</span>
@@ -62,9 +63,11 @@
                 
 
                 <div class="restaurant-box-row">
-                    <RestaurantBox 
-                        v-for="restaurant in activeRestaurants" 
-                        :key="restaurant.id" 
+                    
+                    
+                      <RestaurantBox 
+                        v-for="(restaurant, index) in activeRestaurants" 
+                        :key="`restaurant${index}`" 
                         :restaurant="restaurant"
                         :type="activeType"/>
                 </div>
@@ -96,7 +99,8 @@ export default {
             activeRestaurantsUrl: 'http://127.0.0.1:8000/api/ristoranti/tiporistorante/',
             activeType: {},
             counter: -1,
-            filter_close: false,
+            filter_close: true,
+            randomTypeCounter: -1
         }
     },
     methods: {
@@ -115,16 +119,16 @@ export default {
             })
         },
         getRandomTypes() {
-          // console.log(this.types);
+          console.log('TIPI >>>>',this.types);
           let count = 0;
           let randomNumb = 0;
           let randomType = {};
           for (count = 0; count < 8; count++) {
             randomNumb = this.getRandomNumber(0, this.types.length);
             randomType = this.types[randomNumb];
-            console.log(randomNumb);
-            console.log(randomType);
-            if (!this.randomTypes.includes(randomType)) {
+            // console.log(randomNumb);
+            // console.log(randomType);
+            if (!this.randomTypes.includes(randomType) && randomType != undefined) {
               this.randomTypes.push(randomType)
             } else {
               count--
@@ -291,6 +295,9 @@ export default {
     }
 
     .typebox{
+      display: flex;
+      justify-content: center;
+      align-items: center;
         height: 100px;
         width: 180px;
         border-radius: 20px;
@@ -301,12 +308,15 @@ export default {
         transition: transform 0.3s;
         position: relative;
         cursor: pointer;
+        &.active {
+          box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+          transform: scale(1.05, 1.1);
+          font-weight: bold;
+          border: 2px solid white;
+        }
 
         .title{
-            position: absolute;
-            bottom: 5%;
-            left: 5%;
-            font-size: 15px;
+            font-size: 18px;
             color: white;
         }
     }
