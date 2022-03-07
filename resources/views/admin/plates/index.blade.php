@@ -30,8 +30,8 @@
             </div>
           </div>
           <div class="col-12 col-md-6 mt-5">
-            <h6>Indirizzo :{{$ristorante->address}}</h6>
-            <h6>Teleforno :{{$ristorante->phone_number}}</h6>
+            <h6>Indirizzo : {{$ristorante->address}}</h6>
+            <h6>Teleforno : {{$ristorante->phone_number}}</h6>
             @forelse ($ristorante->types as $type)
                 <span class="badge-team5">{{$type->name}}</span>
             @empty
@@ -85,7 +85,15 @@
               @endif
             </div>
             <div class="card-front-bottom-team5">
-              {{$piatto->name}}
+              <h6>{{$piatto->name}}</h6>
+              <div class="plate-info-price-available">
+                <span class="text-black-50">Prezzo : {{$piatto->price}}€</span> 
+                @if($piatto->is_available)
+                <span class="text-success"><strong>disp</strong></span>
+                @else
+                    <span class="text-danger"><strong>non disp</strong></span> 
+                @endif  
+              </div>
             </div>
           </div> 
           
@@ -131,7 +139,19 @@
               
             </a>
             <div class="plate-name">
-              <h5>{{$piatto->name}}</h5> 
+              <div class="plate-info">
+                
+                <h5> {{$piatto->name}} </h5> 
+                  
+                <div class="plate-info-price-available ">
+                  <span class="text-black-50">Prezzo : {{$piatto->price}}€ </span> 
+                  @if($piatto->is_available)
+                    <span class="text-success"><strong>disp</strong></span>
+                  @else
+                      <span class="text-danger"><strong>non disp</strong></span> 
+                @endif  
+                </div>
+              </div>
               <div class="button-card-middle-view-team5">
                 <a  href="{{route('admin.miei-ristoranti.piatti.edit',[$ristorante->slug,$piatto->slug])}}">
                   <button type="button" class="btn-team5" style="font-size: 12px;  width:80%"> Modifica</button>

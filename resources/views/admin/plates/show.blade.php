@@ -30,7 +30,14 @@
     <h3>Descrizione</h3>
     <p>{{$piatto->description}}</p>
     <h3>Prezzo</h3>
-    <p>{{$piatto->price}}</p>
+    <p>{{$piatto->price}}€</p>
+    <h3>Disponibilità</h3>
+    @if($piatto->is_available)
+      <span class="bg-success text-white px-1"><strong>Disponibile</strong></span>
+      @else
+          <span class="bg-danger text-white px-1"><strong>Non disponibile</strong></span> 
+      @endif  
+    <p>{{$piatto->is_availeble}}</p>
     {{-- bottoni modifica e elimina --}}
     <div class="">
               
