@@ -3,29 +3,29 @@
 @section('dashboard-content')
   <div class="">
     @if (count($ristoranti)=== 0)
-    <div style="padding:50px; margin:100px;">
+    <div style="margin:50px;">
 
-      <h1 class="text-center">Non hai ancora registrato i tuoi ristoranti</h1>
+      <h2 class="card-team5 text-center text-danger">Non hai ancora registrato i tuoi ristoranti</h2>
     </div>
       
       
       
       @else
       <div class="d-flex">
-        <h1  class="col-md-8 mb-5 text-center mt-3">I miei ristoranti</h1>
+        <h1  class="col-12 col-lg-8 text-center m-3">I miei ristoranti</h1>
       </div>
     
 
-      <div style="padding:0px;">
+      <div class="restaurant-slider-team5 ">
         @foreach ($ristoranti as $ristorante)
-          <div class="card-team5">
-            <div class="d-flex flex-wrap justify-content-between mb-3">
+          <div class="">
+            <div class="card-team5 d-flex flex-wrap justify-content-between">
               <div class="col-12 col-md-8 d-flex align-items-center">
-                <h2><a href="{{route('admin.miei-ristoranti.piatti.index',$ristorante->slug)}}">{{$ristorante->name}}</a></h2>
+                <h3><a href="{{route('admin.miei-ristoranti.piatti.index',$ristorante->slug)}}">{{$ristorante->name}}</a></h3>
 
               </div>
               <div class="d-flex col-12 col-md-4">
-                <a  href="{{route('admin.miei-ristoranti.edit', $ristorante)}}">
+                <a  href="{{route('admin.miei-ristoranti.edit', $ristorante->slug)}}">
                   <button class="btn-team5 mr-1">Modifica</button>  
                 </a>
 
@@ -42,21 +42,9 @@
       </div>
     @endif
 
-
-       {{-- link di pagina precedente --}}
-    <h2 >
-      <a  href="{{route('admin.index')}}">
-       <button class="btn-team5 btn-back-team5">Back <<</button> 
-      </a>
-    </h2>
   </div> 
 
-
-
-
-  <div>   
-      {{ $ristoranti->links() }}
-  </div>    
+   
 @endsection
           
    

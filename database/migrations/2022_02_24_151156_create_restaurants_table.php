@@ -22,8 +22,6 @@ class CreateRestaurantsTable extends Migration
             $table->string('zip_code');
             $table->string('phone_number');
             $table->string('p_iva');
-            // $table->string('cover')->nullable();
-            // $table->string('cover_original_name')->nullable();
             $table->timestamps();            
         });
     }

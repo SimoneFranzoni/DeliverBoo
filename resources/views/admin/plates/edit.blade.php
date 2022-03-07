@@ -5,9 +5,9 @@
 
 
   <div class="row">
-    <div class="col-6 offset-3 offset-lg-0">
+    <div class="col-10 offset-1 offset-lg-0">
  
-      <h1>Modificare piatto : {{$piatto->name}}</h1>
+      <h2 class="mt-4">Modificare piatto : {{$piatto->name}}</h2>
       
       {{-- si passano due parametri causa utilizzo CRUD innestata(vedi rotte con route:list) --}}
       <form action="{{route('admin.miei-ristoranti.piatti.update',[$ristorante,$piatto])}}" 
