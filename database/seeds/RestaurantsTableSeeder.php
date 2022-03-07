@@ -23,7 +23,7 @@ class RestaurantsTableSeeder extends Seeder
         $newRestaurant->zip_code = $restaurant['zip_code'];
         $newRestaurant->phone_number = $restaurant['phone_number'];
         $newRestaurant->p_iva = strval(Restaurant::randomNumber(11));
-        // $newRestaurant->types()->attach($restaurant['types']);
+        $newRestaurant->types()->attach($restaurant->types);
         $newRestaurant->save();
       }
 
