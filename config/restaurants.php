@@ -18,7 +18,7 @@ return [
     'address'=>'Via delle balene 45',
     'zip_code'=>'01245',
     'phone_number'=>'3252244445',
-    'types' => [15,23]
+    // 'types' => [15,23]
   ],
   [
     'name'=>'La Mucca Assassina',
@@ -26,7 +26,7 @@ return [
     'address'=>'Via dei Platani 7',
     'zip_code'=>'01245',
     'phone_number'=>'3252244445',
-    'types' => [4,18,20]
+    // 'types' => [4,18,20]
   ],
   [
     'name'=>'Vuliò',
