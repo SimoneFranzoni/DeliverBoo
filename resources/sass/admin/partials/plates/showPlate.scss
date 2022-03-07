@@ -1,0 +1,12 @@
+.img-show-team5{
+  max-height: 350px;
+  max-width: 400px;
+  border-radius: 300px;
+  overflow: hidden;
+  border: 8px solid white !important;
+  margin:auto;
+  img{
+    object-fit: center;
+    width: 100%;
+  }
+}

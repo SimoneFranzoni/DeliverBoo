@@ -1,9 +1,9 @@
 <template>
     <div>
         <div class="bg"></div>
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
-                <div class="col-2 nav-menu">
+                <div class="col-2 nav-menu" id="stickyMenu">
                     <ul class="pt-5">
                         <li>
                             <div class="bar"></div>
@@ -33,7 +33,7 @@
                 </div>
                 <div class="col-6 central-column">
                     <div class="box-ristorante">
-                        <h2 class="pb-3">Pizzeria da Beppe</h2>
+                        <h2 class="pb-3">{{activeRestaurant.name}}</h2>
                         <div class="pb-2">
                             <div class="row">
                                 <div class="type">Pizza</div>
@@ -41,18 +41,27 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div>Via fasulla 0</div>
+                            <div>{{activeRestaurant.address}}</div>
                             <div class="px-3">|</div>
-                            <div>Brescia</div>
+                            <div>{{activeRestaurant.city}}</div>
                         </div>
                     </div>
                     <div class="menu pt-5">
                         <h4 id="primi">Primi</h4>
-                        <PlateBox />
-                        <PlateBox />
-                        <PlateBox />
-                        <PlateBox />
-                        <PlateBox />
+                        <PlateBox v-for="(plate, index) in activeRestaurant.plates"
+                          :key="`plate${index}`"
+                          :plate="plate"
+                        />
+                        <!-- <PlateBox 
+                        
+                        />
+                        <PlateBox 
+                        
+                        />
+                        <PlateBox 
+                        
+                        /> -->
+                        
                     </div>
                 </div>
                 <div class="col-4 right-column">
@@ -109,6 +118,27 @@ export default {
     components:  {
         PlateBox,
     },
+    data() {
+      return {
+        apiUrl: 'http://127.0.0.1:8000/api/ristoranti/',
+        activeRestaurant: {},
+        plates: []
+      }
+    },
+    mounted() {
+     this.getActiveRestaurant()
+    },
+    methods : {
+      getActiveRestaurant() {
+        this.activeRestaurant = {};
+        axios.get(this.apiUrl + this.$route.params.slug)
+        .then(res => {
+          this.activeRestaurant = res.data.restaurant;
+          this.plates.push(this.activeRestaurant.plates);
+        })
+        console.log(this.plates);
+      }
+    }
 }
 </script>
 
@@ -119,7 +149,7 @@ export default {
 .bg{
     width: 100%;
     height: 400px;
-    background-color: orange;
+    background-color: $primary-color;
 }
 
 .container-fluid{
@@ -127,7 +157,9 @@ export default {
 }
 
 .nav-menu{
-    
+    position: sticky;
+    top: 400px;
+    left: 0;
     ul{
         //position: fixed;
         li{
@@ -136,9 +168,9 @@ export default {
             align-items: center;
 
             .bar{
-                width: 0.5px;
+                width: 1px;
                 height: 50px;
-                background-color: grey;
+                background-color: lightgrey;
                 margin-right: 10px;
             }
 
@@ -168,11 +200,11 @@ export default {
 
 .central-column{
     position: relative;
-
+    padding-bottom: 100px;
     .box-ristorante{
         position: absolute;
         width: 95%;
-        top: -10%;
+        top: -100px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -218,7 +250,8 @@ export default {
     .carrello{
         
         position: absolute;
-        top: -10%;
+        // top: -10%;
+        top: -100px;
         width: 100%;
         height: fit-content;
         box-shadow: 0 3px 10px rgba(0,0,0,0.3);
@@ -231,7 +264,7 @@ export default {
         .line{
             background-color: grey;
             width: 100%;
-            height: 0.5px;
+            height: 1px;
             margin: 10px 0;
         }
 

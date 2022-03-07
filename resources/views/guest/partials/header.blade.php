@@ -42,8 +42,8 @@
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-                  @if (Route::currentRouteName()!='admin.index')
-                    <a class="dropdown-item ac-btn" href="{{ route('admin.index') }}">Il Tuo Profilo</a>
+                  @if (Route::currentRouteName()!='admin.miei-ristoranti.index')
+                    <a class="dropdown-item ac-btn" href="{{ route('admin.miei-ristoranti.index') }}">Il Tuo Profilo</a>
                   @endif
 
                     <a class="dropdown-item ac-btn" href="{{ route('logout') }}"

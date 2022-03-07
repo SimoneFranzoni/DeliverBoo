@@ -2,7 +2,7 @@
 
 @section('dashboard-content')
 <div class="container">
-   <h1 class="">Crea il tuo ristorante</h1>
+   <h2 class="mt-4">Crea il tuo ristorante</h1>
    
    <form action="{{route('admin.miei-ristoranti.store')}}"
    enctype="multipart/form-data"

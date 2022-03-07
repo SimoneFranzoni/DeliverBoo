@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Order;
 use App\Restaurant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrdersController extends Controller 
 {
@@ -16,13 +17,13 @@ class OrdersController extends Controller
      */
     public function index($slug)
     {
-
+        $user = Auth::user();
         $restaurant= Restaurant::where('slug',$slug)->first();
         $orders = Order::where('restaurant_id',$restaurant->id)->with('plates')->get();
       
         
         
-        return view('admin.orders.index',compact('restaurant','orders'));
+        return view('admin.orders.index',compact('restaurant','orders','user'));
     }
 
     /**
