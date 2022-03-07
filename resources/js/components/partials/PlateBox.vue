@@ -40,25 +40,23 @@ export default {
     data() {
       return {
         cartItemCounter: 0,
-        items: [],
-        singItem: {
-          name: '',
-          price: null
-        }
       }
     },
     methods: {
       saveItem(plate) {
-
-        this.singItem.name = localStorage.setItem('name', plate.name);
-        this.singItem.price = localStorage.setItem('price', plate.price);
-        this.items.push(this.singItem);
-        localStorage.setItem('items', JSON.stringify(this.items))
-        this.$emit('cartArray', this.items);
-        console.log(localStorage.getItem('items'));
+        console.log('memeoria', localStorage);
+        this.$emit('cartArray', plate);
       }
     }
 }
+
+
+
+// this.singItem = localStorage.setItem('name', plate.name);
+// this.items.push(this.singItem);
+// console.log('array', this.singItem);
+// localStorage.setItem('items', JSON.stringify(this.items))
+// console.log(localStorage.getItem('items'));
 </script>
 
 <style lang="scss" scoped>
