@@ -128,7 +128,7 @@ export default {
         activeRestaurant: {},
         plates: [],
         cartItems: [],
-        carrello:[],
+        vecchioCarrello:[],
       }
     },
     mounted() {

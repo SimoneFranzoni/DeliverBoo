@@ -2158,7 +2158,7 @@ __webpack_require__.r(__webpack_exports__);
       activeRestaurant: {},
       plates: [],
       cartItems: [],
-      carrello: []
+      vecchioCarrello: []
     };
   },
   mounted: function mounted() {
@@ -2450,7 +2450,7 @@ __webpack_require__.r(__webpack_exports__);
   name: 'PlateBox',
   props: {
     plate: Object,
-    carrello: Array
+    vecchioCarrello: Array
   },
   mounted: function mounted() {// console.log('MOUNTED >>', localStorage);
   },
@@ -2463,7 +2463,7 @@ __webpack_require__.r(__webpack_exports__);
         name: '',
         price: null
       },
-      carrello: []
+      nuovoCarrello: []
     };
   },
   methods: {

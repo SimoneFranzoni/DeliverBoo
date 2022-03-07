@@ -33,7 +33,7 @@ export default {
     name: 'PlateBox',
     props: {
       plate: Object,
-      carrello: Array,
+      vecchioCarrello: Array,
     },
     mounted() {
       // console.log('MOUNTED >>', localStorage);
@@ -47,7 +47,7 @@ export default {
           name: '',
           price: null
         },
-        carrello:[],
+        nuovoCarrello:[],
       }
     },
     methods: {
