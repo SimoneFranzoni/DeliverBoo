@@ -2490,7 +2490,11 @@ __webpack_require__.r(__webpack_exports__);
       // console.log(localStorage.getItem('items'));
     }
   }
-});
+}); // this.singItem = localStorage.setItem('name', plate.name);
+// this.items.push(this.singItem);
+// console.log('array', this.singItem);
+// localStorage.setItem('items', JSON.stringify(this.items))
+// console.log(localStorage.getItem('items'));
 
 /***/ }),
 

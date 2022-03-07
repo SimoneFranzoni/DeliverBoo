@@ -81,6 +81,14 @@ export default {
       }
     }
 }
+
+
+
+// this.singItem = localStorage.setItem('name', plate.name);
+// this.items.push(this.singItem);
+// console.log('array', this.singItem);
+// localStorage.setItem('items', JSON.stringify(this.items))
+// console.log(localStorage.getItem('items'));
 </script>
 
 <style lang="scss" scoped>
