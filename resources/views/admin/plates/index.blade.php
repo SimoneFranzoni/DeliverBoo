@@ -74,13 +74,13 @@
         <div class="flip-card-inner">
           <div class="flip-card-front ">
             <div class="card-front-top-team5">
-              @if ($ristorante->cover)
+              @if ($piatto->cover)
               <div class="img-team5">
-                <img src="{{asset('storage/' . $ristorante->cover)}}" alt="{{$ristorante->name}}">
+                <img src="{{asset('storage/' . $piatto->cover)}}" alt="{{$piatto->name}}">
               </div>
               @else
               <div class="img-team5">
-                <img  src="https://via.placeholder.com/350x290/45CCBC/FFFFFF?Text=DeliverBoo+restaurant" alt="{{$ristorante->name}}">
+                <img  src="https://via.placeholder.com/350x290/45CCBC/FFFFFF?Text=DeliverBoo+restaurant" alt="{{$piatto->name}}">
               </div>
               @endif
             </div>
