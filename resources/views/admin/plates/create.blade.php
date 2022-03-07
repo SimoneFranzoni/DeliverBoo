@@ -5,9 +5,9 @@
  
  
   <div class="row">
-    <div class="col-6 offset-3 offset-lg-0">
+    <div class="col-10 offset-1 offset-lg-0">
  
-      <h1>Nuovo piatto</h1>
+      <h2 class="mt-4">Nuovo piatto</h1>
       <form action="{{route('admin.miei-ristoranti.piatti.store',$ristorante)}}"
       enctype="multipart/form-data"
       method="POST">
@@ -131,9 +131,9 @@
     </div>
   </div>
   <h2 class="mt-4">
-    <a  href="{{route('admin.miei-ristoranti.index')}}">
-       <button class="btn-team5 btn-back-team5">Back <<</button> 
+    <a  href="{{route('admin.miei-ristoranti.piatti.index',$ristorante->slug)}}">
+        <button class="btn-team5 btn-back-team5">Back <<</button> 
     </a>
-  </h2>
+  </h2>  
 </div>
 @endsection
