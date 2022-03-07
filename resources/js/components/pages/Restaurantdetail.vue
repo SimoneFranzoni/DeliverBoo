@@ -127,8 +127,7 @@ export default {
         apiUrl: 'http://127.0.0.1:8000/api/ristoranti/',
         activeRestaurant: {},
         plates: [],
-        cartItems: [],
-        vecchioCarrello:[],
+        itemsArray: [],
       }
     },
     mounted() {
@@ -146,14 +145,16 @@ export default {
         console.log(this.plates);
       },
 
-      localStorageGet() {
-        console.log(JSON.parse(localStorage.getItem('items')));
-        return JSON.parse(localStorage.getItem('items'))
-      },
 
-      cartArray(items) {
-        this.cartItems.push(items);
-        console.log('padre', this.cartItems);
+      cartArray(plate) {
+        this.itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
+
+        this.itemsArray.push(plate);
+        localStorage.setItem('items', JSON.stringify(this.itemsArray));
+
+        const cart = JSON.parse(localStorage.getItem('items'));
+        console.log('padre', cart);
+        console.log('array', this.itemsArray);
       }
     }
 }
