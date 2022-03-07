@@ -6,6 +6,19 @@
       <div class="name">{{plate.name}}</div>
       <div>{{plate.description}}</div>
       <div class="price">€ {{plate.price}}</div>
+
+      <div class="cart">
+        <i class="fas fa-shopping-cart"></i>
+
+        <span id="add"
+        @click="saveItem(plate)">+</span> 
+        
+        0
+
+        <span id="remove">-</span>
+
+      </div>
+
   </div>
   <div class="right">
       <div class="image">
@@ -20,6 +33,23 @@ export default {
     name: 'PlateBox',
     props: {
       plate: Object
+    },
+    mounted() {
+      console.log('MOUNTED >>', localStorage);
+    },
+    data() {
+      return {
+        cartItemCounter: 0,
+        localStorageItem: {},
+        localStorageArray: []
+      }
+    },
+    methods: {
+      saveItem(plate) {
+        this.localStorageItem = localStorage.setItem('name', plate.name);
+        this.localStorageArray.push(this.localStorageItem);
+        console.log(this.localStorageArray);
+      }
     }
 }
 </script>
@@ -55,6 +85,27 @@ export default {
 
     .price{
         font-weight: bold;
+    }
+
+    .price, .cart {
+      display: inline-block;
+    }
+
+    .cart {
+      padding-left: 20px;
+      padding-top: 10px;
+      width: 150px;
+      font-size: 18px;
+      color: $primary-color;
+      i {
+        padding-right: 5px;
+      }
+      span {
+        color: black;
+        border: 1px solid black;
+        padding: 5px 12px;
+        border-radius: 7px;
+      }
     }
 
     .right {
