@@ -2145,8 +2145,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Restaurantdetail',
@@ -2157,11 +2155,12 @@ __webpack_require__.r(__webpack_exports__);
     return {
       apiUrl: 'http://127.0.0.1:8000/api/ristoranti/',
       activeRestaurant: {},
-      plates: []
+      plates: [],
+      cartItems: []
     };
   },
   mounted: function mounted() {
-    this.getActiveRestaurant();
+    this.getActiveRestaurant(), this.localStorageGet();
   },
   methods: {
     getActiveRestaurant: function getActiveRestaurant() {
@@ -2174,6 +2173,14 @@ __webpack_require__.r(__webpack_exports__);
         _this.plates.push(_this.activeRestaurant.plates);
       });
       console.log(this.plates);
+    },
+    localStorageGet: function localStorageGet() {
+      console.log(JSON.parse(localStorage.getItem('items')));
+      return JSON.parse(localStorage.getItem('items'));
+    },
+    cartArray: function cartArray(items) {
+      this.cartItems.push(items);
+      console.log('padre', this.cartItems);
     }
   }
 });
@@ -2442,21 +2449,26 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     plate: Object
   },
-  mounted: function mounted() {
-    console.log('MOUNTED >>', localStorage);
+  mounted: function mounted() {// console.log('MOUNTED >>', localStorage);
   },
   data: function data() {
     return {
       cartItemCounter: 0,
-      localStorageItem: {},
-      localStorageArray: []
+      items: [],
+      singItem: {
+        name: '',
+        price: null
+      }
     };
   },
   methods: {
     saveItem: function saveItem(plate) {
-      this.localStorageItem = localStorage.setItem('name', plate.name);
-      this.localStorageArray.push(this.localStorageItem);
-      console.log(this.localStorageArray);
+      this.singItem.name = localStorage.setItem('name', plate.name);
+      this.singItem.price = localStorage.setItem('price', plate.price);
+      this.items.push(this.singItem);
+      localStorage.setItem('items', JSON.stringify(this.items));
+      this.$emit('cartArray', this.items);
+      console.log(localStorage.getItem('items'));
     }
   }
 });
@@ -39323,6 +39335,7 @@ var render = function () {
                 return _c("PlateBox", {
                   key: "plate" + index,
                   attrs: { plate: plate },
+                  on: { cartArray: _vm.cartArray },
                 })
               }),
             ],
@@ -39393,18 +39406,12 @@ var staticRenderFns = [
         _c(
           "div",
           { staticClass: "row justify-content-around align-items-center" },
-          [
-            _c("h2", { staticClass: "fw-bold" }, [_vm._v("Il tuo ordine")]),
-            _vm._v(" "),
-            _c("h2", { staticClass: "fw-bold" }, [_vm._v("7,50 €")]),
-          ]
+          [_c("h2", { staticClass: "fw-bold" }, [_vm._v("Il tuo ordine")])]
         ),
         _vm._v(" "),
         _c("div", { staticClass: "line mt-3" }),
         _vm._v(" "),
         _c("div", { staticClass: "plate-order" }, [
-          _c("div", [_vm._v("Pizza Margherita")]),
-          _vm._v(" "),
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "pr-2 minus-btn" }, [_vm._v("-")]),
             _vm._v(" "),
@@ -39413,21 +39420,7 @@ var staticRenderFns = [
             _c("div", { staticClass: "pl-2 plus-btn" }, [_vm._v("+")]),
           ]),
           _vm._v(" "),
-          _c("div", [_vm._v("5,50 €")]),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "plate-order" }, [
-          _c("div", [_vm._v("Pizza Margherita")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "pr-2 minus-btn" }, [_vm._v("-")]),
-            _vm._v(" "),
-            _c("div", [_vm._v("1")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "pl-2 plus-btn" }, [_vm._v("+")]),
-          ]),
-          _vm._v(" "),
-          _c("div", [_vm._v("5,50 €")]),
+          _c("div", [_vm._v("prezzo ")]),
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "line" }),
