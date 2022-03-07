@@ -5,6 +5,7 @@
         </div>
         <div class="container">
             <div class="row">
+              
                 <div class="col-2 nav-menu" id="stickyMenu">
                     <ul class="pt-5">
                         <li>
@@ -33,6 +34,7 @@
                         </li>
                     </ul>
                 </div>
+
                 <div class="col-6 central-column">
                     <div class="box-ristorante">
                         <h2 class="pb-3">{{activeRestaurant.name}}</h2>
@@ -157,7 +159,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: $primary-color;
+    // background-color: $primary-color;
     img {
       object-fit: cover;
       display: block;

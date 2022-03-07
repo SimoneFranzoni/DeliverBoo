@@ -19,7 +19,7 @@
                 <ul>
                     <li v-for="(type, index) in types" 
                     :key="`type${index}`"
-                    @click="changeActiveRestaurants(type), counter = index"
+                    @click="changeActiveRestaurants(type), counter = index, randomTypeCounter = -1"
                     :class="{active: counter === index}">
                   
                         <span>v</span>
