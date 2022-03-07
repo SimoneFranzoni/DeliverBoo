@@ -13303,6 +13303,10 @@ h1 {
   .tableview-team5 .img-frame-team5 .img-team5 img {
     height: 160px;
     width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: center;
+       object-position: center;
   }
   .tableview-team5 .plate-name {
     color: white;
@@ -13320,18 +13324,24 @@ h1 {
   }
 
   .img-team5 img {
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: center;
+       object-position: center;
     width: 100%;
   }
 }
 .img-show-team5 {
-  max-height: 350px;
-  max-width: 400px;
+  width: 100%;
+  max-height: 300px;
   border-radius: 300px;
   overflow: hidden;
   border: 8px solid white !important;
   margin: auto;
 }
 .img-show-team5 img {
+  -o-object-fit: cover;
+     object-fit: cover;
   -o-object-fit: center;
      object-fit: center;
   width: 100%;

@@ -75,9 +75,12 @@ export default {
       height: 90%;
       width: 25%;
       // margin-left: 10px;
-      border-radius: 20px;
+        border-radius: 15px;
+
       img {
         width: 100%;
+        border-radius: 15px;
+
         object-fit: contain;
       }
     }
