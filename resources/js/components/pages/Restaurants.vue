@@ -7,7 +7,8 @@
             <div class="typebox"
             v-for="(type, index) in randomTypes"
             :key="`randomType${index}`"
-            @click="changeActiveRestaurants(type)">
+            @click="changeActiveRestaurants(type), randomTypeCounter = index, counter = -1"
+            :class="{active: randomTypeCounter === index}">
                 <div class="title">{{type.name}}</div>
             </div>
             
@@ -43,8 +44,8 @@
                     
                     
                       <RestaurantBox 
-                        v-for="restaurant in activeRestaurants" 
-                        :key="restaurant.id" 
+                        v-for="(restaurant, index) in activeRestaurants" 
+                        :key="`restaurant${index}`" 
                         :restaurant="restaurant"
                         :type="activeType"/>
                    
@@ -79,6 +80,7 @@ export default {
             activeRestaurantsUrl: 'http://127.0.0.1:8000/api/ristoranti/tiporistorante/',
             activeType: {},
             counter: -1,
+            randomTypeCounter: -1
         }
     },
     methods: {
@@ -112,20 +114,6 @@ export default {
               count--
             }
           }
-
-
-          // while (count < 8) {
-          //   randomNumb = this.getRandomNumber(0, this.types.length);
-          //   randomType = this.types[randomNumb];
-          //   if (!this.randomTypes.includes(randomType) && randomType != undefined) {
-          //     this.randomTypes.push(randomType)
-          //     count++
-          //   } else {
-          //     count--
-          //   }
-          // }
-
-
           console.log('RANDOM TYPES >>>', this.randomTypes);
 
         },
@@ -269,6 +257,12 @@ export default {
         transition: transform 0.3s;
         position: relative;
         cursor: pointer;
+        &.active {
+          box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+          transform: scale(1.05, 1.1);
+          font-weight: bold;
+          border: 2px solid white;
+        }
 
         .title{
             font-size: 18px;

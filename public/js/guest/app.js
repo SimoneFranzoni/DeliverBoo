@@ -2250,6 +2250,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Restaurants',
@@ -2267,7 +2268,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       activeRestaurants: [],
       activeRestaurantsUrl: 'http://127.0.0.1:8000/api/ristoranti/tiporistorante/',
       activeType: {},
-      counter: -1
+      counter: -1,
+      randomTypeCounter: -1
     };
   },
   methods: {
@@ -2314,17 +2316,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         } else {
           count--;
         }
-      } // while (count < 8) {
-      //   randomNumb = this.getRandomNumber(0, this.types.length);
-      //   randomType = this.types[randomNumb];
-      //   if (!this.randomTypes.includes(randomType) && randomType != undefined) {
-      //     this.randomTypes.push(randomType)
-      //     count++
-      //   } else {
-      //     count--
-      //   }
-      // }
-
+      }
 
       console.log('RANDOM TYPES >>>', this.randomTypes);
     },
@@ -6996,7 +6988,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".wrapper[data-v-31969ab0] {\n  padding-top: 50px;\n}\n.wrapper .filter-column[data-v-31969ab0] {\n  width: 100%;\n  height: 700px;\n  overflow-y: auto;\n  z-index: 1;\n}\n.wrapper .filter-column li[data-v-31969ab0] {\n  border-radius: 20px;\n  border: 0.5px solid grey;\n  padding: 10px;\n  margin: 10px 0;\n  z-index: 3;\n  cursor: pointer;\n}\n.wrapper .filter-column li.active[data-v-31969ab0] {\n  border: 1px solid black;\n  font-weight: bold;\n  font-size: 18px;\n}\n.wrapper .filter-column li span[data-v-31969ab0] {\n  transition: opacity 0.5s ease-out;\n  opacity: 0;\n  height: 0;\n  overflow: hidden;\n  color: #45CCBC;\n}\n.wrapper .filter-column li[data-v-31969ab0]:hover {\n  transform: translate(20px);\n  transition: transform 0.5s;\n}\n.wrapper .filter-column li:hover span[data-v-31969ab0] {\n  opacity: 1;\n  height: auto;\n}\n.wrapper .restaurant-column[data-v-31969ab0] {\n  z-index: 1;\n  height: 700px;\n  overflow-y: auto;\n}\n.wrapper .restaurant-column .restaurant-box-row[data-v-31969ab0] {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  padding: 10px 0;\n  cursor: pointer;\n}\n.wrapper .search-input[data-v-31969ab0] {\n  display: flex;\n  align-items: center;\n  width: 100%;\n}\n.wrapper .search-input input[data-v-31969ab0] {\n  width: 90%;\n  margin-right: 5px;\n  padding: 5px 10px;\n  border-radius: 10px;\n  border: 1px solid rgba(0, 0, 0, 0.3);\n  caret-color: #45CCBC;\n}\n.wrapper .search-input input[data-v-31969ab0]:focus {\n  outline: 2px solid #45CCBC;\n}\n.wrapper .search-input .ac-btn[data-v-31969ab0] {\n  width: 60px;\n  text-align: center;\n  font-size: 16px;\n}\n.wrapper .types-row[data-v-31969ab0] {\n  width: 100%;\n  height: 150px;\n  margin: 0 1px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  flex-wrap: nowrap;\n}\n.wrapper .typebox[data-v-31969ab0] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 100px;\n  width: 180px;\n  border-radius: 20px;\n  background-color: #45CCBC;\n  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);\n  margin-right: 10px;\n  transition: transform 0.3s;\n  position: relative;\n  cursor: pointer;\n}\n.wrapper .typebox .title[data-v-31969ab0] {\n  font-size: 18px;\n  color: white;\n}\n.wrapper .typebox[data-v-31969ab0]:hover {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  transform: scale(1.05, 1.1);\n  font-weight: bold;\n}", ""]);
+exports.push([module.i, ".wrapper[data-v-31969ab0] {\n  padding-top: 50px;\n}\n.wrapper .filter-column[data-v-31969ab0] {\n  width: 100%;\n  height: 700px;\n  overflow-y: auto;\n  z-index: 1;\n}\n.wrapper .filter-column li[data-v-31969ab0] {\n  border-radius: 20px;\n  border: 0.5px solid grey;\n  padding: 10px;\n  margin: 10px 0;\n  z-index: 3;\n  cursor: pointer;\n}\n.wrapper .filter-column li.active[data-v-31969ab0] {\n  border: 1px solid black;\n  font-weight: bold;\n  font-size: 18px;\n}\n.wrapper .filter-column li span[data-v-31969ab0] {\n  transition: opacity 0.5s ease-out;\n  opacity: 0;\n  height: 0;\n  overflow: hidden;\n  color: #45CCBC;\n}\n.wrapper .filter-column li[data-v-31969ab0]:hover {\n  transform: translate(20px);\n  transition: transform 0.5s;\n}\n.wrapper .filter-column li:hover span[data-v-31969ab0] {\n  opacity: 1;\n  height: auto;\n}\n.wrapper .restaurant-column[data-v-31969ab0] {\n  z-index: 1;\n  height: 700px;\n  overflow-y: auto;\n}\n.wrapper .restaurant-column .restaurant-box-row[data-v-31969ab0] {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  padding: 10px 0;\n  cursor: pointer;\n}\n.wrapper .search-input[data-v-31969ab0] {\n  display: flex;\n  align-items: center;\n  width: 100%;\n}\n.wrapper .search-input input[data-v-31969ab0] {\n  width: 90%;\n  margin-right: 5px;\n  padding: 5px 10px;\n  border-radius: 10px;\n  border: 1px solid rgba(0, 0, 0, 0.3);\n  caret-color: #45CCBC;\n}\n.wrapper .search-input input[data-v-31969ab0]:focus {\n  outline: 2px solid #45CCBC;\n}\n.wrapper .search-input .ac-btn[data-v-31969ab0] {\n  width: 60px;\n  text-align: center;\n  font-size: 16px;\n}\n.wrapper .types-row[data-v-31969ab0] {\n  width: 100%;\n  height: 150px;\n  margin: 0 1px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  flex-wrap: nowrap;\n}\n.wrapper .typebox[data-v-31969ab0] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 100px;\n  width: 180px;\n  border-radius: 20px;\n  background-color: #45CCBC;\n  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);\n  margin-right: 10px;\n  transition: transform 0.3s;\n  position: relative;\n  cursor: pointer;\n}\n.wrapper .typebox.active[data-v-31969ab0] {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  transform: scale(1.05, 1.1);\n  font-weight: bold;\n  border: 2px solid white;\n}\n.wrapper .typebox .title[data-v-31969ab0] {\n  font-size: 18px;\n  color: white;\n}\n.wrapper .typebox[data-v-31969ab0]:hover {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  transform: scale(1.05, 1.1);\n  font-weight: bold;\n}", ""]);
 
 // exports
 
@@ -39475,9 +39467,12 @@ var render = function () {
             {
               key: "randomType" + index,
               staticClass: "typebox",
+              class: { active: _vm.randomTypeCounter === index },
               on: {
                 click: function ($event) {
-                  return _vm.changeActiveRestaurants(type)
+                  _vm.changeActiveRestaurants(type),
+                    (_vm.randomTypeCounter = index),
+                    (_vm.counter = -1)
                 },
               },
             },
@@ -39548,9 +39543,9 @@ var render = function () {
           _c(
             "div",
             { staticClass: "restaurant-box-row" },
-            _vm._l(_vm.activeRestaurants, function (restaurant) {
+            _vm._l(_vm.activeRestaurants, function (restaurant, index) {
               return _c("RestaurantBox", {
-                key: restaurant.id,
+                key: "restaurant" + index,
                 attrs: { restaurant: restaurant, type: _vm.activeType },
               })
             }),
