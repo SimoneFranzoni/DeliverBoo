@@ -40,20 +40,23 @@ export default {
     },
     data() {
       return {
-        cartItemCounter: 0,
-        // items: [],
-        totalSameItems: [],
-        item:{
-          name: '',
-          price: null
-        },
-        nuovoCarrello:[],
+        quantity: 0,
       }
     },
     methods: {
       saveItem(plate) {
-        this.$emit('cartArray',plate);
-      }
+
+          this.$emit('cartArray',plate);
+
+      },
+      // saveItem(plate) {
+      //   if(this.quantity === 0){
+      //     this.quantity = this.quantity +1;
+      //     this.$emit('cartArray',plate);
+      //   }else{
+      //     this.quantity = this.quantity +1;
+      //   }
+      // }
     }
 }
 

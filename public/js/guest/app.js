@@ -2137,15 +2137,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Restaurantdetail',
@@ -2161,7 +2152,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    this.getActiveRestaurant(), this.localStorageGet();
+    this.getActiveRestaurant();
   },
   methods: {
     getActiveRestaurant: function getActiveRestaurant() {
@@ -2176,9 +2167,11 @@ __webpack_require__.r(__webpack_exports__);
       console.log(this.plates);
     },
     cartArray: function cartArray(plate) {
-      this.itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
+      this.itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : []; // pusho l'elemento nell'array e trasformo gli elementi dell'array in stringa per caricarli nel localStorage
+
       this.itemsArray.push(plate);
-      localStorage.setItem('items', JSON.stringify(this.itemsArray));
+      localStorage.setItem('items', JSON.stringify(this.itemsArray)); // inizializzo il carrello trasformando le stringhe del localStorage in oggetti
+
       var cart = JSON.parse(localStorage.getItem('items'));
       console.log('padre', cart);
       console.log('array', this.itemsArray);
@@ -2455,20 +2448,21 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      cartItemCounter: 0,
-      // items: [],
-      totalSameItems: [],
-      item: {
-        name: '',
-        price: null
-      },
-      nuovoCarrello: []
+      quantity: 0
     };
   },
   methods: {
     saveItem: function saveItem(plate) {
       this.$emit('cartArray', plate);
-    }
+    } // saveItem(plate) {
+    //   if(this.quantity === 0){
+    //     this.quantity = this.quantity +1;
+    //     this.$emit('cartArray',plate);
+    //   }else{
+    //     this.quantity = this.quantity +1;
+    //   }
+    // }
+
   }
 }); // this.singItem = localStorage.setItem('name', plate.name);
 // this.items.push(this.singItem);
@@ -39337,7 +39331,7 @@ var render = function () {
               _vm._l(_vm.activeRestaurant.plates, function (plate, index) {
                 return _c("PlateBox", {
                   key: "plate" + index,
-                  attrs: { plate: plate, carrello: _vm.carrello },
+                  attrs: { plate: plate },
                   on: { cartArray: _vm.cartArray },
                 })
               }),
