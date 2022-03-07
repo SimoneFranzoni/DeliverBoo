@@ -5,7 +5,7 @@
   <div class="left">
       <div class="name">{{plate.name}}</div>
       <div>{{plate.description}}</div>
-      <div class="price">{{plate.price}}</div>
+      <div class="price">€ {{plate.price}}</div>
   </div>
   <div class="right">
       <div class="image">

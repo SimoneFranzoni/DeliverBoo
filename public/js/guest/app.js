@@ -39516,9 +39516,9 @@ var render = function () {
                 [
                   _c("span", [_vm._v("v")]),
                   _vm._v(
-                    "\r\n                        " +
+                    "\n                        " +
                       _vm._s(type.name) +
-                      "\r\n\r\n                    "
+                      "\n\n                    "
                   ),
                 ]
               )
@@ -39646,7 +39646,7 @@ var render = function () {
           _c("div", [_vm._v(_vm._s(_vm.plate.description))]),
           _vm._v(" "),
           _c("div", { staticClass: "price" }, [
-            _vm._v(_vm._s(_vm.plate.price)),
+            _vm._v("€ " + _vm._s(_vm.plate.price)),
           ]),
         ]),
         _vm._v(" "),
@@ -55580,7 +55580,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\ssimo\Documents\boolean\html\lara\progetto-finale\DeliverBoo\resources\js\guest\app.js */"./resources/js/guest/app.js");
+module.exports = __webpack_require__(/*! /Users/albertonicolaciufici/Desktop/Boolean/Progetto Finale/DeliverBoo/resources/js/guest/app.js */"./resources/js/guest/app.js");
 
 
 /***/ })
