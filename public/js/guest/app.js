@@ -2145,8 +2145,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Restaurantdetail',
@@ -2157,11 +2155,12 @@ __webpack_require__.r(__webpack_exports__);
     return {
       apiUrl: 'http://127.0.0.1:8000/api/ristoranti/',
       activeRestaurant: {},
-      plates: []
+      plates: [],
+      cartItems: []
     };
   },
   mounted: function mounted() {
-    this.getActiveRestaurant();
+    this.getActiveRestaurant(), this.localStorageGet();
   },
   methods: {
     getActiveRestaurant: function getActiveRestaurant() {
@@ -2174,6 +2173,14 @@ __webpack_require__.r(__webpack_exports__);
         _this.plates.push(_this.activeRestaurant.plates);
       });
       console.log(this.plates);
+    },
+    localStorageGet: function localStorageGet() {
+      console.log(JSON.parse(localStorage.getItem('items')));
+      return JSON.parse(localStorage.getItem('items'));
+    },
+    cartArray: function cartArray(items) {
+      this.cartItems.push(items);
+      console.log('padre', this.cartItems);
     }
   }
 });
@@ -2451,10 +2458,45 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'PlateBox',
   props: {
     plate: Object
+  },
+  mounted: function mounted() {// console.log('MOUNTED >>', localStorage);
+  },
+  data: function data() {
+    return {
+      cartItemCounter: 0,
+      items: [],
+      singItem: {
+        name: '',
+        price: null
+      }
+    };
+  },
+  methods: {
+    saveItem: function saveItem(plate) {
+      this.singItem.name = localStorage.setItem('name', plate.name);
+      this.singItem.price = localStorage.setItem('price', plate.price);
+      this.items.push(this.singItem);
+      localStorage.setItem('items', JSON.stringify(this.items));
+      this.$emit('cartArray', this.items);
+      console.log(localStorage.getItem('items'));
+    }
   }
 });
 
@@ -7059,7 +7101,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".box[data-v-77410197] {\n  width: 100%;\n  height: 120px;\n  padding: 0 5%;\n  margin: 10px 0;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  border-radius: 20px;\n  transition: box-shadow 0.3s ease-in-out;\n  transition: height 0.3s, width 0.3s;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  transition: transform 0.3s;\n  cursor: pointer;\n}\n.box[data-v-77410197]:hover {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  font-weight: bold;\n  transform: scale(1.05, 1.1);\n}\n.box .name[data-v-77410197] {\n  font-weight: bold;\n  font-size: 20px;\n}\n.box .price[data-v-77410197] {\n  font-weight: bold;\n}\n.box .right[data-v-77410197] {\n  height: 90%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  display: flex;\n  align-items: center;\n}\n.box .image[data-v-77410197] {\n  width: 130px;\n  border-radius: 15px;\n  height: 80%;\n}\n.box .image img[data-v-77410197] {\n  border-radius: 15px;\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}", ""]);
+exports.push([module.i, ".box[data-v-77410197] {\n  width: 100%;\n  height: 120px;\n  padding: 0 5%;\n  margin: 10px 0;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  border-radius: 20px;\n  transition: box-shadow 0.3s ease-in-out;\n  transition: height 0.3s, width 0.3s;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  transition: transform 0.3s;\n  cursor: pointer;\n}\n.box[data-v-77410197]:hover {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  font-weight: bold;\n  transform: scale(1.05, 1.1);\n}\n.box .name[data-v-77410197] {\n  font-weight: bold;\n  font-size: 20px;\n}\n.box .price[data-v-77410197] {\n  font-weight: bold;\n}\n.box .price[data-v-77410197], .box .cart[data-v-77410197] {\n  display: inline-block;\n}\n.box .cart[data-v-77410197] {\n  padding-left: 20px;\n  padding-top: 10px;\n  width: 150px;\n  font-size: 18px;\n  color: #45CCBC;\n}\n.box .cart i[data-v-77410197] {\n  padding-right: 5px;\n}\n.box .cart span[data-v-77410197] {\n  color: black;\n  border: 1px solid black;\n  padding: 5px 12px;\n  border-radius: 7px;\n}\n.box .right[data-v-77410197] {\n  height: 90%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  display: flex;\n  align-items: center;\n}\n.box .image[data-v-77410197] {\n  width: 130px;\n  border-radius: 15px;\n  height: 80%;\n}\n.box .image img[data-v-77410197] {\n  border-radius: 15px;\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}", ""]);
 
 // exports
 
@@ -39320,6 +39362,7 @@ var render = function () {
                 return _c("PlateBox", {
                   key: "plate" + index,
                   attrs: { plate: plate },
+                  on: { cartArray: _vm.cartArray },
                 })
               }),
             ],
@@ -39390,18 +39433,12 @@ var staticRenderFns = [
         _c(
           "div",
           { staticClass: "row justify-content-around align-items-center" },
-          [
-            _c("h2", { staticClass: "fw-bold" }, [_vm._v("Il tuo ordine")]),
-            _vm._v(" "),
-            _c("h2", { staticClass: "fw-bold" }, [_vm._v("7,50 €")]),
-          ]
+          [_c("h2", { staticClass: "fw-bold" }, [_vm._v("Il tuo ordine")])]
         ),
         _vm._v(" "),
         _c("div", { staticClass: "line mt-3" }),
         _vm._v(" "),
         _c("div", { staticClass: "plate-order" }, [
-          _c("div", [_vm._v("Pizza Margherita")]),
-          _vm._v(" "),
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "pr-2 minus-btn" }, [_vm._v("-")]),
             _vm._v(" "),
@@ -39410,21 +39447,7 @@ var staticRenderFns = [
             _c("div", { staticClass: "pl-2 plus-btn" }, [_vm._v("+")]),
           ]),
           _vm._v(" "),
-          _c("div", [_vm._v("5,50 €")]),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "plate-order" }, [
-          _c("div", [_vm._v("Pizza Margherita")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "pr-2 minus-btn" }, [_vm._v("-")]),
-            _vm._v(" "),
-            _c("div", [_vm._v("1")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "pl-2 plus-btn" }, [_vm._v("+")]),
-          ]),
-          _vm._v(" "),
-          _c("div", [_vm._v("5,50 €")]),
+          _c("div", [_vm._v("prezzo ")]),
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "line" }),
@@ -39726,7 +39749,26 @@ var render = function () {
           _c("div", [_vm._v(_vm._s(_vm.plate.description))]),
           _vm._v(" "),
           _c("div", { staticClass: "price" }, [
-            _vm._v(_vm._s(_vm.plate.price)),
+            _vm._v("€ " + _vm._s(_vm.plate.price)),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "cart" }, [
+            _c("i", { staticClass: "fas fa-shopping-cart" }),
+            _vm._v(" "),
+            _c(
+              "span",
+              {
+                attrs: { id: "add" },
+                on: {
+                  click: function ($event) {
+                    return _vm.saveItem(_vm.plate)
+                  },
+                },
+              },
+              [_vm._v("+")]
+            ),
+            _vm._v(" \r\n        \r\n        0\r\n\r\n        "),
+            _c("span", { attrs: { id: "remove" } }, [_vm._v("-")]),
           ]),
         ]),
         _vm._v(" "),

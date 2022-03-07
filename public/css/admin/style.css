@@ -13141,6 +13141,18 @@ h1 {
   width: 100%;
 }
 
+h5, h6 {
+  height: 40px;
+}
+
+.plate-info-price-available {
+  background-color: white;
+  margin: 0;
+  font-size: 12px;
+  width: 90%;
+  margin: auto;
+}
+
 .restaurant-name-team5 {
   text-align: center;
   color: white;
@@ -13296,7 +13308,7 @@ h1 {
   .tableview-team5 .img-frame-team5 .img-team5 {
     overflow: hidden;
     width: 90%;
-    margin: 20px auto;
+    margin: 8px auto;
     border-radius: 300px;
     border: 4px solid white;
   }
@@ -13312,10 +13324,17 @@ h1 {
     color: white;
     text-align: center;
   }
-  .tableview-team5 .plate-name h5 {
-    height: 42px;
+  .tableview-team5 .plate-name .plate-info {
+    height: 75px;
     margin: 10px 0;
     overflow: hidden;
+  }
+  .tableview-team5 .plate-name .plate-info-price-available {
+    background-color: white;
+    margin: 0;
+    font-size: 12px;
+    width: 90%;
+    margin: auto;
   }
 }
 @media screen and (max-width: 767px) {

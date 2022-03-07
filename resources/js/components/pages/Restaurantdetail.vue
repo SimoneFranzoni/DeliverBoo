@@ -56,6 +56,7 @@
                         <PlateBox v-for="(plate, index) in activeRestaurant.plates"
                           :key="`plate${index}`"
                           :plate="plate"
+                          @cartArray="cartArray"
                         />
                         <!-- <PlateBox 
                         
@@ -73,27 +74,24 @@
                     <div class="carrello">
                         <div class="row justify-content-around align-items-center">
                             <h2 class="fw-bold">Il tuo ordine</h2>
-                            <h2 class="fw-bold">7,50 €</h2>
                         </div>
                         <div class="line mt-3"></div>
                         <div class="plate-order">
-                            <div>Pizza Margherita</div>
+
+                          <!-- elenco piatti con prezzi  -->
+
+                            <!-- <div v-for="(item, index) in localStorageGet()" :key="`item${index}`">
+                              {{ item }}
+                              </div> -->
+
                             <div class="row">
                                 <div class="pr-2 minus-btn">-</div>
                                 <div>1</div>
                                 <div class="pl-2 plus-btn">+</div>
                             </div>
-                            <div>5,50 €</div>
+                            <div>prezzo </div>
                         </div>
-                        <div class="plate-order">
-                            <div>Pizza Margherita</div>
-                            <div class="row">
-                                <div class="pr-2 minus-btn">-</div>
-                                <div>1</div>
-                                <div class="pl-2 plus-btn">+</div>
-                            </div>
-                            <div>5,50 €</div>
-                        </div>
+                        
                         <div class="line"></div>
                         <div class="row px-5 pt-3 pb-2 justify-content-between align-items-center">
                             <div class="fw-bold">Subtotale</div>
@@ -127,11 +125,13 @@ export default {
       return {
         apiUrl: 'http://127.0.0.1:8000/api/ristoranti/',
         activeRestaurant: {},
-        plates: []
+        plates: [],
+        cartItems: []
       }
     },
     mounted() {
-     this.getActiveRestaurant()
+     this.getActiveRestaurant(),
+     this.localStorageGet()
     },
     methods : {
       getActiveRestaurant() {
@@ -142,6 +142,16 @@ export default {
           this.plates.push(this.activeRestaurant.plates);
         })
         console.log(this.plates);
+      },
+
+      localStorageGet() {
+        console.log(JSON.parse(localStorage.getItem('items')));
+        return JSON.parse(localStorage.getItem('items'))
+      },
+
+      cartArray(items) {
+        this.cartItems.push(items);
+        console.log('padre', this.cartItems);
       }
     }
 }
