@@ -2138,15 +2138,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Restaurantdetail',
@@ -2161,7 +2152,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    this.getActiveRestaurant();
+    this.getActiveRestaurant(), this.localStorageGet();
   },
   methods: {
     getActiveRestaurant: function getActiveRestaurant() {
@@ -2174,6 +2165,14 @@ __webpack_require__.r(__webpack_exports__);
         _this.plates.push(_this.activeRestaurant.plates);
       });
       console.log(this.plates);
+    },
+    localStorageGet: function localStorageGet() {
+      console.log(localStorage.getItem('name'));
+      ;
+      var array = [];
+      array.push(localStorage.getItem('name'));
+      array.push(localStorage.getItem('price'));
+      return array;
     }
   }
 });
@@ -2442,21 +2441,19 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     plate: Object
   },
-  mounted: function mounted() {
-    console.log('MOUNTED >>', localStorage);
+  mounted: function mounted() {// console.log('MOUNTED >>', localStorage);
   },
   data: function data() {
     return {
       cartItemCounter: 0,
-      localStorageItem: {},
-      localStorageArray: []
+      items: []
     };
   },
   methods: {
     saveItem: function saveItem(plate) {
-      this.localStorageItem = localStorage.setItem('name', plate.name);
-      this.localStorageArray.push(this.localStorageItem);
-      console.log(this.localStorageArray);
+      this.items.push(plate.name, plate.price);
+      localStorage.setItem('items', JSON.stringify(this.items));
+      console.log(localStorage.getItem('items'));
     }
   }
 });
@@ -39330,7 +39327,29 @@ var render = function () {
           ),
         ]),
         _vm._v(" "),
-        _vm._m(1),
+        _c("div", { staticClass: "col-4 right-column" }, [
+          _c("div", { staticClass: "carrello" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c("div", { staticClass: "line mt-3" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "plate-order" }, [
+              _c("div", [_vm._v(_vm._s(_vm.localStorageGet()[0]))]),
+              _vm._v(" "),
+              _vm._m(2),
+              _vm._v(" "),
+              _c("div", [_vm._v(_vm._s(_vm.localStorageGet()[1]))]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "line" }),
+            _vm._v(" "),
+            _vm._m(3),
+            _vm._v(" "),
+            _vm._m(4),
+            _vm._v(" "),
+            _vm._m(5),
+          ]),
+        ]),
       ]),
     ]),
   ])
@@ -39388,90 +39407,72 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-4 right-column" }, [
-      _c("div", { staticClass: "carrello" }, [
-        _c(
-          "div",
-          { staticClass: "row justify-content-around align-items-center" },
-          [
-            _c("h2", { staticClass: "fw-bold" }, [_vm._v("Il tuo ordine")]),
-            _vm._v(" "),
-            _c("h2", { staticClass: "fw-bold" }, [_vm._v("7,50 €")]),
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "line mt-3" }),
-        _vm._v(" "),
-        _c("div", { staticClass: "plate-order" }, [
-          _c("div", [_vm._v("Pizza Margherita")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "pr-2 minus-btn" }, [_vm._v("-")]),
-            _vm._v(" "),
-            _c("div", [_vm._v("1")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "pl-2 plus-btn" }, [_vm._v("+")]),
-          ]),
-          _vm._v(" "),
-          _c("div", [_vm._v("5,50 €")]),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "plate-order" }, [
-          _c("div", [_vm._v("Pizza Margherita")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "pr-2 minus-btn" }, [_vm._v("-")]),
-            _vm._v(" "),
-            _c("div", [_vm._v("1")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "pl-2 plus-btn" }, [_vm._v("+")]),
-          ]),
-          _vm._v(" "),
-          _c("div", [_vm._v("5,50 €")]),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "line" }),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "row px-5 pt-3 pb-2 justify-content-between align-items-center",
-          },
-          [
-            _c("div", { staticClass: "fw-bold" }, [_vm._v("Subtotale")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "fw-bold" }, [_vm._v("5,50 €")]),
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "row px-5 py-2 justify-content-between align-items-center",
-          },
-          [
-            _c("div", [_vm._v("Costo di consegna")]),
-            _vm._v(" "),
-            _c("div", [_vm._v("2,00 €")]),
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "row px-5 py-2 justify-content-between align-items-center",
-          },
-          [
-            _c("div", { staticClass: "fw-bold" }, [_vm._v("Totale")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "fw-bold" }, [_vm._v("7,50 €")]),
-          ]
-        ),
-      ]),
+    return _c(
+      "div",
+      { staticClass: "row justify-content-around align-items-center" },
+      [_c("h2", { staticClass: "fw-bold" }, [_vm._v("Il tuo ordine")])]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "pr-2 minus-btn" }, [_vm._v("-")]),
+      _vm._v(" "),
+      _c("div", [_vm._v("1")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "pl-2 plus-btn" }, [_vm._v("+")]),
     ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "row px-5 pt-3 pb-2 justify-content-between align-items-center",
+      },
+      [
+        _c("div", { staticClass: "fw-bold" }, [_vm._v("Subtotale")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "fw-bold" }, [_vm._v("5,50 €")]),
+      ]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "row px-5 py-2 justify-content-between align-items-center",
+      },
+      [
+        _c("div", [_vm._v("Costo di consegna")]),
+        _vm._v(" "),
+        _c("div", [_vm._v("2,00 €")]),
+      ]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "row px-5 py-2 justify-content-between align-items-center",
+      },
+      [
+        _c("div", { staticClass: "fw-bold" }, [_vm._v("Totale")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "fw-bold" }, [_vm._v("7,50 €")]),
+      ]
+    )
   },
 ]
 render._withStripped = true

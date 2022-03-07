@@ -35,20 +35,20 @@ export default {
       plate: Object
     },
     mounted() {
-      console.log('MOUNTED >>', localStorage);
+      // console.log('MOUNTED >>', localStorage);
     },
     data() {
       return {
         cartItemCounter: 0,
-        localStorageItem: {},
-        localStorageArray: []
+        items: []
       }
     },
     methods: {
       saveItem(plate) {
-        this.localStorageItem = localStorage.setItem('name', plate.name);
-        this.localStorageArray.push(this.localStorageItem);
-        console.log(this.localStorageArray);
+        this.items.push(plate.name, plate.price)
+        localStorage.setItem('items', JSON.stringify(this.items))
+        
+        console.log(localStorage.getItem('items'));
       }
     }
 }
