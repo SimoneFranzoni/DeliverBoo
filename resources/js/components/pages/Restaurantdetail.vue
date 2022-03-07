@@ -1,6 +1,8 @@
 <template>
     <div>
-        <div class="bg"></div>
+        <div class="bg">
+          <img :src="activeRestaurant.cover" alt="" v-if="activeRestaurant.cover">
+        </div>
         <div class="container">
             <div class="row">
                 <div class="col-2 nav-menu" id="stickyMenu">
@@ -36,8 +38,9 @@
                         <h2 class="pb-3">{{activeRestaurant.name}}</h2>
                         <div class="pb-2">
                             <div class="row">
-                                <div class="type">Pizza</div>
-                                <div class="type">Italiano</div>
+                                <div class="type"
+                                v-for="(type, index) in activeRestaurant.types"
+                                :key="`type${index}`">{{type.name}}</div>
                             </div>
                         </div>
                         <div class="row">
@@ -149,7 +152,23 @@ export default {
 .bg{
     width: 100%;
     height: 400px;
+    position: relative;
+    z-index: -100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: $primary-color;
+    img {
+      object-fit: cover;
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -100;
+      overflow: hidden;
+    }
 }
 
 .container-fluid{

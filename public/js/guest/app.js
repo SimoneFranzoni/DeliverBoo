@@ -1968,6 +1968,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Home',
@@ -2030,6 +2031,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _partials_PlateBox_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../partials/PlateBox.vue */ "./resources/js/components/partials/PlateBox.vue");
+//
+//
+//
 //
 //
 //
@@ -6969,7 +6973,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".bg[data-v-0f5c5f38] {\n  width: 100%;\n  height: 400px;\n  background-color: #45CCBC;\n}\n.container-fluid[data-v-0f5c5f38] {\n  padding: 0 8%;\n}\n.nav-menu[data-v-0f5c5f38] {\n  position: -webkit-sticky;\n  position: sticky;\n  top: 400px;\n  left: 0;\n}\n.nav-menu ul li[data-v-0f5c5f38] {\n  display: flex;\n  justify-content: flex-start;\n  align-items: center;\n}\n.nav-menu ul li .bar[data-v-0f5c5f38] {\n  width: 1px;\n  height: 50px;\n  background-color: lightgrey;\n  margin-right: 10px;\n}\n.nav-menu ul li a[data-v-0f5c5f38] {\n  color: #333232;\n  text-decoration: none;\n  font-size: 15px;\n  transition: transform 0.5s;\n}\n.nav-menu ul li[data-v-0f5c5f38]:hover {\n  font-weight: bold;\n}\n.nav-menu ul li:hover a[data-v-0f5c5f38] {\n  transform: translateX(10px);\n}\n.nav-menu ul li:hover .bar[data-v-0f5c5f38] {\n  width: 2px;\n  background-color: black;\n}\n.central-column[data-v-0f5c5f38] {\n  position: relative;\n  padding-bottom: 100px;\n}\n.central-column .box-ristorante[data-v-0f5c5f38] {\n  position: absolute;\n  width: 95%;\n  top: -150px;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  padding: 40px 0;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  border-radius: 20px;\n  background-color: white;\n}\n.central-column .type[data-v-0f5c5f38] {\n  background-color: #eeebeb;\n  transition: all 0.2s;\n  margin: 0 5px;\n  display: inline-block;\n  padding: 0 5px;\n  font-size: 20px;\n  font-weight: bold;\n  cursor: pointer;\n}\n.central-column .type[data-v-0f5c5f38]:hover {\n  background-color: #f4f2f2;\n  transform: scale(1.1);\n  border-radius: 10px;\n}\n.central-column .menu[data-v-0f5c5f38] {\n  margin-top: 100px;\n  padding-top: 200px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n}\n.right-column[data-v-0f5c5f38] {\n  position: relative;\n}\n.right-column .carrello[data-v-0f5c5f38] {\n  position: absolute;\n  top: -150px;\n  width: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  border-radius: 20px;\n  padding-left: 10px;\n  background-color: white;\n  padding: 20px;\n}\n.right-column .carrello .line[data-v-0f5c5f38] {\n  background-color: grey;\n  width: 100%;\n  height: 1px;\n  margin: 10px 0;\n}\n.right-column .carrello .plate-order[data-v-0f5c5f38] {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  padding: 10px 10px;\n}\n.fw-bold[data-v-0f5c5f38] {\n  font-weight: bold;\n}", ""]);
+exports.push([module.i, ".bg[data-v-0f5c5f38] {\n  width: 100%;\n  height: 400px;\n  position: relative;\n  z-index: -100;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background-color: #45CCBC;\n}\n.bg img[data-v-0f5c5f38] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  display: block;\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  top: 0;\n  left: 0;\n  z-index: -100;\n  overflow: hidden;\n}\n.container-fluid[data-v-0f5c5f38] {\n  padding: 0 8%;\n}\n.nav-menu[data-v-0f5c5f38] {\n  position: -webkit-sticky;\n  position: sticky;\n  top: 400px;\n  left: 0;\n}\n.nav-menu ul li[data-v-0f5c5f38] {\n  display: flex;\n  justify-content: flex-start;\n  align-items: center;\n}\n.nav-menu ul li .bar[data-v-0f5c5f38] {\n  width: 1px;\n  height: 50px;\n  background-color: lightgrey;\n  margin-right: 10px;\n}\n.nav-menu ul li a[data-v-0f5c5f38] {\n  color: #333232;\n  text-decoration: none;\n  font-size: 15px;\n  transition: transform 0.5s;\n}\n.nav-menu ul li[data-v-0f5c5f38]:hover {\n  font-weight: bold;\n}\n.nav-menu ul li:hover a[data-v-0f5c5f38] {\n  transform: translateX(10px);\n}\n.nav-menu ul li:hover .bar[data-v-0f5c5f38] {\n  width: 2px;\n  background-color: black;\n}\n.central-column[data-v-0f5c5f38] {\n  position: relative;\n  padding-bottom: 100px;\n}\n.central-column .box-ristorante[data-v-0f5c5f38] {\n  position: absolute;\n  width: 95%;\n  top: -150px;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  padding: 40px 0;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  border-radius: 20px;\n  background-color: white;\n}\n.central-column .type[data-v-0f5c5f38] {\n  background-color: #eeebeb;\n  transition: all 0.2s;\n  margin: 0 5px;\n  display: inline-block;\n  padding: 0 5px;\n  font-size: 20px;\n  font-weight: bold;\n  cursor: pointer;\n}\n.central-column .type[data-v-0f5c5f38]:hover {\n  background-color: #f4f2f2;\n  transform: scale(1.1);\n  border-radius: 10px;\n}\n.central-column .menu[data-v-0f5c5f38] {\n  margin-top: 100px;\n  padding-top: 200px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n}\n.right-column[data-v-0f5c5f38] {\n  position: relative;\n}\n.right-column .carrello[data-v-0f5c5f38] {\n  position: absolute;\n  top: -150px;\n  width: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  border-radius: 20px;\n  padding-left: 10px;\n  background-color: white;\n  padding: 20px;\n}\n.right-column .carrello .line[data-v-0f5c5f38] {\n  background-color: grey;\n  width: 100%;\n  height: 1px;\n  margin: 10px 0;\n}\n.right-column .carrello .plate-order[data-v-0f5c5f38] {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  padding: 10px 10px;\n}\n.fw-bold[data-v-0f5c5f38] {\n  font-weight: bold;\n}", ""]);
 
 // exports
 
@@ -39237,7 +39241,11 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "bg" }),
+    _c("div", { staticClass: "bg" }, [
+      _vm.activeRestaurant.cover
+        ? _c("img", { attrs: { src: _vm.activeRestaurant.cover, alt: "" } })
+        : _vm._e(),
+    ]),
     _vm._v(" "),
     _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row" }, [
@@ -39249,7 +39257,20 @@ var render = function () {
               _vm._v(_vm._s(_vm.activeRestaurant.name)),
             ]),
             _vm._v(" "),
-            _vm._m(1),
+            _c("div", { staticClass: "pb-2" }, [
+              _c(
+                "div",
+                { staticClass: "row" },
+                _vm._l(_vm.activeRestaurant.types, function (type, index) {
+                  return _c(
+                    "div",
+                    { key: "type" + index, staticClass: "type" },
+                    [_vm._v(_vm._s(type.name))]
+                  )
+                }),
+                0
+              ),
+            ]),
             _vm._v(" "),
             _c("div", { staticClass: "row" }, [
               _c("div", [_vm._v(_vm._s(_vm.activeRestaurant.address))]),
@@ -39277,7 +39298,7 @@ var render = function () {
           ),
         ]),
         _vm._v(" "),
-        _vm._m(2),
+        _vm._m(1),
       ]),
     ]),
   ])
@@ -39330,18 +39351,6 @@ var staticRenderFns = [
         ]),
       ]
     )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "pb-2" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "type" }, [_vm._v("Pizza")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "type" }, [_vm._v("Italiano")]),
-      ]),
-    ])
   },
   function () {
     var _vm = this

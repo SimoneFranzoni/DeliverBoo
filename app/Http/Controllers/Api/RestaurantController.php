@@ -19,7 +19,7 @@ class RestaurantController extends Controller
     }
 
     public function show($slug){
-        $restaurant = Restaurant::where('slug', $slug)->with('plates')->first();
+        $restaurant = Restaurant::where('slug', $slug)->with('plates', 'types')->first();
         $restaurant->cover = $this->makeImagePath($restaurant->cover);
 
         $restaurant->plates->each(function($plate){
