@@ -13,32 +13,8 @@
       <p>{{$piatto->description}}</p>
       <h3>Prezzo</h3>
       <p>{{$piatto->price}}</p>
-
-        {{-- bottoni modifica e elimina --}}
-    <div class="">
-              
-      <a  href="{{route('admin.miei-ristoranti.piatti.edit',[$ristorante->slug,$piatto->slug])}}">
-        <button type="button" class="btn-team5"> Modifica</button>
-      </a> 
-      
-      <form class="d-inline-block" action="{{route('admin.miei-ristoranti.piatti.destroy',[$ristorante,$piatto])}}"  method="POST" onsubmit="return confirm('confermare elimizione {{$piatto->name}}')">
-        @csrf
-        @method('DELETE')
-      <button type="submit" class="btn-team5">Cancella</button>
-      </form>
-      
-
-    </div> 
-    {{-- bottone indietro --}}
-    <h2 class="mt-4">
-      <a  href="{{route('admin.miei-ristoranti.piatti.index',$ristorante->slug)}}">
-         <button class="btn-team5 btn-back-team5">Back <<</button> 
-      </a>
-    </h2>  
+      <div><a href="{{route('admin.miei-ristoranti.piatti.index',$ristorante->slug)}}">Back <<</a></div>
     </div>
-  
-
-
   
 
  
@@ -51,5 +27,6 @@
       <img width="100%" src="https://via.placeholder.com/350x290/45CCBC/FFFFFF?Text=DeliverBoo+plates" alt="DeliveBoo">
   </div>
   @endif
-  </div>
+
+</div>
 @endsection

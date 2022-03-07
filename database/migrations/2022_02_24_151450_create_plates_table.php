@@ -22,8 +22,6 @@ class CreatePlatesTable extends Migration
             $table->decimal('price', 4,2);
             $table->text('ingrediants');
             $table->string('category');
-            $table->string('cover')->nullable();
-            $table->string('cover_original_name')->nullable();
             $table->timestamps();
 
            

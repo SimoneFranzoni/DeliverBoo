@@ -20,7 +20,7 @@ class RestaurantPlatesController extends Controller
        {
         $user = Auth::user();
             $ristorante= Restaurant::where('slug',$slug)->first();
-            $piatti = Plate::where('restaurant_id',$ristorante->id)->orderBy('category')->paginate(3);      
+            $piatti = Plate::where('restaurant_id',$ristorante->id)->orderBy('category')->paginate(30);      
             
             // $piatti->each(function($piatto){
             //     $piatto->cover = $this->makeImagePath($piatto->cover);
@@ -142,9 +142,9 @@ class RestaurantPlatesController extends Controller
             $data['cover'] = $image_path;
 
         }
-        $piattoDaModificare->update($data);
-       
-        return redirect()->route('admin.miei-ristoranti.piatti.show',[$ristorante->slug,$piattoDaModificare->slug]);
+        $piattoModificato = $piattoDaModificare->update($data);
+
+        return redirect()->route('admin.miei-ristoranti.piatti.index',[$ristorante->slug,$piattoModificato]);
     }
 
 
