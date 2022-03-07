@@ -57,11 +57,22 @@ export default {
         font-weight: bold;
     }
 
+    .right {
+      height: 90%;
+      object-fit: cover;
+      display: flex;
+      align-items: center;
+    }
     .image {
       // margin-left: auto;
       width: 130px;
+      border-radius: 15px;
+      height: 80%;
       img {
+        border-radius: 15px;
         width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
     }
   }
