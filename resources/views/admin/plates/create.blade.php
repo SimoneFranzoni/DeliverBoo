@@ -124,8 +124,8 @@
           </div>
        @enderror
      
-        <button type="submit" class="btn btn-primary">Submit</button>
-        <button type="reset" class="btn btn-danger">reset</button>
+        <button type="submit" class="btn-team5 ">Submit</button>
+        <button type="reset" class="btn-team5 ">reset</button>
       </form>
 
     </div>

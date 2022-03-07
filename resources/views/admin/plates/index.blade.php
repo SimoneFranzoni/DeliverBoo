@@ -9,7 +9,7 @@
   </div>
   @endif
   {{-- info ristorante --}}
-  <div class="d-md-flex justify-content-between mb-5">
+  <div class="row justify-content-between mb-5">
     <div class="col-lg-8 mt-4">
       <h1 class="restaurant-name-team5">{{$ristorante->name}}</h1>
       <div class="container-fluid">
@@ -44,18 +44,8 @@
       
 
 
-      @if ($ristorante->cover)
-      <div class="img">
-          <img width="400" src="{{asset('storage/'. $ristorante->cover)}}" alt="{{ $ristorante->cover_original_name }}">
-          <p>{{ $ristorante->cover_original_name }}</p>
-      </div>
-      @else
-      <div class="img">
-          <img width="400" src="https://via.placeholder.com/350x290/45CCBC/FFFFFF?Text=DeliverBoo+plates" alt="DeliveBoo">
-      </div>
-      @endif
+      
 
-    </div>
     
     <div class="col-12 col-md-6 offset-md-3 d-flex justify-content-center d-lg-block offset-lg-0 col-lg-3  mt-5 right-dashboard-plates-team5">
       <a  href="{{route('admin.miei-ristoranti.piatti.create',$ristorante->slug)}}">
@@ -80,54 +70,30 @@
     <div class=" p-0 slider-team5">
       {{-- card piatti --}}
       @foreach ($piatti as  $piatto)
-<<<<<<< HEAD
-      <div class="flip-card col-6 col-sm-4 col-md-3">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-              @if ($piatto->cover)
-=======
       <div class="flip-card flip-card-team5">
         <div class="flip-card-inner">
           <div class="flip-card-front ">
             <div class="card-front-top-team5">
-              @if ($ristorante->cover)
->>>>>>> f31356a4b7233e5535f6aed0a532b7b83c86fcf7
+              @if ($piatto->cover)
               <div class="img-team5">
-                <img src="{{asset('storage/' . $piatto->cover)}}" alt="{{$piatto->cover_original_name}}">
+                <img src="{{asset('storage/' . $piatto->cover)}}" alt="{{$piatto->name}}">
               </div>
               @else
               <div class="img-team5">
-                <img  src="https://via.placeholder.com/350x290/45CCBC/FFFFFF?Text=DeliverBoo+restaurant" alt="{{$ristorante->name}}">
+                <img  src="https://via.placeholder.com/350x290/45CCBC/FFFFFF?Text=DeliverBoo+restaurant" alt="{{$piatto->name}}">
               </div>
               @endif
-<<<<<<< HEAD
-              {{-- <h4>{{$piatto->cover_original_name}}</h4> --}}
-=======
             </div>
             <div class="card-front-bottom-team5">
               {{$piatto->name}}
             </div>
->>>>>>> f31356a4b7233e5535f6aed0a532b7b83c86fcf7
           </div> 
           
           <div class="flip-card-back">      
               <div class="card-body">
-<<<<<<< HEAD
-                <h5 class="card-title">
-                  <a href="{{route('admin.miei-ristoranti.piatti.show',[$ristorante->slug,$piatto->slug])}}"> {{$piatto->name}}</a>
-                </h5>
-                <p class="card-text">{{$piatto->description}}</p>
-              </div>
-
-
-              {{-- pulsanti modifica e cancella --}}
-              <div class="">
-             
-=======
                 
                   <a href="{{route('admin.miei-ristoranti.piatti.show',[$ristorante->slug,$piatto->slug])}}"> <button type="button" class="btn-team5" style="font-size: 12px ; width:80%"> Mostra</button>
                   </a>
->>>>>>> f31356a4b7233e5535f6aed0a532b7b83c86fcf7
                   <a  href="{{route('admin.miei-ristoranti.piatti.edit',[$ristorante->slug,$piatto->slug])}}">
                     <button type="button" class="btn-team5" style="font-size: 12px;  width:80%"> Modifica</button>
                   </a> 
@@ -141,11 +107,8 @@
 
               </div>
 
-            </div>
+            
           </div>
-<<<<<<< HEAD
-        </div>   
-=======
         </div> 
       </div>
 
@@ -184,7 +147,6 @@
            
           </div>
         </div>    
->>>>>>> f31356a4b7233e5535f6aed0a532b7b83c86fcf7
       @endforeach
     </div>
   </div>

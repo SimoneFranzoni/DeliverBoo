@@ -56,20 +56,8 @@
 @endsection
   
 
- 
-<<<<<<< HEAD
-  @if ($piatto->cover)
-  <div class="col-12 col-sm-6 img">
-      <img width="100%" src="{{asset('storage/'. $piatto->cover)}}" alt="{{ $piatto->cover_original_name }}">
-  </div>
-  @else
-  <div class="col-12 col-sm-6 img">
-      <img width="100%" src="https://via.placeholder.com/350x290/45CCBC/FFFFFF?Text=DeliverBoo+plates" alt="DeliveBoo">
-  </div>
-  @endif
 
-</div>
-@endsection
-=======
   
->>>>>>> f31356a4b7233e5535f6aed0a532b7b83c86fcf7
+
+ 
+  

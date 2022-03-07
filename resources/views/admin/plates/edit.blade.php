@@ -134,12 +134,16 @@
         
 
         {{-- pulsanti --}}
-        <button type="submit" class="btn btn-primary">Submit</button>
-        <button type="reset" class="btn btn-danger">reset</button>
+        <button type="submit" class="btn-team5 ">Submit</button>
+        <button type="reset" class="btn-team5 ">reset</button>
       </form>
 
     </div>
   </div>
-<h3><a href="{{route('admin.miei-ristoranti.piatti.index',$ristorante->slug)}}">Back <<</a></div>  
+  <h2 class="mt-4">
+    <a  href="{{route('admin.miei-ristoranti.piatti.index',$ristorante->slug)}}">
+       <button class="btn-team5 btn-back-team5">Back <<</button> 
+    </a>
+  </h2>  
 </div>
 @endsection

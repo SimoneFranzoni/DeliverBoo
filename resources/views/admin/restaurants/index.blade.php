@@ -14,7 +14,7 @@
       <div class="d-flex">
         <h1  class="col-12 col-lg-8 text-center m-3">I miei ristoranti</h1>
       </div>
-       
+    
 
       <div class="restaurant-slider-team5 ">
         @foreach ($ristoranti as $ristorante)
@@ -48,6 +48,3 @@
 @endsection
           
    
-
-
-  
