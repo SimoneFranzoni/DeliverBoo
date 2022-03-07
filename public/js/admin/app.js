@@ -37353,6 +37353,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 __webpack_require__(/*! C:\Users\franz_u4goo5x\OneDrive\Desktop\DeliverBoo\resources\js\admin\app.js */"./resources/js/admin/app.js");
 __webpack_require__(/*! C:\Users\franz_u4goo5x\OneDrive\Desktop\DeliverBoo\resources\sass\admin\style.scss */"./resources/sass/admin/style.scss");
 module.exports = __webpack_require__(/*! C:\Users\franz_u4goo5x\OneDrive\Desktop\DeliverBoo\resources\sass\guest\style.scss */"./resources/sass/guest/style.scss");
@@ -37366,6 +37367,11 @@ __webpack_require__(/*! C:\Users\Simone\Documents\Boolean\Progetto Finale\Delive
 __webpack_require__(/*! C:\Users\Simone\Documents\Boolean\Progetto Finale\DeliverBoo\resources\sass\admin\style.scss */"./resources/sass/admin/style.scss");
 module.exports = __webpack_require__(/*! C:\Users\Simone\Documents\Boolean\Progetto Finale\DeliverBoo\resources\sass\guest\style.scss */"./resources/sass/guest/style.scss");
 >>>>>>> aa654345b344edcaf95b4ad4c40b1aaad2df6b93
+=======
+__webpack_require__(/*! C:\Users\ssimo\Documents\boolean\html\lara\progetto-finale\DeliverBoo\resources\js\admin\app.js */"./resources/js/admin/app.js");
+__webpack_require__(/*! C:\Users\ssimo\Documents\boolean\html\lara\progetto-finale\DeliverBoo\resources\sass\admin\style.scss */"./resources/sass/admin/style.scss");
+module.exports = __webpack_require__(/*! C:\Users\ssimo\Documents\boolean\html\lara\progetto-finale\DeliverBoo\resources\sass\guest\style.scss */"./resources/sass/guest/style.scss");
+>>>>>>> 755b6296b4e229b5b5e2bf70d723ca18455517ce
 
 
 /***/ })

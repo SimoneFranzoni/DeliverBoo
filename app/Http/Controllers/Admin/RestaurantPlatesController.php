@@ -144,7 +144,7 @@ class RestaurantPlatesController extends Controller
         }
         $piattoModificato = $piattoDaModificare->update($data);
 
-        return redirect()->route('admin.miei-ristoranti.piatti.index',[$ristorante->slug,$piattoModificato]);
+        return redirect()->route('admin.miei-ristoranti.piatti.show',[$ristorante->slug,$piattoDaModificare->slug]);
     }
 
 
