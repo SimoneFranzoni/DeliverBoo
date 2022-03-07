@@ -12,7 +12,7 @@
       
       @else
       <div class="d-flex">
-        <h1  class="col-12 col-lg-8 text-center m-3">I miei ristoranti</h1>
+        <h1  class="col-12 col-lg-8 text-center my-3">I miei ristoranti</h1>
       </div>
     
 

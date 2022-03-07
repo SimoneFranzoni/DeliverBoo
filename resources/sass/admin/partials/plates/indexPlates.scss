@@ -11,8 +11,21 @@
     width: 100%;
   }
 }
-.restaurant-name-team5{
+
+h5,h6{
+  height: 40px;
+}
+.plate-info-price-available{
+  background-color: white;
+  margin:0;
+  font-size: 12px;
+  width:90%;
+  margin:auto;
  
+}
+
+
+.restaurant-name-team5{
   text-align: center;
   color:white;
   padding: 10px;
@@ -21,7 +34,6 @@
   border-bottom:1px solid white;
 }
 .info-restaurant-team5{
-
   padding:20px;
   border-radius: 10px;
 }
@@ -167,6 +179,7 @@
   }
   .tableview-team5{
     margin:20px 0px;
+    
     .img-frame-team5{
      height: 360px;
      border: 1px solid darken($primary-color,30);
@@ -175,7 +188,7 @@
      .img-team5{
        overflow: hidden;
        width:90%;
-       margin:20px auto;
+       margin:8px auto;
        border-radius: 300px;
        border:4px solid white;
        img{
@@ -189,10 +202,17 @@
     .plate-name{
       color:rgb(255, 255, 255);
       text-align: center;
-      h5{
-        height: 42px;
+      .plate-info{
+        height: 75px;
         margin:10px 0;
         overflow: hidden;
+      }
+      .plate-info-price-available{
+        background-color: white;
+        margin:0;
+        font-size: 12px;
+        width:90%;
+        margin:auto;
       }
     }
   
