@@ -1,14 +1,26 @@
 <template>
-<div class="box">
-    <div class="name">Pizza margherita</div>
-    <div>Lorem</div>
-    <div class="price">5.50 €</div>
+<div class="box"
+  v-if="plate.is_available == 1"
+>
+  <div class="left">
+      <div class="name">{{plate.name}}</div>
+      <div>{{plate.description}}</div>
+      <div class="price">{{plate.price}}</div>
+  </div>
+  <div class="right">
+      <div class="image">
+        <img :src="plate.cover" :alt="plate.name">
+      </div>
+  </div>
 </div>
 </template>
 
 <script>
 export default {
-    name: 'PlateBox'
+    name: 'PlateBox',
+    props: {
+      plate: Object
+    }
 }
 </script>
 
@@ -21,13 +33,14 @@ export default {
     padding: 0 5%;
     margin: 10px 0;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
     border-radius: 20px;
     transition: box-shadow 0.3s ease-in-out;
     transition: height 0.3s, width 0.3s;
     box-shadow: 0 3px 10px rgba(0,0,0,0.3);
     transition: transform 0.3s;
+    cursor: pointer;
 
     &:hover{
       box-shadow: 0 5px 15px rgba(0,0,0,0.3);
@@ -44,5 +57,12 @@ export default {
         font-weight: bold;
     }
 
+    .image {
+      // margin-left: auto;
+      width: 130px;
+      img {
+        width: 100%;
+      }
+    }
   }
 </style>
