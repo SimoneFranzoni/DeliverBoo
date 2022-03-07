@@ -14,6 +14,7 @@
         :key="`type${index}`"
         v-show="type.isVisible">
       <router-link class="type-link" :to="{name: 'restaurants', params: {slug: type.slug}}">
+      <!-- <router-link class="type-link" :to="{name: 'restaurants' }"> -->
         <span v-if="type.isVisible">
           {{type.name}}
         </span>
