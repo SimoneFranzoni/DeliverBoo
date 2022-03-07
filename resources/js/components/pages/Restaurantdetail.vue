@@ -1,8 +1,11 @@
 <template>
     <div>
-        <div class="bg"></div>
+        <div class="bg">
+          <img :src="activeRestaurant.cover" alt="" v-if="activeRestaurant.cover">
+        </div>
         <div class="container">
             <div class="row">
+              
                 <div class="col-2 nav-menu" id="stickyMenu">
                     <ul class="pt-5">
                         <li>
@@ -31,13 +34,15 @@
                         </li>
                     </ul>
                 </div>
+
                 <div class="col-6 central-column">
                     <div class="box-ristorante">
                         <h2 class="pb-3">{{activeRestaurant.name}}</h2>
                         <div class="pb-2">
                             <div class="row">
-                                <div class="type">Pizza</div>
-                                <div class="type">Italiano</div>
+                                <div class="type"
+                                v-for="(type, index) in activeRestaurant.types"
+                                :key="`type${index}`">{{type.name}}</div>
                             </div>
                         </div>
                         <div class="row">
@@ -149,7 +154,23 @@ export default {
 .bg{
     width: 100%;
     height: 400px;
-    background-color: $primary-color;
+    position: relative;
+    z-index: -100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // background-color: $primary-color;
+    img {
+      object-fit: cover;
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -100;
+      overflow: hidden;
+    }
 }
 
 .container-fluid{
@@ -201,10 +222,11 @@ export default {
 .central-column{
     position: relative;
     padding-bottom: 100px;
+    
     .box-ristorante{
         position: absolute;
         width: 95%;
-        top: -100px;
+        top: -150px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -234,10 +256,12 @@ export default {
     }
 
     .menu{
+      // height: 700px;
+      // overflow: auto;
         margin-top: 100px;
+        padding-top: 200px;
         display: flex;
         flex-direction: column;
-        align-items: center;
         align-items: center;
         justify-content: center;
     }
@@ -251,7 +275,7 @@ export default {
         
         position: absolute;
         // top: -10%;
-        top: -100px;
+        top: -150px;
         width: 100%;
         height: fit-content;
         box-shadow: 0 3px 10px rgba(0,0,0,0.3);
