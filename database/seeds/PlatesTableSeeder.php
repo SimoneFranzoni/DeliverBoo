@@ -14,29 +14,78 @@ class PlatesTableSeeder extends Seeder
     public function run(Faker $faker)
     {
 
-      $categories = [
-        'Antipasto', 'Primo', 'Secondo', 'Contorno', 'Frutta', 'Dessert'
-      ];
+      // $categories = [
+      //   'Antipasto', 'Primo', 'Secondo', 'Contorno', 'Frutta', 'Dessert'
+      // ];
 
-        for ($i = 0; $i < 6000; $i++) {
-          $newPlate = new Plate();
+      foreach(config('plates') as $plate){
+        $newPlate = new Plate();
+        $newPlate->name = $plate['name'];
+        $newPlate->description = $plate['description'];
+        $newPlate->ingrediants = $plate['ingradiants'];
+        $newPlate->price = $plate['price'];
+        $newPlate->category = $plate['category'];
 
-          $numberRestaurantRandom = $this->getRandomNumber(1, 123);
-          $newPlate->restaurant_id = $numberRestaurantRandom;
-          $newPlate->name = $faker->sentence(3);
-          
-          $numberPlateRandom = $this->getRandomNumber(1, 532);
+        if($newPlate->category === 'Antipasto'){
+          $numberPlateRandom = $this->getRandomNumber(442, 473);
           $newPlate->cover = $this->getImgRestaurant($numberPlateRandom);
-          $newPlate->cover_original_name = 'plate (' . $numberPlateRandom . ').jpg';;
-          
-          $newPlate->slug = Plate::generateSlug($newPlate->name);
-          $newPlate->description = $faker->sentence(10);
-          $newPlate->is_available = $faker->boolean(80);
-          $newPlate->price = $faker->randomFloat(2, 0, 99);
-          $newPlate->ingrediants = $faker->words(5, true);
-          $newPlate->category = $categories[array_rand($categories, 1)];
-          $newPlate->save();
+          $newPlate->cover_original_name = 'plate (' . $numberPlateRandom . ').jpg';
         }
+
+        elseif($newPlate->category === 'Primo'){
+          $numberPlateRandom = $this->getRandomNumber(473, 532);
+          $newPlate->cover = $this->getImgRestaurant($numberPlateRandom);
+          $newPlate->cover_original_name = 'plate (' . $numberPlateRandom . ').jpg';
+        }
+
+        elseif($newPlate->category === 'Secondo'){
+          $numberPlateRandom = $this->getRandomNumber(1, 290);
+          $newPlate->cover = $this->getImgRestaurant($numberPlateRandom);
+          $newPlate->cover_original_name = 'plate (' . $numberPlateRandom . ').jpg';
+        }
+
+        elseif($newPlate->category === 'Contorno'){
+          $numberPlateRandom = $this->getRandomNumber(405, 441);
+          $newPlate->cover = $this->getImgRestaurant($numberPlateRandom);
+          $newPlate->cover_original_name = 'plate (' . $numberPlateRandom . ').jpg';
+        }
+
+        elseif($newPlate->category === 'Frutta'){
+          $numberPlateRandom = $this->getRandomNumber(291, 296);
+          $newPlate->cover = $this->getImgRestaurant($numberPlateRandom);
+          $newPlate->cover_original_name = 'plate (' . $numberPlateRandom . ').jpg';
+        }
+
+        elseif($newPlate->category === 'Dessert'){
+          $numberPlateRandom = $this->getRandomNumber(297, 404);
+          $newPlate->cover = $this->getImgRestaurant($numberPlateRandom);
+          $newPlate->cover_original_name = 'plate (' . $numberPlateRandom . ').jpg';
+        }
+        
+        $newPlate->is_available = $faker->boolean(80);
+        $newPlate->slug = Plate::generateSlug($newPlate->name);
+        $newPlate->save();
+      }
+
+        // for ($i = 0; $i < 300; $i++) {
+        //   $newPlate = new Plate();
+
+        //   // $numberRestaurantRandom = $this->getRandomNumber(1, 123);
+        //   // $newPlate->restaurant_id = $numberRestaurantRandom;
+        //   $newPlate->name = $faker->sentence(3);
+          
+        //   $numberPlateRandom = $this->getRandomNumber(1, 532);
+        //   $newPlate->cover = $this->getImgRestaurant($numberPlateRandom);
+        //   $newPlate->cover_original_name = 'plate (' . $numberPlateRandom . ').jpg';
+          
+        //   $newPlate->slug = Plate::generateSlug($newPlate->name);
+        //   $newPlate->description = $faker->sentence(10);
+        //   $newPlate->is_available = $faker->boolean(80);
+        //   $newPlate->price = $faker->randomFloat(2, 0, 99);
+        //   $newPlate->ingrediants = $faker->words(5, true);
+        //   $newPlate->category = $categories[array_rand($categories, 1)];
+        //   $newPlate->save();
+        // }
 
       }
 
