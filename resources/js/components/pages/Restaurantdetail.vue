@@ -163,25 +163,39 @@ export default {
       },
 
 
-      cartArray(plate) {
-
+      cartArray(plate, string) {
         this.itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
 
-        if(plate.quantity === 1){
-            // pusho l'elemento nell'array e trasformo gli elementi dell'array in stringa per caricarli nel localStorage
+        // pusho l'elemento nell'array e trasformo gli elementi dell'array in stringa per caricarli nel localStorage
+        if(this.itemsArray.length === 0){
+            plate.quantity = 1;
             this.itemsArray.push(plate);
-            localStorage.setItem('items', JSON.stringify(this.itemsArray));
-            
-        }else{
-            
-            for(let i = 0; i < this.itemsArray.length; i++){
-                if(this.itemsArray[i] === plate.id){
-                    console.log('indice', this.itemsArray[i]);
-                    this.itemsArray[i].quantity = this.itemsArray[i].quantity + 1;
+            }else{
+                let counter = 1;
+                for(let i = 0; i < this.itemsArray.length; i++){
+                    if(this.itemsArray[i].id === plate.id && string === 'più'){
+                       counter = this.itemsArray[i].quantity + 1;
+                    }
+                    else if(this.itemsArray[i].id === plate.id && string === 'meno'){
+                       counter = this.itemsArray[i].quantity - 1;
+                       if(counter === 0){
+                           this.itemsArray = this.itemsArray.filter(function(item){
+                               return item.quantity === item.quantity > 0;
+                           })
+                       };
+                    }
                 }
-            }
+                this.itemsArray = this.itemsArray.filter(function(item){
+                    return item.id !== plate.id;
+                })
 
+            console.log(plate.name, counter);
+            plate.quantity = counter; 
+            this.itemsArray.push(plate);
+            
         }
+        localStorage.setItem('items', JSON.stringify(this.itemsArray));
+            
 
         // inizializzo il carrello trasformando le stringhe del localStorage in oggetti
         const cart = JSON.parse(localStorage.getItem('items'));

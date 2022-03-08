@@ -2193,22 +2193,40 @@ __webpack_require__.r(__webpack_exports__);
       });
       console.log(this.plates);
     },
-    cartArray: function cartArray(plate) {
-      this.itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
+    cartArray: function cartArray(plate, string) {
+      this.itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : []; // pusho l'elemento nell'array e trasformo gli elementi dell'array in stringa per caricarli nel localStorage
 
-      if (plate.quantity === 1) {
-        // pusho l'elemento nell'array e trasformo gli elementi dell'array in stringa per caricarli nel localStorage
+      if (this.itemsArray.length === 0) {
+        plate.quantity = 1;
         this.itemsArray.push(plate);
-        localStorage.setItem('items', JSON.stringify(this.itemsArray));
       } else {
+        var counter = 1;
+
         for (var i = 0; i < this.itemsArray.length; i++) {
-          if (this.itemsArray[i] === plate.id) {
-            console.log('indice', this.itemsArray[i]);
-            this.itemsArray[i].quantity = this.itemsArray[i].quantity + 1;
+          if (this.itemsArray[i].id === plate.id && string === 'più') {
+            counter = this.itemsArray[i].quantity + 1;
+          } else if (this.itemsArray[i].id === plate.id && string === 'meno') {
+            counter = this.itemsArray[i].quantity - 1;
+
+            if (counter === 0) {
+              this.itemsArray = this.itemsArray.filter(function (item) {
+                return item.quantity === item.quantity > 0;
+              });
+            }
+
+            ;
           }
         }
-      } // inizializzo il carrello trasformando le stringhe del localStorage in oggetti
 
+        this.itemsArray = this.itemsArray.filter(function (item) {
+          return item.id !== plate.id;
+        });
+        console.log(plate.name, counter);
+        plate.quantity = counter;
+        this.itemsArray.push(plate);
+      }
+
+      localStorage.setItem('items', JSON.stringify(this.itemsArray)); // inizializzo il carrello trasformando le stringhe del localStorage in oggetti
 
       var cart = JSON.parse(localStorage.getItem('items'));
       console.log('padre', cart); // console.log('array', this.itemsArray);
@@ -2508,11 +2526,8 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    saveItem: function saveItem(plate) {
-      this.quantity = this.quantity + 1;
-      plate.quantity = this.quantity;
-      console.log(plate.quantity);
-      this.$emit('cartArray', plate);
+    saveItem: function saveItem(plate, string) {
+      this.$emit('cartArray', plate, string);
     }
   }
 }); // this.singItem = localStorage.setItem('name', plate.name);
@@ -39838,7 +39853,7 @@ var render = function () {
                 attrs: { id: "add" },
                 on: {
                   click: function ($event) {
-                    return _vm.saveItem(_vm.plate)
+                    return _vm.saveItem(_vm.plate, (_vm.string = "più"))
                   },
                 },
               },
@@ -39851,7 +39866,7 @@ var render = function () {
                 attrs: { id: "remove" },
                 on: {
                   click: function ($event) {
-                    return _vm.removeItem(_vm.plate)
+                    return _vm.saveItem(_vm.plate, (_vm.string = "meno"))
                   },
                 },
               },
