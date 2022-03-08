@@ -13,9 +13,9 @@
         <span id="add"
         @click="saveItem(plate, string ='più')">+</span> 
         
-        0
+        {{quantity}}
 
-        <span id="remove"  @click="saveItem(plate, string = 'meno')">-</span>
+        <span :class="{disabled: quantity===0}" id="remove"  @click="saveItem(plate, string = 'meno')">-</span>
 
       </div>
 
@@ -34,13 +34,14 @@ export default {
     props: {
       plate: Object,
       vecchioCarrello: Array,
+      quantity: Number,
     },
     mounted() {
       // console.log('MOUNTED >>', localStorage);
     },
     data() {
       return {
-        quantity: 0,
+        // quantity: 0,
       }
     },
     methods: {
@@ -131,6 +132,10 @@ export default {
         height: 100%;
         object-fit: cover;
       }
+    }
+
+    span.disabled{
+      pointer-events: none;
     }
   }
 </style>

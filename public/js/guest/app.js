@@ -2166,6 +2166,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Restaurantdetail',
@@ -2200,45 +2201,39 @@ __webpack_require__.r(__webpack_exports__);
       console.log(this.plates);
     },
     cartArray: function cartArray(plate, string) {
-      this.itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : []; // pusho l'elemento nell'array e trasformo gli elementi dell'array in stringa per caricarli nel localStorage
+      this.itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : []; // GENERO UN ARRAY BOOLITEM CHE SI POPOLA SOLO SE ESISTE GIA' IL PIATTO CLICCATO 
 
-      if (this.itemsArray.length === 0) {
+      var boolItem = this.itemsArray.filter(function (item) {
+        return item.id === plate.id;
+      }); // SE QUESTO BOOLITEM E' VUOTO POSSO PUSHARE 
+
+      if (boolItem.length === 0) {
         plate.quantity = 1;
         this.itemsArray.push(plate);
       } else {
-        var counter = 1;
-
         for (var i = 0; i < this.itemsArray.length; i++) {
           if (this.itemsArray[i].id === plate.id && string === 'più') {
-            counter = this.itemsArray[i].quantity + 1;
+            this.itemsArray[i].quantity++;
           } else if (this.itemsArray[i].id === plate.id && string === 'meno') {
-            counter = this.itemsArray[i].quantity - 1;
+            this.itemsArray[i].quantity--;
 
-            if (counter === 0) {
+            if (this.itemsArray[i].quantity === 0) {
               this.itemsArray = this.itemsArray.filter(function (item) {
-                return item.quantity === item.quantity > 0;
+                return item.quantity > 0;
               });
             }
-
-            ;
           }
         }
-
-        this.itemsArray = this.itemsArray.filter(function (item) {
-          return item.id !== plate.id;
-        });
-        console.log(plate.name, counter);
-        plate.quantity = counter;
-        this.itemsArray.push(plate);
       }
 
       localStorage.setItem('items', JSON.stringify(this.itemsArray)); // inizializzo il carrello trasformando le stringhe del localStorage in oggetti
 
       var cart = JSON.parse(localStorage.getItem('items'));
-      console.log('padre', cart); // console.log('array', this.itemsArray);
+      console.log('padre', cart);
     },
     removeArray: function removeArray() {
       window.localStorage.clear();
+      console.log('Reset Storare Cliccato');
     }
   }
 });
@@ -2527,13 +2522,13 @@ __webpack_require__.r(__webpack_exports__);
   name: 'PlateBox',
   props: {
     plate: Object,
-    vecchioCarrello: Array
+    vecchioCarrello: Array,
+    quantity: Number
   },
   mounted: function mounted() {// console.log('MOUNTED >>', localStorage);
   },
   data: function data() {
-    return {
-      quantity: 0
+    return {// quantity: 0,
     };
   },
   methods: {
@@ -7148,7 +7143,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".box[data-v-77410197] {\n  width: 100%;\n  height: 120px;\n  padding: 0 5%;\n  margin: 10px 0;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  border-radius: 20px;\n  transition: box-shadow 0.3s ease-in-out;\n  transition: height 0.3s, width 0.3s;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  transition: transform 0.3s;\n  cursor: pointer;\n}\n.box[data-v-77410197]:hover {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  font-weight: bold;\n  transform: scale(1.05, 1.1);\n}\n.box .name[data-v-77410197] {\n  font-weight: bold;\n  font-size: 20px;\n}\n.box .price[data-v-77410197] {\n  font-weight: bold;\n}\n.box .price[data-v-77410197], .box .cart[data-v-77410197] {\n  display: inline-block;\n}\n.box .cart[data-v-77410197] {\n  padding-left: 20px;\n  padding-top: 10px;\n  width: 150px;\n  font-size: 18px;\n  color: #45CCBC;\n}\n.box .cart i[data-v-77410197] {\n  padding-right: 5px;\n}\n.box .cart span[data-v-77410197] {\n  color: black;\n  border: 1px solid black;\n  padding: 5px 12px;\n  border-radius: 7px;\n}\n.box .right[data-v-77410197] {\n  height: 90%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  display: flex;\n  align-items: center;\n}\n.box .image[data-v-77410197] {\n  width: 130px;\n  border-radius: 15px;\n  height: 80%;\n}\n.box .image img[data-v-77410197] {\n  border-radius: 15px;\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}", ""]);
+exports.push([module.i, ".box[data-v-77410197] {\n  width: 100%;\n  height: 120px;\n  padding: 0 5%;\n  margin: 10px 0;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  border-radius: 20px;\n  transition: box-shadow 0.3s ease-in-out;\n  transition: height 0.3s, width 0.3s;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  transition: transform 0.3s;\n  cursor: pointer;\n}\n.box[data-v-77410197]:hover {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  font-weight: bold;\n  transform: scale(1.05, 1.1);\n}\n.box .name[data-v-77410197] {\n  font-weight: bold;\n  font-size: 20px;\n}\n.box .price[data-v-77410197] {\n  font-weight: bold;\n}\n.box .price[data-v-77410197], .box .cart[data-v-77410197] {\n  display: inline-block;\n}\n.box .cart[data-v-77410197] {\n  padding-left: 20px;\n  padding-top: 10px;\n  width: 150px;\n  font-size: 18px;\n  color: #45CCBC;\n}\n.box .cart i[data-v-77410197] {\n  padding-right: 5px;\n}\n.box .cart span[data-v-77410197] {\n  color: black;\n  border: 1px solid black;\n  padding: 5px 12px;\n  border-radius: 7px;\n}\n.box .right[data-v-77410197] {\n  height: 90%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  display: flex;\n  align-items: center;\n}\n.box .image[data-v-77410197] {\n  width: 130px;\n  border-radius: 15px;\n  height: 80%;\n}\n.box .image img[data-v-77410197] {\n  border-radius: 15px;\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.box span.disabled[data-v-77410197] {\n  pointer-events: none;\n}", ""]);
 
 // exports
 
@@ -39475,7 +39470,7 @@ var render = function () {
               _vm._l(_vm.activeRestaurant.plates, function (plate, index) {
                 return _c("PlateBox", {
                   key: "plate" + index,
-                  attrs: { plate: plate },
+                  attrs: { plate: plate, quantity: plate.quantity },
                   on: { cartArray: _vm.cartArray },
                 })
               }),
@@ -39872,10 +39867,13 @@ var render = function () {
               },
               [_vm._v("+")]
             ),
-            _vm._v(" \n        \n        0\n\n        "),
+            _vm._v(
+              " \n        \n        " + _vm._s(_vm.quantity) + "\n\n        "
+            ),
             _c(
               "span",
               {
+                class: { disabled: _vm.quantity === 0 },
                 attrs: { id: "remove" },
                 on: {
                   click: function ($event) {
