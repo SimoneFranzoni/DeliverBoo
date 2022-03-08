@@ -169,7 +169,7 @@ export default {
                 if(this.itemsArray[i] === plate.id){
                     console.log('indice', this.itemsArray[i]);
                     console.log('counter', counter);
-                    this.itemsArray[i].quantity = counter;
+                    this.itemsArray[i].quantity = this.itemsArray[i].quantity + 1;
                 }
             }
 

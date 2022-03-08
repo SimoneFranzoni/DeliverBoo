@@ -2196,7 +2196,7 @@ __webpack_require__.r(__webpack_exports__);
           if (this.itemsArray[i] === plate.id) {
             console.log('indice', this.itemsArray[i]);
             console.log('counter', counter);
-            this.itemsArray[i].quantity = counter;
+            this.itemsArray[i].quantity = this.itemsArray[i].quantity + 1;
           }
         }
       } // inizializzo il carrello trasformando le stringhe del localStorage in oggetti
@@ -2485,8 +2485,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     saveItem: function saveItem(plate) {
-      this.quantity = this.quantity + 1; // console.log(this.quantity);
-
+      this.quantity = this.quantity + 1;
+      console.log(this.quantity);
       this.$emit('cartArray', plate, this.quantity);
     }
   }
