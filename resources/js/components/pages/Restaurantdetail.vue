@@ -162,8 +162,7 @@ export default {
       },
 
 
-      cartArray(plate) {
-
+      cartArray(plate, string) {
         this.itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
 
         // pusho l'elemento nell'array e trasformo gli elementi dell'array in stringa per caricarli nel localStorage
@@ -173,22 +172,24 @@ export default {
             }else{
                 let counter = 1;
                 for(let i = 0; i < this.itemsArray.length; i++){
-                    // console.log('index', this.itemsArray[i].id);
-                    // console.log('id', plate.id);
-                    if(this.itemsArray[i].id === plate.id){
-                        counter = counter + 1;
+                    if(this.itemsArray[i].id === plate.id && string === 'più'){
+                       counter = this.itemsArray[i].quantity + 1;
+                    }
+                    else if(this.itemsArray[i].id === plate.id && string === 'meno'){
+                       counter = this.itemsArray[i].quantity - 1;
+                       if(counter === 0){
+                           this.itemsArray = this.itemsArray.filter(function(item){
+                               return item.quantity === item.quantity > 0;
+                           })
+                       };
                     }
                 }
-                // for(let i = 0; i < this.itemsArray.length; i++){
+                this.itemsArray = this.itemsArray.filter(function(item){
+                    return item.id !== plate.id;
+                })
 
-                //     if(this.itemsArray[i].id === plate.id){
-                //         this.itemsArray.splice(i-1, 1);
-                //     }
-                // }
             console.log(plate.name, counter);
-            plate.quantity = counter;
-            // console.log('index', this.itemsArray[i].id);
-            // console.log('id', plate.id);
+            plate.quantity = counter; 
             this.itemsArray.push(plate);
             
         }
