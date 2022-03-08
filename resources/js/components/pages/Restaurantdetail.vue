@@ -79,21 +79,21 @@
                     </div>
                 </div>
                 <div class="d-none d-md-block col-5 col-lg-4 right-column">
-                    <div class="carrello">
+                    <div class="carrello" v-if="cart">
                         <div
                             class="row justify-content-around align-items-center"
                         >
                             <h2 class="fw-bold">Il tuo ordine</h2>
                         </div>
                         <div class="line mt-3"></div>
-                        <div class="plate-order">
+                        <div class="plate-order" >
                             <!-- elenco piatti con prezzi  -->
 
                             <div v-for="(item, index) in cart" :key="`item${index}`">
                               <div>
                                 <strong>{{item.name}}</strong>
                               </div>
-                              <div>{{item.quantity}} | €{{item.price}}</div>
+                              <div>{{item.quantity}} | € {{item.price}}</div>
                             </div>
 
                             
@@ -104,23 +104,30 @@
                         <div
                             class="row px-5 pt-3 pb-2 justify-content-between align-items-center"
                         >
-                            <div class="fw-bold">Subtotale</div>
+                            <div class="fw-bold">Totale</div>
                             <div class="fw-bold">€{{getSubTotal}}</div>
                         </div>
-                        <div
-                            class="row px-5 py-2 justify-content-between align-items-center"
+                        
+                    </div>
+                    
+                  <div class="carrello" v-else>
+                    <div
+                            class="row justify-content-around align-items-center"
                         >
-                            <div>Costo di consegna</div>
-                            <div>2,00 €</div>
+                            <h2 class="fw-bold">Il tuo ordine</h2>
                         </div>
+                        <div class="line mt-3"></div>
+                        <div class="plate-order" >
+                        </div>
+
+                        <div class="line"></div>
                         <div
-                            class="row px-5 py-2 justify-content-between align-items-center"
+                            class="row px-5 pt-3 pb-2 justify-content-between align-items-center"
                         >
                             <div class="fw-bold">Totale</div>
-                            <div class="fw-bold">7,50 €</div>
+                            <div class="fw-bold">€0</div>
                         </div>
-                    </div>
-                  
+                  </div>
 
                 </div> 
                   
@@ -149,25 +156,28 @@ export default {
         itemsArray: [],
         isLoaded: false,
         cart: JSON.parse(localStorage.getItem('items')),
-        subTotal: null
+        // cart: [],
+        subTotal: null,
+        // isCart: true
       }
     },
     mounted() {
      this.getActiveRestaurant()
     },  
     computed: {
-      getSubTotal() {
-        let itemTotalPrice;
-        let sum;
-        console.log(this.cart);
+      getSubTotal: function() {
+        let itemTotalPrice = 0;
+        let sum = 0;
         for(let item of this.cart) {
           itemTotalPrice = item.price * item.quantity;
           sum += itemTotalPrice;
         }
-        this.subTotal = sum;
-        console.log('computed', sum);
+        // console.log(this.cart);
+        
+        return this.subTotal = sum;
       }
     },
+    
     methods : {
       getActiveRestaurant() {
         this.isLoaded = false;
@@ -183,6 +193,8 @@ export default {
 
 
       cartArray(plate, string) {
+        console.log('cart',this.cart);
+        this.cart = JSON.parse(localStorage.getItem('items'));
         this.itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
 
 
@@ -203,6 +215,7 @@ export default {
                     } else if(this.itemsArray[i].id === plate.id && string === 'meno'){
                         this.itemsArray[i].quantity --;
                         if(this.itemsArray[i].quantity === 0){
+                            // this.isCart = false;
                             this.itemsArray = this.itemsArray.filter(function(item){
                                return item.quantity > 0;
                            })
@@ -217,8 +230,9 @@ export default {
             
 
         // inizializzo il carrello trasformando le stringhe del localStorage in oggetti
-        const cart = JSON.parse(localStorage.getItem('items'));
-        console.log('padre', cart);
+        this.cart = JSON.parse(localStorage.getItem('items'));
+        console.log('padre', this.cart);
+       
       },
 
       removeArray(){

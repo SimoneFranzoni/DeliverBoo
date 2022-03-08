@@ -2171,6 +2171,13 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Restaurantdetail',
@@ -2185,7 +2192,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       itemsArray: [],
       isLoaded: false,
       cart: JSON.parse(localStorage.getItem('items')),
-      subTotal: null
+      // cart: [],
+      subTotal: null // isCart: true
+
     };
   },
   mounted: function mounted() {
@@ -2193,9 +2202,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   },
   computed: {
     getSubTotal: function getSubTotal() {
-      var itemTotalPrice;
-      var sum;
-      console.log(this.cart);
+      var itemTotalPrice = 0;
+      var sum = 0;
 
       var _iterator = _createForOfIteratorHelper(this.cart),
           _step;
@@ -2205,15 +2213,15 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           var item = _step.value;
           itemTotalPrice = item.price * item.quantity;
           sum += itemTotalPrice;
-        }
+        } // console.log(this.cart);
+
       } catch (err) {
         _iterator.e(err);
       } finally {
         _iterator.f();
       }
 
-      this.subTotal = sum;
-      console.log('computed', sum);
+      return this.subTotal = sum;
     }
   },
   methods: {
@@ -2232,6 +2240,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       console.log(this.plates);
     },
     cartArray: function cartArray(plate, string) {
+      console.log('cart', this.cart);
+      this.cart = JSON.parse(localStorage.getItem('items'));
       this.itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : []; // GENERO UN ARRAY BOOLITEM CHE SI POPOLA SOLO SE ESISTE GIA' IL PIATTO CLICCATO 
 
       var boolItem = this.itemsArray.filter(function (item) {
@@ -2249,6 +2259,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
             this.itemsArray[i].quantity--;
 
             if (this.itemsArray[i].quantity === 0) {
+              // this.isCart = false;
               this.itemsArray = this.itemsArray.filter(function (item) {
                 return item.quantity > 0;
               });
@@ -2259,8 +2270,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
       localStorage.setItem('items', JSON.stringify(this.itemsArray)); // inizializzo il carrello trasformando le stringhe del localStorage in oggetti
 
-      var cart = JSON.parse(localStorage.getItem('items'));
-      console.log('padre', cart);
+      this.cart = JSON.parse(localStorage.getItem('items'));
+      console.log('padre', this.cart);
     },
     removeArray: function removeArray() {
       window.localStorage.clear();
@@ -2287,6 +2298,7 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
+//
 //
 //
 //
@@ -39518,49 +39530,57 @@ var render = function () {
           "div",
           { staticClass: "d-none d-md-block col-5 col-lg-4 right-column" },
           [
-            _c("div", { staticClass: "carrello" }, [
-              _vm._m(5),
-              _vm._v(" "),
-              _c("div", { staticClass: "line mt-3" }),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "plate-order" },
-                _vm._l(_vm.cart, function (item, index) {
-                  return _c("div", { key: "item" + index }, [
-                    _c("div", [_c("strong", [_vm._v(_vm._s(item.name))])]),
-                    _vm._v(" "),
-                    _c("div", [
-                      _vm._v(
-                        _vm._s(item.quantity) + " | €" + _vm._s(item.price)
-                      ),
-                    ]),
-                  ])
-                }),
-                0
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "line" }),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "row px-5 pt-3 pb-2 justify-content-between align-items-center",
-                },
-                [
-                  _c("div", { staticClass: "fw-bold" }, [_vm._v("Subtotale")]),
+            _vm.cart
+              ? _c("div", { staticClass: "carrello" }, [
+                  _vm._m(5),
                   _vm._v(" "),
-                  _c("div", { staticClass: "fw-bold" }, [
-                    _vm._v("€" + _vm._s(_vm.getSubTotal)),
-                  ]),
-                ]
-              ),
-              _vm._v(" "),
-              _vm._m(6),
-              _vm._v(" "),
-              _vm._m(7),
-            ]),
+                  _c("div", { staticClass: "line mt-3" }),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "plate-order" },
+                    _vm._l(_vm.cart, function (item, index) {
+                      return _c("div", { key: "item" + index }, [
+                        _c("div", [_c("strong", [_vm._v(_vm._s(item.name))])]),
+                        _vm._v(" "),
+                        _c("div", [
+                          _vm._v(
+                            _vm._s(item.quantity) + " | € " + _vm._s(item.price)
+                          ),
+                        ]),
+                      ])
+                    }),
+                    0
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "line" }),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "row px-5 pt-3 pb-2 justify-content-between align-items-center",
+                    },
+                    [
+                      _c("div", { staticClass: "fw-bold" }, [_vm._v("Totale")]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "fw-bold" }, [
+                        _vm._v("€" + _vm._s(_vm.getSubTotal)),
+                      ]),
+                    ]
+                  ),
+                ])
+              : _c("div", { staticClass: "carrello" }, [
+                  _vm._m(6),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "line mt-3" }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "plate-order" }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "line" }),
+                  _vm._v(" "),
+                  _vm._m(7),
+                ]),
           ]
         ),
       ]),
@@ -39638,14 +39658,8 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "div",
-      {
-        staticClass: "row px-5 py-2 justify-content-between align-items-center",
-      },
-      [
-        _c("div", [_vm._v("Costo di consegna")]),
-        _vm._v(" "),
-        _c("div", [_vm._v("2,00 €")]),
-      ]
+      { staticClass: "row justify-content-around align-items-center" },
+      [_c("h2", { staticClass: "fw-bold" }, [_vm._v("Il tuo ordine")])]
     )
   },
   function () {
@@ -39655,12 +39669,13 @@ var staticRenderFns = [
     return _c(
       "div",
       {
-        staticClass: "row px-5 py-2 justify-content-between align-items-center",
+        staticClass:
+          "row px-5 pt-3 pb-2 justify-content-between align-items-center",
       },
       [
         _c("div", { staticClass: "fw-bold" }, [_vm._v("Totale")]),
         _vm._v(" "),
-        _c("div", { staticClass: "fw-bold" }, [_vm._v("7,50 €")]),
+        _c("div", { staticClass: "fw-bold" }, [_vm._v("€0")]),
       ]
     )
   },
