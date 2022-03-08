@@ -107,9 +107,12 @@
                             <div class="fw-bold">7,50 €</div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>   
+                </div> 
+            </div> 
+        </div> 
+        <div class="d-block d-md-none carrello-mobile">
+            Clicca qui per il carrello
+        </div>
     </div>
 </template>
 
@@ -183,10 +186,6 @@ export default {
       z-index: -100;
       overflow: hidden;
     }
-}
-
-.container-fluid{
-    padding: 0 8%;
 }
 
 .nav-menu{
@@ -317,6 +316,19 @@ export default {
 
 .fw-bold{
     font-weight: bold;
+}
+
+.carrello-mobile{
+    width: 100%;
+    height: 75px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    margin-top: 100px;
+    box-shadow: 0 -3px 10px rgba(0,0,0,0.3);
+    background-color: $primary-color;
+    margin: 0;
 }
 
 </style>
