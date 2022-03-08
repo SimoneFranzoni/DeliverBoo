@@ -116,8 +116,16 @@
                         </div>
                     </div>
                 </div> 
+
+                <!-- Bottone Temporaneo Svuota Carrello  -->
+                <div class="sp-box-btn d-flex justify-content-center w-100">
+                    <button
+                    class="m-1 p-4"
+                    @click="removeArray">CANCELLA CARRELLO</button>
+                </div>
+                <!-- Fine Bottone Temporaneo  -->
             </div> 
-        </div> 
+        </div>  
         <div class="d-block d-md-none carrello-mobile">
             Clicca qui per il carrello
         </div>
@@ -158,7 +166,18 @@ export default {
 
       cartArray(plate) {
 
-        this.itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
+          if(this.itemsArray.length = 0) {
+              let plateInStr = JSON.stringify(plate);
+              this.itemsArray = localStorage.setItem('items', plateInStr);
+              console.log('AAAAAitemsArray dopo il Set', this.itemsArray);
+            //   console.log(localStorage);
+              let onlyValueItems = localStorage.getItem('this.itemsArray');
+              let objectItems = JSON.parse(onlyValueItems);
+              console.log('objectItems', objectItems);
+          } 
+
+        // this.itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
+
 
         if(plate.quantity === 1){
             // pusho l'elemento nell'array e trasformo gli elementi dell'array in stringa per caricarli nel localStorage
@@ -178,12 +197,13 @@ export default {
 
         // inizializzo il carrello trasformando le stringhe del localStorage in oggetti
         const cart = JSON.parse(localStorage.getItem('items'));
-        console.log('padre', cart);
-        // console.log('array', this.itemsArray);
+        // console.log('padre', cart);
+        console.log('itemsArray da RestaurantDetail', this.itemsArray);
       },
 
       removeArray(){
           window.localStorage.clear();
+          console.log(localStorage);
       }
     }
 }

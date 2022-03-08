@@ -2157,6 +2157,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Restaurantdetail',
@@ -2187,7 +2195,16 @@ __webpack_require__.r(__webpack_exports__);
       console.log(this.plates);
     },
     cartArray: function cartArray(plate) {
-      this.itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
+      if (this.itemsArray.length = 0) {
+        var plateInStr = JSON.stringify(plate);
+        this.itemsArray = localStorage.setItem('items', plateInStr);
+        console.log('AAAAAitemsArray dopo il Set', this.itemsArray); //   console.log(localStorage);
+
+        var onlyValueItems = localStorage.getItem('this.itemsArray');
+        var objectItems = JSON.parse(onlyValueItems);
+        console.log('objectItems', objectItems);
+      } // this.itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
+
 
       if (plate.quantity === 1) {
         // pusho l'elemento nell'array e trasformo gli elementi dell'array in stringa per caricarli nel localStorage
@@ -2203,11 +2220,13 @@ __webpack_require__.r(__webpack_exports__);
       } // inizializzo il carrello trasformando le stringhe del localStorage in oggetti
 
 
-      var cart = JSON.parse(localStorage.getItem('items'));
-      console.log('padre', cart); // console.log('array', this.itemsArray);
+      var cart = JSON.parse(localStorage.getItem('items')); // console.log('padre', cart);
+
+      console.log('itemsArray da RestaurantDetail', this.itemsArray);
     },
     removeArray: function removeArray() {
       window.localStorage.clear();
+      console.log(localStorage);
     }
   }
 });
@@ -2512,8 +2531,8 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     saveItem: function saveItem(plate) {
       this.quantity = this.quantity + 1;
-      plate.quantity = quantity;
-      console.log(plate.quantity);
+      plate.quantity = this.quantity;
+      console.log(plate.name, plate.quantity);
       this.$emit('cartArray', plate);
     }
   }
@@ -39436,6 +39455,18 @@ var render = function () {
         ]),
         _vm._v(" "),
         _vm._m(5),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "sp-box-btn d-flex justify-content-center w-100" },
+          [
+            _c(
+              "button",
+              { staticClass: "m-1 p-4", on: { click: _vm.removeArray } },
+              [_vm._v("CANCELLA CARRELLO")]
+            ),
+          ]
+        ),
       ]),
     ]),
     _vm._v(" "),
@@ -55788,7 +55819,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\franc\Documents\Francesco\BOOLEAN\Esercizi\PORTFOLIO\progetto finale\DeliverBoo\DeliverBoo\resources\js\guest\app.js */"./resources/js/guest/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Simone\Documents\Boolean\Progetto Finale\DeliverBoo\resources\js\guest\app.js */"./resources/js/guest/app.js");
 
 
 /***/ })
