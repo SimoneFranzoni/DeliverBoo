@@ -13077,12 +13077,12 @@ h3 {
 
 .background-team5 {
   min-height: calc(100vh - 80px);
-  background-color: #45CCBC;
-  background-image: linear-gradient(10deg, #d2f2ee9c 50%, transparent 50%), linear-gradient(-60deg, #1a5e56 30%, transparent 30%);
+  background-color: #d1f2ee;
+  background-image: linear-gradient(10deg, #d2f2ee9c 40%, transparent 90%), linear-gradient(-60deg, #35c2b2 60%, transparent 80%);
 }
 .background-team5 .dash-board-team5 {
   border-radius: 40px;
-  background-image: linear-gradient(to left, #45CCBC, #0f3631);
+  background-image: linear-gradient(to left, #35c2b2, #95e2d9);
   padding: 50px 0;
   box-shadow: 3px 3px 10px #6a6a6a;
 }
@@ -13093,16 +13093,17 @@ h3 {
 }
 
 h1 {
+  text-align: center;
   border-radius: 100px;
   padding: 20px 0;
-  box-shadow: inset 0 0 10px #000000 !important;
+  box-shadow: 0 0 10px #000000 !important;
   color: white;
 }
 
 .restaurant-slider-team5 {
   box-shadow: inset 0 0 10px #000000 !important;
   height: 322px;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(255, 255, 255, 0.3);
   border-radius: 20px;
   scrollbar-width: none;
   overflow-y: scroll;
@@ -13153,23 +13154,13 @@ h5, h6 {
   margin: auto;
 }
 
-.restaurant-name-team5 {
-  text-align: center;
-  color: white;
-  padding: 10px;
-  border-radius: 25px;
-  background-color: rgba(0, 0, 0, 0.3);
-  border-bottom: 1px solid white;
-}
-
 .info-restaurant-team5 {
   padding: 20px;
   border-radius: 10px;
 }
 
 .restaurant-index-img-team5 {
-  background-color: rgba(0, 0, 0, 0.3);
-  border: 1px solid white;
+  border: 2px solid white;
 }
 
 .slider-team5 {
@@ -13190,7 +13181,7 @@ h5, h6 {
   max-height: 200px;
   min-width: 180px;
   border-bottom: 1px solid #ffffff;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(255, 255, 255, 0.3);
   border-radius: 25px;
   box-shadow: inset 0 0 10px #000000;
 }
@@ -13203,7 +13194,7 @@ h5, h6 {
 }
 
 .slider-team5 {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 @media screen and (min-width: 992px) {

@@ -5,14 +5,14 @@
     @if (count($ristoranti)=== 0)
     <div style="margin:50px;">
 
-      <h2 class="card-team5 text-center text-danger">Non hai ancora registrato i tuoi ristoranti</h2>
+      <h3 class="card-team5 text-center text-danger">Non hai ancora registrato i tuoi ristoranti</h3>
     </div>
       
       
       
       @else
       <div class="d-flex">
-        <h1  class="col-12 col-lg-8 text-center my-3">I miei ristoranti</h1>
+        <h1  class="col-12 col-lg-8  my-3">I miei ristoranti</h1>
       </div>
     
 

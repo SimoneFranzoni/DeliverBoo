@@ -5,14 +5,13 @@
   
   {{-- info ristorante --}}
   <div class="d-md-flex justify-content-between mb-5">
-    <div class="col-md-8">
-      <h1>{{$restaurant->name}}</h1>
-      <h6>Indirizzo :{{$restaurant->address}}</h6>
-      <h6>Teleforno :{{$restaurant->phone_number}}</h6>
-     
+    <div class="col-md-8 mt-3">
+      <h1>{{$restaurant->name}}</h2>
     </div>  
   </div>
- 
+  
+    
+     
   
   <h2>Ordini</h2>
   <ul style="padding:0px;">
@@ -45,8 +44,10 @@
     @endforeach 
   </ul>     
      
-  <h2 >
-    <a  href="{{route('admin.miei-ristoranti.piatti.index',$restaurant->slug)}}">Back <<</a>
+  <h2 class="d-inline-block mt-4">
+    <a  href="{{route('admin.miei-ristoranti.piatti.index',$restaurant->slug)}}">
+       <button class="btn-team5 btn-back-team5">Vai al Ristorante</button> 
+    </a>
   </h2>
 
  
