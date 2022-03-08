@@ -2147,6 +2147,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Restaurantdetail',
@@ -2177,14 +2193,27 @@ __webpack_require__.r(__webpack_exports__);
       console.log(this.plates);
     },
     cartArray: function cartArray(plate) {
-      this.itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : []; // pusho l'elemento nell'array e trasformo gli elementi dell'array in stringa per caricarli nel localStorage
+      this.itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
 
-      this.itemsArray.push(plate);
-      localStorage.setItem('items', JSON.stringify(this.itemsArray)); // inizializzo il carrello trasformando le stringhe del localStorage in oggetti
+      if (plate.quantity === 1) {
+        // pusho l'elemento nell'array e trasformo gli elementi dell'array in stringa per caricarli nel localStorage
+        this.itemsArray.push(plate);
+        localStorage.setItem('items', JSON.stringify(this.itemsArray));
+      } else {
+        for (var i = 0; i < this.itemsArray.length; i++) {
+          if (this.itemsArray[i] === plate.id) {
+            console.log('indice', this.itemsArray[i]);
+            this.itemsArray[i].quantity = this.itemsArray[i].quantity + 1;
+          }
+        }
+      } // inizializzo il carrello trasformando le stringhe del localStorage in oggetti
+
 
       var cart = JSON.parse(localStorage.getItem('items'));
-      console.log('padre', cart);
-      console.log('array', this.itemsArray);
+      console.log('padre', cart); // console.log('array', this.itemsArray);
+    },
+    removeArray: function removeArray() {
+      window.localStorage.clear();
     }
   }
 });
@@ -2487,17 +2516,11 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    // saveItem(plate) {
-    //     this.quantity = this.quantity +1;
-    //     this.$emit('cartArray',plate, this.quantity);
-    // },
     saveItem: function saveItem(plate) {
-      if (this.quantity === 0) {
-        this.$emit('cartArray', plate, this.quantity);
-      } else {
-        this.quantity = this.quantity + 1;
-        this.$emit('cartArray', plate, this.quantity);
-      }
+      this.quantity = this.quantity + 1;
+      plate.quantity = quantity;
+      console.log(plate.quantity);
+      this.$emit('cartArray', plate);
     }
   }
 }); // this.singItem = localStorage.setItem('name', plate.name);
@@ -39333,7 +39356,34 @@ var render = function () {
             attrs: { id: "stickyMenu" },
           },
           [
-            _vm._m(0),
+            _c("ul", { staticClass: "pt-5" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _vm._m(1),
+              _vm._v(" "),
+              _vm._m(2),
+              _vm._v(" "),
+              _vm._m(3),
+              _vm._v(" "),
+              _c("li", [
+                _c("div", { staticClass: "bar" }),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    attrs: { href: "#dessert" },
+                    on: {
+                      click: function ($event) {
+                        return _vm.removeArray()
+                      },
+                    },
+                  },
+                  [_vm._v("Dessert")]
+                ),
+              ]),
+              _vm._v(" "),
+              _vm._m(4),
+            ]),
             _vm._v(" "),
             _c(
               "router-link",
@@ -39370,7 +39420,13 @@ var render = function () {
                   return _c(
                     "div",
                     { key: "type" + index, staticClass: "type" },
-                    [_vm._v(_vm._s(type.name))]
+                    [
+                      _vm._v(
+                        "\n                                " +
+                          _vm._s(type.name) +
+                          "\n                            "
+                      ),
+                    ]
                   )
                 }),
                 0
@@ -39395,7 +39451,7 @@ var render = function () {
               _vm._l(_vm.activeRestaurant.plates, function (plate, index) {
                 return _c("PlateBox", {
                   key: "plate" + index,
-                  attrs: { plate: plate, carrello: _vm.carrello },
+                  attrs: { plate: plate },
                   on: { cartArray: _vm.cartArray },
                 })
               }),
@@ -39404,7 +39460,7 @@ var render = function () {
           ),
         ]),
         _vm._v(" "),
-        _vm._m(1),
+        _vm._m(5),
       ]),
     ]),
     _vm._v(" "),
@@ -39418,42 +39474,50 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("ul", { staticClass: "pt-5" }, [
-      _c("li", [
-        _c("div", { staticClass: "bar" }),
-        _vm._v(" "),
-        _c("a", { attrs: { href: "#antipasti" } }, [_vm._v("Antipasti")]),
-      ]),
+    return _c("li", [
+      _c("div", { staticClass: "bar" }),
       _vm._v(" "),
-      _c("li", [
-        _c("div", { staticClass: "bar" }),
-        _vm._v(" "),
-        _c("a", { attrs: { href: "#primi" } }, [_vm._v("Primi")]),
-      ]),
+      _c("a", { attrs: { href: "#antipasti" } }, [_vm._v("Antipasti")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("div", { staticClass: "bar" }),
       _vm._v(" "),
-      _c("li", [
-        _c("div", { staticClass: "bar" }),
-        _vm._v(" "),
-        _c("a", { attrs: { href: "#secondi" } }, [_vm._v("Secondi")]),
-      ]),
+      _c("a", { attrs: { href: "#primi" } }, [_vm._v("Primi")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("div", { staticClass: "bar" }),
       _vm._v(" "),
-      _c("li", [
-        _c("div", { staticClass: "bar" }),
-        _vm._v(" "),
-        _c("a", { attrs: { href: "#contorni" } }, [_vm._v("Contorni")]),
-      ]),
+      _c("a", { attrs: { href: "#secondi" } }, [_vm._v("Secondi")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("div", { staticClass: "bar" }),
       _vm._v(" "),
-      _c("li", [
-        _c("div", { staticClass: "bar" }),
-        _vm._v(" "),
-        _c("a", { attrs: { href: "#dessert" } }, [_vm._v("Dessert")]),
-      ]),
+      _c("a", { attrs: { href: "#contorni" } }, [_vm._v("Contorni")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("div", { staticClass: "bar" }),
       _vm._v(" "),
-      _c("li", [
-        _c("div", { staticClass: "bar" }),
-        _vm._v(" "),
-        _c("a", { attrs: { href: "#bevande" } }, [_vm._v("Bevande")]),
-      ]),
+      _c("a", { attrs: { href: "#bevande" } }, [_vm._v("Bevande")]),
     ])
   },
   function () {
@@ -39482,7 +39546,7 @@ var staticRenderFns = [
               _c("div", { staticClass: "pl-2 plus-btn" }, [_vm._v("+")]),
             ]),
             _vm._v(" "),
-            _c("div", [_vm._v("prezzo ")]),
+            _c("div", [_vm._v("prezzo")]),
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "line" }),

@@ -44,20 +44,12 @@ export default {
       }
     },
     methods: {
-      // saveItem(plate) {
-
-      //     this.quantity = this.quantity +1;
-      //     this.$emit('cartArray',plate, this.quantity);
-
-      // },
 
       saveItem(plate) {
-        if(this.quantity === 0){
-          this.$emit('cartArray',plate, this.quantity);
-        }else{
           this.quantity = this.quantity +1;
-          this.$emit('cartArray',plate, this.quantity);
-        }
+            plate.quantity = quantity;
+            console.log(plate.quantity);
+            this.$emit('cartArray',plate);
       }
     }
 }
