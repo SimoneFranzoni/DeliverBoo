@@ -11,11 +11,11 @@
         <i class="fas fa-shopping-cart"></i>
 
         <span id="add"
-        @click="saveItem(plate)">+</span> 
+        @click="saveItem(plate, string ='più')">+</span> 
         
-        0
+        {{quantity}}
 
-        <span id="remove">-</span>
+        <span :class="{disabled: quantity===0}" id="remove"  @click="saveItem(plate, string = 'meno')">-</span>
 
       </div>
 
@@ -32,33 +32,33 @@
 export default {
     name: 'PlateBox',
     props: {
-      plate: Object
+      plate: Object,
+      vecchioCarrello: Array,
+      quantity: Number,
     },
     mounted() {
       // console.log('MOUNTED >>', localStorage);
     },
     data() {
       return {
-        cartItemCounter: 0,
-        items: [],
-        singItem: {
-          name: '',
-          price: null
-        }
+        // quantity: 0,
       }
     },
     methods: {
-      saveItem(plate) {
 
-        this.singItem.name = localStorage.setItem('name', plate.name);
-        this.singItem.price = localStorage.setItem('price', plate.price);
-        this.items.push(this.singItem);
-        localStorage.setItem('items', JSON.stringify(this.items))
-        this.$emit('cartArray', this.items);
-        console.log(localStorage.getItem('items'));
+      saveItem(plate, string) {
+          this.$emit('cartArray',plate, string);
       }
     }
 }
+
+
+
+// this.singItem = localStorage.setItem('name', plate.name);
+// this.items.push(this.singItem);
+// console.log('array', this.singItem);
+// localStorage.setItem('items', JSON.stringify(this.items))
+// console.log(localStorage.getItem('items'));
 </script>
 
 <style lang="scss" scoped>
@@ -132,6 +132,10 @@ export default {
         height: 100%;
         object-fit: cover;
       }
+    }
+
+    span.disabled{
+      pointer-events: none;
     }
   }
 </style>
