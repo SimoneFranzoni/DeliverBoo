@@ -15,7 +15,7 @@
         
         0
 
-        <span id="remove">-</span>
+        <span id="remove"  @click="removeItem(plate)">-</span>
 
       </div>
 
@@ -44,19 +44,21 @@ export default {
       }
     },
     methods: {
-      saveItem(plate) {
-
-          this.$emit('cartArray',plate);
-
-      },
       // saveItem(plate) {
-      //   if(this.quantity === 0){
+
       //     this.quantity = this.quantity +1;
-      //     this.$emit('cartArray',plate);
-      //   }else{
-      //     this.quantity = this.quantity +1;
-      //   }
-      // }
+      //     this.$emit('cartArray',plate, this.quantity);
+
+      // },
+
+      saveItem(plate) {
+        if(this.quantity === 0){
+          this.$emit('cartArray',plate, this.quantity);
+        }else{
+          this.quantity = this.quantity +1;
+          this.$emit('cartArray',plate, this.quantity);
+        }
+      }
     }
 }
 
