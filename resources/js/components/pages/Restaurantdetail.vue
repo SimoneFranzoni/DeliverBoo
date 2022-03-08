@@ -183,7 +183,7 @@ export default {
                 })
 
             console.log(plate.name, counter);
-            plate.quantity = counter;
+            plate.quantity = counter; 
             this.itemsArray.push(plate);
             
         }
