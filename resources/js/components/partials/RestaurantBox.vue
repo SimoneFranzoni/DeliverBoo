@@ -17,12 +17,14 @@
             {{restaurant.city}}
           </div>    
         </div> 
-        <div class="col-6">
-          <div>
-            {{restaurant.address}}
-          </div>
-          <div>
-            {{restaurant.phone_number}}
+        <div class="col-6 d-flex">
+          <div class="row flex-column justify-content-center">
+            <div>
+              {{restaurant.address}}
+            </div>
+            <div>
+              {{restaurant.phone_number}}
+            </div>
           </div>
         </div> 
       </div>

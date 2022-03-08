@@ -30,17 +30,18 @@
             </div>
             
             <div v-if="filter_close">
-                <div @click="toggleMenu" class="filter d-block d-lg-none ml-3">Filtri</div>
+                <div @click="toggleMenu" class="filter d-block d-lg-none ml-3"><i class="far fa-filter"></i></div>
             </div>
                 <div v-else>
-                    <div class="hamburger">
+                    <div class="hamburger px-2">
                         <div @click="toggleMenu" class="filter">X</div>
                         <div>Tutte le cucine (A, Z)</div>
                         <ul class="filter-list">
                             <li v-for="(type, index) in types" 
                             :key="`type2${index}`"
                             @click="changeActiveRestaurants(type), counter = index"
-                            :class="{active: counter === index}">        
+                            :class="{active: counter === index}"
+                            class="mx-2">        
                             <span>v</span>
                             {{type.name}}
                             </li>
@@ -54,6 +55,7 @@
                 <div class="pt-4"> {{activeRestaurants.length}} risultati trovati </div>
                 
                 <div class="restaurant-box-row">
+                    
                       <RestaurantBox 
                         v-for="(restaurant, index) in activeRestaurants" 
                         :key="`restaurant${index}`" 
@@ -285,7 +287,9 @@ export default {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        flex-wrap: nowrap;    
+        flex-wrap: nowrap;   
+        scrollbar-width: none;
+        overflow-y: scroll; 
     }
 
     .typebox{
@@ -294,6 +298,7 @@ export default {
       align-items: center;
         height: 100px;
         width: 180px;
+        min-width: 100px;
         border-radius: 20px;
         background-color: $primary-color;
         box-shadow: 0 1px 2px rgba(0,0,0,0.15);
@@ -302,6 +307,7 @@ export default {
         transition: transform 0.3s;
         position: relative;
         cursor: pointer;
+
         &.active {
           box-shadow: 0 5px 15px rgba(0,0,0,0.3);
           transform: scale(1.05, 1.1);
