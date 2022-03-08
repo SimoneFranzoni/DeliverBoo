@@ -68,7 +68,6 @@
                         <PlateBox v-for="(plate, index) in activeRestaurant.plates"
                           :key="`plate${index}`"
                           :plate="plate"
-                          :carrello='carrello'
                           @cartArray="cartArray"
                         />
                     </div>
@@ -157,13 +156,12 @@ export default {
       },
 
 
-      cartArray(plate, counter) {
+      cartArray(plate) {
 
         this.itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
 
-        if(counter === 1){
+        if(plate.quantity === 1){
             // pusho l'elemento nell'array e trasformo gli elementi dell'array in stringa per caricarli nel localStorage
-            plate.quantity = counter;
             this.itemsArray.push(plate);
             localStorage.setItem('items', JSON.stringify(this.itemsArray));
             
@@ -172,7 +170,6 @@ export default {
             for(let i = 0; i < this.itemsArray.length; i++){
                 if(this.itemsArray[i] === plate.id){
                     console.log('indice', this.itemsArray[i]);
-                    console.log('counter', counter);
                     this.itemsArray[i].quantity = this.itemsArray[i].quantity + 1;
                 }
             }

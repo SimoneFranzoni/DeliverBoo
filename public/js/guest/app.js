@@ -2157,7 +2157,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Restaurantdetail',
@@ -2187,19 +2186,17 @@ __webpack_require__.r(__webpack_exports__);
       });
       console.log(this.plates);
     },
-    cartArray: function cartArray(plate, counter) {
+    cartArray: function cartArray(plate) {
       this.itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
 
-      if (counter === 1) {
+      if (plate.quantity === 1) {
         // pusho l'elemento nell'array e trasformo gli elementi dell'array in stringa per caricarli nel localStorage
-        plate.quantity = counter;
         this.itemsArray.push(plate);
         localStorage.setItem('items', JSON.stringify(this.itemsArray));
       } else {
         for (var i = 0; i < this.itemsArray.length; i++) {
           if (this.itemsArray[i] === plate.id) {
             console.log('indice', this.itemsArray[i]);
-            console.log('counter', counter);
             this.itemsArray[i].quantity = this.itemsArray[i].quantity + 1;
           }
         }
@@ -2515,8 +2512,9 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     saveItem: function saveItem(plate) {
       this.quantity = this.quantity + 1;
-      console.log(this.quantity);
-      this.$emit('cartArray', plate, this.quantity);
+      plate.quantity = quantity;
+      console.log(plate.quantity);
+      this.$emit('cartArray', plate);
     }
   }
 }); // this.singItem = localStorage.setItem('name', plate.name);
@@ -39428,7 +39426,7 @@ var render = function () {
               _vm._l(_vm.activeRestaurant.plates, function (plate, index) {
                 return _c("PlateBox", {
                   key: "plate" + index,
-                  attrs: { plate: plate, carrello: _vm.carrello },
+                  attrs: { plate: plate },
                   on: { cartArray: _vm.cartArray },
                 })
               }),
