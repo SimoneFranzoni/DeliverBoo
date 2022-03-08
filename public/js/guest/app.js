@@ -2157,6 +2157,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Restaurantdetail',
@@ -7067,7 +7073,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".bg[data-v-0f5c5f38] {\n  width: 100%;\n  height: 400px;\n  position: relative;\n  z-index: -100;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.bg img[data-v-0f5c5f38] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  display: block;\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  top: 0;\n  left: 0;\n  z-index: -100;\n  overflow: hidden;\n}\n.nav-menu[data-v-0f5c5f38] {\n  position: -webkit-sticky;\n  position: sticky;\n  top: 400px;\n  left: 0;\n}\n.nav-menu ul li[data-v-0f5c5f38] {\n  display: flex;\n  justify-content: flex-start;\n  align-items: center;\n}\n.nav-menu ul li .bar[data-v-0f5c5f38] {\n  width: 1px;\n  height: 50px;\n  background-color: lightgrey;\n  margin-right: 10px;\n}\n.nav-menu ul li a[data-v-0f5c5f38] {\n  color: #333232;\n  text-decoration: none;\n  font-size: 15px;\n  transition: transform 0.5s;\n}\n.nav-menu ul li[data-v-0f5c5f38]:hover {\n  font-weight: bold;\n}\n.nav-menu ul li:hover a[data-v-0f5c5f38] {\n  transform: translateX(10px);\n}\n.nav-menu ul li:hover .bar[data-v-0f5c5f38] {\n  width: 2px;\n  background-color: black;\n}\n.central-column[data-v-0f5c5f38] {\n  position: relative;\n  padding-bottom: 100px;\n}\n.central-column .box-ristorante[data-v-0f5c5f38] {\n  position: absolute;\n  width: 95%;\n  top: -150px;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  padding: 40px 0;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  border-radius: 20px;\n  background-color: white;\n}\n.central-column .type[data-v-0f5c5f38] {\n  background-color: #eeebeb;\n  transition: all 0.2s;\n  margin: 0 5px;\n  display: inline-block;\n  padding: 0 5px;\n  font-size: 20px;\n  font-weight: bold;\n  cursor: pointer;\n}\n.central-column .type[data-v-0f5c5f38]:hover {\n  background-color: #f4f2f2;\n  transform: scale(1.1);\n  border-radius: 10px;\n}\n.central-column .menu[data-v-0f5c5f38] {\n  margin-top: 100px;\n  padding-top: 200px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n}\n.right-column[data-v-0f5c5f38] {\n  position: relative;\n}\n.right-column .carrello[data-v-0f5c5f38] {\n  position: absolute;\n  top: -150px;\n  width: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  border-radius: 20px;\n  padding-left: 10px;\n  background-color: white;\n  padding: 20px;\n}\n.right-column .carrello .line[data-v-0f5c5f38] {\n  background-color: grey;\n  width: 100%;\n  height: 1px;\n  margin: 10px 0;\n}\n.right-column .carrello .plate-order[data-v-0f5c5f38] {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  padding: 10px 10px;\n}\n.fw-bold[data-v-0f5c5f38] {\n  font-weight: bold;\n}\n.carrello-mobile[data-v-0f5c5f38] {\n  width: 100%;\n  height: 75px;\n  position: fixed;\n  bottom: 0;\n  left: 0;\n  z-index: 1000;\n  margin-top: 100px;\n  box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.3);\n  background-color: #45CCBC;\n  margin: 0;\n}", ""]);
+exports.push([module.i, ".bg[data-v-0f5c5f38] {\n  width: 100%;\n  height: 400px;\n  position: relative;\n  z-index: -100;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.bg img[data-v-0f5c5f38] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  display: block;\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  top: 0;\n  left: 0;\n  z-index: -100;\n  overflow: hidden;\n}\n.nav-menu[data-v-0f5c5f38] {\n  position: -webkit-sticky;\n  position: sticky;\n  top: 400px;\n  left: 0;\n}\n.nav-menu ul li[data-v-0f5c5f38] {\n  display: flex;\n  justify-content: flex-start;\n  align-items: center;\n}\n.nav-menu ul li[data-v-0f5c5f38]:last-child {\n  margin-bottom: 30px;\n}\n.nav-menu ul li .bar[data-v-0f5c5f38] {\n  width: 1px;\n  height: 50px;\n  background-color: lightgrey;\n  margin-right: 10px;\n}\n.nav-menu ul li a[data-v-0f5c5f38] {\n  color: #333232;\n  text-decoration: none;\n  font-size: 15px;\n  transition: transform 0.5s;\n}\n.nav-menu ul li[data-v-0f5c5f38]:hover {\n  font-weight: bold;\n}\n.nav-menu ul li:hover a[data-v-0f5c5f38] {\n  transform: translateX(10px);\n}\n.nav-menu ul li:hover .bar[data-v-0f5c5f38] {\n  width: 2px;\n  background-color: black;\n}\n.nav-menu a.ac-btn[data-v-0f5c5f38] {\n  font-size: 17px;\n}\n.central-column[data-v-0f5c5f38] {\n  position: relative;\n  padding-bottom: 100px;\n}\n.central-column .box-ristorante[data-v-0f5c5f38] {\n  position: absolute;\n  width: 95%;\n  top: -150px;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  padding: 40px 0;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  border-radius: 20px;\n  background-color: white;\n}\n.central-column .type[data-v-0f5c5f38] {\n  background-color: #eeebeb;\n  transition: all 0.2s;\n  margin: 0 5px;\n  display: inline-block;\n  padding: 0 5px;\n  font-size: 20px;\n  font-weight: bold;\n}\n.central-column .type[data-v-0f5c5f38]:hover {\n  background-color: #f4f2f2;\n  transform: scale(1.1);\n  border-radius: 10px;\n}\n.central-column .menu[data-v-0f5c5f38] {\n  margin-top: 100px;\n  padding-top: 200px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n}\n.right-column[data-v-0f5c5f38] {\n  position: relative;\n}\n.right-column .carrello[data-v-0f5c5f38] {\n  position: absolute;\n  top: -150px;\n  width: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  border-radius: 20px;\n  padding-left: 10px;\n  background-color: white;\n  padding: 20px;\n}\n.right-column .carrello .line[data-v-0f5c5f38] {\n  background-color: grey;\n  width: 100%;\n  height: 1px;\n  margin: 10px 0;\n}\n.right-column .carrello .plate-order[data-v-0f5c5f38] {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  padding: 10px 10px;\n}\n.fw-bold[data-v-0f5c5f38] {\n  font-weight: bold;\n}\n.carrello-mobile[data-v-0f5c5f38] {\n  width: 100%;\n  height: 75px;\n  position: fixed;\n  bottom: 0;\n  left: 0;\n  z-index: 1000;\n  margin-top: 100px;\n  box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.3);\n  background-color: #45CCBC;\n  margin: 0;\n}", ""]);
 
 // exports
 
@@ -39378,7 +39384,26 @@ var render = function () {
               _vm._v(" "),
               _vm._m(4),
             ]),
-          ]
+            _vm._v(" "),
+            _c(
+              "router-link",
+              {
+                staticClass: "ac-btn",
+                attrs: {
+                  to: {
+                    name: "restaurants",
+                    params: { slug: _vm.activeRestaurant.types[0].slug },
+                  },
+                },
+              },
+              [
+                _vm._v(
+                  "\n                      Torna ai ristoranti\n                "
+                ),
+              ]
+            ),
+          ],
+          1
         ),
         _vm._v(" "),
         _c("div", { staticClass: "col-12 col-md-7 col-lg-6 central-column" }, [
@@ -39642,9 +39667,9 @@ var render = function () {
                 [
                   _c("span", [_vm._v("v")]),
                   _vm._v(
-                    "\r\n                        " +
+                    "\n                        " +
                       _vm._s(type.name) +
-                      "\r\n\r\n                    "
+                      "\n\n                    "
                   ),
                 ]
               )
@@ -39693,9 +39718,9 @@ var render = function () {
                       [
                         _c("span", [_vm._v("v")]),
                         _vm._v(
-                          "\r\n                            " +
+                          "\n                            " +
                             _vm._s(type.name) +
-                            "\r\n                            "
+                            "\n                            "
                         ),
                       ]
                     )
@@ -39842,7 +39867,7 @@ var render = function () {
               },
               [_vm._v("+")]
             ),
-            _vm._v(" \r\n        \r\n        0\r\n\r\n        "),
+            _vm._v(" \n        \n        0\n\n        "),
             _c(
               "span",
               {
@@ -55788,7 +55813,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\franc\Documents\Francesco\BOOLEAN\Esercizi\PORTFOLIO\progetto finale\DeliverBoo\DeliverBoo\resources\js\guest\app.js */"./resources/js/guest/app.js");
+module.exports = __webpack_require__(/*! /Users/albertonicolaciufici/Desktop/Boolean/Progetto Finale/DeliverBoo/resources/js/guest/app.js */"./resources/js/guest/app.js");
 
 
 /***/ })
