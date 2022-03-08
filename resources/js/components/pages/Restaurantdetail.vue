@@ -63,7 +63,9 @@
                             <div class="px-3">|</div>
                             <div>{{ activeRestaurant.city }}</div>
                         </div>
-                          <router-link class="ac-btn" :to="{name: 'restaurants', params: {slug: activeRestaurant.types[0].slug}}">
+                          <router-link 
+                          v-if="isLoaded"
+                          class="ac-btn" :to="{name: 'restaurants', params: {slug: activeRestaurant.types[0].slug}}">
                             Torna ai ristoranti
                           </router-link>
                     </div>
@@ -146,6 +148,7 @@ export default {
         activeRestaurant: {},
         plates: [],
         itemsArray: [],
+        isLoaded: false
       }
     },
     mounted() {
@@ -153,11 +156,13 @@ export default {
     },  
     methods : {
       getActiveRestaurant() {
+        this.isLoaded = false;
         this.activeRestaurant = {};
         axios.get(this.apiUrl + this.$route.params.slug)
         .then(res => {
           this.activeRestaurant = res.data.restaurant;
           this.plates.push(this.activeRestaurant.plates);
+          this.isLoaded = true;
         })
         console.log(this.plates);
       },

@@ -2164,6 +2164,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Restaurantdetail',
@@ -2175,7 +2177,8 @@ __webpack_require__.r(__webpack_exports__);
       apiUrl: 'http://127.0.0.1:8000/api/ristoranti/',
       activeRestaurant: {},
       plates: [],
-      itemsArray: []
+      itemsArray: [],
+      isLoaded: false
     };
   },
   mounted: function mounted() {
@@ -2185,11 +2188,14 @@ __webpack_require__.r(__webpack_exports__);
     getActiveRestaurant: function getActiveRestaurant() {
       var _this = this;
 
+      this.isLoaded = false;
       this.activeRestaurant = {};
       axios.get(this.apiUrl + this.$route.params.slug).then(function (res) {
         _this.activeRestaurant = res.data.restaurant;
 
         _this.plates.push(_this.activeRestaurant.plates);
+
+        _this.isLoaded = true;
       });
       console.log(this.plates);
     },
@@ -2344,7 +2350,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       activeType: {},
       counter: -1,
       filter_close: true,
-      randomTypeCounter: -1
+      randomTypeCounter: -1,
+      isLoaded: false
     };
   },
   methods: {
@@ -2397,19 +2404,23 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     getActiveRestaurants: function getActiveRestaurants() {
       var _this2 = this;
 
+      this.isLoaded = false;
       this.activeRestaurants = [];
       this.activeType = {};
       axios.get(this.activeRestaurantsUrl + this.$route.params.slug).then(function (res) {
         _this2.activeRestaurants = res.data.type.restaurants;
-        _this2.activeType = res.data.type;
+        _this2.isLoaded = true;
+        if (_this2.isLoaded) _this2.activeType = res.data.type;
       });
     },
     changeActiveRestaurants: function changeActiveRestaurants(type) {
       var _this3 = this;
 
+      this.isLoaded = false;
       axios.get(this.activeRestaurantsUrl + type.slug).then(function (res) {
         _this3.activeRestaurants = res.data.type.restaurants;
-        _this3.activeType = res.data.type;
+        _this3.isLoaded = true;
+        if (_this3.isLoaded) _this3.activeType = res.data.type;
       });
       this.$router.push(type.slug);
     },
@@ -39432,23 +39443,25 @@ var render = function () {
                 _c("div", [_vm._v(_vm._s(_vm.activeRestaurant.city))]),
               ]),
               _vm._v(" "),
-              _c(
-                "router-link",
-                {
-                  staticClass: "ac-btn",
-                  attrs: {
-                    to: {
-                      name: "restaurants",
-                      params: { slug: _vm.activeRestaurant.types[0].slug },
+              _vm.isLoaded
+                ? _c(
+                    "router-link",
+                    {
+                      staticClass: "ac-btn",
+                      attrs: {
+                        to: {
+                          name: "restaurants",
+                          params: { slug: _vm.activeRestaurant.types[0].slug },
+                        },
+                      },
                     },
-                  },
-                },
-                [
-                  _vm._v(
-                    "\n                        Torna ai ristoranti\n                      "
-                  ),
-                ]
-              ),
+                    [
+                      _vm._v(
+                        "\n                        Torna ai ristoranti\n                      "
+                      ),
+                    ]
+                  )
+                : _vm._e(),
             ],
             1
           ),

@@ -90,7 +90,8 @@ export default {
             activeType: {},
             counter: -1,
             filter_close: true,
-            randomTypeCounter: -1
+            randomTypeCounter: -1,
+            isLoaded: false
         }
     },
     methods: {
@@ -126,19 +127,23 @@ export default {
 
         },
         getActiveRestaurants() {
+          this.isLoaded = false;
           this.activeRestaurants = [];
           this.activeType = {};
           axios.get(this.activeRestaurantsUrl + this.$route.params.slug)
           .then(res => {
             this.activeRestaurants = res.data.type.restaurants;
-            this.activeType = res.data.type;
+            this.isLoaded = true;
+            if (this.isLoaded) this.activeType = res.data.type;
           })
         },
         changeActiveRestaurants(type) {
+          this.isLoaded = false;
           axios.get(this.activeRestaurantsUrl + type.slug)
           .then(res => {
             this.activeRestaurants = res.data.type.restaurants;
-            this.activeType = res.data.type;
+            this.isLoaded = true;
+            if (this.isLoaded) this.activeType = res.data.type;
           })
           this.$router.push(type.slug);
         },
@@ -180,11 +185,11 @@ export default {
             margin: 10px 0;
             z-index: 3;  
             cursor: pointer;
-                &:active{
-                    border: 1px solid black;
-                    font-weight: bold;
-                    font-size: 18px;
-                }
+            &:active{
+                border: 1px solid black;
+                font-weight: bold;
+                font-size: 18px;
+            }
 
                 span{
                     transition: opacity 0.5s ease-out;
