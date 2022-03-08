@@ -11,11 +11,11 @@
         <i class="fas fa-shopping-cart"></i>
 
         <span id="add"
-        @click="saveItem(plate)">+</span> 
+        @click="saveItem(plate, string ='più')">+</span> 
         
-        0
+        {{quantity}}
 
-        <span id="remove"  @click="removeItem(plate)">-</span>
+        <span :class="{disabled: quantity===0}" id="remove"  @click="saveItem(plate, string = 'meno')">-</span>
 
       </div>
 
@@ -34,30 +34,20 @@ export default {
     props: {
       plate: Object,
       vecchioCarrello: Array,
+      quantity: Number,
     },
     mounted() {
       // console.log('MOUNTED >>', localStorage);
     },
     data() {
       return {
-        quantity: 0,
+        // quantity: 0,
       }
     },
     methods: {
-      // saveItem(plate) {
 
-      //     this.quantity = this.quantity +1;
-      //     this.$emit('cartArray',plate, this.quantity);
-
-      // },
-
-      saveItem(plate) {
-        if(this.quantity === 0){
-          this.$emit('cartArray',plate, this.quantity);
-        }else{
-          this.quantity = this.quantity +1;
-          this.$emit('cartArray',plate, this.quantity);
-        }
+      saveItem(plate, string) {
+          this.$emit('cartArray',plate, string);
       }
     }
 }
@@ -142,6 +132,10 @@ export default {
         height: 100%;
         object-fit: cover;
       }
+    }
+
+    span.disabled{
+      pointer-events: none;
     }
   }
 </style>
