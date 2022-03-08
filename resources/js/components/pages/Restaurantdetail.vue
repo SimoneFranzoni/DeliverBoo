@@ -39,9 +39,7 @@
                             <a href="#bevande">Bevande</a>
                         </li>
                     </ul>
-                    <router-link class="ac-btn" :to="{name: 'restaurants', params: {slug: activeRestaurant.types[0].slug}}">
-                          Torna ai ristoranti
-                    </router-link>
+                    
                 </div>
 
                 <div class="col-12 col-md-7 col-lg-6 central-column">
@@ -60,11 +58,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row address">
                             <div>{{ activeRestaurant.address }}</div>
                             <div class="px-3">|</div>
                             <div>{{ activeRestaurant.city }}</div>
                         </div>
+                          <router-link class="ac-btn" :to="{name: 'restaurants', params: {slug: activeRestaurant.types[0].slug}}">
+                            Torna ai ristoranti
+                          </router-link>
                     </div>
                     <div class="menu pt-5">
                         <h4 id="primi">Primi</h4>
@@ -287,6 +288,11 @@ export default {
         box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
         border-radius: 20px;
         background-color: white;
+
+    }
+
+    .row.address {
+      padding-bottom: 25px;
     }
 
     .type {
