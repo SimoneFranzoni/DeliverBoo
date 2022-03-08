@@ -39,9 +39,7 @@
                             <a href="#bevande">Bevande</a>
                         </li>
                     </ul>
-                    <router-link class="ac-btn" :to="{name: 'restaurants', params: {slug: activeRestaurant.types[0].slug}}">
-                          Torna ai ristoranti
-                    </router-link>
+                    
                 </div>
 
                 <div class="col-12 col-md-7 col-lg-6 central-column">
@@ -60,18 +58,22 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row address">
                             <div>{{ activeRestaurant.address }}</div>
                             <div class="px-3">|</div>
                             <div>{{ activeRestaurant.city }}</div>
                         </div>
+                          <router-link 
+                          v-if="isLoaded"
+                          class="ac-btn" :to="{name: 'restaurants', params: {slug: activeRestaurant.types[0].slug}}">
+                            Torna ai ristoranti
+                          </router-link>
                     </div>
                     <div class="menu pt-5">
                         <h4 id="primi">Primi</h4>
                         <PlateBox v-for="(plate, index) in activeRestaurant.plates"
                           :key="`plate${index}`"
                           :plate="plate"
-                          :quantity="plate.quantity"
                           @cartArray="cartArray"
                         />
                     </div>
@@ -87,16 +89,15 @@
                         <div class="plate-order">
                             <!-- elenco piatti con prezzi  -->
 
-                            <!-- <div v-for="(item, index) in localStorageGet()" :key="`item${index}`">
-                              {{ item }}
-                              </div> -->
-
-                            <div class="row">
-                                <div class="pr-2 minus-btn">-</div>
-                                <div>1</div>
-                                <div class="pl-2 plus-btn">+</div>
+                            <div v-for="(item, index) in cart" :key="`item${index}`">
+                              <div>
+                                <strong>{{item.name}}</strong>
+                              </div>
+                              <div>{{item.quantity}} | €{{item.price}}</div>
                             </div>
-                            <div>prezzo</div>
+
+                            
+
                         </div>
 
                         <div class="line"></div>
@@ -104,7 +105,7 @@
                             class="row px-5 pt-3 pb-2 justify-content-between align-items-center"
                         >
                             <div class="fw-bold">Subtotale</div>
-                            <div class="fw-bold">5,50 €</div>
+                            <div class="fw-bold">€{{getSubTotal}}</div>
                         </div>
                         <div
                             class="row px-5 py-2 justify-content-between align-items-center"
@@ -146,18 +147,36 @@ export default {
         activeRestaurant: {},
         plates: [],
         itemsArray: [],
+        isLoaded: false,
+        cart: JSON.parse(localStorage.getItem('items')),
+        subTotal: null
       }
     },
     mounted() {
      this.getActiveRestaurant()
     },  
+    computed: {
+      getSubTotal() {
+        let itemTotalPrice;
+        let sum;
+        console.log(this.cart);
+        for(let item of this.cart) {
+          itemTotalPrice = item.price * item.quantity;
+          sum += itemTotalPrice;
+        }
+        this.subTotal = sum;
+        console.log('computed', sum);
+      }
+    },
     methods : {
       getActiveRestaurant() {
+        this.isLoaded = false;
         this.activeRestaurant = {};
         axios.get(this.apiUrl + this.$route.params.slug)
         .then(res => {
           this.activeRestaurant = res.data.restaurant;
           this.plates.push(this.activeRestaurant.plates);
+          this.isLoaded = true;
         })
         console.log(this.plates);
       },
@@ -173,7 +192,7 @@ export default {
             })
             
     // SE QUESTO BOOLITEM E' VUOTO POSSO PUSHARE 
-            if(boolItem.length === 0 ) {
+            if(boolItem.length === 0 && string === 'più' ) {
                 plate.quantity = 1;
                 this.itemsArray.push(plate);
             } else {
@@ -205,7 +224,8 @@ export default {
       removeArray(){
           window.localStorage.clear();
           console.log('Reset Storare Cliccato');
-      }
+      },
+      
     }
 }
 </script>
@@ -302,6 +322,11 @@ export default {
         box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
         border-radius: 20px;
         background-color: white;
+
+    }
+
+    .row.address {
+      padding-bottom: 25px;
     }
 
     .type {
@@ -312,12 +337,8 @@ export default {
         padding: 0 5px;
         font-size: 20px;
         font-weight: bold;
-
-        &:hover {
-            background-color: lighten(#eeebeb, 2.5);
-            transform: scale(1.1);
-            border-radius: 10px;
-        }
+        cursor: default;
+        
     }
 
     .menu {
@@ -355,11 +376,11 @@ export default {
         }
 
         .plate-order {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
+
+          div {
+            
             padding: 10px 10px;
+          }
         }
     }
 }
