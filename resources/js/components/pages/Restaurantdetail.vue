@@ -303,12 +303,8 @@ export default {
         padding: 0 5px;
         font-size: 20px;
         font-weight: bold;
-
-        &:hover {
-            background-color: lighten(#eeebeb, 2.5);
-            transform: scale(1.1);
-            border-radius: 10px;
-        }
+        cursor: default;
+        
     }
 
     .menu {
