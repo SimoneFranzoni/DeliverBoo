@@ -56,6 +56,7 @@
                         <PlateBox v-for="(plate, index) in activeRestaurant.plates"
                           :key="`plate${index}`"
                           :plate="plate"
+                          :carrello='carrello'
                           @cartArray="cartArray"
                         />
                         <!-- <PlateBox 
@@ -126,7 +127,8 @@ export default {
         apiUrl: 'http://127.0.0.1:8000/api/ristoranti/',
         activeRestaurant: {},
         plates: [],
-        cartItems: []
+        cartItems: [],
+        vecchioCarrello:[],
       }
     },
     mounted() {

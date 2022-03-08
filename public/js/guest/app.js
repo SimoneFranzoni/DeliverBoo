@@ -2145,6 +2145,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Restaurantdetail',
@@ -2156,7 +2157,8 @@ __webpack_require__.r(__webpack_exports__);
       apiUrl: 'http://127.0.0.1:8000/api/ristoranti/',
       activeRestaurant: {},
       plates: [],
-      cartItems: []
+      cartItems: [],
+      vecchioCarrello: []
     };
   },
   mounted: function mounted() {
@@ -2472,31 +2474,52 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'PlateBox',
   props: {
-    plate: Object
+    plate: Object,
+    vecchioCarrello: Array
   },
   mounted: function mounted() {// console.log('MOUNTED >>', localStorage);
   },
   data: function data() {
     return {
       cartItemCounter: 0,
-      items: [],
-      singItem: {
+      // items: [],
+      totalSameItems: [],
+      item: {
         name: '',
         price: null
-      }
+      },
+      nuovoCarrello: []
     };
   },
   methods: {
     saveItem: function saveItem(plate) {
-      this.singItem.name = localStorage.setItem('name', plate.name);
-      this.singItem.price = localStorage.setItem('price', plate.price);
-      this.items.push(this.singItem);
-      localStorage.setItem('items', JSON.stringify(this.items));
-      this.$emit('cartArray', this.items);
-      console.log(localStorage.getItem('items'));
+      this.item.name = plate.name, this.item.price = plate.price;
+      this.totalSameItems.push(this.item); // console.log(this.totalSameItems);
+
+      var jsonStr = JSON.stringify(this.totalSameItems);
+      localStorage.setItem('Storage Totale del Piatto Cliccato', jsonStr);
+      console.log(localStorage);
+      this.$emit('cartArray', localStorage); // jsonStr.name = localStorage.setItem('this.cart.name',plate.name);
+      // jsonStr.price = localStorage.setItem('this.cart.price',plate.price);
+      // console.log(localStorage);
+      // localStorage.setItem('Carrello', jsonStr);
+      // let cartValue = localStorage.getItem('cart');
+      // let cartObj = JSON.parse(cartValue);
+      // console.log('Oggetto del Carrello', cartObj);
+      // return cartObj;
+      // this.singItem.name = localStorage.setItem('name', plate.name);
+      // this.singItem.price = localStorage.setItem('price', plate.price);
+      // this.items.push(this.singItem);
+      // localStorage.setItem('items', JSON.stringify(this.items))
+      // this.$emit('cartArray', this.items);
+      // console.log(localStorage.getItem('items'));
     }
   }
-});
+}); // this.singItem = localStorage.setItem('name', plate.name);
+// this.items.push(this.singItem);
+// console.log('array', this.singItem);
+// localStorage.setItem('items', JSON.stringify(this.items))
+// console.log(localStorage.getItem('items'));
 
 /***/ }),
 
@@ -39359,7 +39382,7 @@ var render = function () {
               _vm._l(_vm.activeRestaurant.plates, function (plate, index) {
                 return _c("PlateBox", {
                   key: "plate" + index,
-                  attrs: { plate: plate },
+                  attrs: { plate: plate, carrello: _vm.carrello },
                   on: { cartArray: _vm.cartArray },
                 })
               }),
