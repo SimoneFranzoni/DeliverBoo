@@ -59,15 +59,7 @@
                           :carrello='carrello'
                           @cartArray="cartArray"
                         />
-                        <!-- <PlateBox 
-                        
-                        />
-                        <PlateBox 
-                        
-                        />
-                        <PlateBox 
-                        
-                        /> -->
+
                         
                     </div>
                 </div>
@@ -130,13 +122,11 @@ export default {
         apiUrl: 'http://127.0.0.1:8000/api/ristoranti/',
         activeRestaurant: {},
         plates: [],
-        cartItems: [],
-        vecchioCarrello:[],
+        itemsArray: [],
       }
     },
     mounted() {
-     this.getActiveRestaurant(),
-     this.localStorageGet()
+     this.getActiveRestaurant()
     },
     methods : {
       getActiveRestaurant() {
@@ -149,14 +139,18 @@ export default {
         console.log(this.plates);
       },
 
-      localStorageGet() {
-        console.log(JSON.parse(localStorage.getItem('items')));
-        return JSON.parse(localStorage.getItem('items'))
-      },
 
-      cartArray(items) {
-        this.cartItems.push(items);
-        console.log('padre', this.cartItems);
+      cartArray(plate) {
+        this.itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
+
+        // pusho l'elemento nell'array e trasformo gli elementi dell'array in stringa per caricarli nel localStorage
+        this.itemsArray.push(plate);
+        localStorage.setItem('items', JSON.stringify(this.itemsArray));
+
+        // inizializzo il carrello trasformando le stringhe del localStorage in oggetti
+        const cart = JSON.parse(localStorage.getItem('items'));
+        console.log('padre', cart);
+        console.log('array', this.itemsArray);
       }
     }
 }

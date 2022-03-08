@@ -15,7 +15,7 @@
         
         0
 
-        <span id="remove">-</span>
+        <span id="remove"  @click="removeItem(plate)">-</span>
 
       </div>
 
@@ -40,44 +40,24 @@ export default {
     },
     data() {
       return {
-        cartItemCounter: 0,
-        // items: [],
-        totalSameItems: [],
-        item:{
-          name: '',
-          price: null
-        },
-        nuovoCarrello:[],
+        quantity: 0,
       }
     },
     methods: {
+      // saveItem(plate) {
+
+      //     this.quantity = this.quantity +1;
+      //     this.$emit('cartArray',plate, this.quantity);
+
+      // },
+
       saveItem(plate) {
-        this.item.name = plate.name,
-        this.item.price = plate.price;
-
-        this.totalSameItems.push(this.item);
-        // console.log(this.totalSameItems);
-
-        let jsonStr = JSON.stringify(this.totalSameItems);
-        localStorage.setItem('Storage Totale del Piatto Cliccato', jsonStr);
-        console.log(localStorage);
-        this.$emit('cartArray',localStorage);
-        // jsonStr.name = localStorage.setItem('this.cart.name',plate.name);
-        // jsonStr.price = localStorage.setItem('this.cart.price',plate.price);
-        // console.log(localStorage);
-
-        // localStorage.setItem('Carrello', jsonStr);
-        // let cartValue = localStorage.getItem('cart');
-        // let cartObj = JSON.parse(cartValue);
-        // console.log('Oggetto del Carrello', cartObj);
-        // return cartObj;
-
-        // this.singItem.name = localStorage.setItem('name', plate.name);
-        // this.singItem.price = localStorage.setItem('price', plate.price);
-        // this.items.push(this.singItem);
-        // localStorage.setItem('items', JSON.stringify(this.items))
-        // this.$emit('cartArray', this.items);
-        // console.log(localStorage.getItem('items'));
+        if(this.quantity === 0){
+          this.$emit('cartArray',plate, this.quantity);
+        }else{
+          this.quantity = this.quantity +1;
+          this.$emit('cartArray',plate, this.quantity);
+        }
       }
     }
 }
