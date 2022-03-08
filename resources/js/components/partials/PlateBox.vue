@@ -11,11 +11,11 @@
         <i class="fas fa-shopping-cart"></i>
 
         <span id="add"
-        @click="saveItem(plate)">+</span> 
+        @click="saveItem(plate, string ='più')">+</span> 
         
         0
 
-        <span id="remove"  @click="removeItem(plate)">-</span>
+        <span id="remove"  @click="saveItem(plate, string = 'meno')">-</span>
 
       </div>
 
@@ -45,8 +45,8 @@ export default {
     },
     methods: {
 
-      saveItem(plate) {
-          this.$emit('cartArray',plate);
+      saveItem(plate, string) {
+          this.$emit('cartArray',plate, string);
       }
     }
 }
