@@ -174,10 +174,9 @@ export default {
                     }
                 }
                 // for(let i = 0; i < this.itemsArray.length; i++){
-                //     // console.log('index', this.itemsArray[i].id);
-                //     // console.log('id', plate.id);
+
                 //     if(this.itemsArray[i].id === plate.id){
-                //         counter = counter + 1;
+                //         this.itemsArray.splice(i-1, 1);
                 //     }
                 // }
             console.log(plate.name, counter);
