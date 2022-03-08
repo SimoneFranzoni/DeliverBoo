@@ -2195,38 +2195,71 @@ __webpack_require__.r(__webpack_exports__);
       console.log(this.plates);
     },
     cartArray: function cartArray(plate) {
-      if (this.itemsArray.length = 0) {
-        var plateInStr = JSON.stringify(plate);
-        this.itemsArray = localStorage.setItem('items', plateInStr);
-        console.log('AAAAAitemsArray dopo il Set', this.itemsArray); //   console.log(localStorage);
+      // console.log('log Immediato appena clicco',localStorage);
+      // console.log('log Immediato appena clicco di itemsArray',this.itemsArray);
+      console.log('log Immediato appena clicco di plate', plate); //Se la lunghezzi di local storage è 0
+      //   if(localStorage.length == 0) {
+      //Trasformo in stringa il dato che arriva, ovvero, plate
 
-        var onlyValueItems = localStorage.getItem('this.itemsArray');
-        var objectItems = JSON.parse(onlyValueItems);
-        console.log('objectItems', objectItems);
-      } // this.itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
+      var plateInStr = JSON.stringify(plate); //   console.log('log Immediato dopo l if di plae Stringato',plateInStr);
+      //Setto il singolo Item in localStorage, dandogli il plate
 
+      localStorage.setItem('item', plateInStr); //   console.log('itemsArray dopo il Set', this.itemsArray);
+      //Prendo il solo valore del local storage
 
-      if (plate.quantity === 1) {
-        // pusho l'elemento nell'array e trasformo gli elementi dell'array in stringa per caricarli nel localStorage
-        this.itemsArray.push(plate);
-        localStorage.setItem('items', JSON.stringify(this.itemsArray));
+      var onlyValueItem = localStorage.getItem('item'); //Ritraduco il singolo Item in Oggetto
+
+      var singleItem = JSON.parse(onlyValueItem);
+      console.log('Singolo Item', singleItem); //Pusho dentro l'array
+
+      if (singleItem.quantity = 1) {
+        this.itemsArray.push(singleItem);
       } else {
-        for (var i = 0; i < this.itemsArray.length; i++) {
-          if (this.itemsArray[i] === plate.id) {
-            console.log('indice', this.itemsArray[i]);
-            this.itemsArray[i].quantity = this.itemsArray[i].quantity + 1;
-          }
-        }
-      } // inizializzo il carrello trasformando le stringhe del localStorage in oggetti
+        console.log('Quantità maggiore di 1', singleItem);
+      } //   } else if(itemsArray.find(singleItem.name === plate.name)){
+      //       singleItem.quantity = singleItem.quantity + 1;
+      //   }
 
+
+      console.log(localStorage);
+      console.log('itemsArray finale trasformato in Object', this.itemsArray); //   } else {
+      //   }
+      // this.itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
+      // if(plate.quantity === 1){
+      //     // pusho l'elemento nell'array e trasformo gli elementi dell'array in stringa per caricarli nel localStorage
+      //     this.itemsArray.push(plate);
+      //     localStorage.setItem('items', JSON.stringify(this.itemsArray));
+      // }else{
+      //     for(let i = 0; i < this.itemsArray.length; i++){
+      //         if(this.itemsArray[i] === plate.id){
+      //             console.log('indice', this.itemsArray[i]);
+      //             this.itemsArray[i].quantity = this.itemsArray[i].quantity + 1;
+      //         }
+      //     }
+      // }
+      // inizializzo il carrello trasformando le stringhe del localStorage in oggetti
 
       var cart = JSON.parse(localStorage.getItem('items')); // console.log('padre', cart);
-
-      console.log('itemsArray da RestaurantDetail', this.itemsArray);
+      // console.log('itemsArray da RestaurantDetail', this.itemsArray);
     },
     removeArray: function removeArray() {
+      //   throw new Error("DumpDie");
+      console.log('Click remove Array PRE', this.itemsArray);
       window.localStorage.clear();
+      this.itemsArray = [];
+      Object.entries(this.activeRestaurant).forEach(function (res) {
+        Object.entries(res.plates).forEach(function (plate) {
+          console.log(plate);
+        });
+      }); //   for(res in this.activeRestaurant){
+      //       console.log(res);
+      //     //   for(plate in res.plate){
+      //     //       plate.quantity = 0;
+      //     //   }
+      //   };
+
       console.log(localStorage);
+      console.log('Click removeArray POST', this.itemsArray);
     }
   }
 });
@@ -39463,7 +39496,7 @@ var render = function () {
             _c(
               "button",
               { staticClass: "m-1 p-4", on: { click: _vm.removeArray } },
-              [_vm._v("CANCELLA CARRELLO")]
+              [_vm._v("CANCELLA CARRELLOOOOOO")]
             ),
           ]
         ),

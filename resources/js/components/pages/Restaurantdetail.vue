@@ -121,7 +121,7 @@
                 <div class="sp-box-btn d-flex justify-content-center w-100">
                     <button
                     class="m-1 p-4"
-                    @click="removeArray">CANCELLA CARRELLO</button>
+                    @click="removeArray">CANCELLA CARRELLOOOOOO</button>
                 </div>
                 <!-- Fine Bottone Temporaneo  -->
             </div> 
@@ -165,45 +165,90 @@ export default {
 
 
       cartArray(plate) {
+        // console.log('log Immediato appena clicco',localStorage);
+        // console.log('log Immediato appena clicco di itemsArray',this.itemsArray);
+        console.log('log Immediato appena clicco di plate',plate);
 
-          if(this.itemsArray.length = 0) {
+            //Se la lunghezzi di local storage è 0
+        //   if(localStorage.length == 0) {
+              //Trasformo in stringa il dato che arriva, ovvero, plate
               let plateInStr = JSON.stringify(plate);
-              this.itemsArray = localStorage.setItem('items', plateInStr);
-              console.log('AAAAAitemsArray dopo il Set', this.itemsArray);
-            //   console.log(localStorage);
-              let onlyValueItems = localStorage.getItem('this.itemsArray');
-              let objectItems = JSON.parse(onlyValueItems);
-              console.log('objectItems', objectItems);
-          } 
+            //   console.log('log Immediato dopo l if di plae Stringato',plateInStr);
+
+              //Setto il singolo Item in localStorage, dandogli il plate
+              localStorage.setItem('item', plateInStr);
+            //   console.log('itemsArray dopo il Set', this.itemsArray);
+
+                //Prendo il solo valore del local storage
+              let onlyValueItem = localStorage.getItem('item');
+
+              //Ritraduco il singolo Item in Oggetto
+              let singleItem = JSON.parse(onlyValueItem);
+
+              console.log('Singolo Item', singleItem);
+
+              //Pusho dentro l'array
+
+              if (singleItem.quantity = 1) {
+                this.itemsArray.push(singleItem); 
+              }else{
+                  console.log('Quantità maggiore di 1', singleItem);
+              }
+            //   } else if(itemsArray.find(singleItem.name === plate.name)){
+            //       singleItem.quantity = singleItem.quantity + 1;
+            //   }
+              console.log(localStorage);
+              console.log('itemsArray finale trasformato in Object', this.itemsArray);
+        //   } else {
+
+              
+        //   }
 
         // this.itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
 
 
-        if(plate.quantity === 1){
-            // pusho l'elemento nell'array e trasformo gli elementi dell'array in stringa per caricarli nel localStorage
-            this.itemsArray.push(plate);
-            localStorage.setItem('items', JSON.stringify(this.itemsArray));
+        // if(plate.quantity === 1){
+        //     // pusho l'elemento nell'array e trasformo gli elementi dell'array in stringa per caricarli nel localStorage
+        //     this.itemsArray.push(plate);
+        //     localStorage.setItem('items', JSON.stringify(this.itemsArray));
             
-        }else{
+        // }else{
             
-            for(let i = 0; i < this.itemsArray.length; i++){
-                if(this.itemsArray[i] === plate.id){
-                    console.log('indice', this.itemsArray[i]);
-                    this.itemsArray[i].quantity = this.itemsArray[i].quantity + 1;
-                }
-            }
+        //     for(let i = 0; i < this.itemsArray.length; i++){
+        //         if(this.itemsArray[i] === plate.id){
+        //             console.log('indice', this.itemsArray[i]);
+        //             this.itemsArray[i].quantity = this.itemsArray[i].quantity + 1;
+        //         }
+        //     }
 
-        }
+        // }
 
         // inizializzo il carrello trasformando le stringhe del localStorage in oggetti
         const cart = JSON.parse(localStorage.getItem('items'));
         // console.log('padre', cart);
-        console.log('itemsArray da RestaurantDetail', this.itemsArray);
+        // console.log('itemsArray da RestaurantDetail', this.itemsArray);
       },
 
       removeArray(){
+        //   throw new Error("DumpDie");
+          console.log('Click remove Array PRE' ,this.itemsArray);
           window.localStorage.clear();
+          this.itemsArray = [];
+        Object.entries(this.activeRestaurant).forEach((res)=>{
+            Object.entries(res.plates).forEach((plate)=>{
+                console.log(plate);
+            })
+        })
+
+        //   for(res in this.activeRestaurant){
+        //       console.log(res);
+        //     //   for(plate in res.plate){
+        //     //       plate.quantity = 0;
+        //     //   }
+        //   };
+          
           console.log(localStorage);
+          console.log('Click removeArray POST' ,this.itemsArray);
       }
     }
 }
