@@ -74,7 +74,6 @@
                         <PlateBox v-for="(plate, index) in activeRestaurant.plates"
                           :key="`plate${index}`"
                           :plate="plate"
-                          :quantity="plate.quantity"
                           @cartArray="cartArray"
                         />
                     </div>
@@ -90,16 +89,14 @@
                         <div class="plate-order">
                             <!-- elenco piatti con prezzi  -->
 
-                            <!-- <div v-for="(item, index) in localStorageGet()" :key="`item${index}`">
-                              {{ item }}
-                              </div> -->
+                            <div v-for="(item, index) in cart" :key="`item${index}`">
+                              <div>
+                                {{ item.name }} | {{item.quantity}} | {{item.price}}
+                              </div>
+                              </div>
 
-                            <div class="row">
-                                <div class="pr-2 minus-btn">-</div>
-                                <div>1</div>
-                                <div class="pl-2 plus-btn">+</div>
-                            </div>
-                            <div>prezzo</div>
+                            
+
                         </div>
 
                         <div class="line"></div>
@@ -149,7 +146,8 @@ export default {
         activeRestaurant: {},
         plates: [],
         itemsArray: [],
-        isLoaded: false
+        isLoaded: false,
+        cart: JSON.parse(localStorage.getItem('items'))
       }
     },
     mounted() {
@@ -172,45 +170,45 @@ export default {
       cartArray(plate, string) {
         this.itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
 
-
-    // GENERO UN ARRAY BOOLITEM CHE SI POPOLA SOLO SE ESISTE GIA' IL PIATTO CLICCATO 
-            let boolItem = this.itemsArray.filter(function(item){
-                return item.id === plate.id;
-            })
-            
-    // SE QUESTO BOOLITEM E' VUOTO POSSO PUSHARE 
-            if(boolItem.length === 0 ) {
-                plate.quantity = 1;
-                this.itemsArray.push(plate);
-            } else {
-                
+        // pusho l'elemento nell'array e trasformo gli elementi dell'array in stringa per caricarli nel localStorage
+        if(this.itemsArray.length === 0){
+            plate.quantity = 1;
+            this.itemsArray.push(plate);
+            }else{
+                let counter = 1;
                 for(let i = 0; i < this.itemsArray.length; i++){
                     if(this.itemsArray[i].id === plate.id && string === 'più'){
-                       this.itemsArray[i].quantity ++;
-                    } else if(this.itemsArray[i].id === plate.id && string === 'meno'){
-                        this.itemsArray[i].quantity --;
-                        if(this.itemsArray[i].quantity === 0){
-                            this.itemsArray = this.itemsArray.filter(function(item){
-                               return item.quantity > 0;
+                       counter = this.itemsArray[i].quantity + 1;
+                    }
+                    else if(this.itemsArray[i].id === plate.id && string === 'meno'){
+                       counter = this.itemsArray[i].quantity - 1;
+                       if(counter === 0){
+                           this.itemsArray = this.itemsArray.filter(function(item){
+                               return item.quantity === item.quantity > 0;
                            })
-                        }
+                       };
                     }
                 }
-            }
+                this.itemsArray = this.itemsArray.filter(function(item){
+                    return item.id !== plate.id;
+                })
 
-
-
+            console.log(plate.name, counter);
+            plate.quantity = counter; 
+            this.itemsArray.push(plate);
+            
+        }
         localStorage.setItem('items', JSON.stringify(this.itemsArray));
             
 
         // inizializzo il carrello trasformando le stringhe del localStorage in oggetti
         const cart = JSON.parse(localStorage.getItem('items'));
         console.log('padre', cart);
+        // console.log('array', this.itemsArray);
       },
 
       removeArray(){
           window.localStorage.clear();
-          console.log('Reset Storare Cliccato');
       }
     }
 }
@@ -362,10 +360,7 @@ export default {
         }
 
         .plate-order {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
+            text-align: justify;
             padding: 10px 10px;
         }
     }
