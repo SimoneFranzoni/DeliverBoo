@@ -14,9 +14,9 @@
             
         </div>
         <div class="row">
-            <div class="col-3 filter-column">
+            <div class="d-none d-lg-block col-3 filter-column">
                 <div>Tutte le cucine (A, Z)</div>
-                <ul>
+                <ul class="filter-list">
                     <li v-for="(type, index) in types" 
                     :key="`type${index}`"
                     @click="changeActiveRestaurants(type), counter = index, randomTypeCounter = -1"
@@ -29,7 +29,27 @@
                 </ul>
             </div>
             
-            <div class="col-9 restaurant-column">
+            <div v-if="filter_close">
+                <div @click="toggleMenu" class="filter d-block d-lg-none ml-3">Filtri</div>
+            </div>
+                <div v-else>
+                    <div class="hamburger">
+                        <div @click="toggleMenu" class="filter">X</div>
+                        <div>Tutte le cucine (A, Z)</div>
+                        <ul class="filter-list">
+                            <li v-for="(type, index) in types" 
+                            :key="`type${index}`"
+                            @click="changeActiveRestaurants(type), counter = index"
+                            :class="{active: counter === index}">        
+                            <span>v</span>
+                            {{type.name}}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                    
+
+            <div class="col-12 col-lg-9 restaurant-column">
                 <div class="search-input">
                     <input type="text" name="restsearch" placeholder="Cerca qui una tipologia di ristorante...">
                     <router-link :to="{name: 'restaurants'}">
@@ -48,9 +68,6 @@
                         :key="`restaurant${index}`" 
                         :restaurant="restaurant"
                         :type="activeType"/>
-                   
-                    
-
                 </div>
             </div>
         </div>
@@ -80,6 +97,7 @@ export default {
             activeRestaurantsUrl: 'http://127.0.0.1:8000/api/ristoranti/tiporistorante/',
             activeType: {},
             counter: -1,
+            filter_close: true,
             randomTypeCounter: -1
         }
     },
@@ -137,6 +155,14 @@ export default {
 
         getRandomNumber(min, max) {
            return Math.floor(Math.random() * (max - min + 1) + min);
+        },
+        
+        toggleMenu(){
+            if(this.filter_close === true){
+                this.filter_close = false;
+            } else {
+                this.filter_close = true;
+            }
         }
     }
 }
@@ -154,7 +180,9 @@ export default {
         height: 700px;
         overflow-y: auto;
         z-index: 1;
-        
+    }
+
+    .filter-list{
         li{
             border-radius: 20px;
             border: 0.5px solid grey;
@@ -162,23 +190,23 @@ export default {
             margin: 10px 0;
             z-index: 3;  
             cursor: pointer;
-            &.active {
-              border: 1px solid black;
-              font-weight: bold;
-              font-size: 18px;
-            }
-            span{
-                transition: opacity 0.5s ease-out;
-                opacity: 0;
-                height: 0;
-                overflow: hidden;
-                color: $primary-color;
-            }   
+                &:active{
+                    border: 1px solid black;
+                    font-weight: bold;
+                    font-size: 18px;
+                }
 
-            &:hover{
-                transform: translate(20px);
-                transition: transform 0.5s;
-               
+                span{
+                    transition: opacity 0.5s ease-out;
+                    opacity: 0;
+                    height: 0;
+                    overflow: hidden;
+                    color: $primary-color;
+                }   
+
+                &:hover{
+                    transform: translate(20px);
+                    transition: transform 0.5s;
 
                 span{
                     opacity: 1;
@@ -188,20 +216,42 @@ export default {
         }
     }
 
+    .filter{
+            background-color: $primary-color;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            padding-top: 5px;
+            margin-bottom: 5px;
+            border-radius: 10px;
+            width: 70px;
+            height: 35px;
+        
+        }
+
+    .hamburger{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: white;
+            z-index: 2000;
+            overflow-y: auto;
+            margin: 20px 0;
+        }
+
     .restaurant-column{
         z-index: 1;
         height: 700px;
         overflow-y: auto;
         
-      
         .restaurant-box-row{
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            padding: 10px 0;
-            cursor: pointer;
-
+            
         }
     }
 
