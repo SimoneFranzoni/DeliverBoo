@@ -46,10 +46,7 @@ export default {
     methods: {
 
       saveItem(plate) {
-          this.quantity = this.quantity +1;
-            plate.quantity = quantity;
-            console.log(plate.quantity);
-            this.$emit('cartArray',plate);
+          this.$emit('cartArray',plate);
       }
     }
 }
