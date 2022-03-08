@@ -33,6 +33,9 @@
                             <a href="#bevande">Bevande</a>
                         </li>
                     </ul>
+                    <router-link class="ac-btn" :to="{name: 'restaurants', params: {slug: activeRestaurant.types[0].slug}}">
+                          Torna ai ristoranti
+                    </router-link>
                 </div>
 
                 <div class="col-12 col-md-7 col-lg-6 central-column">
@@ -99,7 +102,10 @@
                             <div class="fw-bold">7,50 €</div>
                         </div>
                     </div>
+                  
+
                 </div> 
+                  
             </div> 
         </div> 
         <div class="d-block d-md-none carrello-mobile">
@@ -127,7 +133,7 @@ export default {
     },
     mounted() {
      this.getActiveRestaurant()
-    },
+    },  
     methods : {
       getActiveRestaurant() {
         this.activeRestaurant = {};
@@ -193,6 +199,10 @@ export default {
             justify-content: flex-start;
             align-items: center;
 
+            &:last-child {
+              margin-bottom: 30px;
+            }
+
             .bar{
                 width: 1px;
                 height: 50px;
@@ -222,6 +232,12 @@ export default {
 
         }
     }
+
+    a.ac-btn {
+
+      font-size: 17px;
+
+    }
 }
 
 .central-column{
@@ -250,14 +266,9 @@ export default {
         padding: 0 5px;
         font-size: 20px;
         font-weight: bold;
-        cursor: pointer;
 
         
-        &:hover {
-            background-color: lighten(#eeebeb, 2.5);
-            transform: scale(1.1);
-            border-radius: 10px;
-        }
+      
     }
 
     .menu{
@@ -324,5 +335,7 @@ export default {
     background-color: $primary-color;
     margin: 0;
 }
+
+
 
 </style>
