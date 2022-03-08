@@ -30,17 +30,18 @@
             </div>
             
             <div v-if="filter_close">
-                <div @click="toggleMenu" class="filter d-block d-lg-none ml-3">Filtri</div>
+                <div @click="toggleMenu" class="filter d-block d-lg-none ml-3"><i class="far fa-filter"></i></div>
             </div>
                 <div v-else>
-                    <div class="hamburger">
+                    <div class="hamburger px-2">
                         <div @click="toggleMenu" class="filter">X</div>
                         <div>Tutte le cucine (A, Z)</div>
                         <ul class="filter-list">
                             <li v-for="(type, index) in types" 
-                            :key="`type${index}`"
+                            :key="`type2${index}`"
                             @click="changeActiveRestaurants(type), counter = index"
-                            :class="{active: counter === index}">        
+                            :class="{active: counter === index}"
+                            class="mx-2">        
                             <span>v</span>
                             {{type.name}}
                             </li>
@@ -50,18 +51,10 @@
                     
 
             <div class="col-12 col-lg-9 restaurant-column">
-                <div class="search-input">
-                    <input type="text" name="restsearch" placeholder="Cerca qui una tipologia di ristorante...">
-                    <router-link :to="{name: 'restaurants'}">
-                        <div class="ac-btn">Vai</div>
-                    </router-link>
-                </div>
-
+                
                 <div class="pt-4"> {{activeRestaurants.length}} risultati trovati </div>
                 
-
                 <div class="restaurant-box-row">
-                    
                     
                       <RestaurantBox 
                         v-for="(restaurant, index) in activeRestaurants" 
@@ -69,6 +62,7 @@
                         :restaurant="restaurant"
                         :type="activeType"/>
                 </div>
+
             </div>
         </div>
     </div>
@@ -98,7 +92,8 @@ export default {
             activeType: {},
             counter: -1,
             filter_close: true,
-            randomTypeCounter: -1
+            randomTypeCounter: -1,
+            isLoaded: false
         }
     },
     methods: {
@@ -124,8 +119,6 @@ export default {
           for (count = 0; count < 8; count++) {
             randomNumb = this.getRandomNumber(0, this.types.length);
             randomType = this.types[randomNumb];
-            // console.log(randomNumb);
-            // console.log(randomType);
             if (!this.randomTypes.includes(randomType) && randomType != undefined) {
               this.randomTypes.push(randomType)
             } else {
@@ -136,19 +129,23 @@ export default {
 
         },
         getActiveRestaurants() {
+          this.isLoaded = false;
           this.activeRestaurants = [];
           this.activeType = {};
           axios.get(this.activeRestaurantsUrl + this.$route.params.slug)
           .then(res => {
             this.activeRestaurants = res.data.type.restaurants;
-            this.activeType = res.data.type;
+            this.isLoaded = true;
+            if (this.isLoaded) this.activeType = res.data.type;
           })
         },
         changeActiveRestaurants(type) {
+          this.isLoaded = false;
           axios.get(this.activeRestaurantsUrl + type.slug)
           .then(res => {
             this.activeRestaurants = res.data.type.restaurants;
-            this.activeType = res.data.type;
+            this.isLoaded = true;
+            if (this.isLoaded) this.activeType = res.data.type;
           })
           this.$router.push(type.slug);
         },
@@ -190,14 +187,15 @@ export default {
             margin: 10px 0;
             z-index: 3;  
             cursor: pointer;
-                &:active{
-                    border: 1px solid black;
-                    font-weight: bold;
-                    font-size: 18px;
-                }
+            &:active{
+                border: 1px solid black;
+                font-weight: bold;
+                font-size: 18px;
+            }
 
                 span{
                     transition: opacity 0.5s ease-out;
+                    
                     opacity: 0;
                     height: 0;
                     overflow: hidden;
@@ -207,7 +205,6 @@ export default {
                 &:hover{
                     transform: translate(20px);
                     transition: transform 0.5s;
-
                 span{
                     opacity: 1;
                     height: auto;
@@ -290,7 +287,9 @@ export default {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        flex-wrap: nowrap;    
+        flex-wrap: nowrap;   
+        scrollbar-width: none;
+        overflow-y: scroll; 
     }
 
     .typebox{
@@ -299,6 +298,7 @@ export default {
       align-items: center;
         height: 100px;
         width: 180px;
+        min-width: 100px;
         border-radius: 20px;
         background-color: $primary-color;
         box-shadow: 0 1px 2px rgba(0,0,0,0.15);
@@ -307,6 +307,7 @@ export default {
         transition: transform 0.3s;
         position: relative;
         cursor: pointer;
+
         &.active {
           box-shadow: 0 5px 15px rgba(0,0,0,0.3);
           transform: scale(1.05, 1.1);

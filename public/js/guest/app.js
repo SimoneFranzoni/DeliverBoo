@@ -2031,6 +2031,14 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _partials_PlateBox_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../partials/PlateBox.vue */ "./resources/js/components/partials/PlateBox.vue");
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+//
+//
 //
 //
 //
@@ -2174,64 +2182,89 @@ __webpack_require__.r(__webpack_exports__);
       apiUrl: 'http://127.0.0.1:8000/api/ristoranti/',
       activeRestaurant: {},
       plates: [],
-      itemsArray: []
+      itemsArray: [],
+      isLoaded: false,
+      cart: JSON.parse(localStorage.getItem('items')),
+      subTotal: null
     };
   },
   mounted: function mounted() {
     this.getActiveRestaurant();
   },
+  computed: {
+    getSubTotal: function getSubTotal() {
+      var itemTotalPrice;
+      var sum;
+      console.log(this.cart);
+
+      var _iterator = _createForOfIteratorHelper(this.cart),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var item = _step.value;
+          itemTotalPrice = item.price * item.quantity;
+          sum += itemTotalPrice;
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+
+      this.subTotal = sum;
+      console.log('computed', sum);
+    }
+  },
   methods: {
     getActiveRestaurant: function getActiveRestaurant() {
       var _this = this;
 
+      this.isLoaded = false;
       this.activeRestaurant = {};
       axios.get(this.apiUrl + this.$route.params.slug).then(function (res) {
         _this.activeRestaurant = res.data.restaurant;
 
         _this.plates.push(_this.activeRestaurant.plates);
+
+        _this.isLoaded = true;
       });
       console.log(this.plates);
     },
     cartArray: function cartArray(plate, string) {
-      this.itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : []; // pusho l'elemento nell'array e trasformo gli elementi dell'array in stringa per caricarli nel localStorage
+      this.itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : []; // GENERO UN ARRAY BOOLITEM CHE SI POPOLA SOLO SE ESISTE GIA' IL PIATTO CLICCATO 
 
-      if (this.itemsArray.length === 0) {
+      var boolItem = this.itemsArray.filter(function (item) {
+        return item.id === plate.id;
+      }); // SE QUESTO BOOLITEM E' VUOTO POSSO PUSHARE 
+
+      if (boolItem.length === 0 && string === 'più') {
         plate.quantity = 1;
         this.itemsArray.push(plate);
       } else {
-        var counter = 1;
-
         for (var i = 0; i < this.itemsArray.length; i++) {
           if (this.itemsArray[i].id === plate.id && string === 'più') {
-            counter = this.itemsArray[i].quantity + 1;
+            this.itemsArray[i].quantity++;
           } else if (this.itemsArray[i].id === plate.id && string === 'meno') {
-            counter = this.itemsArray[i].quantity - 1;
+            this.itemsArray[i].quantity--;
 
-            if (counter === 0) {
+            if (this.itemsArray[i].quantity === 0) {
               this.itemsArray = this.itemsArray.filter(function (item) {
-                return item.quantity === item.quantity > 0;
+                return item.quantity > 0;
               });
             }
-
-            ;
           }
         }
-
-        this.itemsArray = this.itemsArray.filter(function (item) {
-          return item.id !== plate.id;
-        });
-        console.log(plate.name, counter);
-        plate.quantity = counter;
-        this.itemsArray.push(plate);
       }
 
       localStorage.setItem('items', JSON.stringify(this.itemsArray)); // inizializzo il carrello trasformando le stringhe del localStorage in oggetti
 
       var cart = JSON.parse(localStorage.getItem('items'));
-      console.log('padre', cart); // console.log('array', this.itemsArray);
+      console.log('padre', cart);
     },
     removeArray: function removeArray() {
       window.localStorage.clear();
+      console.log('Reset Storare Cliccato');
     }
   }
 });
@@ -2326,12 +2359,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Restaurants',
@@ -2351,7 +2378,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       activeType: {},
       counter: -1,
       filter_close: true,
-      randomTypeCounter: -1
+      randomTypeCounter: -1,
+      isLoaded: false
     };
   },
   methods: {
@@ -2390,8 +2418,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
       for (count = 0; count < 8; count++) {
         randomNumb = this.getRandomNumber(0, this.types.length);
-        randomType = this.types[randomNumb]; // console.log(randomNumb);
-        // console.log(randomType);
+        randomType = this.types[randomNumb];
 
         if (!this.randomTypes.includes(randomType) && randomType != undefined) {
           this.randomTypes.push(randomType);
@@ -2405,19 +2432,23 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     getActiveRestaurants: function getActiveRestaurants() {
       var _this2 = this;
 
+      this.isLoaded = false;
       this.activeRestaurants = [];
       this.activeType = {};
       axios.get(this.activeRestaurantsUrl + this.$route.params.slug).then(function (res) {
         _this2.activeRestaurants = res.data.type.restaurants;
-        _this2.activeType = res.data.type;
+        _this2.isLoaded = true;
+        if (_this2.isLoaded) _this2.activeType = res.data.type;
       });
     },
     changeActiveRestaurants: function changeActiveRestaurants(type) {
       var _this3 = this;
 
+      this.isLoaded = false;
       axios.get(this.activeRestaurantsUrl + type.slug).then(function (res) {
         _this3.activeRestaurants = res.data.type.restaurants;
-        _this3.activeType = res.data.type;
+        _this3.isLoaded = true;
+        if (_this3.isLoaded) _this3.activeType = res.data.type;
       });
       this.$router.push(type.slug);
     },
@@ -2524,13 +2555,13 @@ __webpack_require__.r(__webpack_exports__);
   name: 'PlateBox',
   props: {
     plate: Object,
-    vecchioCarrello: Array
+    vecchioCarrello: Array,
+    quantity: Number
   },
   mounted: function mounted() {// console.log('MOUNTED >>', localStorage);
   },
   data: function data() {
-    return {
-      quantity: 0
+    return {// quantity: 0,
     };
   },
   methods: {
@@ -2555,6 +2586,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -7088,7 +7121,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".bg[data-v-0f5c5f38] {\n  width: 100%;\n  height: 400px;\n  position: relative;\n  z-index: -100;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.bg img[data-v-0f5c5f38] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  display: block;\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  top: 0;\n  left: 0;\n  z-index: -100;\n  overflow: hidden;\n}\n.nav-menu[data-v-0f5c5f38] {\n  position: -webkit-sticky;\n  position: sticky;\n  top: 400px;\n  left: 0;\n}\n.nav-menu ul li[data-v-0f5c5f38] {\n  display: flex;\n  justify-content: flex-start;\n  align-items: center;\n}\n.nav-menu ul li[data-v-0f5c5f38]:last-child {\n  margin-bottom: 30px;\n}\n.nav-menu ul li .bar[data-v-0f5c5f38] {\n  width: 1px;\n  height: 50px;\n  background-color: lightgrey;\n  margin-right: 10px;\n}\n.nav-menu ul li a[data-v-0f5c5f38] {\n  color: #333232;\n  text-decoration: none;\n  font-size: 15px;\n  transition: transform 0.5s;\n}\n.nav-menu ul li[data-v-0f5c5f38]:hover {\n  font-weight: bold;\n}\n.nav-menu ul li:hover a[data-v-0f5c5f38] {\n  transform: translateX(10px);\n}\n.nav-menu ul li:hover .bar[data-v-0f5c5f38] {\n  width: 2px;\n  background-color: black;\n}\n.nav-menu a.ac-btn[data-v-0f5c5f38] {\n  font-size: 17px;\n}\n.central-column[data-v-0f5c5f38] {\n  position: relative;\n  padding-bottom: 100px;\n}\n.central-column .box-ristorante[data-v-0f5c5f38] {\n  position: absolute;\n  width: 95%;\n  top: -150px;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  padding: 40px 0;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  border-radius: 20px;\n  background-color: white;\n}\n.central-column .type[data-v-0f5c5f38] {\n  background-color: #eeebeb;\n  transition: all 0.2s;\n  margin: 0 5px;\n  display: inline-block;\n  padding: 0 5px;\n  font-size: 20px;\n  font-weight: bold;\n}\n.central-column .type[data-v-0f5c5f38]:hover {\n  background-color: #f4f2f2;\n  transform: scale(1.1);\n  border-radius: 10px;\n}\n.central-column .menu[data-v-0f5c5f38] {\n  margin-top: 100px;\n  padding-top: 200px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n}\n.right-column[data-v-0f5c5f38] {\n  position: relative;\n}\n.right-column .carrello[data-v-0f5c5f38] {\n  position: absolute;\n  top: -150px;\n  width: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  border-radius: 20px;\n  padding-left: 10px;\n  background-color: white;\n  padding: 20px;\n}\n.right-column .carrello .line[data-v-0f5c5f38] {\n  background-color: grey;\n  width: 100%;\n  height: 1px;\n  margin: 10px 0;\n}\n.right-column .carrello .plate-order[data-v-0f5c5f38] {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  padding: 10px 10px;\n}\n.fw-bold[data-v-0f5c5f38] {\n  font-weight: bold;\n}\n.carrello-mobile[data-v-0f5c5f38] {\n  width: 100%;\n  height: 75px;\n  position: fixed;\n  bottom: 0;\n  left: 0;\n  z-index: 1000;\n  margin-top: 100px;\n  box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.3);\n  background-color: #45CCBC;\n  margin: 0;\n}", ""]);
+exports.push([module.i, ".bg[data-v-0f5c5f38] {\n  width: 100%;\n  height: 400px;\n  position: relative;\n  z-index: -100;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.bg img[data-v-0f5c5f38] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  display: block;\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  top: 0;\n  left: 0;\n  z-index: -100;\n  overflow: hidden;\n}\n.nav-menu[data-v-0f5c5f38] {\n  position: -webkit-sticky;\n  position: sticky;\n  top: 400px;\n  left: 0;\n}\n.nav-menu ul li[data-v-0f5c5f38] {\n  display: flex;\n  justify-content: flex-start;\n  align-items: center;\n}\n.nav-menu ul li[data-v-0f5c5f38]:last-child {\n  margin-bottom: 30px;\n}\n.nav-menu ul li .bar[data-v-0f5c5f38] {\n  width: 1px;\n  height: 50px;\n  background-color: lightgrey;\n  margin-right: 10px;\n}\n.nav-menu ul li a[data-v-0f5c5f38] {\n  color: #333232;\n  text-decoration: none;\n  font-size: 15px;\n  transition: transform 0.5s;\n}\n.nav-menu ul li[data-v-0f5c5f38]:hover {\n  font-weight: bold;\n}\n.nav-menu ul li:hover a[data-v-0f5c5f38] {\n  transform: translateX(10px);\n}\n.nav-menu ul li:hover .bar[data-v-0f5c5f38] {\n  width: 2px;\n  background-color: black;\n}\n.nav-menu a.ac-btn[data-v-0f5c5f38] {\n  font-size: 17px;\n}\n.central-column[data-v-0f5c5f38] {\n  position: relative;\n  padding-bottom: 100px;\n}\n.central-column .box-ristorante[data-v-0f5c5f38] {\n  position: absolute;\n  width: 95%;\n  top: -150px;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  padding: 40px 0;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  border-radius: 20px;\n  background-color: white;\n}\n.central-column .row.address[data-v-0f5c5f38] {\n  padding-bottom: 25px;\n}\n.central-column .type[data-v-0f5c5f38] {\n  background-color: #eeebeb;\n  transition: all 0.2s;\n  margin: 0 5px;\n  display: inline-block;\n  padding: 0 5px;\n  font-size: 20px;\n  font-weight: bold;\n  cursor: default;\n}\n.central-column .menu[data-v-0f5c5f38] {\n  margin-top: 100px;\n  padding-top: 200px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n}\n.right-column[data-v-0f5c5f38] {\n  position: relative;\n}\n.right-column .carrello[data-v-0f5c5f38] {\n  position: absolute;\n  top: -150px;\n  width: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  border-radius: 20px;\n  padding-left: 10px;\n  background-color: white;\n  padding: 20px;\n}\n.right-column .carrello .line[data-v-0f5c5f38] {\n  background-color: grey;\n  width: 100%;\n  height: 1px;\n  margin: 10px 0;\n}\n.right-column .carrello .plate-order div[data-v-0f5c5f38] {\n  padding: 10px 10px;\n}\n.fw-bold[data-v-0f5c5f38] {\n  font-weight: bold;\n}\n.carrello-mobile[data-v-0f5c5f38] {\n  width: 100%;\n  height: 75px;\n  position: fixed;\n  bottom: 0;\n  left: 0;\n  z-index: 1000;\n  margin-top: 100px;\n  box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.3);\n  background-color: #45CCBC;\n  margin: 0;\n}", ""]);
 
 // exports
 
@@ -7107,7 +7140,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".wrapper[data-v-31969ab0] {\n  padding-top: 50px;\n}\n.wrapper .filter-column[data-v-31969ab0] {\n  width: 100%;\n  height: 700px;\n  overflow-y: auto;\n  z-index: 1;\n}\n.wrapper .filter-list li[data-v-31969ab0] {\n  border-radius: 20px;\n  border: 0.5px solid grey;\n  padding: 10px;\n  margin: 10px 0;\n  z-index: 3;\n  cursor: pointer;\n}\n.wrapper .filter-list li[data-v-31969ab0]:active {\n  border: 1px solid black;\n  font-weight: bold;\n  font-size: 18px;\n}\n.wrapper .filter-list li span[data-v-31969ab0] {\n  transition: opacity 0.5s ease-out;\n  opacity: 0;\n  height: 0;\n  overflow: hidden;\n  color: #45CCBC;\n}\n.wrapper .filter-list li[data-v-31969ab0]:hover {\n  transform: translate(20px);\n  transition: transform 0.5s;\n}\n.wrapper .filter-list li:hover span[data-v-31969ab0] {\n  opacity: 1;\n  height: auto;\n}\n.wrapper .filter[data-v-31969ab0] {\n  background-color: #45CCBC;\n  color: white;\n  font-size: 16px;\n  cursor: pointer;\n  text-align: center;\n  padding-top: 5px;\n  margin-bottom: 5px;\n  border-radius: 10px;\n  width: 70px;\n  height: 35px;\n}\n.wrapper .hamburger[data-v-31969ab0] {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100vh;\n  background-color: white;\n  z-index: 2000;\n  overflow-y: auto;\n  margin: 20px 0;\n}\n.wrapper .restaurant-column[data-v-31969ab0] {\n  z-index: 1;\n  height: 700px;\n  overflow-y: auto;\n}\n.wrapper .restaurant-column .restaurant-box-row[data-v-31969ab0] {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n}\n.wrapper .search-input[data-v-31969ab0] {\n  display: flex;\n  align-items: center;\n  width: 100%;\n}\n.wrapper .search-input input[data-v-31969ab0] {\n  width: 90%;\n  margin-right: 5px;\n  padding: 5px 10px;\n  border-radius: 10px;\n  border: 1px solid rgba(0, 0, 0, 0.3);\n  caret-color: #45CCBC;\n}\n.wrapper .search-input input[data-v-31969ab0]:focus {\n  outline: 2px solid #45CCBC;\n}\n.wrapper .search-input .ac-btn[data-v-31969ab0] {\n  width: 60px;\n  text-align: center;\n  font-size: 16px;\n}\n.wrapper .types-row[data-v-31969ab0] {\n  width: 100%;\n  height: 150px;\n  margin: 0 1px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  flex-wrap: nowrap;\n}\n.wrapper .typebox[data-v-31969ab0] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 100px;\n  width: 180px;\n  border-radius: 20px;\n  background-color: #45CCBC;\n  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);\n  margin-right: 10px;\n  transition: transform 0.3s;\n  position: relative;\n  cursor: pointer;\n}\n.wrapper .typebox.active[data-v-31969ab0] {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  transform: scale(1.05, 1.1);\n  font-weight: bold;\n  border: 2px solid white;\n}\n.wrapper .typebox .title[data-v-31969ab0] {\n  font-size: 18px;\n  color: white;\n}\n.wrapper .typebox[data-v-31969ab0]:hover {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  transform: scale(1.05, 1.1);\n  font-weight: bold;\n}", ""]);
+exports.push([module.i, ".wrapper[data-v-31969ab0] {\n  padding-top: 50px;\n}\n.wrapper .filter-column[data-v-31969ab0] {\n  width: 100%;\n  height: 700px;\n  overflow-y: auto;\n  z-index: 1;\n}\n.wrapper .filter-list li[data-v-31969ab0] {\n  border-radius: 20px;\n  border: 0.5px solid grey;\n  padding: 10px;\n  margin: 10px 0;\n  z-index: 3;\n  cursor: pointer;\n}\n.wrapper .filter-list li[data-v-31969ab0]:active {\n  border: 1px solid black;\n  font-weight: bold;\n  font-size: 18px;\n}\n.wrapper .filter-list li span[data-v-31969ab0] {\n  transition: opacity 0.5s ease-out;\n  opacity: 0;\n  height: 0;\n  overflow: hidden;\n  color: #45CCBC;\n}\n.wrapper .filter-list li[data-v-31969ab0]:hover {\n  transform: translate(20px);\n  transition: transform 0.5s;\n}\n.wrapper .filter-list li:hover span[data-v-31969ab0] {\n  opacity: 1;\n  height: auto;\n}\n.wrapper .filter[data-v-31969ab0] {\n  background-color: #45CCBC;\n  color: white;\n  font-size: 16px;\n  cursor: pointer;\n  text-align: center;\n  padding-top: 5px;\n  margin-bottom: 5px;\n  border-radius: 10px;\n  width: 70px;\n  height: 35px;\n}\n.wrapper .hamburger[data-v-31969ab0] {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100vh;\n  background-color: white;\n  z-index: 2000;\n  overflow-y: auto;\n  margin: 20px 0;\n}\n.wrapper .restaurant-column[data-v-31969ab0] {\n  z-index: 1;\n  height: 700px;\n  overflow-y: auto;\n}\n.wrapper .restaurant-column .restaurant-box-row[data-v-31969ab0] {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n}\n.wrapper .search-input[data-v-31969ab0] {\n  display: flex;\n  align-items: center;\n  width: 100%;\n}\n.wrapper .search-input input[data-v-31969ab0] {\n  width: 90%;\n  margin-right: 5px;\n  padding: 5px 10px;\n  border-radius: 10px;\n  border: 1px solid rgba(0, 0, 0, 0.3);\n  caret-color: #45CCBC;\n}\n.wrapper .search-input input[data-v-31969ab0]:focus {\n  outline: 2px solid #45CCBC;\n}\n.wrapper .search-input .ac-btn[data-v-31969ab0] {\n  width: 60px;\n  text-align: center;\n  font-size: 16px;\n}\n.wrapper .types-row[data-v-31969ab0] {\n  width: 100%;\n  height: 150px;\n  margin: 0 1px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  flex-wrap: nowrap;\n  scrollbar-width: none;\n  overflow-y: scroll;\n}\n.wrapper .typebox[data-v-31969ab0] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 100px;\n  width: 180px;\n  min-width: 100px;\n  border-radius: 20px;\n  background-color: #45CCBC;\n  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);\n  margin-right: 10px;\n  transition: transform 0.3s;\n  position: relative;\n  cursor: pointer;\n}\n.wrapper .typebox.active[data-v-31969ab0] {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  transform: scale(1.05, 1.1);\n  font-weight: bold;\n  border: 2px solid white;\n}\n.wrapper .typebox .title[data-v-31969ab0] {\n  font-size: 18px;\n  color: white;\n}\n.wrapper .typebox[data-v-31969ab0]:hover {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  transform: scale(1.05, 1.1);\n  font-weight: bold;\n}", ""]);
 
 // exports
 
@@ -7145,7 +7178,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".box[data-v-77410197] {\n  width: 100%;\n  height: 120px;\n  padding: 0 5%;\n  margin: 10px 0;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  border-radius: 20px;\n  transition: box-shadow 0.3s ease-in-out;\n  transition: height 0.3s, width 0.3s;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  transition: transform 0.3s;\n  cursor: pointer;\n}\n.box[data-v-77410197]:hover {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  font-weight: bold;\n  transform: scale(1.05, 1.1);\n}\n.box .name[data-v-77410197] {\n  font-weight: bold;\n  font-size: 20px;\n}\n.box .price[data-v-77410197] {\n  font-weight: bold;\n}\n.box .price[data-v-77410197], .box .cart[data-v-77410197] {\n  display: inline-block;\n}\n.box .cart[data-v-77410197] {\n  padding-left: 20px;\n  padding-top: 10px;\n  width: 150px;\n  font-size: 18px;\n  color: #45CCBC;\n}\n.box .cart i[data-v-77410197] {\n  padding-right: 5px;\n}\n.box .cart span[data-v-77410197] {\n  color: black;\n  border: 1px solid black;\n  padding: 5px 12px;\n  border-radius: 7px;\n}\n.box .right[data-v-77410197] {\n  height: 90%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  display: flex;\n  align-items: center;\n}\n.box .image[data-v-77410197] {\n  width: 130px;\n  border-radius: 15px;\n  height: 80%;\n}\n.box .image img[data-v-77410197] {\n  border-radius: 15px;\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}", ""]);
+exports.push([module.i, ".box[data-v-77410197] {\n  width: 100%;\n  height: 120px;\n  padding: 0 5%;\n  margin: 10px 0;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  border-radius: 20px;\n  transition: box-shadow 0.3s ease-in-out;\n  transition: height 0.3s, width 0.3s;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  transition: transform 0.3s;\n  cursor: pointer;\n}\n.box[data-v-77410197]:hover {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  font-weight: bold;\n  transform: scale(1.05, 1.1);\n}\n.box .name[data-v-77410197] {\n  font-weight: bold;\n  font-size: 20px;\n}\n.box .price[data-v-77410197] {\n  font-weight: bold;\n}\n.box .price[data-v-77410197], .box .cart[data-v-77410197] {\n  display: inline-block;\n}\n.box .cart[data-v-77410197] {\n  padding-left: 20px;\n  padding-top: 10px;\n  width: 150px;\n  font-size: 18px;\n  color: #45CCBC;\n}\n.box .cart i[data-v-77410197] {\n  padding-right: 5px;\n}\n.box .cart span[data-v-77410197] {\n  color: black;\n  border: 1px solid black;\n  padding: 5px 12px;\n  border-radius: 7px;\n}\n.box .right[data-v-77410197] {\n  height: 90%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  display: flex;\n  align-items: center;\n}\n.box .image[data-v-77410197] {\n  width: 130px;\n  border-radius: 15px;\n  height: 80%;\n}\n.box .image img[data-v-77410197] {\n  border-radius: 15px;\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.box span.disabled[data-v-77410197] {\n  pointer-events: none;\n}", ""]);
 
 // exports
 
@@ -39399,63 +39432,69 @@ var render = function () {
               _vm._v(" "),
               _vm._m(4),
             ]),
-            _vm._v(" "),
-            _c(
-              "router-link",
-              {
-                staticClass: "ac-btn",
-                attrs: {
-                  to: {
-                    name: "restaurants",
-                    params: { slug: _vm.activeRestaurant.types[0].slug },
-                  },
-                },
-              },
-              [
-                _vm._v(
-                  "\n                      Torna ai ristoranti\n                "
-                ),
-              ]
-            ),
-          ],
-          1
+          ]
         ),
         _vm._v(" "),
         _c("div", { staticClass: "col-12 col-md-7 col-lg-6 central-column" }, [
-          _c("div", { staticClass: "box-ristorante" }, [
-            _c("h2", { staticClass: "pb-3" }, [
-              _vm._v(_vm._s(_vm.activeRestaurant.name)),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "pb-2" }, [
-              _c(
-                "div",
-                { staticClass: "row" },
-                _vm._l(_vm.activeRestaurant.types, function (type, index) {
-                  return _c(
-                    "div",
-                    { key: "type" + index, staticClass: "type" },
+          _c(
+            "div",
+            { staticClass: "box-ristorante" },
+            [
+              _c("h2", { staticClass: "pb-3" }, [
+                _vm._v(_vm._s(_vm.activeRestaurant.name)),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "pb-2" }, [
+                _c(
+                  "div",
+                  { staticClass: "row" },
+                  _vm._l(_vm.activeRestaurant.types, function (type, index) {
+                    return _c(
+                      "div",
+                      { key: "type" + index, staticClass: "type" },
+                      [
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(type.name) +
+                            "\n                            "
+                        ),
+                      ]
+                    )
+                  }),
+                  0
+                ),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row address" }, [
+                _c("div", [_vm._v(_vm._s(_vm.activeRestaurant.address))]),
+                _vm._v(" "),
+                _c("div", { staticClass: "px-3" }, [_vm._v("|")]),
+                _vm._v(" "),
+                _c("div", [_vm._v(_vm._s(_vm.activeRestaurant.city))]),
+              ]),
+              _vm._v(" "),
+              _vm.isLoaded
+                ? _c(
+                    "router-link",
+                    {
+                      staticClass: "ac-btn",
+                      attrs: {
+                        to: {
+                          name: "restaurants",
+                          params: { slug: _vm.activeRestaurant.types[0].slug },
+                        },
+                      },
+                    },
                     [
                       _vm._v(
-                        "\n                                " +
-                          _vm._s(type.name) +
-                          "\n                            "
+                        "\n                        Torna ai ristoranti\n                      "
                       ),
                     ]
                   )
-                }),
-                0
-              ),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "row" }, [
-              _c("div", [_vm._v(_vm._s(_vm.activeRestaurant.address))]),
-              _vm._v(" "),
-              _c("div", { staticClass: "px-3" }, [_vm._v("|")]),
-              _vm._v(" "),
-              _c("div", [_vm._v(_vm._s(_vm.activeRestaurant.city))]),
-            ]),
-          ]),
+                : _vm._e(),
+            ],
+            1
+          ),
           _vm._v(" "),
           _c(
             "div",
@@ -39475,7 +39514,55 @@ var render = function () {
           ),
         ]),
         _vm._v(" "),
-        _vm._m(5),
+        _c(
+          "div",
+          { staticClass: "d-none d-md-block col-5 col-lg-4 right-column" },
+          [
+            _c("div", { staticClass: "carrello" }, [
+              _vm._m(5),
+              _vm._v(" "),
+              _c("div", { staticClass: "line mt-3" }),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "plate-order" },
+                _vm._l(_vm.cart, function (item, index) {
+                  return _c("div", { key: "item" + index }, [
+                    _c("div", [_c("strong", [_vm._v(_vm._s(item.name))])]),
+                    _vm._v(" "),
+                    _c("div", [
+                      _vm._v(
+                        _vm._s(item.quantity) + " | €" + _vm._s(item.price)
+                      ),
+                    ]),
+                  ])
+                }),
+                0
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "line" }),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "row px-5 pt-3 pb-2 justify-content-between align-items-center",
+                },
+                [
+                  _c("div", { staticClass: "fw-bold" }, [_vm._v("Subtotale")]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "fw-bold" }, [
+                    _vm._v("€" + _vm._s(_vm.getSubTotal)),
+                  ]),
+                ]
+              ),
+              _vm._v(" "),
+              _vm._m(6),
+              _vm._v(" "),
+              _vm._m(7),
+            ]),
+          ]
+        ),
       ]),
     ]),
     _vm._v(" "),
@@ -39541,70 +39628,39 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "div",
-      { staticClass: "d-none d-md-block col-5 col-lg-4 right-column" },
+      { staticClass: "row justify-content-around align-items-center" },
+      [_c("h2", { staticClass: "fw-bold" }, [_vm._v("Il tuo ordine")])]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "row px-5 py-2 justify-content-between align-items-center",
+      },
       [
-        _c("div", { staticClass: "carrello" }, [
-          _c(
-            "div",
-            { staticClass: "row justify-content-around align-items-center" },
-            [_c("h2", { staticClass: "fw-bold" }, [_vm._v("Il tuo ordine")])]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "line mt-3" }),
-          _vm._v(" "),
-          _c("div", { staticClass: "plate-order" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "pr-2 minus-btn" }, [_vm._v("-")]),
-              _vm._v(" "),
-              _c("div", [_vm._v("1")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "pl-2 plus-btn" }, [_vm._v("+")]),
-            ]),
-            _vm._v(" "),
-            _c("div", [_vm._v("prezzo")]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "line" }),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "row px-5 pt-3 pb-2 justify-content-between align-items-center",
-            },
-            [
-              _c("div", { staticClass: "fw-bold" }, [_vm._v("Subtotale")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "fw-bold" }, [_vm._v("5,50 €")]),
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "row px-5 py-2 justify-content-between align-items-center",
-            },
-            [
-              _c("div", [_vm._v("Costo di consegna")]),
-              _vm._v(" "),
-              _c("div", [_vm._v("2,00 €")]),
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "row px-5 py-2 justify-content-between align-items-center",
-            },
-            [
-              _c("div", { staticClass: "fw-bold" }, [_vm._v("Totale")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "fw-bold" }, [_vm._v("7,50 €")]),
-            ]
-          ),
-        ]),
+        _c("div", [_vm._v("Costo di consegna")]),
+        _vm._v(" "),
+        _c("div", [_vm._v("2,00 €")]),
+      ]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "row px-5 py-2 justify-content-between align-items-center",
+      },
+      [
+        _c("div", { staticClass: "fw-bold" }, [_vm._v("Totale")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "fw-bold" }, [_vm._v("7,50 €")]),
       ]
     )
   },
@@ -39701,11 +39757,11 @@ var render = function () {
                   staticClass: "filter d-block d-lg-none ml-3",
                   on: { click: _vm.toggleMenu },
                 },
-                [_vm._v("Filtri")]
+                [_c("i", { staticClass: "far fa-filter" })]
               ),
             ])
           : _c("div", [
-              _c("div", { staticClass: "hamburger" }, [
+              _c("div", { staticClass: "hamburger px-2" }, [
                 _c(
                   "div",
                   { staticClass: "filter", on: { click: _vm.toggleMenu } },
@@ -39721,7 +39777,8 @@ var render = function () {
                     return _c(
                       "li",
                       {
-                        key: "type" + index,
+                        key: "type2" + index,
+                        staticClass: "mx-2",
                         class: { active: _vm.counter === index },
                         on: {
                           click: function ($event) {
@@ -39746,25 +39803,6 @@ var render = function () {
             ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-12 col-lg-9 restaurant-column" }, [
-          _c(
-            "div",
-            { staticClass: "search-input" },
-            [
-              _c("input", {
-                attrs: {
-                  type: "text",
-                  name: "restsearch",
-                  placeholder: "Cerca qui una tipologia di ristorante...",
-                },
-              }),
-              _vm._v(" "),
-              _c("router-link", { attrs: { to: { name: "restaurants" } } }, [
-                _c("div", { staticClass: "ac-btn" }, [_vm._v("Vai")]),
-              ]),
-            ],
-            1
-          ),
-          _vm._v(" "),
           _c("div", { staticClass: "pt-4" }, [
             _vm._v(
               " " + _vm._s(_vm.activeRestaurants.length) + " risultati trovati "
@@ -39882,10 +39920,15 @@ var render = function () {
               },
               [_vm._v("+")]
             ),
-            _vm._v(" \r\n        \r\n        0\r\n\r\n        "),
+            _vm._v(
+              " \r\n        \r\n        " +
+                _vm._s(_vm.quantity) +
+                "\r\n\r\n        "
+            ),
             _c(
               "span",
               {
+                class: { disabled: _vm.quantity === 0 },
                 attrs: { id: "remove" },
                 on: {
                   click: function ($event) {
@@ -39960,20 +40003,28 @@ var render = function () {
             ]),
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-6" }, [
-            _c("div", [
-              _vm._v(
-                "\n           " + _vm._s(_vm.restaurant.address) + "\n         "
-              ),
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _vm._v(
-                "\n           " +
-                  _vm._s(_vm.restaurant.phone_number) +
-                  "\n         "
-              ),
-            ]),
+          _c("div", { staticClass: "col-6 d-flex" }, [
+            _c(
+              "div",
+              { staticClass: "row flex-column justify-content-center" },
+              [
+                _c("div", [
+                  _vm._v(
+                    "\n             " +
+                      _vm._s(_vm.restaurant.address) +
+                      "\n           "
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("div", [
+                  _vm._v(
+                    "\n             " +
+                      _vm._s(_vm.restaurant.phone_number) +
+                      "\n           "
+                  ),
+                ]),
+              ]
+            ),
           ]),
         ]),
       ]),
