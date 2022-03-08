@@ -91,9 +91,10 @@
 
                             <div v-for="(item, index) in cart" :key="`item${index}`">
                               <div>
-                                {{ item.name }} | {{item.quantity}} | {{item.price}}
+                                <strong>{{item.name}}</strong>
                               </div>
-                              </div>
+                              <div>{{item.quantity}} | €{{item.price}}</div>
+                            </div>
 
                             
 
@@ -104,7 +105,7 @@
                             class="row px-5 pt-3 pb-2 justify-content-between align-items-center"
                         >
                             <div class="fw-bold">Subtotale</div>
-                            <div class="fw-bold">5,50 €</div>
+                            <div class="fw-bold">€{{getSubTotal}}</div>
                         </div>
                         <div
                             class="row px-5 py-2 justify-content-between align-items-center"
@@ -147,12 +148,26 @@ export default {
         plates: [],
         itemsArray: [],
         isLoaded: false,
-        cart: JSON.parse(localStorage.getItem('items'))
+        cart: JSON.parse(localStorage.getItem('items')),
+        subTotal: null
       }
     },
     mounted() {
      this.getActiveRestaurant()
     },  
+    computed: {
+      getSubTotal() {
+        let itemTotalPrice;
+        let sum;
+        console.log(this.cart);
+        for(let item of this.cart) {
+          itemTotalPrice = item.price * item.quantity;
+          sum += itemTotalPrice;
+        }
+        this.subTotal = sum;
+        console.log('computed', sum);
+      }
+    },
     methods : {
       getActiveRestaurant() {
         this.isLoaded = false;
@@ -209,7 +224,8 @@ export default {
       removeArray(){
           window.localStorage.clear();
           console.log('Reset Storare Cliccato');
-      }
+      },
+      
     }
 }
 </script>
@@ -360,8 +376,11 @@ export default {
         }
 
         .plate-order {
-            text-align: justify;
+
+          div {
+            
             padding: 10px 10px;
+          }
         }
     }
 }
