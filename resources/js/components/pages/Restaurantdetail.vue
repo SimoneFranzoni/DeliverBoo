@@ -231,15 +231,11 @@ export default {
             justify-content: flex-start;
             align-items: center;
 
-<<<<<<< HEAD
             &:last-child {
               margin-bottom: 30px;
             }
 
             .bar{
-=======
-            .bar {
->>>>>>> e87f23470b35b50b9cd317bef5f67f91fc82d7aa
                 width: 1px;
                 height: 50px;
                 background-color: lightgrey;
@@ -302,16 +298,11 @@ export default {
         font-size: 20px;
         font-weight: bold;
 
-<<<<<<< HEAD
-        
-      
-=======
         &:hover {
             background-color: lighten(#eeebeb, 2.5);
             transform: scale(1.1);
             border-radius: 10px;
         }
->>>>>>> e87f23470b35b50b9cd317bef5f67f91fc82d7aa
     }
 
     .menu {
@@ -375,10 +366,4 @@ export default {
     margin: 0;
 }
 
-<<<<<<< HEAD
-
-
 </style>
-=======
-</style>
->>>>>>> e87f23470b35b50b9cd317bef5f67f91fc82d7aa
