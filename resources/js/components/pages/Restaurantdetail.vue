@@ -9,7 +9,8 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-2 nav-menu" id="stickyMenu">
+              
+                <div class="d-none d-lg-block col-2 nav-menu" id="stickyMenu">
                     <ul class="pt-5">
                         <li>
                             <div class="bar"></div>
@@ -40,7 +41,7 @@
                     </ul>
                 </div>
 
-                <div class="col-6 central-column">
+                <div class="col-12 col-md-7 col-lg-6 central-column">
                     <div class="box-ristorante">
                         <h2 class="pb-3">{{ activeRestaurant.name }}</h2>
                         <div class="pb-2">
@@ -64,15 +65,15 @@
                     </div>
                     <div class="menu pt-5">
                         <h4 id="primi">Primi</h4>
-                        <PlateBox
-                            v-for="(plate, index) in activeRestaurant.plates"
-                            :key="`plate${index}`"
-                            :plate="plate"
-                            @cartArray="cartArray"
+                        <PlateBox v-for="(plate, index) in activeRestaurant.plates"
+                          :key="`plate${index}`"
+                          :plate="plate"
+                          :carrello='carrello'
+                          @cartArray="cartArray"
                         />
                     </div>
                 </div>
-                <div class="col-4 right-column">
+                <div class="d-none d-md-block col-5 col-lg-4 right-column">
                     <div class="carrello">
                         <div
                             class="row justify-content-around align-items-center"
@@ -115,8 +116,11 @@
                             <div class="fw-bold">7,50 €</div>
                         </div>
                     </div>
-                </div>
-            </div>
+                </div> 
+            </div> 
+        </div> 
+        <div class="d-block d-md-none carrello-mobile">
+            Clicca qui per il carrello
         </div>
     </div>
 </template>
@@ -213,11 +217,7 @@ export default {
     }
 }
 
-.container-fluid {
-    padding: 0 8%;
-}
-
-.nav-menu {
+.nav-menu{
     position: sticky;
     top: 400px;
     left: 0;
@@ -340,4 +340,18 @@ export default {
 .fw-bold {
     font-weight: bold;
 }
+
+.carrello-mobile{
+    width: 100%;
+    height: 75px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    margin-top: 100px;
+    box-shadow: 0 -3px 10px rgba(0,0,0,0.3);
+    background-color: $primary-color;
+    margin: 0;
+}
+
 </style>
