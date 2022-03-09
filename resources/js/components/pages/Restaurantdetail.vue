@@ -65,6 +65,7 @@
                         </div>
                           <router-link 
                           v-if="isLoaded"
+                          
                           class="ac-btn" :to="{name: 'restaurants', params: {slug: activeRestaurant.types[0].slug}}">
                             Torna ai ristoranti
                           </router-link>
@@ -79,7 +80,7 @@
                     </div>
                 </div>
                 <div class="d-none d-md-block col-5 col-lg-4 right-column">
-                    <div class="carrello" v-if="cart">
+                    <div class="carrello" v-if="cart.length > 0">
                         <div
                             class="row justify-content-around align-items-center"
                         >
@@ -90,10 +91,17 @@
                             <!-- elenco piatti con prezzi  -->
 
                             <div v-for="(item, index) in cart" :key="`item${index}`">
-                              <div>
-                                <strong>{{item.name}}</strong>
-                              </div>
-                              <div>{{item.quantity}} | € {{item.price}}</div>
+                                <div>
+                                    <strong>{{item.name}}</strong>
+                                </div>
+                                <div class="d-flex justify-content-between p-0">
+                                    <div class="p-0">
+                                        <span class="amount-plates">{{item.quantity}}</span>
+                                        <span class="add-plate" @click="cartArray(item, string ='più')">+ </span> 
+                                        <span class="del-plate" @click="cartArray(item, string = 'meno')">-</span>
+                                    </div>
+                                     € {{item.price}}
+                                </div>
                             </div>
 
                             
@@ -107,27 +115,32 @@
                             <div class="fw-bold">Totale</div>
                             <div class="fw-bold">€{{getSubTotal}}</div>
                         </div>
-                        
+
+                        <div class="d-flex justify-content-center">
+                            <router-link 
+                            v-if="isLoaded"
+                            
+                            class="ac-btn" :to="{name: 'restaurants', params: {slug: activeRestaurant.types[0].slug}}">
+                                Vai al pagamento
+                            </router-link>
+                        </div>
                     </div>
                     
-                  <div class="carrello" v-else>
-                    <div
-                            class="row justify-content-around align-items-center"
-                        >
-                            <h2 class="fw-bold">Il tuo ordine</h2>
-                        </div>
-                        <div class="line mt-3"></div>
-                        <div class="plate-order" >
-                        </div>
-
-                        <div class="line"></div>
+                    <div class="carrello" v-else>
                         <div
-                            class="row px-5 pt-3 pb-2 justify-content-between align-items-center"
+                            class="carrello-empty" 
                         >
-                            <div class="fw-bold">Totale</div>
-                            <div class="fw-bold">€0</div>
+                            <div class="mt-5">
+                                <i class="fas fa-shopping-cart"></i>
+                                <h6 class="fw-bold">Il tuo carrello è vuoto</h6>
+                            </div>
+
+                            <div class="fake-button">
+                                Vai al carrello
+                            </div>
                         </div>
-                  </div>
+                        
+                    </div>
 
                 </div> 
                   
@@ -162,7 +175,7 @@ export default {
       }
     },
     mounted() {
-     this.getActiveRestaurant()
+     this.getActiveRestaurant()    
     },  
     computed: {
       getSubTotal: function() {
@@ -180,6 +193,7 @@ export default {
     
     methods : {
       getActiveRestaurant() {
+        
         this.isLoaded = false;
         this.activeRestaurant = {};
         axios.get(this.apiUrl + this.$route.params.slug)
@@ -187,8 +201,10 @@ export default {
           this.activeRestaurant = res.data.restaurant;
           this.plates.push(this.activeRestaurant.plates);
           this.isLoaded = true;
+        console.log(this.activeRestaurant);
+        console.log(this.cart[0].restaurant_id)
         })
-        console.log(this.plates);
+       
       },
 
 
@@ -246,6 +262,37 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../../sass/_variables.scss";
+
+
+.del-plate,
+.add-plate{
+    width: 40px;
+    height: 20px;
+    display: inline-block;
+    font-size: 20px;
+    border: 1px solid black;
+    line-height: 15px;
+    text-align: center;
+    border-radius: 8px;
+    padding: 0px;
+    transition: all 0.2s;
+    cursor:pointer;
+    &:hover{
+       border:1px solid $primary-color;
+       color:$primary-color;
+       font-size: 24px; 
+    }
+}
+.amount-plates,
+.del-plate,
+.add-plate{
+    width: 40px;
+    height: 20px;
+    display: inline-block; 
+    line-height: 15px;
+    text-align: center;
+    padding: 0px; 
+}
 
 .bg {
     width: 100%;
@@ -393,8 +440,29 @@ export default {
 
           div {
             
-            padding: 10px 10px;
+            padding: 10px 15px;
           }
+        }
+
+        .carrello-empty{
+           color:lightgrey;
+           height:220px;
+           padding:20px;
+           text-align: center;
+           display: flex;
+           flex-direction:column;
+           justify-content: space-between;
+           i{
+               font-size:40px; 
+               color:lightgrey;
+           }
+           .fake-button{
+                background-color:lightgrey;
+                color:white;
+                height:33px; 
+                border-radius:10px;
+                line-height:33px;
+           }
         }
     }
 }
