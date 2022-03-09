@@ -34,3 +34,8 @@ Route::namespace('Api')
     Route::get('/{slug}', 'RestaurantController@show');
     Route::get('tiporistorante/{slug}', 'RestaurantController@getRestaurantsByTypes');
     });
+
+
+    //Rotte per l'Api Orders Pagamenti BrainTree
+    Route::get('orders/generate', 'Api\OrderController@generate');
+    Route::post('orders/makepayment', 'Api\OrderController@makePayment');
