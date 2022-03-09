@@ -2298,7 +2298,15 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
         _this.plates.push(_this.activeRestaurant.plates);
 
-        _this.isLoaded = true;
+        _this.isLoaded = true; //   console.log(JSON.parse(localStorage.getItem('items'))[0].restaurant_id)
+
+        if (JSON.parse(localStorage.getItem('items'))) {
+          if (JSON.parse(localStorage.getItem('items'))[0].restaurant_id != _this.activeRestaurant.id) {
+            window.localStorage.clear(); // localStorage.removeItem('items')
+
+            _this.isCart = false;
+          }
+        }
       });
     },
     getTrueCart: function getTrueCart() {
@@ -39923,9 +39931,9 @@ var render = function () {
                 [
                   _c("span", [_vm._v("v")]),
                   _vm._v(
-                    "\n                        " +
+                    "\r\n                        " +
                       _vm._s(type.name) +
-                      "\n\n                    "
+                      "\r\n\r\n                    "
                   ),
                 ]
               )
@@ -39975,9 +39983,9 @@ var render = function () {
                       [
                         _c("span", [_vm._v("v")]),
                         _vm._v(
-                          "\n                            " +
+                          "\r\n                            " +
                             _vm._s(type.name) +
-                            "\n                            "
+                            "\r\n                            "
                         ),
                       ]
                     )
@@ -40106,7 +40114,9 @@ var render = function () {
               [_vm._v("+")]
             ),
             _vm._v(
-              " \n        \n        " + _vm._s(_vm.quantity) + "\n\n        "
+              " \r\n        \r\n        " +
+                _vm._s(_vm.quantity) +
+                "\r\n\r\n        "
             ),
             _c(
               "span",
@@ -56062,7 +56072,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/albertonicolaciufici/Desktop/Boolean/Progetto Finale/DeliverBoo/resources/js/guest/app.js */"./resources/js/guest/app.js");
+module.exports = __webpack_require__(/*! C:\Users\ssimo\Documents\boolean\html\lara\progetto-finale\DeliverBoo\resources\js\guest\app.js */"./resources/js/guest/app.js");
 
 
 /***/ })

@@ -177,6 +177,7 @@ export default {
     mounted() {
      this.getActiveRestaurant();    
      this.getTrueCart();
+     
     },  
     computed: {
       getSubTotal: function() {
@@ -202,11 +203,21 @@ export default {
           this.activeRestaurant = res.data.restaurant;
           this.plates.push(this.activeRestaurant.plates);
           this.isLoaded = true;
+        //   console.log(JSON.parse(localStorage.getItem('items'))[0].restaurant_id)
+          if(JSON.parse(localStorage.getItem('items'))){
+            if(JSON.parse(localStorage.getItem('items'))[0].restaurant_id != this.activeRestaurant.id){
+                window.localStorage.clear()
+                // localStorage.removeItem('items')
+                this.isCart=false
+            }
+          }
+          
         })
        
       },
 
       getTrueCart() {
+          
           console.log('cart all avvio',this.cart);
           if(!this.cart){
               this.isCart = false;
