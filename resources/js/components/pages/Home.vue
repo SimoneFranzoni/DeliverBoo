@@ -191,11 +191,35 @@ export default {
 
 @media screen and (max-width:768px) {
 
-  
+  .restbox {
+    border-radius: 15px;
+    transition: all .3s;
+    cursor: pointer;
+    max-height: 300px;
+  }
+
+  .restbox img {
+      height: 300px;
+      overflow: hidden;
+      border-radius: 15px;
+      width: 100%;
+      object-fit: cover; 
+  }
 
   .restbox:hover {
     transform: none;
   }
+
+  .restbox .title {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .restbox {
+    margin-bottom: 50px;
+  }
+  
 }
 
 

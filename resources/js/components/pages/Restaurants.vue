@@ -34,7 +34,6 @@
               "
               :class="{ active: counter === index }"
             >
-              <span>v</span>
               {{ type.name }}
             </li>
           </ul>
@@ -57,7 +56,6 @@
                 :class="{ active: counter === index }"
                 class="mx-2"
               >
-                <span>v</span>
                 {{ type.name }}
               </li>
             </ul>
@@ -204,13 +202,6 @@ export default {
         background-color: $primary-color;
         color: white;
       }
-      span {
-        transition: opacity 0.5s ease-out;
-        opacity: 0;
-        height: 0;
-        overflow: hidden;
-        color: $primary-color;
-      }
       &:hover {
         transform: translate(8px);
         border: none;
@@ -219,10 +210,6 @@ export default {
         background-color: $primary-color;
         color: white;
 
-        span {
-          opacity: 1;
-          height: auto;
-        }
       }
     }
   }
