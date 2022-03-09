@@ -146,7 +146,7 @@
         </div> 
 
         <div v-if="responsive_cart_close">
-            <div @click="toggleMenu" class="d-block d-md-none carrello-mobile">
+            <a @click="toggleMenu" href="#full-screen-cart" class="d-block d-md-none carrello-mobile">
                 <div class="container-fluid">
                     <div class="row justify-content-start align-items-center px-4 py-3">
                         <i class="fas fa-shopping-cart pr-4"></i>
@@ -156,10 +156,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
         
-        <div v-else class="full-screen-carrello">
+        <div v-else id="full-screen-cart">
             <div @click="toggleMenu" class="close-cart-btn">
                 <div>X</div>
             </div>
@@ -587,9 +587,11 @@ export default {
     box-shadow: 0 -3px 10px rgba(0,0,0,0.3);
     background-color: $primary-color;
     margin: 0;
+    cursor: pointer;
+    color: white;
 }
 
-.full-screen-carrello{
+#full-screen-cart{
     position: absolute;
     top: 0;
     left: 0;
@@ -612,6 +614,7 @@ export default {
         display: flex;
         align-items: center;
         justify-content: center;
+        cursor: pointer;
     }
 
     .carrello {
@@ -632,7 +635,6 @@ export default {
         .plate-order {
 
           div {
-            
             padding: 10px 15px;
           }
         }
