@@ -67,7 +67,7 @@ export default {
   .box{
     width: 100%;
     height: 120px;
-    padding: 0 5%;
+    padding: 0 15px;
     margin: 10px 0;
     display: flex;
     justify-content: space-between;
@@ -125,11 +125,12 @@ export default {
       // margin-left: auto;
       width: 130px;
       border-radius: 15px;
-      height: 80%;
+      max-height: 110px;
       img {
         border-radius: 15px;
         width: 100%;
-        height: 100%;
+        height: 110px;
+        overflow: hidden;
         object-fit: cover;
       }
     }

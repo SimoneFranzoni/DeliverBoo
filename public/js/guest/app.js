@@ -2296,15 +2296,16 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       axios.get(this.apiUrl + this.$route.params.slug).then(function (res) {
         _this.activeRestaurant = res.data.restaurant;
 
-        _this.plates.push(_this.activeRestaurant.plates);
+        _this.plates.push(_this.activeRestaurant.plates); //   console.log(JSON.parse(localStorage.getItem('items'))[0].restaurant_id)
 
-        _this.isLoaded = true; //   console.log(JSON.parse(localStorage.getItem('items'))[0].restaurant_id)
 
         if (JSON.parse(localStorage.getItem('items'))[0].restaurant_id != _this.activeRestaurant.id) {
           window.localStorage.clear(); // localStorage.removeItem('items')
 
           _this.isCart = false;
         }
+
+        _this.isLoaded = true;
       });
     },
     getTrueCart: function getTrueCart() {
@@ -2381,8 +2382,6 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-//
-//
 //
 //
 //
@@ -7209,7 +7208,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "h3 {\n  font-weight: bold;\n  font-size: 32px;\n  color: #2D3333;\n}\nh3.marg {\n  margin-top: 180px;\n}\nh3:not(.marg) {\n  margin-top: 100px;\n}\n.restbox {\n  border-radius: 15px;\n  transition: all 0.3s;\n  margin-bottom: 25px;\n  cursor: pointer;\n}\n.restbox img {\n  border-radius: 15px;\n  width: 100%;\n  height: 90%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.restbox:hover {\n  transform: scale(1.05);\n}\n.restbox .title {\n  font-weight: bold;\n  font-size: 17px;\n}\n.restbox a, .restbox a:visited {\n  color: #2D3333;\n}\n.types-wrapper {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 10px;\n  margin-top: 20px;\n  padding-bottom: 150px;\n}\n.types-wrapper .type {\n  padding: 0 5px;\n  background-color: #eeebeb;\n  transition: all 0.2s;\n}\n.types-wrapper .type router-link span {\n  display: inline-block;\n  cursor: pointer;\n}\n.types-wrapper .type:hover {\n  background-color: #f4f2f2;\n  transform: scale(1.1);\n  border-radius: 10px;\n}\n@media screen and (max-width: 768px) {\n.restbox:hover {\n    transform: none;\n}\n}", ""]);
+exports.push([module.i, "h3 {\n  font-weight: bold;\n  font-size: 32px;\n  color: #2D3333;\n}\nh3.marg {\n  margin-top: 180px;\n}\nh3:not(.marg) {\n  margin-top: 100px;\n}\n.restbox {\n  border-radius: 15px;\n  transition: all 0.3s;\n  margin-bottom: 25px;\n  cursor: pointer;\n  max-height: 140px;\n}\n.restbox img {\n  height: 140px;\n  overflow: hidden;\n  border-radius: 15px;\n  width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.restbox:hover {\n  transform: scale(1.05);\n}\n.restbox .title {\n  font-weight: bold;\n  font-size: 17px;\n}\n.restbox a, .restbox a:visited {\n  color: #2D3333;\n}\n.types-wrapper {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 10px;\n  margin-top: 20px;\n  padding-bottom: 150px;\n}\n.types-wrapper .type {\n  padding: 0 5px;\n  background-color: #eeebeb;\n  transition: all 0.2s;\n}\n.types-wrapper .type router-link span {\n  display: inline-block;\n  cursor: pointer;\n}\n.types-wrapper .type:hover {\n  background-color: #f4f2f2;\n  transform: scale(1.1);\n  border-radius: 10px;\n}\n@media screen and (max-width: 768px) {\n.restbox {\n    border-radius: 15px;\n    transition: all 0.3s;\n    cursor: pointer;\n    max-height: 300px;\n}\n.restbox img {\n    height: 300px;\n    overflow: hidden;\n    border-radius: 15px;\n    width: 100%;\n    -o-object-fit: cover;\n       object-fit: cover;\n}\n.restbox:hover {\n    transform: none;\n}\n.restbox .title {\n    font-size: 20px;\n}\n}\n@media screen and (max-width: 992px) {\n.restbox {\n    margin-bottom: 50px;\n}\n}", ""]);
 
 // exports
 
@@ -7247,7 +7246,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".wrapper[data-v-31969ab0] {\n  padding-top: 50px;\n}\n.wrapper .filter-column[data-v-31969ab0] {\n  width: 100%;\n  height: 700px;\n  overflow-y: auto;\n  z-index: 1;\n}\n.wrapper .filter-list li[data-v-31969ab0] {\n  border-radius: 20px;\n  border: 0.5px solid grey;\n  padding: 10px;\n  margin: 10px 0;\n  z-index: 3;\n  cursor: pointer;\n  transition: all 0.2s;\n}\n.wrapper .filter-list li.active[data-v-31969ab0] {\n  transform: translate(8px);\n  border: none;\n  font-weight: bold;\n  font-size: 18px;\n  background-color: #45CCBC;\n  color: white;\n}\n.wrapper .filter-list li span[data-v-31969ab0] {\n  transition: opacity 0.5s ease-out;\n  opacity: 0;\n  height: 0;\n  overflow: hidden;\n  color: #45CCBC;\n}\n.wrapper .filter-list li[data-v-31969ab0]:hover {\n  transform: translate(8px);\n  border: none;\n  font-weight: bold;\n  font-size: 18px;\n  background-color: #45CCBC;\n  color: white;\n}\n.wrapper .filter-list li:hover span[data-v-31969ab0] {\n  opacity: 1;\n  height: auto;\n}\n.wrapper .filter[data-v-31969ab0] {\n  background-color: #45CCBC;\n  color: white;\n  font-size: 16px;\n  cursor: pointer;\n  text-align: center;\n  padding-top: 5px;\n  margin-bottom: 5px;\n  border-radius: 10px;\n  width: 70px;\n  height: 35px;\n}\n.wrapper .hamburger[data-v-31969ab0] {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100vh;\n  background-color: white;\n  z-index: 2000;\n  overflow-y: auto;\n  margin: 20px 0;\n}\n.wrapper .restaurant-column[data-v-31969ab0] {\n  z-index: 1;\n  height: 700px;\n  overflow-y: auto;\n}\n.wrapper .restaurant-column .restaurant-box-row[data-v-31969ab0] {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n}\n.wrapper .search-input[data-v-31969ab0] {\n  display: flex;\n  align-items: center;\n  width: 100%;\n}\n.wrapper .search-input input[data-v-31969ab0] {\n  width: 90%;\n  margin-right: 5px;\n  padding: 5px 10px;\n  border-radius: 10px;\n  border: 1px solid rgba(0, 0, 0, 0.3);\n  caret-color: #45CCBC;\n}\n.wrapper .search-input input[data-v-31969ab0]:focus {\n  outline: 2px solid #45CCBC;\n}\n.wrapper .search-input .ac-btn[data-v-31969ab0] {\n  width: 60px;\n  text-align: center;\n  font-size: 16px;\n}\n.wrapper .types-row[data-v-31969ab0] {\n  width: 100%;\n  height: 150px;\n  margin: 0 1px;\n  padding: 10px 0;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  flex-wrap: nowrap;\n  scrollbar-width: none;\n  overflow-y: scroll;\n}\n.wrapper .typebox[data-v-31969ab0] {\n  display: flex;\n  justify-content: center;\n  align-items: end;\n  text-align: center;\n  height: 100px;\n  width: 180px;\n  min-width: 100px;\n  border-radius: 20px;\n  background-color: #45CCBC;\n  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);\n  margin-right: 10px;\n  transition: transform 0.3s;\n  position: relative;\n  overflow: hidden;\n  cursor: pointer;\n}\n.wrapper .typebox.active[data-v-31969ab0] {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  transform: scale(1.05, 1.1);\n  font-weight: bold;\n  border: 2px solid white;\n}\n.wrapper .typebox .boximg_f[data-v-31969ab0] {\n  position: absolute;\n  top: 0px;\n  left: 0px;\n  height: 100px;\n  width: 180px;\n  z-index: 100;\n}\n.wrapper .typebox .boximg_f img[data-v-31969ab0] {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  -o-object-position: center;\n     object-position: center;\n}\n.wrapper .typebox .title[data-v-31969ab0] {\n  width: 100%;\n  font-size: 15px;\n  color: white;\n  z-index: 9000;\n  background-color: #45CCBC;\n}\n.wrapper .typebox[data-v-31969ab0]:hover {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  transform: scale(1.05, 1.1);\n  font-weight: bold;\n}", ""]);
+exports.push([module.i, ".wrapper[data-v-31969ab0] {\n  padding-top: 50px;\n}\n.wrapper .filter-column[data-v-31969ab0] {\n  width: 100%;\n  height: 700px;\n  overflow-y: auto;\n  z-index: 1;\n}\n.wrapper .filter-list li[data-v-31969ab0] {\n  border-radius: 20px;\n  border: 0.5px solid grey;\n  padding: 10px;\n  margin: 10px 0;\n  z-index: 3;\n  cursor: pointer;\n  transition: all 0.2s;\n}\n.wrapper .filter-list li.active[data-v-31969ab0] {\n  transform: translate(8px);\n  border: none;\n  font-weight: bold;\n  font-size: 18px;\n  background-color: #45CCBC;\n  color: white;\n}\n.wrapper .filter-list li[data-v-31969ab0]:hover {\n  transform: translate(8px);\n  border: none;\n  font-weight: bold;\n  font-size: 18px;\n  background-color: #45CCBC;\n  color: white;\n}\n.wrapper .filter[data-v-31969ab0] {\n  background-color: #45CCBC;\n  color: white;\n  font-size: 16px;\n  cursor: pointer;\n  text-align: center;\n  padding-top: 5px;\n  margin-bottom: 5px;\n  border-radius: 10px;\n  width: 70px;\n  height: 35px;\n}\n.wrapper .hamburger[data-v-31969ab0] {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100vh;\n  background-color: white;\n  z-index: 2000;\n  overflow-y: auto;\n  margin: 20px 0;\n}\n.wrapper .restaurant-column[data-v-31969ab0] {\n  z-index: 1;\n  height: 700px;\n  overflow-y: auto;\n}\n.wrapper .restaurant-column .restaurant-box-row[data-v-31969ab0] {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n}\n.wrapper .search-input[data-v-31969ab0] {\n  display: flex;\n  align-items: center;\n  width: 100%;\n}\n.wrapper .search-input input[data-v-31969ab0] {\n  width: 90%;\n  margin-right: 5px;\n  padding: 5px 10px;\n  border-radius: 10px;\n  border: 1px solid rgba(0, 0, 0, 0.3);\n  caret-color: #45CCBC;\n}\n.wrapper .search-input input[data-v-31969ab0]:focus {\n  outline: 2px solid #45CCBC;\n}\n.wrapper .search-input .ac-btn[data-v-31969ab0] {\n  width: 60px;\n  text-align: center;\n  font-size: 16px;\n}\n.wrapper .types-row[data-v-31969ab0] {\n  width: 100%;\n  height: 150px;\n  margin: 0 1px;\n  padding: 10px 0;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  flex-wrap: nowrap;\n  scrollbar-width: none;\n  overflow-y: scroll;\n}\n.wrapper .typebox[data-v-31969ab0] {\n  display: flex;\n  justify-content: center;\n  align-items: end;\n  text-align: center;\n  height: 100px;\n  width: 180px;\n  min-width: 100px;\n  border-radius: 20px;\n  background-color: #45CCBC;\n  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);\n  margin-right: 10px;\n  transition: transform 0.3s;\n  position: relative;\n  overflow: hidden;\n  cursor: pointer;\n}\n.wrapper .typebox.active[data-v-31969ab0] {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  transform: scale(1.05, 1.1);\n  font-weight: bold;\n  border: 2px solid white;\n}\n.wrapper .typebox .boximg_f[data-v-31969ab0] {\n  position: absolute;\n  top: 0px;\n  left: 0px;\n  height: 100px;\n  width: 180px;\n  z-index: 100;\n}\n.wrapper .typebox .boximg_f img[data-v-31969ab0] {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  -o-object-position: center;\n     object-position: center;\n}\n.wrapper .typebox .title[data-v-31969ab0] {\n  width: 100%;\n  font-size: 15px;\n  color: white;\n  z-index: 9000;\n  background-color: #45CCBC;\n}\n.wrapper .typebox[data-v-31969ab0]:hover {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  transform: scale(1.05, 1.1);\n  font-weight: bold;\n}", ""]);
 
 // exports
 
@@ -7285,7 +7284,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".box[data-v-77410197] {\n  width: 100%;\n  height: 120px;\n  padding: 0 5%;\n  margin: 10px 0;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  border-radius: 20px;\n  transition: box-shadow 0.3s ease-in-out;\n  transition: height 0.3s, width 0.3s;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  transition: transform 0.3s;\n  cursor: pointer;\n}\n.box[data-v-77410197]:hover {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  font-weight: bold;\n  transform: scale(1.05, 1.1);\n}\n.box .name[data-v-77410197] {\n  font-weight: bold;\n  font-size: 20px;\n}\n.box .price[data-v-77410197] {\n  font-weight: bold;\n}\n.box .price[data-v-77410197], .box .cart[data-v-77410197] {\n  display: inline-block;\n}\n.box .cart[data-v-77410197] {\n  padding-left: 20px;\n  padding-top: 10px;\n  width: 150px;\n  font-size: 18px;\n  color: #45CCBC;\n}\n.box .cart i[data-v-77410197] {\n  padding-right: 5px;\n}\n.box .cart span[data-v-77410197] {\n  color: black;\n  border: 1px solid black;\n  padding: 5px 12px;\n  border-radius: 7px;\n}\n.box .right[data-v-77410197] {\n  height: 90%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  display: flex;\n  align-items: center;\n}\n.box .image[data-v-77410197] {\n  width: 130px;\n  border-radius: 15px;\n  height: 80%;\n}\n.box .image img[data-v-77410197] {\n  border-radius: 15px;\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.box span.disabled[data-v-77410197] {\n  pointer-events: none;\n}", ""]);
+exports.push([module.i, ".box[data-v-77410197] {\n  width: 100%;\n  height: 120px;\n  padding: 0 15px;\n  margin: 10px 0;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  border-radius: 20px;\n  transition: box-shadow 0.3s ease-in-out;\n  transition: height 0.3s, width 0.3s;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  transition: transform 0.3s;\n  cursor: pointer;\n}\n.box[data-v-77410197]:hover {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  font-weight: bold;\n  transform: scale(1.05, 1.1);\n}\n.box .name[data-v-77410197] {\n  font-weight: bold;\n  font-size: 20px;\n}\n.box .price[data-v-77410197] {\n  font-weight: bold;\n}\n.box .price[data-v-77410197], .box .cart[data-v-77410197] {\n  display: inline-block;\n}\n.box .cart[data-v-77410197] {\n  padding-left: 20px;\n  padding-top: 10px;\n  width: 150px;\n  font-size: 18px;\n  color: #45CCBC;\n}\n.box .cart i[data-v-77410197] {\n  padding-right: 5px;\n}\n.box .cart span[data-v-77410197] {\n  color: black;\n  border: 1px solid black;\n  padding: 5px 12px;\n  border-radius: 7px;\n}\n.box .right[data-v-77410197] {\n  height: 90%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  display: flex;\n  align-items: center;\n}\n.box .image[data-v-77410197] {\n  width: 130px;\n  border-radius: 15px;\n  max-height: 110px;\n}\n.box .image img[data-v-77410197] {\n  border-radius: 15px;\n  width: 100%;\n  height: 110px;\n  overflow: hidden;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.box span.disabled[data-v-77410197] {\n  pointer-events: none;\n}", ""]);
 
 // exports
 
@@ -7304,7 +7303,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".box[data-v-5d5bd708] {\n  width: 98%;\n  height: 120px;\n  display: flex;\n  align-items: center;\n  margin: 10px 0;\n  padding-left: 12px;\n  border-radius: 20px;\n  transition: box-shadow 0.3s ease-in-out;\n  transition: height 0.3s, width 0.3s;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  transition: transform 0.3s;\n  color: black;\n  cursor: pointer;\n}\n.box[data-v-5d5bd708]:hover {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  font-weight: bold;\n  transform: scale(1.02);\n}\n.box .restaurant-img[data-v-5d5bd708] {\n  height: 90%;\n  width: 25%;\n  border-radius: 15px;\n}\n.box .restaurant-img img[data-v-5d5bd708] {\n  width: 100%;\n  border-radius: 15px;\n  -o-object-fit: contain;\n     object-fit: contain;\n}\n.box .name[data-v-5d5bd708] {\n  font-size: 20px;\n}\n.box .name small[data-v-5d5bd708] {\n  display: block;\n  font-style: italic;\n  font-size: 12px;\n  padding-bottom: 10px;\n}", ""]);
+exports.push([module.i, ".box[data-v-5d5bd708] {\n  width: 98%;\n  height: 120px;\n  display: flex;\n  align-items: center;\n  margin: 10px 0;\n  padding-left: 12px;\n  border-radius: 20px;\n  transition: box-shadow 0.3s ease-in-out;\n  transition: height 0.3s, width 0.3s;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  transition: transform 0.3s;\n  color: black;\n  cursor: pointer;\n}\n.box[data-v-5d5bd708]:hover {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  font-weight: bold;\n  transform: scale(1.02);\n}\n.box .restaurant-img[data-v-5d5bd708] {\n  max-height: 110px;\n  width: 25%;\n  border-radius: 15px;\n}\n.box .restaurant-img img[data-v-5d5bd708] {\n  width: 100%;\n  height: 110px;\n  border-radius: 15px;\n  overflow: hidden;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.box .name[data-v-5d5bd708] {\n  font-size: 20px;\n}\n.box .name small[data-v-5d5bd708] {\n  display: block;\n  font-style: italic;\n  font-size: 12px;\n  padding-bottom: 10px;\n}", ""]);
 
 // exports
 
@@ -39663,7 +39662,7 @@ var render = function () {
           "div",
           { staticClass: "d-none d-md-block col-5 col-lg-4 right-column" },
           [
-            _vm.isCart
+            _vm.isLoaded && _vm.isCart
               ? _c("div", { staticClass: "carrello" }, [
                   _vm._m(5),
                   _vm._v(" "),
@@ -39944,10 +39943,7 @@ var render = function () {
                     },
                   },
                 },
-                [
-                  _c("span", [_vm._v("v")]),
-                  _vm._v("\n            " + _vm._s(type.name) + "\n          "),
-                ]
+                [_vm._v("\n            " + _vm._s(type.name) + "\n          ")]
               )
             }),
             0
@@ -39993,7 +39989,6 @@ var render = function () {
                         },
                       },
                       [
-                        _c("span", [_vm._v("v")]),
                         _vm._v(
                           "\n              " +
                             _vm._s(type.name) +
@@ -40128,9 +40123,7 @@ var render = function () {
               [_vm._v("+")]
             ),
             _vm._v(
-              " \r\n        \r\n        " +
-                _vm._s(_vm.quantity) +
-                "\r\n\r\n        "
+              " \n        \n        " + _vm._s(_vm.quantity) + "\n\n        "
             ),
             _c(
               "span",
@@ -56086,7 +56079,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\franc\Documents\Francesco\BOOLEAN\Esercizi\PORTFOLIO\progetto finale\DeliverBoo\DeliverBoo\resources\js\guest\app.js */"./resources/js/guest/app.js");
+module.exports = __webpack_require__(/*! /Users/albertonicolaciufici/Desktop/Boolean/Progetto Finale/DeliverBoo/resources/js/guest/app.js */"./resources/js/guest/app.js");
 
 
 /***/ })
