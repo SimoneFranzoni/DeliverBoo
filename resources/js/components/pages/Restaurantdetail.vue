@@ -39,9 +39,7 @@
                             <a href="#bevande">Bevande</a>
                         </li>
                     </ul>
-                    <router-link class="ac-btn" :to="{name: 'restaurants', params: {slug: activeRestaurant.types[0].slug}}">
-                          Torna ai ristoranti
-                    </router-link>
+                    
                 </div>
 
                 <div class="col-12 col-md-7 col-lg-6 central-column">
@@ -60,66 +58,89 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row address">
                             <div>{{ activeRestaurant.address }}</div>
                             <div class="px-3">|</div>
                             <div>{{ activeRestaurant.city }}</div>
                         </div>
+                          <router-link 
+                          v-if="isLoaded"
+                          
+                          class="ac-btn" :to="{name: 'restaurants', params: {slug: activeRestaurant.types[0].slug}}">
+                            Torna ai ristoranti
+                          </router-link>
                     </div>
                     <div class="menu pt-5">
                         <h4 id="primi">Primi</h4>
                         <PlateBox v-for="(plate, index) in activeRestaurant.plates"
                           :key="`plate${index}`"
                           :plate="plate"
-                          :quantity="plate.quantity"
                           @cartArray="cartArray"
                         />
                     </div>
                 </div>
                 <div class="d-none d-md-block col-5 col-lg-4 right-column">
-                    <div class="carrello">
+                    <div class="carrello" v-if="cart.length > 0">
                         <div
                             class="row justify-content-around align-items-center"
                         >
                             <h2 class="fw-bold">Il tuo ordine</h2>
                         </div>
                         <div class="line mt-3"></div>
-                        <div class="plate-order">
+                        <div class="plate-order" >
                             <!-- elenco piatti con prezzi  -->
 
-                            <!-- <div v-for="(item, index) in localStorageGet()" :key="`item${index}`">
-                              {{ item }}
-                              </div> -->
-
-                            <div class="row">
-                                <div class="pr-2 minus-btn">-</div>
-                                <div>1</div>
-                                <div class="pl-2 plus-btn">+</div>
+                            <div v-for="(item, index) in cart" :key="`item${index}`">
+                                <div>
+                                    <strong>{{item.name}}</strong>
+                                </div>
+                                <div class="d-flex justify-content-between p-0">
+                                    <div class="p-0">
+                                        <span class="amount-plates">{{item.quantity}}</span>
+                                        <span class="add-plate" @click="cartArray(item, string ='più')">+ </span> 
+                                        <span class="del-plate" @click="cartArray(item, string = 'meno')">-</span>
+                                    </div>
+                                     € {{item.price}}
+                                </div>
                             </div>
-                            <div>prezzo</div>
+
+                            
+
                         </div>
 
                         <div class="line"></div>
                         <div
                             class="row px-5 pt-3 pb-2 justify-content-between align-items-center"
                         >
-                            <div class="fw-bold">Subtotale</div>
-                            <div class="fw-bold">5,50 €</div>
-                        </div>
-                        <div
-                            class="row px-5 py-2 justify-content-between align-items-center"
-                        >
-                            <div>Costo di consegna</div>
-                            <div>2,00 €</div>
-                        </div>
-                        <div
-                            class="row px-5 py-2 justify-content-between align-items-center"
-                        >
                             <div class="fw-bold">Totale</div>
-                            <div class="fw-bold">7,50 €</div>
+                            <div class="fw-bold">€{{getSubTotal}}</div>
+                        </div>
+
+                        <div class="d-flex justify-content-center">
+                            <router-link 
+                            v-if="isLoaded"
+                            
+                            class="ac-btn" :to="{name: 'restaurants', params: {slug: activeRestaurant.types[0].slug}}">
+                                Vai al pagamento
+                            </router-link>
                         </div>
                     </div>
-                  
+                    
+                    <div class="carrello" v-else>
+                        <div
+                            class="carrello-empty" 
+                        >
+                            <div class="mt-5">
+                                <i class="fas fa-shopping-cart"></i>
+                                <h6 class="fw-bold">Il tuo carrello è vuoto</h6>
+                            </div>
+
+                            <div class="fake-button">
+                                Vai al carrello
+                            </div>
+                        </div>
+                        
+                    </div>
 
                 </div> 
                   
@@ -146,24 +167,50 @@ export default {
         activeRestaurant: {},
         plates: [],
         itemsArray: [],
+        isLoaded: false,
+        cart: JSON.parse(localStorage.getItem('items')),
+        // cart: [],
+        subTotal: null,
+        // isCart: true
       }
     },
     mounted() {
-     this.getActiveRestaurant()
+     this.getActiveRestaurant()    
     },  
+    computed: {
+      getSubTotal: function() {
+        let itemTotalPrice = 0;
+        let sum = 0;
+        for(let item of this.cart) {
+          itemTotalPrice = item.price * item.quantity;
+          sum += itemTotalPrice;
+        }
+        // console.log(this.cart);
+        
+        return this.subTotal = sum;
+      }
+    },
+    
     methods : {
       getActiveRestaurant() {
+        
+        this.isLoaded = false;
         this.activeRestaurant = {};
         axios.get(this.apiUrl + this.$route.params.slug)
         .then(res => {
           this.activeRestaurant = res.data.restaurant;
           this.plates.push(this.activeRestaurant.plates);
+          this.isLoaded = true;
+        console.log(this.activeRestaurant);
+        console.log(this.cart[0].restaurant_id)
         })
-        console.log(this.plates);
+       
       },
 
 
       cartArray(plate, string) {
+        console.log('cart',this.cart);
+        this.cart = JSON.parse(localStorage.getItem('items'));
         this.itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
 
 
@@ -173,7 +220,7 @@ export default {
             })
             
     // SE QUESTO BOOLITEM E' VUOTO POSSO PUSHARE 
-            if(boolItem.length === 0 ) {
+            if(boolItem.length === 0 && string === 'più' ) {
                 plate.quantity = 1;
                 this.itemsArray.push(plate);
             } else {
@@ -184,6 +231,7 @@ export default {
                     } else if(this.itemsArray[i].id === plate.id && string === 'meno'){
                         this.itemsArray[i].quantity --;
                         if(this.itemsArray[i].quantity === 0){
+                            // this.isCart = false;
                             this.itemsArray = this.itemsArray.filter(function(item){
                                return item.quantity > 0;
                            })
@@ -198,20 +246,53 @@ export default {
             
 
         // inizializzo il carrello trasformando le stringhe del localStorage in oggetti
-        const cart = JSON.parse(localStorage.getItem('items'));
-        console.log('padre', cart);
+        this.cart = JSON.parse(localStorage.getItem('items'));
+        console.log('padre', this.cart);
+       
       },
 
       removeArray(){
           window.localStorage.clear();
           console.log('Reset Storare Cliccato');
-      }
+      },
+      
     }
 }
 </script>
 
 <style lang="scss" scoped>
 @import "../../../sass/_variables.scss";
+
+
+.del-plate,
+.add-plate{
+    width: 40px;
+    height: 20px;
+    display: inline-block;
+    font-size: 20px;
+    border: 1px solid black;
+    line-height: 15px;
+    text-align: center;
+    border-radius: 8px;
+    padding: 0px;
+    transition: all 0.2s;
+    cursor:pointer;
+    &:hover{
+       border:1px solid $primary-color;
+       color:$primary-color;
+       font-size: 24px; 
+    }
+}
+.amount-plates,
+.del-plate,
+.add-plate{
+    width: 40px;
+    height: 20px;
+    display: inline-block; 
+    line-height: 15px;
+    text-align: center;
+    padding: 0px; 
+}
 
 .bg {
     width: 100%;
@@ -302,6 +383,11 @@ export default {
         box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
         border-radius: 20px;
         background-color: white;
+
+    }
+
+    .row.address {
+      padding-bottom: 25px;
     }
 
     .type {
@@ -312,12 +398,8 @@ export default {
         padding: 0 5px;
         font-size: 20px;
         font-weight: bold;
-
-        &:hover {
-            background-color: lighten(#eeebeb, 2.5);
-            transform: scale(1.1);
-            border-radius: 10px;
-        }
+        cursor: default;
+        
     }
 
     .menu {
@@ -355,11 +437,32 @@ export default {
         }
 
         .plate-order {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 10px;
+
+          div {
+            
+            padding: 10px 15px;
+          }
+        }
+
+        .carrello-empty{
+           color:lightgrey;
+           height:220px;
+           padding:20px;
+           text-align: center;
+           display: flex;
+           flex-direction:column;
+           justify-content: space-between;
+           i{
+               font-size:40px; 
+               color:lightgrey;
+           }
+           .fake-button{
+                background-color:lightgrey;
+                color:white;
+                height:33px; 
+                border-radius:10px;
+                line-height:33px;
+           }
         }
     }
 }

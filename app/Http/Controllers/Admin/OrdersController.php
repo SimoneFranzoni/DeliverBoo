@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Order;
+use App\Plate;
 use App\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -42,9 +43,18 @@ class OrdersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$idRestaurant)
     {
-        //
+        $restaurant= Restaurant::where('id',$idRestaurant)->first();
+        $data = $request->all();
+
+        $newOrder = new Order();
+        $newOrder->fill($data);
+        $newOrder->slug = Order::generateSlug($newOrder->name);
+        $newOrder->restaurant_id = $restaurant->id;
+        $newOrder->save();
+
+        return ;
     }
 
     /**
