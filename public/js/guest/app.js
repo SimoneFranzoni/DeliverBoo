@@ -2532,9 +2532,76 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Restaurants',
+  name: "Restaurants",
   components: {
     RestaurantBox: _partials_RestaurantBox_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
@@ -2547,7 +2614,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       types: [],
       randomTypes: [],
       activeRestaurants: [],
-      activeRestaurantsUrl: 'http://127.0.0.1:8000/api/ristoranti/tiporistorante/',
+      activeRestaurantsUrl: "http://127.0.0.1:8000/api/ristoranti/tiporistorante/",
       activeType: {},
       counter: -1,
       filter_close: true,
@@ -2560,7 +2627,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       var _this = this;
 
       this.types = [];
-      axios.get('http://127.0.0.1:8000/api/tipo/').then(function (res) {
+      axios.get("http://127.0.0.1:8000/api/tipo/").then(function (res) {
         _this.types = res.data.types;
 
         var _iterator = _createForOfIteratorHelper(_this.types),
@@ -2584,7 +2651,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       });
     },
     getRandomTypes: function getRandomTypes() {
-      console.log('TIPI >>>>', this.types);
+      console.log("TIPI >>>>", this.types);
       var count = 0;
       var randomNumb = 0;
       var randomType = {};
@@ -2600,7 +2667,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         }
       }
 
-      console.log('RANDOM TYPES >>>', this.randomTypes);
+      console.log("RANDOM TYPES >>>", this.randomTypes);
     },
     getActiveRestaurants: function getActiveRestaurants() {
       var _this2 = this;
@@ -7313,7 +7380,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".wrapper[data-v-31969ab0] {\n  padding-top: 50px;\n}\n.wrapper .filter-column[data-v-31969ab0] {\n  width: 100%;\n  height: 700px;\n  overflow-y: auto;\n  z-index: 1;\n}\n.wrapper .filter-list li[data-v-31969ab0] {\n  border-radius: 20px;\n  border: 0.5px solid grey;\n  padding: 10px;\n  margin: 10px 0;\n  z-index: 3;\n  cursor: pointer;\n  transition: all 0.2s;\n}\n.wrapper .filter-list li.active[data-v-31969ab0] {\n  transform: translate(8px);\n  border: none;\n  font-weight: bold;\n  font-size: 18px;\n  background-color: #45CCBC;\n  color: white;\n}\n.wrapper .filter-list li span[data-v-31969ab0] {\n  transition: opacity 0.5s ease-out;\n  opacity: 0;\n  height: 0;\n  overflow: hidden;\n  color: #45CCBC;\n}\n.wrapper .filter-list li[data-v-31969ab0]:hover {\n  transform: translate(8px);\n  border: none;\n  font-weight: bold;\n  font-size: 18px;\n  background-color: #45CCBC;\n  color: white;\n}\n.wrapper .filter-list li:hover span[data-v-31969ab0] {\n  opacity: 1;\n  height: auto;\n}\n.wrapper .filter[data-v-31969ab0] {\n  background-color: #45CCBC;\n  color: white;\n  font-size: 16px;\n  cursor: pointer;\n  text-align: center;\n  padding-top: 5px;\n  margin-bottom: 5px;\n  border-radius: 10px;\n  width: 70px;\n  height: 35px;\n}\n.wrapper .hamburger[data-v-31969ab0] {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100vh;\n  background-color: white;\n  z-index: 2000;\n  overflow-y: auto;\n  margin: 20px 0;\n}\n.wrapper .restaurant-column[data-v-31969ab0] {\n  z-index: 1;\n  height: 700px;\n  overflow-y: auto;\n}\n.wrapper .restaurant-column .restaurant-box-row[data-v-31969ab0] {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n}\n.wrapper .search-input[data-v-31969ab0] {\n  display: flex;\n  align-items: center;\n  width: 100%;\n}\n.wrapper .search-input input[data-v-31969ab0] {\n  width: 90%;\n  margin-right: 5px;\n  padding: 5px 10px;\n  border-radius: 10px;\n  border: 1px solid rgba(0, 0, 0, 0.3);\n  caret-color: #45CCBC;\n}\n.wrapper .search-input input[data-v-31969ab0]:focus {\n  outline: 2px solid #45CCBC;\n}\n.wrapper .search-input .ac-btn[data-v-31969ab0] {\n  width: 60px;\n  text-align: center;\n  font-size: 16px;\n}\n.wrapper .types-row[data-v-31969ab0] {\n  width: 100%;\n  height: 150px;\n  margin: 0 1px;\n  padding: 10px 0;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  flex-wrap: nowrap;\n  scrollbar-width: none;\n  overflow-y: scroll;\n}\n.wrapper .typebox[data-v-31969ab0] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  text-align: center;\n  height: 100px;\n  width: 180px;\n  min-width: 100px;\n  border-radius: 20px;\n  background-color: #45CCBC;\n  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);\n  margin-right: 10px;\n  transition: transform 0.3s;\n  position: relative;\n  cursor: pointer;\n}\n.wrapper .typebox.active[data-v-31969ab0] {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  transform: scale(1.05, 1.1);\n  font-weight: bold;\n  border: 2px solid white;\n}\n.wrapper .typebox .title[data-v-31969ab0] {\n  font-size: 18px;\n  color: white;\n}\n.wrapper .typebox[data-v-31969ab0]:hover {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  transform: scale(1.05, 1.1);\n  font-weight: bold;\n}", ""]);
+exports.push([module.i, ".wrapper[data-v-31969ab0] {\n  padding-top: 50px;\n}\n.wrapper .filter-column[data-v-31969ab0] {\n  width: 100%;\n  height: 700px;\n  overflow-y: auto;\n  z-index: 1;\n}\n.wrapper .filter-list li[data-v-31969ab0] {\n  border-radius: 20px;\n  border: 0.5px solid grey;\n  padding: 10px;\n  margin: 10px 0;\n  z-index: 3;\n  cursor: pointer;\n  transition: all 0.2s;\n}\n.wrapper .filter-list li.active[data-v-31969ab0] {\n  transform: translate(8px);\n  border: none;\n  font-weight: bold;\n  font-size: 18px;\n  background-color: #45CCBC;\n  color: white;\n}\n.wrapper .filter-list li span[data-v-31969ab0] {\n  transition: opacity 0.5s ease-out;\n  opacity: 0;\n  height: 0;\n  overflow: hidden;\n  color: #45CCBC;\n}\n.wrapper .filter-list li[data-v-31969ab0]:hover {\n  transform: translate(8px);\n  border: none;\n  font-weight: bold;\n  font-size: 18px;\n  background-color: #45CCBC;\n  color: white;\n}\n.wrapper .filter-list li:hover span[data-v-31969ab0] {\n  opacity: 1;\n  height: auto;\n}\n.wrapper .filter[data-v-31969ab0] {\n  background-color: #45CCBC;\n  color: white;\n  font-size: 16px;\n  cursor: pointer;\n  text-align: center;\n  padding-top: 5px;\n  margin-bottom: 5px;\n  border-radius: 10px;\n  width: 70px;\n  height: 35px;\n}\n.wrapper .hamburger[data-v-31969ab0] {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100vh;\n  background-color: white;\n  z-index: 2000;\n  overflow-y: auto;\n  margin: 20px 0;\n}\n.wrapper .restaurant-column[data-v-31969ab0] {\n  z-index: 1;\n  height: 700px;\n  overflow-y: auto;\n}\n.wrapper .restaurant-column .restaurant-box-row[data-v-31969ab0] {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n}\n.wrapper .search-input[data-v-31969ab0] {\n  display: flex;\n  align-items: center;\n  width: 100%;\n}\n.wrapper .search-input input[data-v-31969ab0] {\n  width: 90%;\n  margin-right: 5px;\n  padding: 5px 10px;\n  border-radius: 10px;\n  border: 1px solid rgba(0, 0, 0, 0.3);\n  caret-color: #45CCBC;\n}\n.wrapper .search-input input[data-v-31969ab0]:focus {\n  outline: 2px solid #45CCBC;\n}\n.wrapper .search-input .ac-btn[data-v-31969ab0] {\n  width: 60px;\n  text-align: center;\n  font-size: 16px;\n}\n.wrapper .types-row[data-v-31969ab0] {\n  width: 100%;\n  height: 150px;\n  margin: 0 1px;\n  padding: 10px 0;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  flex-wrap: nowrap;\n  scrollbar-width: none;\n  overflow-y: scroll;\n}\n.wrapper .typebox[data-v-31969ab0] {\n  display: flex;\n  justify-content: center;\n  align-items: end;\n  text-align: center;\n  height: 100px;\n  width: 180px;\n  min-width: 100px;\n  border-radius: 20px;\n  background-color: #45CCBC;\n  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);\n  margin-right: 10px;\n  transition: transform 0.3s;\n  position: relative;\n  overflow: hidden;\n  cursor: pointer;\n}\n.wrapper .typebox.active[data-v-31969ab0] {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  transform: scale(1.05, 1.1);\n  font-weight: bold;\n  border: 2px solid white;\n}\n.wrapper .typebox .boximg_f[data-v-31969ab0] {\n  position: absolute;\n  top: 0px;\n  left: 0px;\n  height: 100px;\n  width: 180px;\n  z-index: 100;\n}\n.wrapper .typebox .boximg_f img[data-v-31969ab0] {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  -o-object-position: center;\n     object-position: center;\n}\n.wrapper .typebox .title[data-v-31969ab0] {\n  width: 100%;\n  font-size: 15px;\n  color: white;\n  z-index: 9000;\n  background-color: #45CCBC;\n}\n.wrapper .typebox[data-v-31969ab0]:hover {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  transform: scale(1.05, 1.1);\n  font-weight: bold;\n}", ""]);
 
 // exports
 
@@ -40128,151 +40195,8 @@ render._withStripped = true
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function () {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "wrapper" }, [
-    _c("div", { staticClass: "container" }, [
-      _c("div", [_vm._v("Scelti per te")]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "row types-row pb-4" },
-        _vm._l(_vm.randomTypes, function (type, index) {
-          return _c(
-            "div",
-            {
-              key: "randomType" + index,
-              staticClass: "typebox",
-              class: { active: _vm.randomTypeCounter === index },
-              on: {
-                click: function ($event) {
-                  _vm.changeActiveRestaurants(type),
-                    (_vm.randomTypeCounter = index),
-                    (_vm.counter = -1)
-                },
-              },
-            },
-            [_c("div", { staticClass: "title" }, [_vm._v(_vm._s(type.name))])]
-          )
-        }),
-        0
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "d-none d-lg-block col-3 filter-column" }, [
-          _c("div", [_vm._v("Tutte le cucine (A, Z)")]),
-          _vm._v(" "),
-          _c(
-            "ul",
-            { staticClass: "filter-list" },
-            _vm._l(_vm.types, function (type, index) {
-              return _c(
-                "li",
-                {
-                  key: "type" + index,
-                  class: { active: _vm.counter === index },
-                  on: {
-                    click: function ($event) {
-                      _vm.changeActiveRestaurants(type),
-                        (_vm.counter = index),
-                        (_vm.randomTypeCounter = -1)
-                    },
-                  },
-                },
-                [
-                  _c("span", [_vm._v("v")]),
-                  _vm._v(
-                    "\r\n                        " +
-                      _vm._s(type.name) +
-                      "\r\n\r\n                    "
-                  ),
-                ]
-              )
-            }),
-            0
-          ),
-        ]),
-        _vm._v(" "),
-        _vm.filter_close
-          ? _c("div", [
-              _c(
-                "div",
-                {
-                  staticClass: "filter d-block d-lg-none ml-3",
-                  on: { click: _vm.toggleMenu },
-                },
-                [_c("i", { staticClass: "far fa-filter" })]
-              ),
-            ])
-          : _c("div", [
-              _c("div", { staticClass: "hamburger px-2" }, [
-                _c(
-                  "div",
-                  { staticClass: "filter", on: { click: _vm.toggleMenu } },
-                  [_vm._v("X")]
-                ),
-                _vm._v(" "),
-                _c("div", [_vm._v("Tutte le cucine (A, Z)")]),
-                _vm._v(" "),
-                _c(
-                  "ul",
-                  { staticClass: "filter-list" },
-                  _vm._l(_vm.types, function (type, index) {
-                    return _c(
-                      "li",
-                      {
-                        key: "type2" + index,
-                        staticClass: "mx-2",
-                        class: { active: _vm.counter === index },
-                        on: {
-                          click: function ($event) {
-                            _vm.changeActiveRestaurants(type),
-                              (_vm.counter = index)
-                          },
-                        },
-                      },
-                      [
-                        _c("span", [_vm._v("v")]),
-                        _vm._v(
-                          "\r\n                            " +
-                            _vm._s(type.name) +
-                            "\r\n                            "
-                        ),
-                      ]
-                    )
-                  }),
-                  0
-                ),
-              ]),
-            ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-12 col-lg-9 restaurant-column" }, [
-          _c("div", { staticClass: "pt-4" }, [
-            _vm._v(
-              " " + _vm._s(_vm.activeRestaurants.length) + " risultati trovati "
-            ),
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "restaurant-box-row" },
-            _vm._l(_vm.activeRestaurants, function (restaurant, index) {
-              return _c("RestaurantBox", {
-                key: "restaurant" + index,
-                attrs: { restaurant: restaurant, type: _vm.activeType },
-              })
-            }),
-            1
-          ),
-        ]),
-      ]),
-    ]),
-  ])
-}
+var render = function () {}
 var staticRenderFns = []
-render._withStripped = true
 
 
 

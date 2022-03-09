@@ -17,26 +17,16 @@ class TypesTableSeeder extends Seeder
         $typologies = [
             'Americano',
             'Asiatico',
-            // 'Ali di pollo',
             'Barbecue',
             'Brasiliano',
-            // 'Burger King',
-            // 'Caffè',
             'Cinese',
-            'Colazione',
             'Comfort Food',
-            // 'Crèpe',
-            // 'Curry',
             'Fast food',
-            // 'Frappè',
             'Frutti di mare',
             'Gelato',
-            'Giapponese',
             'Hamburger',
-            'Indiano',
             'Italiano',
             'Kebab',
-            // 'McDonalds',
             'Mediterraneo',
             'Messicano',
             'Pasta',
@@ -47,12 +37,12 @@ class TypesTableSeeder extends Seeder
             'Sandwich',
             'Spuntini',
             'Sushi',
-            'Turco',
           ];
 
           foreach ($typologies as $tipology){
               $new_type = new Type();
               $new_type->name = $tipology;
+              $new_type->img = 'http://127.0.0.1:8000/storage/uploads/img/types/'.$tipology.'.jpg' ;
               $new_type->description = $faker->paragraphs(3, true);
               $new_type->slug = Str::slug($new_type->name, '-');
               $new_type->save();
