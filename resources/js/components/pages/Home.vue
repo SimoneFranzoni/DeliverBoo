@@ -14,7 +14,7 @@
       v-for="(rest, index) in randomRestaurants"
       :key="`randomrest${index}`"
       >
-      <router-link :to="{name:'restaurantdetail', params: {slug: rest.slug}}">
+      <router-link @click.native="resetStorage()" :to="{name:'restaurantdetail', params: {slug: rest.slug}}">
         <img :src="rest.cover" :alt="rest.name">
         <div class="title">
           {{rest.name}}
@@ -119,6 +119,11 @@ export default {
     },
     getRandomNumber(min, max) {
            return Math.floor(Math.random() * (max - min + 1) + min);
+        },
+
+        resetStorage(){
+          console.log('Click Reset Storage');
+          window.localStorage.clear();
         }
     
   }

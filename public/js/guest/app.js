@@ -2064,6 +2064,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     },
     getRandomNumber: function getRandomNumber(min, max) {
       return Math.floor(Math.random() * (max - min + 1) + min);
+    },
+    resetStorage: function resetStorage() {
+      console.log('Click Reset Storage');
+      window.localStorage.clear();
     }
   }
 });
@@ -2715,6 +2719,12 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     restaurant: Object,
     type: Object
+  },
+  methods: {
+    resetStorage: function resetStorage() {
+      console.log('Click Reset Storage');
+      window.localStorage.clear();
+    }
   }
 });
 
@@ -39430,6 +39440,11 @@ var render = function () {
                       params: { slug: rest.slug },
                     },
                   },
+                  nativeOn: {
+                    click: function ($event) {
+                      return _vm.resetStorage()
+                    },
+                  },
                 },
                 [
                   _c("img", { attrs: { src: rest.cover, alt: rest.name } }),
@@ -39923,9 +39938,9 @@ var render = function () {
                 [
                   _c("span", [_vm._v("v")]),
                   _vm._v(
-                    "\n                        " +
+                    "\r\n                        " +
                       _vm._s(type.name) +
-                      "\n\n                    "
+                      "\r\n\r\n                    "
                   ),
                 ]
               )
@@ -39975,9 +39990,9 @@ var render = function () {
                       [
                         _c("span", [_vm._v("v")]),
                         _vm._v(
-                          "\n                            " +
+                          "\r\n                            " +
                             _vm._s(type.name) +
-                            "\n                            "
+                            "\r\n                            "
                         ),
                       ]
                     )
@@ -40106,7 +40121,9 @@ var render = function () {
               [_vm._v("+")]
             ),
             _vm._v(
-              " \n        \n        " + _vm._s(_vm.quantity) + "\n\n        "
+              " \r\n        \r\n        " +
+                _vm._s(_vm.quantity) +
+                "\r\n\r\n        "
             ),
             _c(
               "span",
@@ -40160,6 +40177,11 @@ var render = function () {
       staticClass: "box",
       attrs: {
         to: { name: "restaurantdetail", params: { slug: _vm.restaurant.slug } },
+      },
+      nativeOn: {
+        click: function ($event) {
+          return _vm.resetStorage()
+        },
       },
     },
     [
@@ -56062,7 +56084,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/albertonicolaciufici/Desktop/Boolean/Progetto Finale/DeliverBoo/resources/js/guest/app.js */"./resources/js/guest/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Simone\Documents\Boolean\Progetto Finale\DeliverBoo\resources\js\guest\app.js */"./resources/js/guest/app.js");
 
 
 /***/ })

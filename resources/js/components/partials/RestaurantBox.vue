@@ -1,6 +1,6 @@
 <template>
 
- <router-link class="box" :to="{name: 'restaurantdetail', params: {slug: restaurant.slug}}">
+ <router-link @click.native="resetStorage()" class="box" :to="{name: 'restaurantdetail', params: {slug: restaurant.slug}}">
 
     <!--:style="{ backgroundImage: `url(${restaurant.cover})`}"-->
     <div class="restaurant-img float-left">
@@ -39,6 +39,13 @@ export default {
     props: {
       restaurant: Object, 
       type: Object
+    },
+
+    methods:{
+      resetStorage(){
+          console.log('Click Reset Storage');
+          window.localStorage.clear();
+        }
     }
 }
 </script>
