@@ -120,7 +120,7 @@
                             <router-link 
                             v-if="isLoaded"
                             
-                            class="ac-btn" :to="{name: 'restaurants', params: {slug: activeRestaurant.types[0].slug}}">
+                            class="ac-btn" :to="{name: 'payment', params: {slug: activeRestaurant.slug}}">
                                 Vai al pagamento
                             </router-link>
                         </div>

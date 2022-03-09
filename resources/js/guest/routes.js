@@ -7,6 +7,7 @@ Vue.use(VueRouter);
 import Home from '../components/pages/Home';
 import Restaurants from '../components/pages/Restaurants.vue';
 import Restaurantdetail from '../components/pages/Restaurantdetail.vue';
+import Payment from '../components/pages/Payment.vue';
 
 import Error404 from '../components/pages/Error404'
 
@@ -28,6 +29,11 @@ const router = new VueRouter({
       path: '/restaurantdetail/:slug',
       name: 'restaurantdetail',
       component: Restaurantdetail
+    },
+    {
+      path: '/payment/:slug',
+      name: 'payment',
+      component: Payment
     },
     {
       path: '*',
