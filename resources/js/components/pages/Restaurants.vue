@@ -190,10 +190,13 @@ export default {
             cursor: pointer;
             transition: all 0.2s;
             &.active{
-                transform: translate(14px);
-                border: 1px solid black;
+                transform: translate(8px);
+                border: none;
                 font-weight: bold;
                 font-size: 18px;
+                background-color: $primary-color;
+                color: white;
+
             }                
                 span{
                     transition: opacity 0.5s ease-out;
@@ -203,10 +206,13 @@ export default {
                     color: $primary-color;
                 }                       
                 &:hover{
-                    transform: translate(14px);
-                    border: 1px solid black;
+                    transform: translate(8px);
+                    border: none;
                     font-weight: bold;
                     font-size: 18px;
+                    background-color: $primary-color;
+                    color: white;
+
                 span{
                     opacity: 1;
                     height: auto;
@@ -286,6 +292,7 @@ export default {
         height: 150px;
         //allinea le box con il titolo sopra
         margin: 0 1px;
+        padding: 10px 0;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -298,6 +305,7 @@ export default {
       display: flex;
       justify-content: center;
       align-items: center;
+      text-align: center;
         height: 100px;
         width: 180px;
         min-width: 100px;
