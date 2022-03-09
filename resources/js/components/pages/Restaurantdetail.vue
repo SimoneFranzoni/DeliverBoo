@@ -356,7 +356,7 @@ export default {
 
 #stickyMenu {
   position: sticky;
-  top: 10px;
+  top: -25px;
 }
 
 
