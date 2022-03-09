@@ -294,7 +294,7 @@ export default {
   .typebox {
     display: flex;
     justify-content: center;
-    align-items: end;
+    align-items: flex-end;
     text-align: center;
     height: 100px;
     width: 180px;
