@@ -188,24 +188,25 @@ export default {
             margin: 10px 0;
             z-index: 3;  
             cursor: pointer;
-            &:active{
+            transition: all 0.2s;
+            &.active{
+                transform: translate(14px);
                 border: 1px solid black;
                 font-weight: bold;
                 font-size: 18px;
-            }
-
+            }                
                 span{
                     transition: opacity 0.5s ease-out;
-                    
                     opacity: 0;
                     height: 0;
                     overflow: hidden;
                     color: $primary-color;
-                }   
-
+                }                       
                 &:hover{
-                    transform: translate(20px);
-                    transition: transform 0.5s;
+                    transform: translate(14px);
+                    border: 1px solid black;
+                    font-weight: bold;
+                    font-size: 18px;
                 span{
                     opacity: 1;
                     height: auto;
