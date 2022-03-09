@@ -80,7 +80,7 @@
                     </div>
                 </div>
                 <div class="d-none d-md-block col-5 col-lg-4 right-column">
-                    <div class="carrello" v-if="isCart">
+                    <div class="carrello" v-if="isLoaded && isCart">
                         <div
                             class="row justify-content-around align-items-center"
                         >
@@ -202,15 +202,15 @@ export default {
         .then(res => {
           this.activeRestaurant = res.data.restaurant;
           this.plates.push(this.activeRestaurant.plates);
-          this.isLoaded = true;
         //   console.log(JSON.parse(localStorage.getItem('items'))[0].restaurant_id)
         
             if(JSON.parse(localStorage.getItem('items'))[0].restaurant_id != this.activeRestaurant.id){
-                window.localStorage.clear()
+              window.localStorage.clear()
                 // localStorage.removeItem('items')
                 this.isCart=false
         
           }
+              this.isLoaded = true;
           
         })
        
