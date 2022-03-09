@@ -144,10 +144,12 @@ export default {
     transition: all .3s;
     margin-bottom: 25px;
     cursor: pointer;
+    max-height: 140px;
     img {
+      height: 140px;
+      overflow: hidden;
       border-radius: 15px;
       width: 100%;
-      height: 90%;
       object-fit: cover;
     }
     &:hover {
@@ -188,6 +190,9 @@ export default {
   }
 
 @media screen and (max-width:768px) {
+
+  
+
   .restbox:hover {
     transform: none;
   }
