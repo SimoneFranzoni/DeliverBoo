@@ -1969,6 +1969,24 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Home',
@@ -1977,22 +1995,50 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   },
   mounted: function mounted() {
     this.getApiTypes();
+    this.getApiRestaurants();
   },
   data: function data() {
     return {
-      types: null,
-      apiUrl: 'http://127.0.0.1:8000/api/ristoranti/tiporistorante/',
-      type: {}
+      types: [],
+      type: {},
+      restaurants: [],
+      randomRestaurants: []
     };
   },
   methods: {
     getApiTypes: function getApiTypes() {
       var _this = this;
 
-      this.types = null;
+      this.types = [];
       axios.get('http://127.0.0.1:8000/api/tipo/').then(function (res) {
         _this.types = res.data.types; // console.log(this.types);
       });
+    },
+    getApiRestaurants: function getApiRestaurants() {
+      var _this2 = this;
+
+      this.restaurants = [];
+      axios.get('http://127.0.0.1:8000/api/ristoranti/').then(function (res) {
+        _this2.restaurants = res.data.restaurants;
+
+        _this2.getRandomRestaurants();
+      });
+    },
+    getRandomRestaurants: function getRandomRestaurants() {
+      var count = 0;
+      var randomNumb = 0;
+      var randomRestaurant = {};
+
+      for (count = 0; count < 6; count++) {
+        randomNumb = this.getRandomNumber(0, this.restaurants.length);
+        randomRestaurant = this.restaurants[randomNumb];
+
+        if (!this.randomRestaurants.includes(randomRestaurant) && randomRestaurant != undefined) {
+          this.randomRestaurants.push(randomRestaurant);
+        } else {
+          count--;
+        }
+      }
     },
     triggerSearch: function triggerSearch(searchedValue) {
       var _iterator = _createForOfIteratorHelper(this.types),
@@ -2015,6 +2061,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       } finally {
         _iterator.f();
       }
+    },
+    getRandomNumber: function getRandomNumber(min, max) {
+      return Math.floor(Math.random() * (max - min + 1) + min);
     }
   }
 });
@@ -2249,8 +2298,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         _this.plates.push(_this.activeRestaurant.plates);
 
         _this.isLoaded = true;
-        console.log(_this.activeRestaurant);
-        console.log(_this.cart[0].restaurant_id);
       });
     },
     cartArray: function cartArray(plate, string) {
@@ -7128,7 +7175,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "h3 {\n  margin-top: 180px;\n  font-weight: bold;\n  font-size: 32px;\n  color: #2D3333;\n}\n.types-wrapper {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 10px;\n  margin-top: 20px;\n  padding-bottom: 150px;\n}\n.types-wrapper .type {\n  padding: 0 5px;\n  background-color: #eeebeb;\n  transition: all 0.2s;\n}\n.types-wrapper .type router-link span {\n  display: inline-block;\n  cursor: pointer;\n}\n.types-wrapper .type:hover {\n  background-color: #f4f2f2;\n  transform: scale(1.1);\n  border-radius: 10px;\n}", ""]);
+exports.push([module.i, "h3 {\n  font-weight: bold;\n  font-size: 32px;\n  color: #2D3333;\n}\nh3.marg {\n  margin-top: 180px;\n}\nh3:not(.marg) {\n  margin-top: 100px;\n}\n.restbox {\n  border-radius: 15px;\n  transition: all 0.3s;\n  margin-bottom: 25px;\n  cursor: pointer;\n}\n.restbox img {\n  border-radius: 15px;\n  width: 100%;\n  height: 90%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.restbox:hover {\n  transform: scale(1.05);\n}\n.restbox .title {\n  font-weight: bold;\n  font-size: 17px;\n}\n.restbox a, .restbox a:visited {\n  color: #2D3333;\n}\n.types-wrapper {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 10px;\n  margin-top: 20px;\n  padding-bottom: 150px;\n}\n.types-wrapper .type {\n  padding: 0 5px;\n  background-color: #eeebeb;\n  transition: all 0.2s;\n}\n.types-wrapper .type router-link span {\n  display: inline-block;\n  cursor: pointer;\n}\n.types-wrapper .type:hover {\n  background-color: #f4f2f2;\n  transform: scale(1.1);\n  border-radius: 10px;\n}\n@media screen and (max-width: 768px) {\n.restbox:hover {\n    transform: none;\n}\n}", ""]);
 
 // exports
 
@@ -39345,6 +39392,44 @@ var render = function () {
     [
       _c("Jumbotron", { on: { triggerSearch: _vm.triggerSearch } }),
       _vm._v(" "),
+      _c("h3", { staticClass: "marg" }, [_vm._v("Le nostre selezioni")]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "row" },
+        _vm._l(_vm.randomRestaurants, function (rest, index) {
+          return _c(
+            "div",
+            {
+              key: "randomrest" + index,
+              staticClass: "restbox col-xs-6 col-md-4 col-lg-2",
+            },
+            [
+              _c(
+                "router-link",
+                {
+                  attrs: {
+                    to: {
+                      name: "restaurantdetail",
+                      params: { slug: rest.slug },
+                    },
+                  },
+                },
+                [
+                  _c("img", { attrs: { src: rest.cover, alt: rest.name } }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "title" }, [
+                    _vm._v("\n        " + _vm._s(rest.name) + "\n      "),
+                  ]),
+                ]
+              ),
+            ],
+            1
+          )
+        }),
+        0
+      ),
+      _vm._v(" "),
       _c("h3", [_vm._v("Non sai cosa scegliere? Dai un'occhiata")]),
       _vm._v(" "),
       _c(
@@ -39822,9 +39907,9 @@ var render = function () {
                 [
                   _c("span", [_vm._v("v")]),
                   _vm._v(
-                    "\r\n                        " +
+                    "\n                        " +
                       _vm._s(type.name) +
-                      "\r\n\r\n                    "
+                      "\n\n                    "
                   ),
                 ]
               )
@@ -39874,9 +39959,9 @@ var render = function () {
                       [
                         _c("span", [_vm._v("v")]),
                         _vm._v(
-                          "\r\n                            " +
+                          "\n                            " +
                             _vm._s(type.name) +
-                            "\r\n                            "
+                            "\n                            "
                         ),
                       ]
                     )
@@ -40005,9 +40090,7 @@ var render = function () {
               [_vm._v("+")]
             ),
             _vm._v(
-              " \r\n        \r\n        " +
-                _vm._s(_vm.quantity) +
-                "\r\n\r\n        "
+              " \n        \n        " + _vm._s(_vm.quantity) + "\n\n        "
             ),
             _c(
               "span",
@@ -55963,7 +56046,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\ssimo\Documents\boolean\html\lara\progetto-finale\DeliverBoo\resources\js\guest\app.js */"./resources/js/guest/app.js");
+module.exports = __webpack_require__(/*! /Users/albertonicolaciufici/Desktop/Boolean/Progetto Finale/DeliverBoo/resources/js/guest/app.js */"./resources/js/guest/app.js");
 
 
 /***/ })

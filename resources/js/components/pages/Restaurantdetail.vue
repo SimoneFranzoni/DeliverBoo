@@ -201,8 +201,6 @@ export default {
           this.activeRestaurant = res.data.restaurant;
           this.plates.push(this.activeRestaurant.plates);
           this.isLoaded = true;
-        console.log(this.activeRestaurant);
-        console.log(this.cart[0].restaurant_id)
         })
        
       },
