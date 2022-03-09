@@ -549,24 +549,24 @@ export default {
         }
 
         .carrello-empty{
-           color:lightgrey;
-           height:220px;
-           padding:20px;
-           text-align: center;
-           display: flex;
-           flex-direction:column;
-           justify-content: space-between;
-           i{
-               font-size:40px; 
-               color:lightgrey;
-           }
-           .fake-button{
+            color:lightgrey;
+            height:220px;
+            padding:20px;
+            text-align: center;
+            display: flex;
+            flex-direction:column;
+            justify-content: space-between;
+            i{
+                font-size:40px; 
+                color:lightgrey;
+            }
+            .fake-button{
                 background-color:lightgrey;
                 color:white;
                 height:33px; 
                 border-radius:10px;
                 line-height:33px;
-           }
+            }
         }
     }
 }
@@ -587,9 +587,9 @@ export default {
     box-shadow: 0 -3px 10px rgba(0,0,0,0.3);
     background-color: $primary-color;
     margin: 0;
-    cursor: pointer;
     color: white;
-}
+    cursor: pointer;
+} 
 
 #full-screen-cart{
     position: absolute;
