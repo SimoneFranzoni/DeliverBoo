@@ -80,7 +80,7 @@
                     </div>
                 </div>
                 <div class="d-none d-md-block col-5 col-lg-4 right-column">
-                    <div class="carrello" v-if="cart.length > 0">
+                    <div class="carrello" v-if="isCart">
                         <div
                             class="row justify-content-around align-items-center"
                         >
@@ -109,9 +109,7 @@
                         </div>
 
                         <div class="line"></div>
-                        <div
-                            class="row px-5 pt-3 pb-2 justify-content-between align-items-center"
-                        >
+                        <div class="row px-5 pt-3 pb-2 justify-content-between align-items-center">
                             <div class="fw-bold">Totale</div>
                             <div class="fw-bold">€{{getSubTotal}}</div>
                         </div>
@@ -142,13 +140,85 @@
                         
                     </div>
 
-                </div> 
+                </div>
                   
             </div> 
         </div> 
-        <div class="d-block d-md-none carrello-mobile">
-            Clicca qui per il carrello
+
+        <div v-if="responsive_cart_close">
+            <div @click="toggleMenu" class="d-block d-md-none carrello-mobile">
+                <div class="container-fluid">
+                    <div class="row justify-content-start align-items-center px-4 py-3">
+                        <i class="fas fa-shopping-cart pr-4"></i>
+                        <div class="d-flex flex-column">
+                            <div class="fw-bold">€{{getSubTotal}}</div>
+                            <div>Clicca qui per visualizzare il carrello</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        
+        <div v-else class="full-screen-carrello">
+            <div @click="toggleMenu" class="close-cart-btn">
+                <div>X</div>
+            </div>
+                    <div class="carrello" v-if="isCart">
+                        <div class="row justify-content-around align-items-center">
+                            <h2 class="fw-bold">Il tuo ordine</h2>
+                        </div>
+                        <div class="line mt-3"></div>
+                        <div class="plate-order" >
+                            <!-- elenco piatti con prezzi  -->
+
+                            <div v-for="(item, index) in cart" :key="`item${index}`">
+                                <div>
+                                    <strong>{{item.name}}</strong>
+                                </div>
+                                <div class="d-flex justify-content-between p-0">
+                                    <div class="p-0">
+                                        <span class="amount-plates">{{item.quantity}}</span>
+                                        <span class="add-plate" @click="cartArray(item, string ='più')">+ </span> 
+                                        <span class="del-plate" @click="cartArray(item, string = 'meno')">-</span>
+                                    </div>
+                                     € {{item.price}}
+                                </div>
+                            </div>
+
+                            
+
+                        </div>
+
+                        <div class="line"></div>
+                        <div class="row px-5 pt-3 pb-2 justify-content-between align-items-center">
+                            <div class="fw-bold">Totale</div>
+                            <div class="fw-bold">€{{getSubTotal}}</div>
+                        </div>
+
+                        <div class="d-flex justify-content-center">
+                            <router-link 
+                            v-if="isLoaded"
+                            
+                            class="ac-btn" :to="{name: 'restaurants', params: {slug: activeRestaurant.types[0].slug}}">
+                                Vai al pagamento
+                            </router-link>
+                        </div>
+                    </div>
+                    
+                    <div class="carrello" v-else>
+                        <div
+                            class="carrello-empty" 
+                        >
+                            <div class="mt-5">
+                                <i class="fas fa-shopping-cart"></i>
+                                <h6 class="fw-bold">Il tuo carrello è vuoto</h6>
+                            </div>
+                        </div>
+                        
+                    </div>
+            </div>
+            
+        
     </div>
 </template>
 
@@ -171,11 +241,13 @@ export default {
         cart: JSON.parse(localStorage.getItem('items')),
         // cart: [],
         subTotal: null,
-        // isCart: true
+        isCart: true,
+        responsive_cart_close: true,
       }
     },
     mounted() {
-     this.getActiveRestaurant()    
+     this.getActiveRestaurant();    
+     this.getTrueCart();
     },  
     computed: {
       getSubTotal: function() {
@@ -201,15 +273,23 @@ export default {
           this.activeRestaurant = res.data.restaurant;
           this.plates.push(this.activeRestaurant.plates);
           this.isLoaded = true;
-        console.log(this.activeRestaurant);
-        console.log(this.cart[0].restaurant_id)
         })
        
+      },
+
+      getTrueCart() {
+          console.log('cart all avvio',this.cart);
+          if(!this.cart){
+              this.isCart = false;
+          } else if (this.cart.length === 0) {
+              this.isCart = false;
+          }
       },
 
 
       cartArray(plate, string) {
         console.log('cart',this.cart);
+        
         this.cart = JSON.parse(localStorage.getItem('items'));
         this.itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
 
@@ -222,19 +302,24 @@ export default {
     // SE QUESTO BOOLITEM E' VUOTO POSSO PUSHARE 
             if(boolItem.length === 0 && string === 'più' ) {
                 plate.quantity = 1;
+                this.isCart = true;
                 this.itemsArray.push(plate);
             } else {
                 
                 for(let i = 0; i < this.itemsArray.length; i++){
                     if(this.itemsArray[i].id === plate.id && string === 'più'){
+                        this.isCart = true;
                        this.itemsArray[i].quantity ++;
                     } else if(this.itemsArray[i].id === plate.id && string === 'meno'){
                         this.itemsArray[i].quantity --;
                         if(this.itemsArray[i].quantity === 0){
-                            // this.isCart = false;
+                            
                             this.itemsArray = this.itemsArray.filter(function(item){
                                return item.quantity > 0;
                            })
+                           if(this.itemsArray.length === 0){
+                                    this.isCart = false;
+                                }
                         }
                     }
                 }
@@ -253,9 +338,17 @@ export default {
 
       removeArray(){
           window.localStorage.clear();
+          this.isCart = false;
           console.log('Reset Storare Cliccato');
       },
       
+      toggleMenu(){
+            if(this.responsive_cart_close === true){
+                this.responsive_cart_close = false;
+            } else {
+                this.responsive_cart_close = true;
+            }
+        }
     }
 }
 </script>
@@ -467,6 +560,7 @@ export default {
     }
 }
 
+
 .fw-bold {
     font-weight: bold;
 }
@@ -483,5 +577,78 @@ export default {
     background-color: $primary-color;
     margin: 0;
 }
+
+.full-screen-carrello{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    box-shadow: 0 -3px 10px rgba(0,0,0,0.3);
+    z-index: 2000;
+    overflow-y: auto;
+    
+    .close-cart-btn{
+        position: absolute;
+        top: 40px;
+        right: 40px;
+        background-color: $primary-color;
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .carrello {
+        position: absolute;
+        top: 15%;
+        width: 100%;
+        height: 100%;
+        padding-left: 10px;
+        padding: 20px;
+
+        .line {
+            background-color: grey;
+            width: 100%;
+            height: 1px;
+            margin: 10px 0;
+        }
+
+        .plate-order {
+
+          div {
+            
+            padding: 10px 15px;
+          }
+        }
+
+        .carrello-empty{
+           color:lightgrey;
+           height:220px;
+           padding:20px;
+           text-align: center;
+           display: flex;
+           flex-direction:column;
+           justify-content: space-between;
+           i{
+               font-size:40px; 
+               color:lightgrey;
+           }
+           .fake-button{
+                background-color:lightgrey;
+                color:white;
+                height:33px; 
+                border-radius:10px;
+                line-height:33px;
+           }
+        }
+    }
+}
+
+
 
 </style>
