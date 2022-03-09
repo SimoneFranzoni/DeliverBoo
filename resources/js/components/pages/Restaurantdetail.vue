@@ -204,12 +204,12 @@ export default {
           this.plates.push(this.activeRestaurant.plates);
           this.isLoaded = true;
         //   console.log(JSON.parse(localStorage.getItem('items'))[0].restaurant_id)
-          if(JSON.parse(localStorage.getItem('items'))){
+        
             if(JSON.parse(localStorage.getItem('items'))[0].restaurant_id != this.activeRestaurant.id){
                 window.localStorage.clear()
                 // localStorage.removeItem('items')
                 this.isCart=false
-            }
+        
           }
           
         })
