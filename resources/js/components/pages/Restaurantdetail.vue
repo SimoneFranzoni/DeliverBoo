@@ -10,8 +10,8 @@
         <div class="container">
             <div class="row">
               
-                <div class="d-none d-lg-block col-2 nav-menu" id="stickyMenu">
-                    <ul class="pt-5">
+                <div class="d-none d-lg-block col-2 position-relative nav-menu" >
+                    <ul class="pt-5" id="stickyMenu">
                         <li>
                             <div class="bar"></div>
                             <a href="#antipasti">Antipasti</a>
@@ -135,9 +135,6 @@
                                      € {{item.price}}
                                 </div>
                             </div>
-
-                            
-
                         </div>
 
                         <div class="line"></div>
@@ -357,6 +354,12 @@ export default {
 <style lang="scss" scoped>
 @import "../../../sass/_variables.scss";
 
+#stickyMenu {
+  position: sticky;
+  top: 10px;
+}
+
+
 h4 {
   margin: 20px 0;
 }
@@ -419,9 +422,6 @@ h4:first-of-type {
 }
 
 .nav-menu{
-    position: sticky;
-    top: 400px;
-    left: 0;
     ul {
         //position: fixed;
         li {
