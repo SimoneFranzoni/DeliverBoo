@@ -80,7 +80,7 @@
                     </div>
                 </div>
                 <div class="d-none d-md-block col-5 col-lg-4 right-column">
-                    <div class="carrello" v-if="cart.length > 0">
+                    <div class="carrello" v-if="isCart">
                         <div
                             class="row justify-content-around align-items-center"
                         >
@@ -171,11 +171,12 @@ export default {
         cart: JSON.parse(localStorage.getItem('items')),
         // cart: [],
         subTotal: null,
-        // isCart: true
+        isCart: true
       }
     },
     mounted() {
-     this.getActiveRestaurant()    
+     this.getActiveRestaurant();    
+     this.getTrueCart();
     },  
     computed: {
       getSubTotal: function() {
@@ -207,9 +208,19 @@ export default {
        
       },
 
+      getTrueCart() {
+          console.log('cart all avvio',this.cart);
+          if(!this.cart){
+              this.isCart = false;
+          } else if (this.cart.length === 0) {
+              this.isCart = false;
+          }
+      },
+
 
       cartArray(plate, string) {
         console.log('cart',this.cart);
+        
         this.cart = JSON.parse(localStorage.getItem('items'));
         this.itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
 
@@ -222,19 +233,24 @@ export default {
     // SE QUESTO BOOLITEM E' VUOTO POSSO PUSHARE 
             if(boolItem.length === 0 && string === 'più' ) {
                 plate.quantity = 1;
+                this.isCart = true;
                 this.itemsArray.push(plate);
             } else {
                 
                 for(let i = 0; i < this.itemsArray.length; i++){
                     if(this.itemsArray[i].id === plate.id && string === 'più'){
+                        this.isCart = true;
                        this.itemsArray[i].quantity ++;
                     } else if(this.itemsArray[i].id === plate.id && string === 'meno'){
                         this.itemsArray[i].quantity --;
                         if(this.itemsArray[i].quantity === 0){
-                            // this.isCart = false;
+                            
                             this.itemsArray = this.itemsArray.filter(function(item){
                                return item.quantity > 0;
                            })
+                           if(this.itemsArray.length === 0){
+                                    this.isCart = false;
+                                }
                         }
                     }
                 }
@@ -253,6 +269,7 @@ export default {
 
       removeArray(){
           window.localStorage.clear();
+          this.isCart = false;
           console.log('Reset Storare Cliccato');
       },
       
