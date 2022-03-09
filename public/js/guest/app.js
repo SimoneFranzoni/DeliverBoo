@@ -2255,12 +2255,13 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       isLoaded: false,
       cart: JSON.parse(localStorage.getItem('items')),
       // cart: [],
-      subTotal: null // isCart: true
-
+      subTotal: null,
+      isCart: true
     };
   },
   mounted: function mounted() {
     this.getActiveRestaurant();
+    this.getTrueCart();
   },
   computed: {
     getSubTotal: function getSubTotal() {
@@ -2300,6 +2301,15 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         _this.isLoaded = true;
       });
     },
+    getTrueCart: function getTrueCart() {
+      console.log('cart all avvio', this.cart);
+
+      if (!this.cart) {
+        this.isCart = false;
+      } else if (this.cart.length === 0) {
+        this.isCart = false;
+      }
+    },
     cartArray: function cartArray(plate, string) {
       console.log('cart', this.cart);
       this.cart = JSON.parse(localStorage.getItem('items'));
@@ -2311,19 +2321,24 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
       if (boolItem.length === 0 && string === 'più') {
         plate.quantity = 1;
+        this.isCart = true;
         this.itemsArray.push(plate);
       } else {
         for (var i = 0; i < this.itemsArray.length; i++) {
           if (this.itemsArray[i].id === plate.id && string === 'più') {
+            this.isCart = true;
             this.itemsArray[i].quantity++;
           } else if (this.itemsArray[i].id === plate.id && string === 'meno') {
             this.itemsArray[i].quantity--;
 
             if (this.itemsArray[i].quantity === 0) {
-              // this.isCart = false;
               this.itemsArray = this.itemsArray.filter(function (item) {
                 return item.quantity > 0;
               });
+
+              if (this.itemsArray.length === 0) {
+                this.isCart = false;
+              }
             }
           }
         }
@@ -2336,6 +2351,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     },
     removeArray: function removeArray() {
       window.localStorage.clear();
+      this.isCart = false;
       console.log('Reset Storare Cliccato');
     }
   }
@@ -39629,7 +39645,7 @@ var render = function () {
           "div",
           { staticClass: "d-none d-md-block col-5 col-lg-4 right-column" },
           [
-            _vm.cart.length > 0
+            _vm.isCart
               ? _c("div", { staticClass: "carrello" }, [
                   _vm._m(5),
                   _vm._v(" "),
