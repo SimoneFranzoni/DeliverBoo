@@ -144,10 +144,12 @@ export default {
     transition: all .3s;
     margin-bottom: 25px;
     cursor: pointer;
+    max-height: 140px;
     img {
+      height: 140px;
+      overflow: hidden;
       border-radius: 15px;
       width: 100%;
-      height: 90%;
       object-fit: cover;
     }
     &:hover {
@@ -188,9 +190,36 @@ export default {
   }
 
 @media screen and (max-width:768px) {
+
+  .restbox {
+    border-radius: 15px;
+    transition: all .3s;
+    cursor: pointer;
+    max-height: 300px;
+  }
+
+  .restbox img {
+      height: 300px;
+      overflow: hidden;
+      border-radius: 15px;
+      width: 100%;
+      object-fit: cover; 
+  }
+
   .restbox:hover {
     transform: none;
   }
+
+  .restbox .title {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .restbox {
+    margin-bottom: 50px;
+  }
+  
 }
 
 

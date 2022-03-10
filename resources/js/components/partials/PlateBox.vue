@@ -1,31 +1,34 @@
 <template>
-<div class="box"
-  v-if="plate.is_available == 1"
->
-  <div class="left">
-      <div class="name">{{plate.name}}</div>
-      <div>{{plate.description}}</div>
-      <div class="price">€ {{plate.price}}</div>
 
-      <div class="cart">
-        <i class="fas fa-shopping-cart"></i>
 
-        <span id="add"
-        @click="saveItem(plate, string ='più')">+</span> 
-        
-        {{quantity}}
+    <div class="box"
+      v-if="plate.is_available == 1"
+    >
+      <div class="left">
+          <div class="name">{{plate.name}}</div>
+          <div>{{plate.description}}</div>
+          <div class="price">€ {{plate.price}}</div>
 
-        <span :class="{disabled: quantity===0}" id="remove"  @click="saveItem(plate, string = 'meno')">-</span>
+          <div class="cart">
+            <i class="fas fa-shopping-cart"></i>
+
+            <span id="add"
+            @click="saveItem(plate, string ='più')">+</span> 
+            
+            <span id="remove"  @click="saveItem(plate, string = 'meno')">-</span>
+
+          </div>
 
       </div>
-
-  </div>
-  <div class="right">
-      <div class="image">
-        <img :src="plate.cover" :alt="plate.name">
+      <div class="right">
+          <div class="image">
+            <img :src="plate.cover" :alt="plate.name">
+          </div>
       </div>
-  </div>
-</div>
+    </div>
+
+ 
+
 </template>
 
 <script>
@@ -67,7 +70,7 @@ export default {
   .box{
     width: 100%;
     height: 120px;
-    padding: 0 5%;
+    padding: 0 15px;
     margin: 10px 0;
     display: flex;
     justify-content: space-between;
@@ -125,11 +128,12 @@ export default {
       // margin-left: auto;
       width: 130px;
       border-radius: 15px;
-      height: 80%;
+      max-height: 110px;
       img {
         border-radius: 15px;
         width: 100%;
-        height: 100%;
+        height: 110px;
+        overflow: hidden;
         object-fit: cover;
       }
     }
