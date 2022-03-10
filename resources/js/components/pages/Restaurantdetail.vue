@@ -175,10 +175,7 @@
                   
             </div> 
         </div> 
-        <div class="d-block d-md-none carrello-mobile">
-            Clicca qui per il carrello
-        </div>
-
+       
         
         <div v-if="responsive_cart_close">
             <a @click="toggleMenu" href="#full-screen-cart" class="d-block d-md-none carrello-mobile">
@@ -189,9 +186,9 @@
                             <div class="fw-bold">€{{getSubTotal}}</div>
                             <div>Clicca qui per visualizzare il carrello</div>
                         </div>
-                    </div>
+                    </div>npm run watch
                 </div>
-            </a>
+            </a>    
         </div>
         
         <div v-else id="full-screen-cart">
