@@ -198,7 +198,7 @@
                         </div>
                         <div class="line mt-3"></div>
                         <div class="plate-order">
-                            <!-- elenco piatti con prezzi  -->
+                             elenco piatti con prezzi  
 
                             <div v-for="(item, index) in cart" :key="`item-responsive${index}`">
                                 <div>
@@ -239,9 +239,7 @@
                             </div>
                         </div>
                     </div>
-            </div>
-            
-        
+            </div>        
     </div>
 </template>
 
