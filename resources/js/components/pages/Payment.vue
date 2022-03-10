@@ -11,7 +11,7 @@
               <h2 class="pb-3 fw-bold">Inserisci i dati per la spedizione</h2>
               <div class="row">
                 <!-- FORM -->
-                <form method="" action="formFrontEnd.php" class="form_payment">
+                <form method="" action="footer.blade.php" class="form_payment">
                   <div class="row">
                     <!-- Nome -->
                     <div class="col-6">
@@ -125,6 +125,45 @@
                       </div>
                     </div>
 
+
+                    <!-- Cellulare -->
+                    <div class="col-6">
+                      <label for="validationCustom02" class="form-label fw-bold"
+                        >Telefono:</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="validationCustom02"
+                        name="phone"
+                        v-model="phone"
+                        placeholder="Inserisci un numero di telefono"
+                        required
+                      />
+                      <div class="valid-feedback">
+                        Inserire una numero  di telefono valido!
+                      </div>
+                    </div>
+
+                    <!-- Campanello -->
+                    <div class="col-6">
+                      <label for="validationCustom02" class="form-label fw-bold"
+                        >Nome sul campanello:</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="validationCustom02"
+                        name="doorbell"
+                        v-model="doorbell"
+                        placeholder="Famiglia Rossi"
+                        required
+                      />
+                      <div class="valid-feedback">
+                        Inserire una numero  di telefono valido!
+                      </div>
+                    </div>
+
                     <!-- Mail -->
                     <div class="col-12">
                       <label
@@ -159,8 +198,8 @@
                     </div>
 
                     <!-- CAMPI NASCOSTI -->
-                    <!-- Provincia -->
-                    <div v-if="hiddenInput" class="col-6">
+                    <!-- Totale -->
+                    <div class="col-6 invisible">
                       <label for="validationCustom02" class="form-label fw-bold"
                         >Totale:</label
                       >
@@ -239,7 +278,7 @@
 
                     <!-- Submit -->
                     <div class="col-12 d-flex justify-content-center">
-                      <button class="ac-btn" type="submit">
+                      <button @click="sendData" class="ac-btn" type="submit">
                         Vai al pagamento
                       </button>
                     </div>
@@ -327,6 +366,8 @@ export default {
       city: "",
       cap: null,
       province: "",
+      phone: "",
+      doorbell: "",
       email: "",
       note: "",
       total: "",
@@ -373,6 +414,9 @@ export default {
         // }
         this.isLoaded = true;
       });
+    },
+    sendData(){
+      axios.post()
     },
 
     getTrueCart() {

@@ -2385,6 +2385,45 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Payment",
@@ -2412,6 +2451,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       city: "",
       cap: null,
       province: "",
+      phone: "",
+      doorbell: "",
       email: "",
       note: "",
       total: "",
@@ -2470,6 +2511,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
         _this.isLoaded = true;
       });
+    },
+    sendData: function sendData() {
+      axios.post();
     },
     getTrueCart: function getTrueCart() {
       console.log("cart all avvio", this.cart);
@@ -40156,7 +40200,7 @@ var render = function () {
                   "form",
                   {
                     staticClass: "form_payment",
-                    attrs: { method: "", action: "formFrontEnd.php" },
+                    attrs: { method: "", action: "footer.blade.php" },
                   },
                   [
                     _c("div", { staticClass: "row" }, [
@@ -40426,6 +40470,96 @@ var render = function () {
                         ]),
                       ]),
                       _vm._v(" "),
+                      _c("div", { staticClass: "col-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-label fw-bold",
+                            attrs: { for: "validationCustom02" },
+                          },
+                          [_vm._v("Telefono:")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.phone,
+                              expression: "phone",
+                            },
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            id: "validationCustom02",
+                            name: "phone",
+                            placeholder: "Inserisci un numero di telefono",
+                            required: "",
+                          },
+                          domProps: { value: _vm.phone },
+                          on: {
+                            input: function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.phone = $event.target.value
+                            },
+                          },
+                        }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "valid-feedback" }, [
+                          _vm._v(
+                            "\n                      Inserire una numero  di telefono valido!\n                    "
+                          ),
+                        ]),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-label fw-bold",
+                            attrs: { for: "validationCustom02" },
+                          },
+                          [_vm._v("Nome sul campanello:")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.doorbell,
+                              expression: "doorbell",
+                            },
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            id: "validationCustom02",
+                            name: "doorbell",
+                            placeholder: "Famiglia Rossi",
+                            required: "",
+                          },
+                          domProps: { value: _vm.doorbell },
+                          on: {
+                            input: function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.doorbell = $event.target.value
+                            },
+                          },
+                        }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "valid-feedback" }, [
+                          _vm._v(
+                            "\n                      Inserire una numero  di telefono valido!\n                    "
+                          ),
+                        ]),
+                      ]),
+                      _vm._v(" "),
                       _c("div", { staticClass: "col-12" }, [
                         _c(
                           "label",
@@ -40501,52 +40635,50 @@ var render = function () {
                         }),
                       ]),
                       _vm._v(" "),
-                      _vm.hiddenInput
-                        ? _c("div", { staticClass: "col-6" }, [
-                            _c(
-                              "label",
-                              {
-                                staticClass: "form-label fw-bold",
-                                attrs: { for: "validationCustom02" },
-                              },
-                              [_vm._v("Totale:")]
-                            ),
-                            _vm._v(" "),
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.getSubTotal,
-                                  expression: "getSubTotal",
-                                },
-                              ],
-                              staticClass: "form-control",
-                              attrs: {
-                                type: "text",
-                                id: "validationCustom02",
-                                name: "total",
-                                placeholder: "Inserisci una provincia",
-                                required: "",
-                              },
-                              domProps: { value: _vm.getSubTotal },
-                              on: {
-                                input: function ($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.getSubTotal = $event.target.value
-                                },
-                              },
-                            }),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "valid-feedback" }, [
-                              _vm._v(
-                                "\n                      Inserire una provincia valida!\n                    "
-                              ),
-                            ]),
-                          ])
-                        : _vm._e(),
+                      _c("div", { staticClass: "col-6 invisible" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-label fw-bold",
+                            attrs: { for: "validationCustom02" },
+                          },
+                          [_vm._v("Totale:")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.getSubTotal,
+                              expression: "getSubTotal",
+                            },
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            id: "validationCustom02",
+                            name: "total",
+                            placeholder: "Inserisci una provincia",
+                            required: "",
+                          },
+                          domProps: { value: _vm.getSubTotal },
+                          on: {
+                            input: function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.getSubTotal = $event.target.value
+                            },
+                          },
+                        }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "valid-feedback" }, [
+                          _vm._v(
+                            "\n                      Inserire una provincia valida!\n                    "
+                          ),
+                        ]),
+                      ]),
                       _vm._v(" "),
                       _vm._m(0),
                       _vm._v(" "),
@@ -40629,7 +40761,25 @@ var render = function () {
                         ]
                       ),
                       _vm._v(" "),
-                      _vm._m(1),
+                      _c(
+                        "div",
+                        { staticClass: "col-12 d-flex justify-content-center" },
+                        [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "ac-btn",
+                              attrs: { type: "submit" },
+                              on: { click: _vm.sendData },
+                            },
+                            [
+                              _vm._v(
+                                "\n                      Vai al pagamento\n                    "
+                              ),
+                            ]
+                          ),
+                        ]
+                      ),
                     ]),
                   ]
                 ),
@@ -40739,18 +40889,6 @@ var staticRenderFns = [
             "\n                        E' necessario accettare le condizoni.\n                      "
           ),
         ]),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 d-flex justify-content-center" }, [
-      _c("button", { staticClass: "ac-btn", attrs: { type: "submit" } }, [
-        _vm._v(
-          "\n                      Vai al pagamento\n                    "
-        ),
       ]),
     ])
   },

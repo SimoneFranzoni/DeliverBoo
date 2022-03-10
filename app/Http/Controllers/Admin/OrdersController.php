@@ -9,21 +9,26 @@ use App\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-// if($_POST){
-//     $name = $_POST['name'];
-//     $lastname = $_POST['lastname'];
-//     $address = $_POST['address'];
-//     $city = $_POST['city'];
-//     $cap = $_POST['cap'];
-//     $province = $_POST['province'];
-//     $email = $_POST['email'];
-//     $note = $_POST['note'];
-//     // $product = $_POST['product'];
-//     // $quantity = $_POST['quantity'];
-//     $total = $_POST['total'];
-  
-//     echo $name . $lastname . 'è felice';
-//   }
+
+if($_GET){
+dump($_GET);
+$name = $_GET['name'];
+$lastname = $_GET['lastname'];
+$address = $_GET['address'];
+$cap = $_GET['cap'];
+$city = $_GET['city'];
+$province = $_GET['province'];
+$phone = $_GET['phone'];
+$doorbell = $_GET['doorbell'];
+$email = $_GET['email'];
+$note = $_GET['note'];
+// $product = $_GET['product'];
+// $quantity = $_GET['quantity'];
+$totalPrice = $_GET['total'];
+
+echo $name . $lastname . 'è felice';
+}
+
 
 class OrdersController extends Controller 
 {
