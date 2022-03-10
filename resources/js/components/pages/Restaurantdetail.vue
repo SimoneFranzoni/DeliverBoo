@@ -192,15 +192,15 @@
             <div @click="toggleMenu" class="close-cart-btn">
                 <div>X</div>
             </div>
-                    <div class="carrello" v-if="isCart">
+                    <div class="carrello" v-if="isLoaded && isCart">
                         <div class="row justify-content-around align-items-center">
                             <h2 class="fw-bold">Il tuo ordine</h2>
                         </div>
                         <div class="line mt-3"></div>
-                        <div class="plate-order" >
+                        <div class="plate-order">
                             <!-- elenco piatti con prezzi  -->
 
-                            <div v-for="(item, index) in cart" :key="`item${index}`">
+                            <div v-for="(item, index) in cart" :key="`item-responsive${index}`">
                                 <div>
                                     <strong>{{item.name}}</strong>
                                 </div>
@@ -238,7 +238,6 @@
                                 <h6 class="fw-bold">Il tuo carrello è vuoto</h6>
                             </div>
                         </div>
-                        
                     </div>
             </div>
             
@@ -496,13 +495,10 @@ h4:first-of-type {
 }
 
 .nav-menu{
-<<<<<<< HEAD
     position: sticky;
     top: 400px;
     left: 0;
 
-=======
->>>>>>> c6d7f32cdf1c7413d086e5ce50d197899b10c310
     ul {
         //position: fixed;
         li {
