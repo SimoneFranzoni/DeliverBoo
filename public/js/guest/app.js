@@ -2302,14 +2302,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Restaurantdetail',
@@ -2459,39 +2451,6 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -40184,39 +40143,83 @@ var render = function () {
       _c(
         "div",
         { staticClass: "row types-row pb-4" },
-        [
-          _vm._l(_vm.randomTypes, function (type, index) {
-            return _c(
-              "div",
-              {
-                key: "randomType" + index,
-                staticClass: "typebox",
-                class: { active: _vm.randomTypeCounter === index },
-                on: {
-                  click: function ($event) {
-                    _vm.changeActiveRestaurants(type),
-                      (_vm.randomTypeCounter = index),
-                      (_vm.counter = -1)
-                  },
+        _vm._l(_vm.randomTypes, function (type, index) {
+          return _c(
+            "div",
+            {
+              key: "randomType" + index,
+              staticClass: "typebox",
+              class: { active: _vm.randomTypeCounter === index },
+              on: {
+                click: function ($event) {
+                  _vm.changeActiveRestaurants(type),
+                    (_vm.randomTypeCounter = index),
+                    (_vm.counter = -1)
                 },
               },
-              [
-                _c("div", { staticClass: "boximg_f" }, [
-                  _c("img", { attrs: { src: type.img, alt: type.name } }),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "title" }, [
-                  _vm._v(_vm._s(type.name)),
-                ]),
-              ]
-            )
-          }),
+            },
+            [
+              _c("div", { staticClass: "boximg_f" }, [
+                _c("img", { attrs: { src: type.img, alt: type.name } }),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "title" }, [_vm._v(_vm._s(type.name))]),
+            ]
+          )
+        }),
+        0
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "d-none d-lg-block col-3 filter-column" }, [
+          _c("div", [_vm._v("Tutte le cucine (A, Z)")]),
           _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c(
-              "div",
-              { staticClass: "d-none d-lg-block col-3 filter-column" },
-              [
+          _c(
+            "ul",
+            { staticClass: "filter-list" },
+            _vm._l(_vm.types, function (type, index) {
+              return _c(
+                "li",
+                {
+                  key: "type" + index,
+                  class: { active: _vm.counter === index },
+                  on: {
+                    click: function ($event) {
+                      _vm.changeActiveRestaurants(type),
+                        (_vm.counter = index),
+                        (_vm.randomTypeCounter = -1)
+                    },
+                  },
+                },
+                [
+                  _c("span", [_vm._v("v")]),
+                  _vm._v("\n            " + _vm._s(type.name) + "\n          "),
+                ]
+              )
+            }),
+            0
+          ),
+        ]),
+        _vm._v(" "),
+        _vm.filter_close
+          ? _c("div", [
+              _c(
+                "div",
+                {
+                  staticClass: "filter d-block d-lg-none ml-3",
+                  on: { click: _vm.toggleMenu },
+                },
+                [_c("i", { staticClass: "far fa-filter" })]
+              ),
+            ])
+          : _c("div", [
+              _c("div", { staticClass: "hamburger px-2" }, [
+                _c(
+                  "div",
+                  { staticClass: "filter", on: { click: _vm.toggleMenu } },
+                  [_vm._v("X")]
+                ),
+                _vm._v(" "),
                 _c("div", [_vm._v("Tutte le cucine (A, Z)")]),
                 _vm._v(" "),
                 _c(
@@ -40226,184 +40229,53 @@ var render = function () {
                     return _c(
                       "li",
                       {
-                        key: "type" + index,
+                        key: "type2" + index,
+                        staticClass: "mx-2",
                         class: { active: _vm.counter === index },
                         on: {
                           click: function ($event) {
                             _vm.changeActiveRestaurants(type),
-                              (_vm.counter = index),
-                              (_vm.randomTypeCounter = -1)
+                              (_vm.counter = index)
                           },
                         },
                       },
                       [
                         _c("span", [_vm._v("v")]),
                         _vm._v(
-                          "\n                      " +
+                          "\n              " +
                             _vm._s(type.name) +
-                            "\n\n                  "
+                            "\n            "
                         ),
                       ]
                     )
                   }),
                   0
                 ),
-              ]
-            ),
-            _vm._v(" "),
-            _vm.filter_close
-              ? _c("div", [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "filter d-block d-lg-none ml-3",
-                      on: { click: _vm.toggleMenu },
-                    },
-                    [_c("i", { staticClass: "far fa-filter" })]
-                  ),
-                ])
-              : _c("div", [
-                  _c("div", { staticClass: "hamburger px-2" }, [
-                    _c(
-                      "div",
-                      { staticClass: "filter", on: { click: _vm.toggleMenu } },
-                      [_vm._v("X")]
-                    ),
-                    _vm._v(" "),
-                    _c("div", [_vm._v("Tutte le cucine (A, Z)")]),
-                    _vm._v(" "),
-                    _c(
-                      "ul",
-                      { staticClass: "filter-list" },
-                      _vm._l(_vm.types, function (type, index) {
-                        return _c(
-                          "li",
-                          {
-                            key: "type2" + index,
-                            staticClass: "mx-2",
-                            class: { active: _vm.counter === index },
-                            on: {
-                              click: function ($event) {
-                                _vm.changeActiveRestaurants(type),
-                                  (_vm.counter = index)
-                              },
-                            },
-                          },
-                          [
-                            _c("span", [_vm._v("v")]),
-                            _vm._v(
-                              "\n                          " +
-                                _vm._s(type.name) +
-                                "\n                          "
-                            ),
-                          ]
-                        )
-                      }),
-                      0
-                    ),
-                  ]),
-                ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-12 col-lg-9 restaurant-column" }, [
-              _c("div", { staticClass: "pt-4" }, [
-                _vm._v(
-                  " " +
-                    _vm._s(_vm.activeRestaurants.length) +
-                    " risultati trovati "
-                ),
               ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "restaurant-box-row" },
-                _vm._l(_vm.activeRestaurants, function (restaurant, index) {
-                  return _c("RestaurantBox", {
-                    key: "restaurant" + index,
-                    attrs: { restaurant: restaurant, type: _vm.activeType },
-                  })
-                }),
-                1
-              ),
             ]),
-          ]),
-          _vm._v(" "),
-          _vm.filter_close
-            ? _c("div", [
-                _c(
-                  "div",
-                  {
-                    staticClass: "filter d-block d-lg-none ml-3",
-                    on: { click: _vm.toggleMenu },
-                  },
-                  [_c("i", { staticClass: "far fa-filter" })]
-                ),
-              ])
-            : _c("div", [
-                _c("div", { staticClass: "hamburger px-2" }, [
-                  _c(
-                    "div",
-                    { staticClass: "filter", on: { click: _vm.toggleMenu } },
-                    [_vm._v("X")]
-                  ),
-                  _vm._v(" "),
-                  _c("div", [_vm._v("Tutte le cucine (A, Z)")]),
-                  _vm._v(" "),
-                  _c(
-                    "ul",
-                    { staticClass: "filter-list" },
-                    _vm._l(_vm.types, function (type, index) {
-                      return _c(
-                        "li",
-                        {
-                          key: "type2" + index,
-                          staticClass: "mx-2",
-                          class: { active: _vm.counter === index },
-                          on: {
-                            click: function ($event) {
-                              _vm.changeActiveRestaurants(type),
-                                (_vm.counter = index)
-                            },
-                          },
-                        },
-                        [
-                          _c("span", [_vm._v("v")]),
-                          _vm._v(
-                            "\n              " +
-                              _vm._s(type.name) +
-                              "\n            "
-                          ),
-                        ]
-                      )
-                    }),
-                    0
-                  ),
-                ]),
-              ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-12 col-lg-9 restaurant-column" }, [
-            _c("div", { staticClass: "pt-4" }, [
-              _vm._v(
-                "\n          " +
-                  _vm._s(_vm.activeRestaurants.length) +
-                  " risultati trovati\n        "
-              ),
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "restaurant-box-row" },
-              _vm._l(_vm.activeRestaurants, function (restaurant, index) {
-                return _c("RestaurantBox", {
-                  key: "restaurant" + index,
-                  attrs: { restaurant: restaurant, type: _vm.activeType },
-                })
-              }),
-              1
+        _vm._v(" "),
+        _c("div", { staticClass: "col-12 col-lg-9 restaurant-column" }, [
+          _c("div", { staticClass: "pt-4" }, [
+            _vm._v(
+              "\n          " +
+                _vm._s(_vm.activeRestaurants.length) +
+                " risultati trovati\n        "
             ),
           ]),
-        ],
-        2
-      ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "restaurant-box-row" },
+            _vm._l(_vm.activeRestaurants, function (restaurant, index) {
+              return _c("RestaurantBox", {
+                key: "restaurant" + index,
+                attrs: { restaurant: restaurant, type: _vm.activeType },
+              })
+            }),
+            1
+          ),
+        ]),
+      ]),
     ]),
   ])
 }

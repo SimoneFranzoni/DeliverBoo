@@ -19,58 +19,25 @@
           </div>
           <div class="title">{{ type.name }}</div>
         </div>
-        <div class="row">
-            <div class="d-none d-lg-block col-3 filter-column">
-                <div>Tutte le cucine (A, Z)</div>
-                <ul class="filter-list">
-                    <li v-for="(type, index) in types" 
-                    :key="`type${index}`"
-                    @click="changeActiveRestaurants(type), counter = index, randomTypeCounter = -1"
-                    :class="{active: counter === index}">
-                  
-                        <span>v</span>
-                        {{type.name}}
-
-                    </li>
-                </ul>
-            </div>
-            
-            <div v-if="filter_close">
-                <div @click="toggleMenu" class="filter d-block d-lg-none ml-3"><i class="far fa-filter"></i></div>
-            </div>
-                <div v-else>
-                    <div class="hamburger px-2">
-                        <div @click="toggleMenu" class="filter">X</div>
-                        <div>Tutte le cucine (A, Z)</div>
-                        <ul class="filter-list">
-                            <li v-for="(type, index) in types" 
-                            :key="`type2${index}`"
-                            @click="changeActiveRestaurants(type), counter = index"
-                            :class="{active: counter === index}"
-                            class="mx-2">        
-                            <span>v</span>
-                            {{type.name}}
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                    
-
-            <div class="col-12 col-lg-9 restaurant-column">
-                
-                <div class="pt-4"> {{activeRestaurants.length}} risultati trovati </div>
-                
-                <div class="restaurant-box-row">
-                    
-                    <RestaurantBox 
-                        v-for="(restaurant, index) in activeRestaurants" 
-                        :key="`restaurant${index}`" 
-                        :restaurant="restaurant"
-                        :type="activeType"
-                        />
-                </div>
-
-            </div>
+      </div>
+      <div class="row">
+        <div class="d-none d-lg-block col-3 filter-column">
+          <div>Tutte le cucine (A, Z)</div>
+          <ul class="filter-list">
+            <li
+              v-for="(type, index) in types"
+              :key="`type${index}`"
+              @click="
+                changeActiveRestaurants(type),
+                  (counter = index),
+                  (randomTypeCounter = -1)
+              "
+              :class="{ active: counter === index }"
+            >
+              <span>v</span>
+              {{ type.name }}
+            </li>
+          </ul>
         </div>
 
         <div v-if="filter_close">

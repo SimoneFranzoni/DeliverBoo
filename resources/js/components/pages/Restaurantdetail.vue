@@ -103,9 +103,6 @@
                                      € {{item.price}}
                                 </div>
                             </div>
-
-                            
-
                         </div>
 
                         <div class="line"></div>
@@ -184,9 +181,6 @@
                                      € {{item.price}}
                                 </div>
                             </div>
-
-                            
-
                         </div>
 
                         <div class="line"></div>
@@ -206,9 +200,7 @@
                     </div>
                     
                     <div class="carrello" v-else>
-                        <div
-                            class="carrello-empty" 
-                        >
+                        <div class="carrello-empty">
                             <div class="mt-5">
                                 <i class="fas fa-shopping-cart"></i>
                                 <h6 class="fw-bold">Il tuo carrello è vuoto</h6>
@@ -381,6 +373,7 @@ export default {
     padding: 0px;
     transition: all 0.2s;
     cursor:pointer;
+    
     &:hover{
        border:1px solid $primary-color;
        color:$primary-color;
@@ -424,6 +417,7 @@ export default {
     position: sticky;
     top: 400px;
     left: 0;
+
     ul {
         //position: fixed;
         li {
@@ -465,9 +459,7 @@ export default {
     }
 
     a.ac-btn {
-
-      font-size: 17px;
-
+        font-size: 17px;
     }
 }
 
@@ -543,7 +535,6 @@ export default {
         .plate-order {
 
           div {
-            
             padding: 10px 15px;
           }
         }
