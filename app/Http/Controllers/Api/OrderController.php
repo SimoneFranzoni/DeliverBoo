@@ -12,7 +12,8 @@ class OrderController extends Controller
     Public function generate(Request $request, Gateway $gateway){
         $token = $gateway->clientToken()->generate();
         $data = [
-        'token' => $token,
+            'success' => true,
+            'token' => $token,
         ];
         return response()->json($data, 200);
         // return ('generate');
