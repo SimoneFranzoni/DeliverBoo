@@ -174,6 +174,7 @@
             </div> 
         </div> 
 
+    <!--
         <div v-if="responsive_cart_close">
             <a @click="toggleMenu" href="#full-screen-cart" class="d-block d-md-none carrello-mobile">
                 <div class="container-fluid">
@@ -239,7 +240,8 @@
                             </div>
                         </div>
                     </div>
-            </div>        
+            </div>   
+            -->     
     </div>
 </template>
 
@@ -646,6 +648,7 @@ h4:first-of-type {
     font-weight: bold;
 }
 
+/*
 .carrello-mobile{
     width: 100%;
     height: 75px;
@@ -731,7 +734,7 @@ h4:first-of-type {
         }
     }
 }
-
+*/
 
 
 </style>
