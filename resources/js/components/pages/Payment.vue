@@ -278,7 +278,7 @@
 
                     <!-- Submit -->
                     <div class="col-12 d-flex justify-content-center">
-                      <button @click="sendData" class="ac-btn" type="submit">
+                      <button  class="ac-btn" type="submit">
                         Vai al pagamento
                       </button>
                     </div>
@@ -416,7 +416,10 @@ export default {
       });
     },
     sendData(){
-      axios.post()
+      axios.post(this.apiUrl + 'payment')
+      {
+        console.log('ciao mondo');
+      }
     },
 
     getTrueCart() {

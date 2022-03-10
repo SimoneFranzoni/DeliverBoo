@@ -17,7 +17,7 @@ class PlatesTableSeeder extends Seeder
     // $categories = [
     //   'Antipasto', 'Primo', 'Secondo', 'Contorno', 'Frutta', 'Dessert'
     // ];
-    for ($i = 0; $i < 30; $i++) {
+    for ($i = 0; $i < 10; $i++) {
 
 
       

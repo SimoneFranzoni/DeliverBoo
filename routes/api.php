@@ -33,5 +33,5 @@ Route::namespace('Api')
     Route::get('/','RestaurantController@index');
     Route::get('/{slug}', 'RestaurantController@show');
     Route::get('tiporistorante/{slug}', 'RestaurantController@getRestaurantsByTypes');
-    Route::post('payment/', 'Api\RestaurantController@orderProva');
+    Route::post('/payment', 'RestaurantController@orderProva');
     });

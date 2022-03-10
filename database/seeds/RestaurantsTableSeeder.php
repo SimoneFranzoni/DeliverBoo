@@ -13,7 +13,6 @@ class RestaurantsTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-      for ($i=0; $i < 10; $i++) { 
 
         foreach(config('restaurants') as $restaurant){
           $newRestaurant = new Restaurant();
@@ -30,7 +29,6 @@ class RestaurantsTableSeeder extends Seeder
           $newRestaurant->save();
         }
 
-      }
 
 
         // for($i = 0; $i < 5; $i++) {

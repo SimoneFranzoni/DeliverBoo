@@ -2513,7 +2513,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       });
     },
     sendData: function sendData() {
-      axios.post();
+      axios.post(this.apiUrl + 'payment');
+      {
+        console.log('ciao mondo');
+      }
     },
     getTrueCart: function getTrueCart() {
       console.log("cart all avvio", this.cart);
@@ -40761,25 +40764,7 @@ var render = function () {
                         ]
                       ),
                       _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "col-12 d-flex justify-content-center" },
-                        [
-                          _c(
-                            "button",
-                            {
-                              staticClass: "ac-btn",
-                              attrs: { type: "submit" },
-                              on: { click: _vm.sendData },
-                            },
-                            [
-                              _vm._v(
-                                "\n                      Vai al pagamento\n                    "
-                              ),
-                            ]
-                          ),
-                        ]
-                      ),
+                      _vm._m(1),
                     ]),
                   ]
                 ),
@@ -40889,6 +40874,18 @@ var staticRenderFns = [
             "\n                        E' necessario accettare le condizoni.\n                      "
           ),
         ]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-12 d-flex justify-content-center" }, [
+      _c("button", { staticClass: "ac-btn", attrs: { type: "submit" } }, [
+        _vm._v(
+          "\n                      Vai al pagamento\n                    "
+        ),
       ]),
     ])
   },
