@@ -30,13 +30,13 @@
                         </li>
                         <li>
                             <div class="bar"></div>
-                            <a @click="removeArray()" href="#dessert"
-                                >Dessert</a
-                            >
+                            <a href="#bevande">Frutta</a>
                         </li>
                         <li>
                             <div class="bar"></div>
-                            <a href="#bevande">Bevande</a>
+                            <a @click="removeArray()" href="#dessert"
+                                >Dessert</a
+                            >
                         </li>
                     </ul>
                     
