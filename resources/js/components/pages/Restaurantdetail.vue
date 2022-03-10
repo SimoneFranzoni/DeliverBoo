@@ -10,8 +10,8 @@
         <div class="container">
             <div class="row">
               
-                <div class="d-none d-lg-block col-2 nav-menu" id="stickyMenu">
-                    <ul class="pt-5">
+                <div class="d-none d-lg-block col-2 position-relative nav-menu" >
+                    <ul class="pt-5" id="stickyMenu">
                         <li>
                             <div class="bar"></div>
                             <a href="#antipasti">Antipasti</a>
@@ -30,13 +30,13 @@
                         </li>
                         <li>
                             <div class="bar"></div>
-                            <a @click="removeArray()" href="#dessert"
-                                >Dessert</a
-                            >
+                            <a href="#frutta">Frutta</a>
                         </li>
                         <li>
                             <div class="bar"></div>
-                            <a href="#bevande">Bevande</a>
+                            <a @click="removeArray()" href="#dessert"
+                                >Dessert</a
+                            >
                         </li>
                     </ul>
                     
@@ -70,14 +70,46 @@
                             Torna ai ristoranti
                           </router-link>
                     </div>
-                    <div class="menu pt-5">
-                        <h4 id="primi">Primi</h4>
-                        <PlateBox v-for="(plate, index) in activeRestaurant.plates"
-                          :key="`plate${index}`"
+                    <div class="menu pt-5" v-if="isLoaded">
+
+                     <h4 id="antipasti" v-if="getAntipasti.length > 0">Antipasti</h4>
+                        <PlateBox v-for="(plate, index) in getAntipasti"
+                          :key="`antipasto${index}`"
                           :plate="plate"
                           @cartArray="cartArray"
                         />
-                    </div>
+                      <h4 id="primi" v-if="getPrimi.length > 0">Primi</h4>  
+                        <PlateBox v-for="(plate, index) in getPrimi"
+                          :key="`primo${index}`"
+                          :plate="plate"
+                          @cartArray="cartArray"
+                        />
+                      <h4 id="secondi" v-if="getSecondi.length > 0">Secondi</h4>  
+                        <PlateBox v-for="(plate, index) in getSecondi"
+                          :key="`secondo${index}`"
+                          :plate="plate"
+                          @cartArray="cartArray"
+                        />
+                      <h4 id="contorni" v-if="getContorni.length > 0">Contorni</h4>  
+                        <PlateBox v-for="(plate, index) in getContorni"
+                          :key="`contorno${index}`"
+                          :plate="plate"
+                          @cartArray="cartArray"
+                        />
+                      <h4 id="frutta" v-if="getFrutta.length > 0">Frutta</h4>  
+                        <PlateBox v-for="(plate, index) in getFrutta"
+                          :key="`frutta${index}`"
+                          :plate="plate"
+                          @cartArray="cartArray"
+                        />
+                      <h4 id="dessert" v-if="getDessert.length > 0">Dessert</h4>  
+                        <PlateBox v-for="(plate, index) in getDessert"
+                          :key="`dessert${index}`"
+                          :plate="plate"
+                          @cartArray="cartArray"
+                        />
+                      </div>
+
                 </div>
                 <div class="d-none d-md-block col-5 col-lg-4 right-column">
                     <div class="carrello" v-if="isLoaded && isCart">
@@ -103,9 +135,6 @@
                                      € {{item.price}}
                                 </div>
                             </div>
-
-                            
-
                         </div>
 
                         <div class="line"></div>
@@ -166,6 +195,7 @@ export default {
         apiUrl: 'http://127.0.0.1:8000/api/ristoranti/',
         activeRestaurant: {},
         plates: [],
+        plate: {},
         itemsArray: [],
         isLoaded: false,
         cart: JSON.parse(localStorage.getItem('items')),
@@ -180,6 +210,38 @@ export default {
      
     },  
     computed: {
+
+      getAntipasti: function() {
+        return this.activeRestaurant.plates.filter(function(plate) {
+          return plate.category === 'Antipasto'
+        })
+      },  
+      getPrimi: function() {
+        return this.activeRestaurant.plates.filter(plate => {
+          return plate.category === 'Primo'
+        })
+      },  
+      getSecondi: function() {
+        return this.activeRestaurant.plates.filter(plate => {
+          return plate.category === 'Secondo'
+        })
+      },  
+      getContorni: function() {
+        return this.activeRestaurant.plates.filter(plate => {
+          return plate.category === 'Contorno'
+        })
+      },  
+      getFrutta: function() {
+        return this.activeRestaurant.plates.filter(plate => {
+          return plate.category === 'Frutta'
+        })
+      },  
+      getDessert: function() {
+        return this.activeRestaurant.plates.filter(plate => {
+          return plate.category === 'Dessert';
+        })
+      },  
+
       getSubTotal: function() {
         let itemTotalPrice = 0;
         let sum = 0;
@@ -202,6 +264,10 @@ export default {
         .then(res => {
           this.activeRestaurant = res.data.restaurant;
           this.plates.push(this.activeRestaurant.plates);
+          this.isLoaded = true;
+          console.log(this.plates)
+          console.log(this.getAntipasti)
+          
         //   console.log(JSON.parse(localStorage.getItem('items'))[0].restaurant_id)
         
             if(JSON.parse(localStorage.getItem('items'))[0].restaurant_id != this.activeRestaurant.id){
@@ -210,7 +276,6 @@ export default {
                 this.isCart=false
         
           }
-              this.isLoaded = true;
           
         })
        
@@ -289,6 +354,20 @@ export default {
 <style lang="scss" scoped>
 @import "../../../sass/_variables.scss";
 
+#stickyMenu {
+  position: sticky;
+  top: -25px;
+}
+
+
+h4 {
+  margin: 20px 0;
+}
+
+h4:first-of-type {
+  margin-top: 0 !important;
+  margin-bottom: 20px !important;
+}
 
 .del-plate,
 .add-plate{
@@ -343,9 +422,6 @@ export default {
 }
 
 .nav-menu{
-    position: sticky;
-    top: 400px;
-    left: 0;
     ul {
         //position: fixed;
         li {

@@ -10025,6 +10025,10 @@ h3 {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "PT Sans", sans-serif;
   background-color: #fafafa;
