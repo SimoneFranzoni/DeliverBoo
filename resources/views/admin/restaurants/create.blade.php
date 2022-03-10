@@ -13,7 +13,7 @@
             {{-- Label Name --}}
          <div class="mb-3">
             <label for="name" class="form-label">Nome ristorante</label>
-            <input type="text"
+            <input required type="text"
             value="{{old('name')}}"
             class="@error('name') is-invalid @enderror form-control"
             id="name" name="name" placeholder="Inserisci il nome">
@@ -28,7 +28,7 @@
             {{-- Label City --}}
          <div class="mb-3">
             <label for="city" class="form-label">Città</label>
-            <input type="text"
+            <input required type="text"
             value="{{old('city')}}"
             class="@error('city') is-invalid @enderror form-control"
             id="city" name="city" placeholder="Inserisci la città">
@@ -43,7 +43,7 @@
             {{-- Label Address --}}
          <div class="mb-3">
             <label for="address" class="form-label">Indirizzo</label>
-            <input type="text"
+            <input required type="text"
             value="{{old('address')}}"
             class="@error('address') is-invalid @enderror form-control"
             id="address" name="address" placeholder="Inserisci la via">
@@ -58,7 +58,7 @@
             {{-- Label CAP --}}
          <div class="mb-3">
             <label for="zip_code" class="form-label">CAP</label>
-            <input type="text"
+            <input required type="text"
             value="{{old('zip_code')}}"
             class="@error('zip_code') is-invalid @enderror form-control"
             id="zip_code" name="zip_code" placeholder="Inserisci il CAP">
@@ -73,7 +73,7 @@
             {{-- Label Telefono --}}
          <div class="mb-3">
             <label for="phone_number" class="form-label">Telefono</label>
-            <input type="text"
+            <input required type="text"
             value="{{old('phone_number')}}"
             class="@error('name') is-invalid @enderror form-control"
             id="phone_number" name="phone_number" placeholder="Inserisci il numero di telefono">
@@ -88,7 +88,7 @@
             {{-- Label Iva --}}
          <div class="mb-3">
             <label for="p_iva" class="form-label">P.IVA</label>
-            <input type="text"
+            <input required minlength="11" maxlength="11" type="text"
             value="{{old('p_iva')}}"
             class="@error('name') is-invalid @enderror form-control"
             id="p_iva" name="p_iva" placeholder="Inserisci la P.IVA">
@@ -106,7 +106,7 @@
             <h5>Categorie</h5>
             @foreach ($types as $type)
               <span class="d-inline-block mr-4" style="width:120px">
-                <input 
+                <input required
                 type="checkbox"
                 name="types[]"
                 value="{{ $type->id }}"
