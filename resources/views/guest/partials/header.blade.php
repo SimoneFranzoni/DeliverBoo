@@ -6,6 +6,9 @@
     </a> 
   </div>
   <div class="header-content">
+      {{-- @php
+          require_once __DIR__ . "/formFrontEnd.php";
+      @endphp --}}
     {{-- nav login --}}
       {{-- @if (Route::has('login'))
           <div class="top-right links">
