@@ -55,4 +55,7 @@ class RestaurantController extends Controller
 
         return $cover;
     }
+    public function orderProva(Request $request){
+        dump($request->all());
+    }
 }
