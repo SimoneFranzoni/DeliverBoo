@@ -2334,9 +2334,60 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Restaurantdetail",
+  name: "Payment",
   components: {
     PlateBox: _partials_PlateBox_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
@@ -2345,17 +2396,33 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       apiUrl: "http://127.0.0.1:8000/api/ristoranti/",
       activeRestaurant: {},
       plates: [],
+      plate: {},
       itemsArray: [],
       isLoaded: false,
       cart: JSON.parse(localStorage.getItem("items")),
       // cart: [],
       subTotal: null,
-      isCart: true
+      isCart: true,
+      alphabet: "QWERTYUIOPLKJHGFDSAZXCVBNM",
+      codeOrder: '',
+      //   FORM
+      name: "",
+      lastname: "",
+      address: "",
+      city: "",
+      cap: null,
+      province: "",
+      email: "",
+      note: "",
+      total: "",
+      hiddenInput: false
     };
   },
   mounted: function mounted() {
     this.getActiveRestaurant();
-    this.getTrueCart();
+    this.getTrueCart(); // this.getRandomNumber();
+
+    this.codeRandom();
   },
   computed: {
     getSubTotal: function getSubTotal() {
@@ -2391,13 +2458,15 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         _this.activeRestaurant = res.data.restaurant;
 
         _this.plates.push(_this.activeRestaurant.plates); //   console.log(JSON.parse(localStorage.getItem('items'))[0].restaurant_id)
+        // if (
+        //   JSON.parse(localStorage.getItem("items"))[0].restaurant_id !=
+        //   this.activeRestaurant.id
+        // ) {
+        //   window.localStorage.clear();
+        //   // localStorage.removeItem('items')
+        //   this.isCart = false;
+        // }
 
-
-        if (JSON.parse(localStorage.getItem("items"))[0].restaurant_id != _this.activeRestaurant.id) {
-          window.localStorage.clear(); // localStorage.removeItem('items')
-
-          _this.isCart = false;
-        }
 
         _this.isLoaded = true;
       });
@@ -2454,6 +2523,37 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       window.localStorage.clear();
       this.isCart = false;
       console.log("Reset Storare Cliccato");
+    },
+    // sendingForm() {
+    //   $.get(
+    //     "formFrontEnd.php",
+    //     {
+    //         Name: this.name,
+    //         Lastname: this.lastname,
+    //         Address: this.address,
+    //         City: this.city,
+    //         Cap: this.cap,
+    //         Province: this.province,
+    //         Email: this.email,
+    //         Note: this.note,
+    //         Total: this.total,
+    //     },
+    //     function (data) {
+    //         console.log(data);
+    //       alert(data);
+    //     }
+    //   );
+    // },
+    codeRandom: function codeRandom() {
+      console.log("ciao mondo");
+      var code = this.getRandomNumber(1, 9) + this.alphabet.substr(this.getRandomNumber(1, 28), 1) + this.getRandomNumber(1, 9) + this.alphabet.substr(this.getRandomNumber(1, 28), 1) + // + (this.getRandomNumber(1, 9))
+      this.alphabet.substr(this.getRandomNumber(1, 28), 1);
+      console.log("code", code);
+      this.codeOrder = code;
+      return codeOrder;
+    },
+    getRandomNumber: function getRandomNumber(min, max) {
+      return Math.floor(Math.random() * (max - min + 1) + min);
     }
   }
 });
@@ -7681,7 +7781,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".del-plate[data-v-bb51ee40],\n.add-plate[data-v-bb51ee40] {\n  width: 40px;\n  height: 20px;\n  display: inline-block;\n  font-size: 20px;\n  border: 1px solid black;\n  line-height: 15px;\n  text-align: center;\n  border-radius: 8px;\n  padding: 0px;\n  transition: all 0.2s;\n  cursor: pointer;\n}\n.del-plate[data-v-bb51ee40]:hover,\n.add-plate[data-v-bb51ee40]:hover {\n  border: 1px solid #45CCBC;\n  color: #45CCBC;\n  font-size: 24px;\n}\n.amount-plates[data-v-bb51ee40],\n.del-plate[data-v-bb51ee40],\n.add-plate[data-v-bb51ee40] {\n  width: 40px;\n  height: 20px;\n  display: inline-block;\n  line-height: 15px;\n  text-align: center;\n  padding: 0px;\n}\n.bg[data-v-bb51ee40] {\n  width: 100%;\n  height: 400px;\n  position: relative;\n  z-index: -100;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.bg img[data-v-bb51ee40] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  display: block;\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  top: 0;\n  left: 0;\n  z-index: -100;\n  overflow: hidden;\n}\n.central-column[data-v-bb51ee40] {\n  position: relative;\n  padding-bottom: 100px;\n  background-color: blue;\n}\n.central-column .box-ristorante[data-v-bb51ee40] {\n  position: relative;\n  width: 95%;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  border-radius: 20px;\n  background-color: white;\n  padding-top: 40px;\n  top: -150px;\n}\n.central-column .box-ristorante .row[data-v-bb51ee40] {\n  width: 100%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  padding-bottom: 20px;\n}\n.central-column .box-ristorante .row .form_payment[data-v-bb51ee40] {\n  width: 90%;\n}\n.central-column .box-ristorante .row .form_payment .col-12[data-v-bb51ee40],\n.central-column .box-ristorante .row .form_payment .col-6[data-v-bb51ee40] {\n  margin: 5px 0px;\n}\n.right-column[data-v-bb51ee40] {\n  position: relative;\n  background-color: red;\n}\n.right-column .carrello[data-v-bb51ee40] {\n  position: relative;\n  top: -150px;\n  width: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  border-radius: 20px;\n  padding-left: 10px;\n  background-color: white;\n  padding: 20px;\n}\n.right-column .carrello .line[data-v-bb51ee40] {\n  background-color: grey;\n  width: 100%;\n  height: 1px;\n  margin: 10px 0;\n}\n.right-column .carrello .plate-order div[data-v-bb51ee40] {\n  padding: 10px 15px;\n}\n.right-column .carrello .carrello-empty[data-v-bb51ee40] {\n  color: lightgrey;\n  height: 220px;\n  padding: 20px;\n  text-align: center;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n.right-column .carrello .carrello-empty i[data-v-bb51ee40] {\n  font-size: 40px;\n  color: lightgrey;\n}\n.right-column .carrello .carrello-empty .fake-button[data-v-bb51ee40] {\n  background-color: lightgrey;\n  color: white;\n  height: 33px;\n  border-radius: 10px;\n  line-height: 33px;\n}\n.fw-bold[data-v-bb51ee40] {\n  font-weight: bold;\n}\n.carrello-mobile[data-v-bb51ee40] {\n  width: 100%;\n  height: 75px;\n  position: fixed;\n  bottom: 0;\n  left: 0;\n  z-index: 1000;\n  margin-top: 100px;\n  box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.3);\n  background-color: #45CCBC;\n  margin: 0;\n}", ""]);
+exports.push([module.i, ".del-plate[data-v-bb51ee40],\n.add-plate[data-v-bb51ee40] {\n  width: 40px;\n  height: 20px;\n  display: inline-block;\n  font-size: 20px;\n  border: 1px solid black;\n  line-height: 15px;\n  text-align: center;\n  border-radius: 8px;\n  padding: 0px;\n  transition: all 0.2s;\n  cursor: pointer;\n}\n.del-plate[data-v-bb51ee40]:hover,\n.add-plate[data-v-bb51ee40]:hover {\n  border: 1px solid #45CCBC;\n  color: #45CCBC;\n  font-size: 24px;\n}\n.amount-plates[data-v-bb51ee40],\n.del-plate[data-v-bb51ee40],\n.add-plate[data-v-bb51ee40] {\n  width: 40px;\n  height: 20px;\n  display: inline-block;\n  line-height: 15px;\n  text-align: center;\n  padding: 0px;\n}\n.bg[data-v-bb51ee40] {\n  width: 100%;\n  height: 400px;\n  position: relative;\n  z-index: -100;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.bg img[data-v-bb51ee40] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  display: block;\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  top: 0;\n  left: 0;\n  z-index: -100;\n  overflow: hidden;\n}\n.slider[data-v-bb51ee40] {\n  position: relative;\n  top: -150px;\n}\n.central-column[data-v-bb51ee40] {\n  position: relative;\n  padding-bottom: 100px;\n  padding-left: 5px !important;\n  padding-right: 0px !important;\n}\n.central-column .box-ristorante[data-v-bb51ee40] {\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  border-radius: 20px;\n  background-color: white;\n  padding-top: 40px;\n  top: -150px;\n}\n.central-column .box-ristorante .row[data-v-bb51ee40] {\n  width: 100%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  padding-bottom: 20px;\n}\n.central-column .box-ristorante .row .form_payment[data-v-bb51ee40] {\n  width: 90%;\n}\n.central-column .box-ristorante .row .form_payment .col-12[data-v-bb51ee40],\n.central-column .box-ristorante .row .form_payment .col-6[data-v-bb51ee40] {\n  margin: 5px 0px;\n}\n.central-column .box-ristorante .row .form_payment .total-text[data-v-bb51ee40] {\n  line-height: 60px;\n}\n.central-column .box-ristorante .row .form_payment .total-text h4[data-v-bb51ee40] {\n  font-size: 28px;\n}\n.central-column .box-ristorante .row .form_payment .total-text h4 span[data-v-bb51ee40] {\n  font-size: 38px;\n}\n.central-column .carrello-small[data-v-bb51ee40] {\n  padding-top: 30px;\n  width: 100%;\n}\n.central-column .carrello-small .line[data-v-bb51ee40] {\n  background-color: grey;\n  width: 100%;\n  height: 1px;\n  margin: 10px 0;\n}\n.central-column .carrello-small .plate-order div[data-v-bb51ee40] {\n  padding: 10px 15px;\n}\n.right-column .carrello[data-v-bb51ee40] {\n  width: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  border-radius: 20px;\n  padding-left: 10px;\n  background-color: white;\n  padding: 40px 20px 20px 20px;\n}\n.right-column .carrello .line[data-v-bb51ee40] {\n  background-color: grey;\n  width: 100%;\n  height: 1px;\n  margin: 10px 0;\n}\n.right-column .carrello .plate-order div[data-v-bb51ee40] {\n  padding: 10px 15px;\n}\n.right-column .carrello .carrello-empty[data-v-bb51ee40] {\n  color: lightgrey;\n  height: 220px;\n  padding: 20px;\n  text-align: center;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n.right-column .carrello .carrello-empty i[data-v-bb51ee40] {\n  font-size: 40px;\n  color: lightgrey;\n}\n.right-column .carrello .carrello-empty .fake-button[data-v-bb51ee40] {\n  background-color: lightgrey;\n  color: white;\n  height: 33px;\n  border-radius: 10px;\n  line-height: 33px;\n}\n.fw-bold[data-v-bb51ee40] {\n  font-weight: bold;\n}\n.carrello-mobile[data-v-bb51ee40] {\n  width: 100%;\n  height: 75px;\n  position: fixed;\n  bottom: 0;\n  left: 0;\n  z-index: 1000;\n  margin-top: 100px;\n  box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.3);\n  background-color: #45CCBC;\n  margin: 0;\n}", ""]);
 
 // exports
 
@@ -40043,12 +40143,518 @@ var render = function () {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "container" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-4 col-md-4 col-lg-4 right-column" }, [
-        _vm.isLoaded && _vm.isCart
-          ? _c("div", { staticClass: "carrello" }, [
-              _vm._m(1),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-lg-8 slider" }, [
+          _c("div", { staticClass: "col-12 central-column" }, [
+            _c("div", { staticClass: "box-ristorante" }, [
+              _c("h2", { staticClass: "pb-3 fw-bold" }, [
+                _vm._v("Inserisci i dati per la spedizione"),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c(
+                  "form",
+                  {
+                    staticClass: "form_payment",
+                    attrs: { method: "", action: "formFrontEnd.php" },
+                  },
+                  [
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-label fw-bold fw-bold",
+                            attrs: { for: "validationCustom01" },
+                          },
+                          [_vm._v("Nome")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.name,
+                              expression: "name",
+                            },
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            id: "validationCustom01",
+                            name: "name",
+                            placeholder: "Inserisci il nome",
+                            required: "",
+                          },
+                          domProps: { value: _vm.name },
+                          on: {
+                            input: function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.name = $event.target.value
+                            },
+                          },
+                        }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "valid-feedback" }, [
+                          _vm._v("Looks good!"),
+                        ]),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-label fw-bold",
+                            attrs: { for: "validationCustom02" },
+                          },
+                          [_vm._v("Cognome")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.lastname,
+                              expression: "lastname",
+                            },
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            id: "validationCustom02",
+                            name: "lastname",
+                            placeholder: "Inserisci il cognome",
+                            required: "",
+                          },
+                          domProps: { value: _vm.lastname },
+                          on: {
+                            input: function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.lastname = $event.target.value
+                            },
+                          },
+                        }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "valid-feedback" }, [
+                          _vm._v("Looks good!"),
+                        ]),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-label fw-bold",
+                            attrs: { for: "validationCustom02" },
+                          },
+                          [_vm._v("Indirizzo:")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.address,
+                              expression: "address",
+                            },
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            id: "validationCustom02",
+                            name: "address",
+                            placeholder: "Inserisci un indirizzo",
+                            required: "",
+                          },
+                          domProps: { value: _vm.address },
+                          on: {
+                            input: function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.address = $event.target.value
+                            },
+                          },
+                        }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "valid-feedback" }, [
+                          _vm._v(
+                            "\n                      Inserire un indirizzo valido!\n                    "
+                          ),
+                        ]),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-label fw-bold",
+                            attrs: { for: "validationCustom02" },
+                          },
+                          [_vm._v("CAP:")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.cap,
+                              expression: "cap",
+                            },
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            id: "validationCustom02",
+                            name: "cap",
+                            placeholder: "Inserisci un CAP",
+                            required: "",
+                          },
+                          domProps: { value: _vm.cap },
+                          on: {
+                            input: function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.cap = $event.target.value
+                            },
+                          },
+                        }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "valid-feedback" }, [
+                          _vm._v(
+                            "\n                      Inserire un CAP valido valido!\n                    "
+                          ),
+                        ]),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-label fw-bold",
+                            attrs: { for: "validationCustom02" },
+                          },
+                          [_vm._v("Città:")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.city,
+                              expression: "city",
+                            },
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            id: "validationCustom02",
+                            name: "city",
+                            placeholder: "Inserisci una città",
+                            required: "",
+                          },
+                          domProps: { value: _vm.city },
+                          on: {
+                            input: function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.city = $event.target.value
+                            },
+                          },
+                        }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "valid-feedback" }, [
+                          _vm._v(
+                            "\n                      Inserire una città valida!\n                    "
+                          ),
+                        ]),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-label fw-bold",
+                            attrs: { for: "validationCustom02" },
+                          },
+                          [_vm._v("Provincia:")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.province,
+                              expression: "province",
+                            },
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            id: "validationCustom02",
+                            name: "province",
+                            placeholder: "Inserisci una provincia",
+                            required: "",
+                          },
+                          domProps: { value: _vm.province },
+                          on: {
+                            input: function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.province = $event.target.value
+                            },
+                          },
+                        }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "valid-feedback" }, [
+                          _vm._v(
+                            "\n                      Inserire una provincia valida!\n                    "
+                          ),
+                        ]),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-12" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-label fw-bold",
+                            attrs: { for: "exampleFormControlInput1" },
+                          },
+                          [_vm._v("Email")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.email,
+                              expression: "email",
+                            },
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "email",
+                            id: "exampleFormControlInput1",
+                            name: "email",
+                            placeholder: "name@example.com",
+                          },
+                          domProps: { value: _vm.email },
+                          on: {
+                            input: function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.email = $event.target.value
+                            },
+                          },
+                        }),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-12" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-label fw-bold",
+                            attrs: { for: "exampleFormControlTextarea1" },
+                          },
+                          [_vm._v("Notazioni sull'ordine:")]
+                        ),
+                        _vm._v(" "),
+                        _c("textarea", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.note,
+                              expression: "note",
+                            },
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            id: "exampleFormControlTextarea1",
+                            name: "note",
+                            rows: "3",
+                          },
+                          domProps: { value: _vm.note },
+                          on: {
+                            input: function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.note = $event.target.value
+                            },
+                          },
+                        }),
+                      ]),
+                      _vm._v(" "),
+                      _vm.hiddenInput
+                        ? _c("div", { staticClass: "col-6" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: "form-label fw-bold",
+                                attrs: { for: "validationCustom02" },
+                              },
+                              [_vm._v("Totale:")]
+                            ),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.getSubTotal,
+                                  expression: "getSubTotal",
+                                },
+                              ],
+                              staticClass: "form-control",
+                              attrs: {
+                                type: "text",
+                                id: "validationCustom02",
+                                name: "total",
+                                placeholder: "Inserisci una provincia",
+                                required: "",
+                              },
+                              domProps: { value: _vm.getSubTotal },
+                              on: {
+                                input: function ($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.getSubTotal = $event.target.value
+                                },
+                              },
+                            }),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "valid-feedback" }, [
+                              _vm._v(
+                                "\n                      Inserire una provincia valida!\n                    "
+                              ),
+                            ]),
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm._m(0),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "carrello-small d-block d-lg-none" },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "row justify-content-around align-items-center",
+                            },
+                            [
+                              _c("h2", { staticClass: "fw-bold" }, [
+                                _vm._v("\n                        Ordine: "),
+                                _c("span", { staticClass: "code-ordine" }, [
+                                  _vm._v(_vm._s(_vm.codeOrder)),
+                                ]),
+                              ]),
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "line mt-3" }),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "plate-order" },
+                            _vm._l(_vm.cart, function (item, index) {
+                              return _c("div", { key: "item" + index }, [
+                                _c("div", [
+                                  _c("strong", [_vm._v(_vm._s(item.name))]),
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "d-flex justify-content-between p-0",
+                                  },
+                                  [
+                                    _c("div", { staticClass: "p-0" }, [
+                                      _vm._v(
+                                        "\n                            Quantità:\n                            "
+                                      ),
+                                      _c(
+                                        "span",
+                                        { staticClass: "amount-plates" },
+                                        [_vm._v(_vm._s(item.quantity))]
+                                      ),
+                                    ]),
+                                    _vm._v(
+                                      "\n                          € " +
+                                        _vm._s(item.price) +
+                                        "\n                        "
+                                    ),
+                                  ]
+                                ),
+                              ])
+                            }),
+                            0
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "line" }),
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "total-text row text-center pt-4" },
+                        [
+                          _c("h4", { staticClass: "fw-bold" }, [
+                            _vm._v(
+                              "\n                      TOTALE:\n                      "
+                            ),
+                            _c("span", { staticClass: "total-pay" }, [
+                              _vm._v("€" + _vm._s(_vm.getSubTotal)),
+                            ]),
+                          ]),
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _vm._m(1),
+                    ]),
+                  ]
+                ),
+              ]),
+            ]),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-4 slider d-none d-lg-block" }, [
+          _c("div", { staticClass: "col-12 right-column" }, [
+            _c("div", { staticClass: "carrello" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "row justify-content-around align-items-center",
+                },
+                [
+                  _c("h2", { staticClass: "fw-bold" }, [
+                    _vm._v("\n                Ordine: "),
+                    _c("span", { staticClass: "code-ordine" }, [
+                      _vm._v(_vm._s(_vm.codeOrder)),
+                    ]),
+                  ]),
+                ]
+              ),
               _vm._v(" "),
               _c("div", { staticClass: "line mt-3" }),
               _vm._v(" "),
@@ -40064,40 +40670,17 @@ var render = function () {
                       { staticClass: "d-flex justify-content-between p-0" },
                       [
                         _c("div", { staticClass: "p-0" }, [
+                          _vm._v(
+                            "\n                    Quantità:\n                    "
+                          ),
                           _c("span", { staticClass: "amount-plates" }, [
                             _vm._v(_vm._s(item.quantity)),
                           ]),
-                          _vm._v(" "),
-                          _c(
-                            "span",
-                            {
-                              staticClass: "add-plate",
-                              on: {
-                                click: function ($event) {
-                                  _vm.cartArray(item, (_vm.string = "più"))
-                                },
-                              },
-                            },
-                            [_vm._v("+\n                ")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "span",
-                            {
-                              staticClass: "del-plate",
-                              on: {
-                                click: function ($event) {
-                                  _vm.cartArray(item, (_vm.string = "meno"))
-                                },
-                              },
-                            },
-                            [_vm._v("-")]
-                          ),
                         ]),
                         _vm._v(
-                          "\n              € " +
+                          "\n                  € " +
                             _vm._s(item.price) +
-                            "\n            "
+                            "\n                "
                         ),
                       ]
                     ),
@@ -40112,7 +40695,7 @@ var render = function () {
                 "div",
                 {
                   staticClass:
-                    "\n            row\n            px-5\n            pt-3\n            pb-2\n            justify-content-between\n            align-items-center\n          ",
+                    "\n                row\n                px-5\n                pt-3\n                pb-2\n                justify-content-between\n                align-items-center\n              ",
                 },
                 [
                   _c("div", { staticClass: "fw-bold" }, [_vm._v("Totale")]),
@@ -40122,31 +40705,9 @@ var render = function () {
                   ]),
                 ]
               ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "d-flex justify-content-center" },
-                [
-                  _vm.isLoaded
-                    ? _c(
-                        "router-link",
-                        {
-                          staticClass: "ac-btn",
-                          attrs: {
-                            to: {
-                              name: "payment",
-                              params: { slug: _vm.activeRestaurant.slug },
-                            },
-                          },
-                        },
-                        [_vm._v("\n            Vai al pagamento\n          ")]
-                      )
-                    : _vm._e(),
-                ],
-                1
-              ),
-            ])
-          : _c("div", { staticClass: "carrello" }, [_vm._m(2)]),
+            ]),
+          ]),
+        ]),
       ]),
     ]),
   ])
@@ -40156,263 +40717,27 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-8 col-md-8 col-lg-8 central-column" }, [
-        _c("div", { staticClass: "box-ristorante" }, [
-          _c("h2", { staticClass: "pb-3" }, [
-            _vm._v("Inserisci i dati per la spedizione"),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c("form", { staticClass: "form_payment", attrs: { action: "" } }, [
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-6" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "form-label",
-                      attrs: { for: "validationCustom01" },
-                    },
-                    [_vm._v("Nome")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      id: "validationCustom01",
-                      value: "Inserisci il nome",
-                      required: "",
-                    },
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "valid-feedback" }, [
-                    _vm._v("Looks good!"),
-                  ]),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-6" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "form-label",
-                      attrs: { for: "validationCustom02" },
-                    },
-                    [_vm._v("Cognome")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      id: "validationCustom02",
-                      value: "Inserisci il cognome",
-                      required: "",
-                    },
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "valid-feedback" }, [
-                    _vm._v("Looks good!"),
-                  ]),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-6" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "form-label",
-                      attrs: { for: "validationCustom02" },
-                    },
-                    [_vm._v("Indirizzo:")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      id: "validationCustom02",
-                      value: "Inserisci un indirizzo",
-                      required: "",
-                    },
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "valid-feedback" }, [
-                    _vm._v(
-                      "\n                    Inserire un indirizzo valido!\n                  "
-                    ),
-                  ]),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-6" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "form-label",
-                      attrs: { for: "validationCustom02" },
-                    },
-                    [_vm._v("CAP:")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      id: "validationCustom02",
-                      value: "Inserisci un CAP",
-                      required: "",
-                    },
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "valid-feedback" }, [
-                    _vm._v(
-                      "\n                    Inserire un CAP valido valido!\n                  "
-                    ),
-                  ]),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-6" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "form-label",
-                      attrs: { for: "validationCustom02" },
-                    },
-                    [_vm._v("Città:")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      id: "validationCustom02",
-                      value: "Inserisci una città",
-                      required: "",
-                    },
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "valid-feedback" }, [
-                    _vm._v("Inserire una città valida!"),
-                  ]),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-6" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "form-label",
-                      attrs: { for: "validationCustom02" },
-                    },
-                    [_vm._v("Provincia:")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      id: "validationCustom02",
-                      value: "Inserisci una provincia",
-                      required: "",
-                    },
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "valid-feedback" }, [
-                    _vm._v(
-                      "\n                    Inserire una provincia valida!\n                  "
-                    ),
-                  ]),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-12" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "form-label",
-                      attrs: { for: "exampleFormControlInput1" },
-                    },
-                    [_vm._v("Email")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "email",
-                      id: "exampleFormControlInput1",
-                      placeholder: "name@example.com",
-                    },
-                  }),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-12" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "form-label",
-                      attrs: { for: "exampleFormControlTextarea1" },
-                    },
-                    [_vm._v("Notazioni sull'ordine:")]
-                  ),
-                  _vm._v(" "),
-                  _c("textarea", {
-                    staticClass: "form-control",
-                    attrs: { id: "exampleFormControlTextarea1", rows: "3" },
-                  }),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-12" }, [
-                  _c("div", { staticClass: "form-check" }, [
-                    _c("input", {
-                      staticClass: "form-check-input",
-                      attrs: {
-                        type: "checkbox",
-                        value: "",
-                        id: "invalidCheck",
-                        required: "",
-                      },
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "label",
-                      {
-                        staticClass: "form-check-label",
-                        attrs: { for: "invalidCheck" },
-                      },
-                      [
-                        _vm._v(
-                          "\n                      Accetto le condizioni sulla privacy\n                    "
-                        ),
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "invalid-feedback" }, [
-                      _vm._v(
-                        "\n                      You must agree before submitting.\n                    "
-                      ),
-                    ]),
-                  ]),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "row text-center" }, [
-                  _c("h4", [_vm._v("Sintesi Ordine:")]),
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "col-12 d-flex justify-content-center" },
-                  [
-                    _c(
-                      "button",
-                      { staticClass: "ac-btn", attrs: { type: "submit" } },
-                      [
-                        _vm._v(
-                          "\n                    Vai al pagamento\n                  "
-                        ),
-                      ]
-                    ),
-                  ]
-                ),
-              ]),
-            ]),
-          ]),
+    return _c("div", { staticClass: "col-12" }, [
+      _c("div", { staticClass: "form-check" }, [
+        _c("input", {
+          staticClass: "form-check-input",
+          attrs: { type: "checkbox", id: "invalidCheck", required: "" },
+        }),
+        _vm._v(" "),
+        _c(
+          "label",
+          { staticClass: "form-check-label", attrs: { for: "invalidCheck" } },
+          [
+            _vm._v(
+              "\n                        Accetto le condizioni sulla privacy\n                      "
+            ),
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "invalid-feedback" }, [
+          _vm._v(
+            "\n                        E' necessario accettare le condizoni.\n                      "
+          ),
         ]),
       ]),
     ])
@@ -40421,26 +40746,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "row justify-content-around align-items-center" },
-      [_c("h2", { staticClass: "fw-bold" }, [_vm._v("Il tuo ordine")])]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "carrello-empty" }, [
-      _c("div", { staticClass: "mt-5" }, [
-        _c("i", { staticClass: "fas fa-shopping-cart" }),
-        _vm._v(" "),
-        _c("h6", { staticClass: "fw-bold" }, [
-          _vm._v("Il tuo carrello è vuoto"),
-        ]),
+    return _c("div", { staticClass: "col-12 d-flex justify-content-center" }, [
+      _c("button", { staticClass: "ac-btn", attrs: { type: "submit" } }, [
+        _vm._v(
+          "\n                      Vai al pagamento\n                    "
+        ),
       ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "fake-button" }, [_vm._v("Vai al carrello")]),
     ])
   },
 ]
@@ -41058,7 +41369,7 @@ var render = function () {
               autoplay: "",
               muted: "",
               loop: "",
-              src: "videos/pexels-ron-lach-8879537.mp4",
+              src: "videos/video (5).mp4",
             },
             domProps: { muted: true },
           }),

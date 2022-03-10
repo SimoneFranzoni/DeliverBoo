@@ -5,240 +5,291 @@
     </div>
     <div class="container">
       <div class="row">
-        <div class="col-8 col-md-8 col-lg-8 central-column">
-          <div class="box-ristorante">
-            <h2 class="pb-3">Inserisci i dati per la spedizione</h2>
-            <div class="row">
-              <!-- FORM -->
-              <form action="" class="form_payment">
-                <div class="row">
-                  <!-- Nome -->
-                  <div class="col-6">
-                    <label for="validationCustom01" class="form-label"
-                      >Nome</label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="validationCustom01"
-                      value="Inserisci il nome"
-                      required
-                    />
-                    <div class="valid-feedback">Looks good!</div>
-                  </div>
-
-                  <!-- Cognome -->
-                  <div class="col-6">
-                    <label for="validationCustom02" class="form-label"
-                      >Cognome</label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="validationCustom02"
-                      value="Inserisci il cognome"
-                      required
-                    />
-                    <div class="valid-feedback">Looks good!</div>
-                  </div>
-
-                  <!-- Città -->
-                  <div class="col-6">
-                    <label for="validationCustom02" class="form-label"
-                      >Indirizzo:</label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="validationCustom02"
-                      value="Inserisci un indirizzo"
-                      required
-                    />
-                    <div class="valid-feedback">
-                      Inserire un indirizzo valido!
-                    </div>
-                  </div>
-
-                  <!-- CAP -->
-                  <div class="col-6">
-                    <label for="validationCustom02" class="form-label"
-                      >CAP:</label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="validationCustom02"
-                      value="Inserisci un CAP"
-                      required
-                    />
-                    <div class="valid-feedback">
-                      Inserire un CAP valido valido!
-                    </div>
-                  </div>
-
-                  <!-- Città -->
-                  <div class="col-6">
-                    <label for="validationCustom02" class="form-label"
-                      >Città:</label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="validationCustom02"
-                      value="Inserisci una città"
-                      required
-                    />
-                    <div class="valid-feedback">Inserire una città valida!</div>
-                  </div>
-
-                  <!-- Provincia -->
-                  <div class="col-6">
-                    <label for="validationCustom02" class="form-label"
-                      >Provincia:</label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="validationCustom02"
-                      value="Inserisci una provincia"
-                      required
-                    />
-                    <div class="valid-feedback">
-                      Inserire una provincia valida!
-                    </div>
-                  </div>
-
-                  <!-- Mail -->
-                  <div class="col-12">
-                    <label for="exampleFormControlInput1" class="form-label"
-                      >Email</label
-                    >
-                    <input
-                      type="email"
-                      class="form-control"
-                      id="exampleFormControlInput1"
-                      placeholder="name@example.com"
-                    />
-                  </div>
-
-                  <!-- Text Area -->
-                  <div class="col-12">
-                    <label for="exampleFormControlTextarea1" class="form-label"
-                      >Notazioni sull'ordine:</label
-                    >
-                    <textarea
-                      class="form-control"
-                      id="exampleFormControlTextarea1"
-                      rows="3"
-                    ></textarea>
-                  </div>
-
-                  <!-- Conditions -->
-                  <div class="col-12">
-                    <div class="form-check">
+        <div class="col-lg-8 slider">
+          <div class="col-12 central-column">
+            <div class="box-ristorante">
+              <h2 class="pb-3 fw-bold">Inserisci i dati per la spedizione</h2>
+              <div class="row">
+                <!-- FORM -->
+                <form method="" action="formFrontEnd.php" class="form_payment">
+                  <div class="row">
+                    <!-- Nome -->
+                    <div class="col-6">
+                      <label
+                        for="validationCustom01"
+                        class="form-label fw-bold fw-bold"
+                        >Nome</label
+                      >
                       <input
-                        class="form-check-input"
-                        type="checkbox"
-                        value=""
-                        id="invalidCheck"
+                        type="text"
+                        class="form-control"
+                        id="validationCustom01"
+                        v-model="name"
+                        name="name"
+                        placeholder="Inserisci il nome"
                         required
                       />
-                      <label class="form-check-label" for="invalidCheck">
-                        Accetto le condizioni sulla privacy
-                      </label>
-                      <div class="invalid-feedback">
-                        You must agree before submitting.
+                      <div class="valid-feedback">Looks good!</div>
+                    </div>
+
+                    <!-- Cognome -->
+                    <div class="col-6">
+                      <label for="validationCustom02" class="form-label fw-bold"
+                        >Cognome</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="validationCustom02"
+                        name="lastname"
+                        v-model="lastname"
+                        placeholder="Inserisci il cognome"
+                        required
+                      />
+                      <div class="valid-feedback">Looks good!</div>
+                    </div>
+
+                    <!-- Città -->
+                    <div class="col-6">
+                      <label for="validationCustom02" class="form-label fw-bold"
+                        >Indirizzo:</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="validationCustom02"
+                        name="address"
+                        v-model="address"
+                        placeholder="Inserisci un indirizzo"
+                        required
+                      />
+                      <div class="valid-feedback">
+                        Inserire un indirizzo valido!
                       </div>
                     </div>
-                  </div>
 
-                  <div class="row text-center">
-                    <h4>Sintesi Ordine:</h4>
-                  </div>
+                    <!-- CAP -->
+                    <div class="col-6">
+                      <label for="validationCustom02" class="form-label fw-bold"
+                        >CAP:</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="validationCustom02"
+                        name="cap"
+                        v-model="cap"
+                        placeholder="Inserisci un CAP"
+                        required
+                      />
+                      <div class="valid-feedback">
+                        Inserire un CAP valido valido!
+                      </div>
+                    </div>
 
-                  <!-- Submit -->
-                  <div class="col-12 d-flex justify-content-center">
-                    <button class="ac-btn" type="submit">
-                      Vai al pagamento
-                    </button>
+                    <!-- Città -->
+                    <div class="col-6">
+                      <label for="validationCustom02" class="form-label fw-bold"
+                        >Città:</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="validationCustom02"
+                        name="city"
+                        v-model="city"
+                        placeholder="Inserisci una città"
+                        required
+                      />
+                      <div class="valid-feedback">
+                        Inserire una città valida!
+                      </div>
+                    </div>
+
+                    <!-- Provincia -->
+                    <div class="col-6">
+                      <label for="validationCustom02" class="form-label fw-bold"
+                        >Provincia:</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="validationCustom02"
+                        name="province"
+                        v-model="province"
+                        placeholder="Inserisci una provincia"
+                        required
+                      />
+                      <div class="valid-feedback">
+                        Inserire una provincia valida!
+                      </div>
+                    </div>
+
+                    <!-- Mail -->
+                    <div class="col-12">
+                      <label
+                        for="exampleFormControlInput1"
+                        class="form-label fw-bold"
+                        >Email</label
+                      >
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="exampleFormControlInput1"
+                        name="email"
+                        v-model="email"
+                        placeholder="name@example.com"
+                      />
+                    </div>
+
+                    <!-- Text Area -->
+                    <div class="col-12">
+                      <label
+                        for="exampleFormControlTextarea1"
+                        class="form-label fw-bold"
+                        >Notazioni sull'ordine:</label
+                      >
+                      <textarea
+                        class="form-control"
+                        id="exampleFormControlTextarea1"
+                        name="note"
+                        v-model="note"
+                        rows="3"
+                      ></textarea>
+                    </div>
+
+                    <!-- CAMPI NASCOSTI -->
+                    <!-- Provincia -->
+                    <div v-if="hiddenInput" class="col-6">
+                      <label for="validationCustom02" class="form-label fw-bold"
+                        >Totale:</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="validationCustom02"
+                        name="total"
+                        v-model="getSubTotal"
+                        placeholder="Inserisci una provincia"
+                        required
+                      />
+                      <div class="valid-feedback">
+                        Inserire una provincia valida!
+                      </div>
+                    </div>
+
+                    <!-- Conditions -->
+                    <div class="col-12">
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="invalidCheck"
+                          required
+                        />
+                        <label class="form-check-label" for="invalidCheck">
+                          Accetto le condizioni sulla privacy
+                        </label>
+                        <div class="invalid-feedback">
+                          E' necessario accettare le condizoni.
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="carrello-small d-block d-lg-none">
+                      <div
+                        class="row justify-content-around align-items-center"
+                      >
+                        <h2 class="fw-bold">
+                          Ordine: <span class="code-ordine">{{ codeOrder }}</span>
+                        </h2>
+                      </div>
+                      <div class="line mt-3"></div>
+                      <div class="plate-order">
+                        <!-- elenco piatti con prezzi  -->
+
+                        <div
+                          v-for="(item, index) in cart"
+                          :key="`item${index}`"
+                        >
+                          <div>
+                            <strong>{{ item.name }}</strong>
+                          </div>
+                          <div class="d-flex justify-content-between p-0">
+                            <div class="p-0">
+                              Quantità:
+                              <span class="amount-plates">{{
+                                item.quantity
+                              }}</span>
+                            </div>
+                            € {{ item.price }}
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="line"></div>
+                    </div>
+
+                    <div class="total-text row text-center pt-4">
+                      <h4 class="fw-bold">
+                        TOTALE:
+                        <span class="total-pay">€{{ getSubTotal }}</span>
+                      </h4>
+                    </div>
+
+                    <!-- Submit -->
+                    <div class="col-12 d-flex justify-content-center">
+                      <button class="ac-btn" type="submit">
+                        Vai al pagamento
+                      </button>
+                    </div>
                   </div>
-                </div>
-              </form>
+                </form>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-
-
-      <div class="col-4 col-md-4 col-lg-4 right-column">
-        <div class="carrello" v-if="isLoaded && isCart">
-          <div class="row justify-content-around align-items-center">
-            <h2 class="fw-bold">Il tuo ordine</h2>
-          </div>
-          <div class="line mt-3"></div>
-          <div class="plate-order">
-            <!-- elenco piatti con prezzi  -->
-
-            <div v-for="(item, index) in cart" :key="`item${index}`">
-              <div>
-                <strong>{{ item.name }}</strong>
+        <div class="col-lg-4 slider d-none d-lg-block">
+          <div class="col-12 right-column">
+            <div class="carrello">
+              <div class="row justify-content-around align-items-center">
+                <h2 class="fw-bold">
+                  Ordine: <span class="code-ordine">{{ codeOrder }}</span>
+                </h2>
               </div>
-              <div class="d-flex justify-content-between p-0">
-                <div class="p-0">
-                  <span class="amount-plates">{{ item.quantity }}</span>
-                  <span
-                    class="add-plate"
-                    @click="cartArray(item, (string = 'più'))"
-                    >+
-                  </span>
-                  <span
-                    class="del-plate"
-                    @click="cartArray(item, (string = 'meno'))"
-                    >-</span
-                  >
+              <div class="line mt-3"></div>
+              <div class="plate-order">
+                <!-- elenco piatti con prezzi  -->
+
+                <div v-for="(item, index) in cart" :key="`item${index}`">
+                  <div>
+                    <strong>{{ item.name }}</strong>
+                  </div>
+                  <div class="d-flex justify-content-between p-0">
+                    <div class="p-0">
+                      Quantità:
+                      <span class="amount-plates">{{ item.quantity }}</span>
+                    </div>
+                    € {{ item.price }}
+                  </div>
                 </div>
-                € {{ item.price }}
+              </div>
+
+              <div class="line"></div>
+              <div
+                class="
+                  row
+                  px-5
+                  pt-3
+                  pb-2
+                  justify-content-between
+                  align-items-center
+                "
+              >
+                <div class="fw-bold">Totale</div>
+                <div class="fw-bold">€{{ getSubTotal }}</div>
               </div>
             </div>
-          </div>
-
-          <div class="line"></div>
-          <div
-            class="
-              row
-              px-5
-              pt-3
-              pb-2
-              justify-content-between
-              align-items-center
-            "
-          >
-            <div class="fw-bold">Totale</div>
-            <div class="fw-bold">€{{ getSubTotal }}</div>
-          </div>
-
-          <div class="d-flex justify-content-center">
-            <router-link
-              v-if="isLoaded"
-              class="ac-btn"
-              :to="{
-                name: 'payment',
-                params: { slug: activeRestaurant.slug },
-              }"
-            >
-              Vai al pagamento
-            </router-link>
-          </div>
-        </div>
-
-        <div class="carrello" v-else>
-          <div class="carrello-empty">
-            <div class="mt-5">
-              <i class="fas fa-shopping-cart"></i>
-              <h6 class="fw-bold">Il tuo carrello è vuoto</h6>
-            </div>
-
-            <div class="fake-button">Vai al carrello</div>
           </div>
         </div>
       </div>
@@ -250,7 +301,7 @@
 import PlateBox from "../partials/PlateBox.vue";
 
 export default {
-  name: "Restaurantdetail",
+  name: "Payment",
   components: {
     PlateBox,
   },
@@ -259,17 +310,34 @@ export default {
       apiUrl: "http://127.0.0.1:8000/api/ristoranti/",
       activeRestaurant: {},
       plates: [],
+      plate: {},
       itemsArray: [],
       isLoaded: false,
       cart: JSON.parse(localStorage.getItem("items")),
       // cart: [],
       subTotal: null,
       isCart: true,
+      alphabet: "QWERTYUIOPLKJHGFDSAZXCVBNM",
+      codeOrder: '',
+
+      //   FORM
+      name: "",
+      lastname: "",
+      address: "",
+      city: "",
+      cap: null,
+      province: "",
+      email: "",
+      note: "",
+      total: "",
+      hiddenInput: false,
     };
   },
   mounted() {
     this.getActiveRestaurant();
     this.getTrueCart();
+    // this.getRandomNumber();
+    this.codeRandom();
   },
   computed: {
     getSubTotal: function () {
@@ -291,17 +359,18 @@ export default {
       this.activeRestaurant = {};
       axios.get(this.apiUrl + this.$route.params.slug).then((res) => {
         this.activeRestaurant = res.data.restaurant;
+
         this.plates.push(this.activeRestaurant.plates);
         //   console.log(JSON.parse(localStorage.getItem('items'))[0].restaurant_id)
 
-        if (
-          JSON.parse(localStorage.getItem("items"))[0].restaurant_id !=
-          this.activeRestaurant.id
-        ) {
-          window.localStorage.clear();
-          // localStorage.removeItem('items')
-          this.isCart = false;
-        }
+        // if (
+        //   JSON.parse(localStorage.getItem("items"))[0].restaurant_id !=
+        //   this.activeRestaurant.id
+        // ) {
+        //   window.localStorage.clear();
+        //   // localStorage.removeItem('items')
+        //   this.isCart = false;
+        // }
         this.isLoaded = true;
       });
     },
@@ -364,6 +433,44 @@ export default {
       this.isCart = false;
       console.log("Reset Storare Cliccato");
     },
+
+    // sendingForm() {
+    //   $.get(
+    //     "formFrontEnd.php",
+    //     {
+    //         Name: this.name,
+    //         Lastname: this.lastname,
+    //         Address: this.address,
+    //         City: this.city,
+    //         Cap: this.cap,
+    //         Province: this.province,
+    //         Email: this.email,
+    //         Note: this.note,
+    //         Total: this.total,
+    //     },
+    //     function (data) {
+    //         console.log(data);
+    //       alert(data);
+    //     }
+    //   );
+    // },
+
+    codeRandom() {
+      console.log("ciao mondo");
+      let code =
+        this.getRandomNumber(1, 9) +
+        this.alphabet.substr(this.getRandomNumber(1, 28), 1) +
+        this.getRandomNumber(1, 9) +
+        this.alphabet.substr(this.getRandomNumber(1, 28), 1) +
+        // + (this.getRandomNumber(1, 9))
+        this.alphabet.substr(this.getRandomNumber(1, 28), 1);
+      console.log("code", code);
+      this.codeOrder = code
+      return codeOrder;
+    },
+    getRandomNumber(min, max) {
+      return Math.floor(Math.random() * (max - min + 1) + min);
+    },
   },
 };
 </script>
@@ -423,14 +530,20 @@ export default {
   }
 }
 
+.slider {
+  position: relative;
+  top: -150px;
+}
+
 .central-column {
   position: relative;
   padding-bottom: 100px;
-  background-color: blue;
+  padding-left: 5px !important;
+  padding-right: 0px !important;
 
   .box-ristorante {
-    position: relative;
-    width: 95%;
+    // position: relative;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -455,26 +568,52 @@ export default {
         .col-6 {
           margin: 5px 0px;
         }
+        .total-text {
+          line-height: 60px;
+
+          h4 {
+            font-size: 28px;
+            span {
+              font-size: 38px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .carrello-small{
+    padding-top: 30px;
+    width: 100%;
+        .line {
+      background-color: grey;
+      width: 100%;
+      height: 1px;
+      margin: 10px 0;
+    }
+        .plate-order {
+      div {
+        padding: 10px 15px;
       }
     }
   }
 }
 
 .right-column {
-  position: relative;
-  background-color: red;
+  //   position: absolute;
+  //   right: 0px;
+  //   top: 0px;
 
   .carrello {
-    position: relative;
+    // position: relative;
     // top: -10%;
-    top: -150px;
+    // top: -150px;
     width: 100%;
     height: fit-content;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
     border-radius: 20px;
     padding-left: 10px;
     background-color: white;
-    padding: 20px;
+    padding: 40px 20px 20px 20px;
 
     .line {
       background-color: grey;
