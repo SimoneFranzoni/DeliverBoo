@@ -27,7 +27,7 @@
 
          <div class="mb-3">
             <label for="city" class="form-label">Città</label>
-            <input required value="{{ old('city', $restaurant->city) }}" type="text" class="form-control" id="city" name="city" placeholder="Inserisci la città">
+            <input required minlength="2" value="{{ old('city', $restaurant->city) }}" type="text" class="form-control" id="city" name="city" placeholder="Inserisci la città">
          </div>
            {{-- Messaggio di Errore --}}
            @error('city')
@@ -40,7 +40,7 @@
 
          <div class="mb-3">
             <label for="address" class="form-label">Indirizzo</label>
-            <input required value="{{ old('address', $restaurant->address) }}"  type="text" class="form-control" id="address" name="address" placeholder="Inserisci la via">
+            <input required minlength="5" value="{{ old('address', $restaurant->address) }}"  type="text" class="form-control" id="address" name="address" placeholder="Inserisci la via">
          </div>
            {{-- Messaggio di Errore --}}
          @error('address')
@@ -52,7 +52,7 @@
 
          <div class="mb-3">
             <label for="zip_code" class="form-label">CAP</label>
-            <input required value="{{ old('zip_code', $restaurant->zip_code) }}"  type="text" class="form-control" id="zip_code" name="zip_code" placeholder="Inserisci il CAP">
+            <input required size="5" value="{{ old('zip_code', $restaurant->zip_code) }}"  type="text" class="form-control" id="zip_code" name="zip_code" placeholder="Inserisci il CAP">
          </div>
            {{-- Messaggio di Errore --}}
          @error('zip_code')
@@ -64,7 +64,7 @@
 
          <div class="mb-3">
             <label for="phone_number" class="form-label">Telefono</label>
-            <input required value="{{ old('phone_number', $restaurant->phone_number) }}"  type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Inserisci il numero di telefono">
+            <input required minlength="5" maxlength="20" value="{{ old('phone_number', $restaurant->phone_number) }}"  type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Inserisci il numero di telefono">
          </div>
            {{-- Messaggio di Errore --}}
          @error('phone_number')
@@ -75,7 +75,7 @@
 
          <div class="mb-3">
             <label for="p_iva" class="form-label">P.IVA</label>
-            <input required minlength="11" maxlength="11" value="{{ old('p_iva', $restaurant->p_iva) }}"  type="text" class="form-control" id="p_iva" name="p_iva" placeholder="Inserisci la P.IVA">
+            <input required size="11" value="{{ old('p_iva', $restaurant->p_iva) }}"  type="text" class="form-control" id="p_iva" name="p_iva" placeholder="Inserisci la P.IVA">
          </div>
            {{-- Messaggio di Errore --}}
          @error('p_iva')

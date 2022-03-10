@@ -18,7 +18,7 @@
         {{--  nome piatto--}}
         <div class="mb-3">
           <label for="name" class="form-label">Nome</label>
-          <input required
+          <input required minlength="3" maxlength="100"
             class="form-control @error('name') is-invalid  @enderror" 
             type="text"  
             name="name" 
@@ -35,7 +35,7 @@
         {{-- ingredienti piatto --}}
         <div class="mb-3">
           <label for="ingrediants" class="form-label">Ingredienti</label>
-          <input required
+          <input required minlength="5" maxlength="1000"
             type="text"  
             class="form-control @error('ingrediants') is-invalid  @enderror" 
             name="ingrediants" 
@@ -53,7 +53,7 @@
         {{-- descrizione piatto --}}
         <div class="form-group">
           <label for="description">Descrizione</label>
-          <textarea required class="form-control @error('description') is-invalid  @enderror" name="description" id="description" rows="3">{{old('description',$piatto->description)}}</textarea>
+          <textarea required minlength="10" maxlength="1000" class="form-control @error('description') is-invalid  @enderror" name="description" id="description" rows="3">{{old('description',$piatto->description)}}</textarea>
         </div>
         {{-- messaggio errore --}}
         @error('description') 
@@ -66,7 +66,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text">€</span>
           </div>
-          <input required
+          <input required max="99.99"
           type="decimal"  
           class="form-control @error('price') is-invalid  @enderror" 
           name="price" 
