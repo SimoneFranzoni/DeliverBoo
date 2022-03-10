@@ -30,7 +30,7 @@
                         </li>
                         <li>
                             <div class="bar"></div>
-                            <a href="#bevande">Frutta</a>
+                            <a href="#frutta">Frutta</a>
                         </li>
                         <li>
                             <div class="bar"></div>
