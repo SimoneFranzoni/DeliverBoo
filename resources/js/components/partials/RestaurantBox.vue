@@ -73,12 +73,9 @@ export default {
 
     }
 
-    .restaurant-img{
-      //background-image: url(".../public/img/pexels-marcus-herzberg-1058277.jpg");
-      // background-color: $primary-color; 
+    .restaurant-img{ 
       max-height: 110px;
       width: 25%;
-      // margin-left: 10px;
       border-radius: 15px;
 
       img {
