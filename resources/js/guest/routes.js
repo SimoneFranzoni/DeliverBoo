@@ -6,6 +6,7 @@ Vue.use(VueRouter);
 //import vari
 import Home from '../components/pages/Home';
 import Restaurants from '../components/pages/Restaurants.vue';
+import RestaurantsAll from '../components/pages/RestaurantsAll.vue';
 import Restaurantdetail from '../components/pages/Restaurantdetail.vue';
 import Payment from '../components/pages/Payment.vue';
 
@@ -24,6 +25,11 @@ const router = new VueRouter({
       path: '/restaurants/:slug',
       name: 'restaurants',
       component: Restaurants,
+    },
+    {
+      path: '/restaurants/',
+      name: 'restaurantsAll',
+      component: RestaurantsAll,
     },
     {
       path: '/restaurantdetail/:slug',

@@ -62,7 +62,7 @@ export default {
    }
    
   .searchbar-slogan {
-    padding-top: 320px;
+    padding-top: 305px;
   }
 
   }
