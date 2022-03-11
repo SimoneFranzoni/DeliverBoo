@@ -215,13 +215,16 @@ export default {
   }
 
   .filter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: $primary-color;
     color: white;
-    font-size: 16px;
+    font-size: 18px;
     cursor: pointer;
     text-align: center;
-    padding-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
+    padding: 8px 10px;
     border-radius: 10px;
     width: 70px;
     height: 35px;
@@ -237,6 +240,9 @@ export default {
     z-index: 2000;
     overflow-y: auto;
     margin: 20px 0;
+    .filter-list {
+      z-index: 2000;
+    }
   }
 
   .restaurant-column {
@@ -282,7 +288,7 @@ export default {
     height: 150px;
     //allinea le box con il titolo sopra
     margin: 0 1px;
-    padding: 10px 0;
+    padding: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -336,7 +342,7 @@ export default {
         width: 100%;
       font-size: 15px;
       color: white;
-      z-index: 9000;
+      z-index: 200;
       background-color: $primary-color;
     }
   }

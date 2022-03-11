@@ -88,7 +88,7 @@
             <h5>Categorie</h5>
             @foreach ($types as $type)
               <span class="d-inline-block mr-4" style="width:120px">
-                <input required
+                <input
                 type="checkbox"
                 name="types[]"
                 value="{{ $type->id }}"
