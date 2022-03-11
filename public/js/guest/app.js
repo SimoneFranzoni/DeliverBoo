@@ -63676,10 +63676,6 @@ var render = function () {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "row" }, [
-                _c("a", { attrs: { href: "/miei-ristoranti.ordini/store" } }, [
-                  _vm._v("aaaaaaaaaaaaaaaaaaAAAAAAAAAA"),
-                ]),
-                _vm._v(" "),
                 _c(
                   "form",
                   {

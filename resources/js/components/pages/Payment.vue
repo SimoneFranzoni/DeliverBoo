@@ -10,7 +10,7 @@
             <div class="box-ristorante">
               <h2 class="pb-3 fw-bold">Inserisci i dati per la spedizione</h2>
               <div class="row">
-                <a href="/miei-ristoranti.ordini/store">aaaaaaaaaaaaaaaaaaAAAAAAAAAA</a>
+                
                 <!-- FORM -->
                 <form method="POST" action=""  class="form_payment">
                   <div class="row">
