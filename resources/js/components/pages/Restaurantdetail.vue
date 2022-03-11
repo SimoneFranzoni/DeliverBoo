@@ -183,10 +183,10 @@
                     <div class="row justify-content-start align-items-center px-4 py-3">
                         <i class="fas fa-shopping-cart pr-4"></i>
                         <div class="d-flex flex-column">
-                            <div class="fw-bold">€{{getSubTotal}}</div>
+                            
                             <div>Clicca qui per visualizzare il carrello</div>
                         </div>
-                    </div>npm run watch
+                    </div>
                 </div>
             </a>    
         </div>
