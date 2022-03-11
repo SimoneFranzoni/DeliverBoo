@@ -11,7 +11,7 @@
         <div class="col-6">
           <div class="name">
             {{restaurant.name}}
-            <small>Tipologia: {{type.name}}</small>
+            <!-- <small>Tipologia: {{type.name}}</small> -->
           </div>
           <div class="città">
             {{restaurant.city}}

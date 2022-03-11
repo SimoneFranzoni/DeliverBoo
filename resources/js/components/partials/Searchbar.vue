@@ -10,9 +10,11 @@
       v-model="searchedValue"
       @keyup="$emit('triggerSearch', searchedValue)">
       <!-- <router-link :to="{name: 'restaurants', params: {slug: type.slug}}"> -->
-      <router-link :to="{name: 'restaurants'}">
-       <div class="ac-btn">Vai</div>
-      </router-link>
+    </div>
+    <div class="all">
+      <router-link :to="{name: 'restaurantsAll'}">
+          <div class="ac-btn">Visualizza tutti i ristoranti</div>
+        </router-link>
     </div>
 
   </div>
@@ -49,7 +51,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 180px;
+  height: 220px;
   max-width: 850px;
   width: 50%;
   min-width: 450px;
@@ -77,7 +79,7 @@ export default {
     align-items: center;
     width: 100%;
     input {
-      width: 90%;
+      width: 100%;
       margin-right: 5px;
       padding: 5px 10px;
       border-radius: 10px;
@@ -87,12 +89,18 @@ export default {
         outline: 2px solid $primary-color;
       }
     }
+
+    
+
     .ac-btn {
      width: 60px;
      text-align: center;
      font-size: 16px;
     }
   }
+  .all {
+      margin-top: 15px;
+    }
 
 }
 
