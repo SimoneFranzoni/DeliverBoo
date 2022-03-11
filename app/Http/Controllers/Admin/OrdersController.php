@@ -8,7 +8,7 @@ use App\Plate;
 use App\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Redirect;
 
 if($_GET){
 dump($_GET);
@@ -66,16 +66,18 @@ class OrdersController extends Controller
      */
     public function store(Request $request,$idRestaurant)
     {
-        $restaurant= Restaurant::where('id',$idRestaurant)->first();
-        $data = $request->all();
+        // $restaurant= Restaurant::where('id',$idRestaurant)->first();
+        // $data = $request->all();
 
-        $newOrder = new Order();
-        $newOrder->fill($data);
-        $newOrder->slug = Order::generateSlug($newOrder->name);
-        $newOrder->restaurant_id = $restaurant->id;
-        $newOrder->save();
+        // $newOrder = new Order();
+        // $newOrder->fill($data);
+        // $newOrder->slug = Order::generateSlug($newOrder->name);
+        // $newOrder->restaurant_id = $restaurant->id;
+        // $newOrder->save();
 
-        return ;
+        // return ;
+
+        return Redirect::to('/');
     }
 
     /**

@@ -10,8 +10,9 @@
             <div class="box-ristorante">
               <h2 class="pb-3 fw-bold">Inserisci i dati per la spedizione</h2>
               <div class="row">
+                <a href="/miei-ristoranti.ordini/store">aaaaaaaaaaaaaaaaaaAAAAAAAAAA</a>
                 <!-- FORM -->
-                <form method="" action="footer.blade.php" class="form_payment">
+                <form method="POST" action=""  class="form_payment">
                   <div class="row">
                     <!-- Nome -->
                     <div class="col-6">
@@ -277,7 +278,14 @@
                     </div>
 
                     <!-- Submit -->
-                    <div class="col-12 d-flex justify-content-center">
+                    <div class="col-12 d-flex flex-column align-items-center">
+                      {{tokenApi}}
+                      <v-braintree 
+                        :authorization="tokenApi"
+                        @success="onSuccess"
+                        @error="onError"
+                        locale='it_IT'
+                      ></v-braintree>
                       <button  class="ac-btn" type="submit">
                         Vai al pagamento
                       </button>
@@ -290,6 +298,8 @@
         </div>
         <div class="col-lg-4 slider d-none d-lg-block">
           <div class="col-12 right-column">
+
+            <!-- Carrello -->
             <div class="carrello">
               <div class="row justify-content-around align-items-center">
                 <h2 class="fw-bold">
@@ -329,6 +339,18 @@
                 <div class="fw-bold">€{{ getSubTotal }}</div>
               </div>
             </div>
+
+            <!-- Fine Carrello  -->
+
+            <div class="box-pagamento mt-4">
+              <div class="box-btn d-flex flex-column align-items-center">
+
+                
+
+  
+                <!-- <button class="btn-success p-3">Conferma Pagamento</button> -->
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -346,6 +368,8 @@ export default {
   },
   data() {
     return {
+      tokenApi: '',
+      apiUrlGenerateToken: 'http://127.0.0.1:8000/api/orders/generate',
       apiUrl: "http://127.0.0.1:8000/api/ristoranti/",
       activeRestaurant: {},
       plates: [],
@@ -377,6 +401,7 @@ export default {
   mounted() {
     this.getActiveRestaurant();
     this.getTrueCart();
+    this.generateTokenApi();
     // this.getRandomNumber();
     this.codeRandom();
   },
@@ -395,6 +420,14 @@ export default {
   },
 
   methods: {
+
+    generateTokenApi(){
+      this.tokenApi = 'Sto caricando';
+      axios.get(this.apiUrlGenerateToken).then((res) => {
+        this.tokenApi = res.data.token;
+      })
+    },
+
     getActiveRestaurant() {
       this.isLoaded = false;
       this.activeRestaurant = {};
@@ -518,6 +551,15 @@ export default {
     getRandomNumber(min, max) {
       return Math.floor(Math.random() * (max - min + 1) + min);
     },
+
+    onSuccess (payload) {
+      let nonce = payload.nonce;
+      // Do something great with the nonce...
+    },
+    onError (error) {
+      let message = error.message;
+      // Whoops, an error has occured while trying to get the nonce
+    }
   },
 };
 </script>

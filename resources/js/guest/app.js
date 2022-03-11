@@ -3,6 +3,10 @@ require('../bootstrap');
 
 window.Vue = require('vue');
 window.axios = require('axios');
+
+Vue.use(vueBraintree);
+import vueBraintree from 'vue-braintree';
+
 import App from './App.vue';
 import router from './routes';
 
