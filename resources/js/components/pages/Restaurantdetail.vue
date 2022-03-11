@@ -176,7 +176,7 @@
             </div> 
         </div> 
        
-        <!--
+        
         <div v-if="responsive_cart_close">
             <a @click="toggleMenu" href="#full-screen-cart" class="d-block d-md-none carrello-mobile">
                 <div class="container-fluid">
@@ -225,8 +225,8 @@
                         <div class="d-flex justify-content-center">
                             <router-link 
                             v-if="isLoaded"
-                            
-                            class="ac-btn" :to="{name: 'restaurants', params: {slug: activeRestaurant.types[0].slug}}">
+
+                            class="ac-btn" :to="{name: 'payment', params: {slug: activeRestaurant.slug}}">
                                 Vai al pagamento
                             </router-link>
                         </div>
@@ -241,7 +241,7 @@
                         </div>
                     </div>
             </div>
-    -->
+    
     </div>
 </template>
 
