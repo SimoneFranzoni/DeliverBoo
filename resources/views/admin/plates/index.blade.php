@@ -10,7 +10,7 @@
   @endif
   {{-- info ristorante --}}
   <div class="row justify-content-between mb-5">
-    <div class="col-lg-8 mt-4">
+    {{-- <div class="col-lg-8 mt-4">
       <h1 class="restaurant-name-team5">{{$ristorante->name}}</h1>
       <div class="container-fluid">
         <div class="row">
@@ -40,7 +40,7 @@
           
         </div>
       </div>
-    </div>
+    </div> --}}
       
 
 

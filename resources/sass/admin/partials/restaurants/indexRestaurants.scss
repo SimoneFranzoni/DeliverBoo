@@ -1,15 +1,16 @@
 
   h1{
     text-align: center;
-    border-radius: 100px;
+    border-radius: 20px;
     padding:20px 0;
-    box-shadow: 0 0 10px #000000 !important;
-    color:white;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3)
+ 
   }
 .restaurant-slider-team5{
-  box-shadow:inset 0 0 10px #000000 !important;
+  // box-shadow:inset 0 0 10px #000000 !important;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.3);
   height :322px;
-  background-color:rgba($color: #ffffff, $alpha: 0.3);
+  // background-color:rgba($color: #ffffff, $alpha: 0.3);
   border-radius: 20px;
   scrollbar-width: none;
   overflow-y: scroll;
@@ -19,17 +20,19 @@
 .card-team5{
   color:$primary-color;
   width: 90%;
-  margin: 30px auto;
-  border-radius:200px;
-  background-image: linear-gradient(to left,#00f3ff0a,white);
+  padding-bottom:20px;
+  margin: 20px auto;
+  border-bottom:1px solid grey;
+  // border-radius:200px;
+  // background-image: linear-gradient(to left,#00f3ff0a,white);
   h3{
     margin:0px;
     padding: 5px 20px;
 
     &:hover{
       transform: scale(1.1) !important;
-      border-radius: 25px;
-      box-shadow: 10px 0 5px -2px #888;
+      // border-radius: 25px;
+      // box-shadow: 10px 0 5px -2px #888;
     }
     transition: all 0.2s;
     a{
