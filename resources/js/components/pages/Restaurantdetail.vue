@@ -176,7 +176,7 @@
             </div> 
         </div> 
        
-        
+        <!--
         <div v-if="responsive_cart_close">
             <a @click="toggleMenu" href="#full-screen-cart" class="d-block d-md-none carrello-mobile">
                 <div class="container-fluid">
@@ -190,7 +190,7 @@
                 </div>
             </a>    
         </div>
-        
+     
         <div v-else id="full-screen-cart">
             <div @click="toggleMenu" class="close-cart-btn">
                 <div>X</div>
@@ -241,7 +241,7 @@
                         </div>
                     </div>
             </div>
-
+    -->
     </div>
 </template>
 
