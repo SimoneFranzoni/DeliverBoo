@@ -279,28 +279,38 @@
 
                     <!-- Submit -->
                     <div class="col-12 d-flex flex-column align-items-center">
-                      {{tokenApi}}
-                      <v-braintree
+                      <div v-if="isLoading">
+
+                    </div>
+                      <div v-else>
+                        <v-braintree
                         :authorization="tokenApi"
                         locale="it_IT"
                         @success="onSuccess"
                         @error="onError"
                       >
-                        <template #button="slotProps">
-                          <button 
-                          @click="slotProps.submit" 
-                          ref="paymentBtnRef"  />
-                        </template>
+                      <template #button="slotProps">
+                        <button 
+                        @click="slotProps.submit" 
+                        ref="paymentBtnRef" 
+                        class="d-none" />
+                      </template>
                       
                       </v-braintree>
-                      <!-- v-if="!disableBuyButton" -->
+                        <!-- v-if="!disableBuyButton" -->
                       <button
-                        
-                        class="w-full btn-success"
+                        class="w-full btn-success mt-5"
                         @click.prevent="beforeBuy"
                       >
                         Procedi con l'acquisto 🎉
                       </button>
+
+                      <div class="trans-ok"
+                      v-if="transOk">
+                        <p>Transazione Inviata</p>
+                      </div>
+                    </div>
+                      
                       <!-- <button  class="ac-btn" type="submit">
                         Vai al pagamento
                       </button> -->
@@ -384,6 +394,8 @@ export default {
   },
   data() {
     return {
+      transOk: 'false',
+      isLoading: true,
       tokenApi: '',
       apiUrlGenerateToken: '/api/orders/generate',
       apiMakePayment: '/api/orders/makepayment',
@@ -413,6 +425,7 @@ export default {
         note: "",
         total: "",
         hiddenInput: false,
+        
       
 
       //   FORM
@@ -446,6 +459,7 @@ export default {
       
       axios.get(this.apiUrlGenerateToken).then((res) => {
         this.tokenApi = res.data.token;
+        this.isLoading = false;
       })
       .catch((error) => {
         console.log(error);
@@ -453,6 +467,7 @@ export default {
     },
 
     getActiveRestaurant() {
+      this.transOk= false;
       this.isLoaded = false;
       this.activeRestaurant = {};
       axios.get(this.apiUrl + this.$route.params.slug).then((res) => {
@@ -598,8 +613,9 @@ export default {
 
     buy(){
       axios.post(this.apiMakePayment, {
+        
         token: this.token,
-        restaurant_id: cart[0].restaurant_id,
+        restaurant_id: this.cart[0].restaurant_id,
         name: this.name,
         surname: this.lastname,
         address: this.address,
@@ -613,7 +629,8 @@ export default {
         total_price: this.subTotal,
         cart: this.cart,
       }).then((res) => {
-        
+        this.transOk= true,
+        console.log('click res' ,res);
 
       });
     }

@@ -2462,6 +2462,16 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Payment",
@@ -2470,6 +2480,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   },
   data: function data() {
     return {
+      transOk: 'false',
+      isLoading: true,
       tokenApi: '',
       apiUrlGenerateToken: '/api/orders/generate',
       apiMakePayment: '/api/orders/makepayment',
@@ -2538,6 +2550,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
       axios.get(this.apiUrlGenerateToken).then(function (res) {
         _this.tokenApi = res.data.token;
+        _this.isLoading = false;
       })["catch"](function (error) {
         console.log(error);
       });
@@ -2545,6 +2558,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     getActiveRestaurant: function getActiveRestaurant() {
       var _this2 = this;
 
+      this.transOk = false;
       this.isLoaded = false;
       this.activeRestaurant = {};
       axios.get(this.apiUrl + this.$route.params.slug).then(function (res) {
@@ -2670,9 +2684,11 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       var message = error.message; // Whoops, an error has occured while trying to get the nonce
     },
     buy: function buy() {
+      var _this3 = this;
+
       axios.post(this.apiMakePayment, {
         token: this.token,
-        restaurant_id: cart[0].restaurant_id,
+        restaurant_id: this.cart[0].restaurant_id,
         name: this.name,
         surname: this.lastname,
         address: this.address,
@@ -2685,7 +2701,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         note: this.note,
         total_price: this.subTotal,
         cart: this.cart
-      }).then(function (res) {});
+      }).then(function (res) {
+        _this3.transOk = true, console.log('click res', res);
+      });
     }
   }
 });
@@ -64362,51 +64380,68 @@ var render = function () {
                             "col-12 d-flex flex-column align-items-center",
                         },
                         [
-                          _vm._v(
-                            "\n                    " +
-                              _vm._s(_vm.tokenApi) +
-                              "\n                    "
-                          ),
-                          _c("v-braintree", {
-                            attrs: {
-                              authorization: _vm.tokenApi,
-                              locale: "it_IT",
-                            },
-                            on: { success: _vm.onSuccess, error: _vm.onError },
-                            scopedSlots: _vm._u([
-                              {
-                                key: "button",
-                                fn: function (slotProps) {
-                                  return [
-                                    _c("button", {
-                                      ref: "paymentBtnRef",
-                                      on: { click: slotProps.submit },
-                                    }),
-                                  ]
-                                },
-                              },
-                            ]),
-                          }),
-                          _vm._v(" "),
-                          _c(
-                            "button",
-                            {
-                              staticClass: "w-full btn-success",
-                              on: {
-                                click: function ($event) {
-                                  $event.preventDefault()
-                                  return _vm.beforeBuy.apply(null, arguments)
-                                },
-                              },
-                            },
-                            [
-                              _vm._v(
-                                "\n                      Procedi con l'acquisto 🎉\n                    "
+                          _vm.isLoading
+                            ? _c("div")
+                            : _c(
+                                "div",
+                                [
+                                  _c("v-braintree", {
+                                    attrs: {
+                                      authorization: _vm.tokenApi,
+                                      locale: "it_IT",
+                                    },
+                                    on: {
+                                      success: _vm.onSuccess,
+                                      error: _vm.onError,
+                                    },
+                                    scopedSlots: _vm._u([
+                                      {
+                                        key: "button",
+                                        fn: function (slotProps) {
+                                          return [
+                                            _c("button", {
+                                              ref: "paymentBtnRef",
+                                              staticClass: "d-none",
+                                              on: { click: slotProps.submit },
+                                            }),
+                                          ]
+                                        },
+                                      },
+                                    ]),
+                                  }),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "w-full btn-success mt-5",
+                                      on: {
+                                        click: function ($event) {
+                                          $event.preventDefault()
+                                          return _vm.beforeBuy.apply(
+                                            null,
+                                            arguments
+                                          )
+                                        },
+                                      },
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                      Procedi con l'acquisto 🎉\n                    "
+                                      ),
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _vm.transOk
+                                    ? _c("div", { staticClass: "trans-ok" }, [
+                                        _c("p", [
+                                          _vm._v("Transazione Inviata"),
+                                        ]),
+                                      ])
+                                    : _vm._e(),
+                                ],
+                                1
                               ),
-                            ]
-                          ),
-                        ],
-                        1
+                        ]
                       ),
                     ]),
                   ]

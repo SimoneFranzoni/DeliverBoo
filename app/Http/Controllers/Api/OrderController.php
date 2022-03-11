@@ -22,14 +22,16 @@ class OrderController extends Controller
         }
 
     public function makePayment(Request $request, Gateway $gateway){
+
+
+        $request->validate($this->validationData(), $this->validationError());
+
+
     //Prendo tutti i dati che arrivano dal Form del pagamento
         $data=$request->all();
-
-
-
         $result=$gateway->transaction()->sale([
-            'amount' => $request->amount,
-            'paymentMethodNonce' => $request->token,
+            'amount' => $request->total_price,
+            'paymentMethodNonce' => 'fake-valid-nonce',
             'options'=> [
                 'submitForSettlement' => true,
             ],
@@ -50,7 +52,8 @@ class OrderController extends Controller
             $new_order->email = $data['email'];
             $new_order->note = $data['note'];
             $new_order->total_price = $data['total_price'];
-            $new_order->slug = Order::generateSlug($new_order->name);
+            $new_order->slug = 'grazie-Luigi';
+            // $new_order->slug = Order::generateSlug($new_order->name);
             $new_order->save();
 
             //Per a tabella Plate_order
@@ -63,7 +66,7 @@ class OrderController extends Controller
                 'success'=>true,
                 'message' => 'Operazione eseguita con successo',
             ];
-            return response()->json($data);
+            return response()->json($data2);
         } else {
             $data = [
                 'success' => false,
@@ -71,5 +74,42 @@ class OrderController extends Controller
             ];
             return response()->json($data);
         }
+    }
+
+
+
+    public function validationData(){
+        return[
+            'restaurant_id' => 'required',
+            'name' => 'required',
+            'surname' => 'required',
+            'address' => 'required',
+            'CAP' => 'required',
+            'city' => 'required',
+            'province' => 'required',
+            'phone' => 'required',
+            'doorbell' => 'required',
+            'email' => 'required',
+            'note' => 'required',
+            'total_price' => 'required'
+        ]; 
+    }
+
+    public function validationError(){
+        return[
+            'restaurant_id.required' => 'Errore in IdRistorante',
+            'name.required' => 'Errore in name',
+            'total_price.required' => 'Errore in prezzo totale',
+            'surname.required' => 'Errore in cognome',
+            'address.required' => 'Errore in indirizzo',
+            'CAP.required' => 'Errore in cap',
+            'city.required' => 'Errore in città',
+            'province.required' => 'Errore in provincia',
+            'phone.required' => 'Errore in telefono',
+            'doorbell.required' => 'Errore in doorbell',
+            'email.required' => 'Errore in email',
+            'note.required' => 'Errore in note',
+
+        ];
     }
 }
