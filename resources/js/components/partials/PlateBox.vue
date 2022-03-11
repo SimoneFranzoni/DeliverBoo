@@ -12,11 +12,8 @@
           <div class="cart">
             <i class="fas fa-shopping-cart"></i>
 
-            <span id="add"
-            @click="saveItem(plate, string ='più')">+</span> 
-            
-            <span id="remove"  @click="saveItem(plate, string = 'meno')">-</span>
-
+            <span id="remove" @click="saveItem(plate, string = 'meno')">-</span>
+            <span id="add" @click="saveItem(plate, string ='più')">+</span> 
           </div>
 
       </div>
