@@ -10149,6 +10149,10 @@ footer .footer-top .footer-section.social i {
 footer .footer-top .footer-section.social i:hover {
   color: #a7aeae;
 }
+footer .footer-top .footer-section.help small {
+  font-size: small;
+  color: #737c7c;
+}
 footer .footer-bot {
   margin: 0;
   padding: 0;

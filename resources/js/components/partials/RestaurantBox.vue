@@ -41,6 +41,13 @@ export default {
     props: {
       restaurant: Object, 
       types: Array
+    },
+    methods: {
+      confirmChange() {
+        if (JSON.parse(localStorage.getItem('items'))[0].restaurant_id != restaurant.id) {
+          return confirm('Attenzione! Se cambi ristorante perderai quello che hai messo nel carrello.') 
+        }  
+      }
     }
 }
 </script>

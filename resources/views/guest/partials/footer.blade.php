@@ -27,11 +27,15 @@
 
       <div class="col-sm-12 col-md-3">
         <div class="footer-section help">
-          <h4>Hai bisogno di aiuto?</h4>
+          <h4>Lo staff</h4>
           <ul>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">Mappa del sito</a></li>
+            <li><a href="https://www.linkedin.com/in/alberto-nicola-ciufici/" target="_blank">Alberto Ciufici</a></li>
+            <li><a href="https://www.linkedin.com/in/simone-pancione-733152231/" target="_blank">Simone Pancione</a></li>
+            <li><a href="#">Francesco Lucco</a></li>
+            <li><a href="https://www.linkedin.com/in/davide-carta-a327a8230/" target="_blank">Davide Carta</a></li>
+            <li><a href="https://www.linkedin.com/in/simone-franzoni-72850222a/" target="_blank">Simone Franzoni</a></li>
           </ul>
+          <small>Si ringraziano i compagni del Team 3 per l'idea &hearts;</small>
         </div>
       </div>
       <div class="col-sm-12 col-md-3">
