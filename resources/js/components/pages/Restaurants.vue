@@ -72,7 +72,7 @@
               v-for="(restaurant, index) in activeRestaurants"
               :key="`restaurant${index}`"
               :restaurant="restaurant"
-              :type="activeType"
+
             />
           </div>
         </div>

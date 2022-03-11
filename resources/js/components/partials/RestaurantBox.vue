@@ -10,8 +10,10 @@
       <div class="row">
         <div class="col-6">
           <div class="name">
-            {{restaurant.name}}
-            <!-- <small>Tipologia: {{type.name}}</small> -->
+            {{restaurant.name}} <br>
+            <small v-if="this.$route.name==='restaurantsAll'">
+              Tipologia: <small v-for="(type, index) in restaurant.types" :key="`alltypes${index}`">{{type.name}}</small>  
+            </small>
           </div>
           <div class="città">
             {{restaurant.city}}
@@ -38,7 +40,7 @@ export default {
     name:'RestaurantBox',
     props: {
       restaurant: Object, 
-      type: Object
+      types: Array
     }
 }
 </script>
@@ -91,7 +93,6 @@ export default {
     .name{
       font-size: 20px;
       small {
-        display: block;
         font-style: italic;
         font-size: 12px;
         padding-bottom: 10px;

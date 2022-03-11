@@ -74,7 +74,7 @@
               v-for="(restaurant, index) in restaurants"
               :key="`restaurant${index}`"
               :restaurant="restaurant"
-              :type="activeType"
+              :types="types"
             />
           </div>
         </div>
