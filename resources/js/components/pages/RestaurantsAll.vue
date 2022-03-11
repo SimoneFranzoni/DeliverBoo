@@ -1,30 +1,12 @@
 <template>
   <div class="wrapper">
     <div class="container">
-      <div>Scelti per te</div>
-      <div class="row types-row pb-4">
-        <div
-          class="typebox"
-          v-for="(type, index) in randomTypes"
-          :key="`randomType${index}`"
-          @click="
-            changeActiveRestaurants(type),
-              (randomTypeCounter = index),
-              (counter = -1)
-          "
-          :class="{ active: randomTypeCounter === index }"
-        >
-          <div class="boximg_f">
-            <img :src="type.img" :alt="type.name" />
-          </div>
-          <div class="title">{{ type.name }}</div>
-        </div>
-      </div>
+      
       <div class="row">
         <div class="d-none d-lg-block col-3 filter-column">
           <div>Tutte le cucine (A, Z)</div>
           <ul class="filter-list">
-            <li
+            <router-link :to="{name: 'restaurants', params: {slug: type.slug}}"
               v-for="(type, index) in types"
               :key="`type${index}`"
               @click="
@@ -35,13 +17,13 @@
               :class="{ active: counter === index }"
             >
               {{ type.name }}
-            </li>
+            </router-link>
           </ul>
         </div>
 
         <div v-if="filter_close">
           <div @click="toggleMenu" class="filter d-block d-lg-none ml-3">
-            <i class="fas fa-filter"></i>
+            <i class="fas fa-filter"></i> Filtra
           </div>
         </div>
         <div v-else>
@@ -49,30 +31,33 @@
             <div @click="toggleMenu" class="filter">X</div>
             <div>Tutte le cucine (A, Z)</div>
             <ul class="filter-list">
-              <li
-                v-for="(type, index) in types"
-                :key="`type2${index}`"
-                @click="changeActiveRestaurants(type), (counter = index)"
-                :class="{ active: counter === index }"
-                class="mx-2"
+              <router-link :to="{name: 'restaurants', params: {slug: type.slug}}"
+              v-for="(type, index) in types"
+              :key="`type${index}`"
+              @click="
+                changeActiveRestaurants(type),
+                  (counter = index),
+                  (randomTypeCounter = -1)
+              "
+              :class="{ active: counter === index }"
               >
                 {{ type.name }}
-              </li>
+              </router-link>
             </ul>
           </div>
         </div>
 
         <div class="col-12 col-lg-9 restaurant-column">
           <div class="pt-4">
-            {{ activeRestaurants.length }} risultati trovati
+            {{ restaurants.length }} risultati trovati
           </div>
 
           <div class="restaurant-box-row">
             <RestaurantBox
-              v-for="(restaurant, index) in activeRestaurants"
+              v-for="(restaurant, index) in restaurants"
               :key="`restaurant${index}`"
               :restaurant="restaurant"
-
+              :types="types"
             />
           </div>
         </div>
@@ -97,9 +82,9 @@ export default {
     return {
       types: [],
       randomTypes: [],
-      activeRestaurants: [],
-      activeRestaurantsUrl:
-        "http://127.0.0.1:8000/api/ristoranti/tiporistorante/",
+      restaurants: [],
+      restaurantsUrl:
+        "http://127.0.0.1:8000/api/ristoranti/",
       activeType: {},
       counter: -1,
       filter_close: true,
@@ -138,14 +123,13 @@ export default {
     },
     getActiveRestaurants() {
       this.isLoaded = false;
-      this.activeRestaurants = [];
+      this.restaurants = [];
       this.activeType = {};
       axios
-        .get(this.activeRestaurantsUrl + this.$route.params.slug)
+        .get(this.restaurantsUrl)
         .then((res) => {
-          this.activeRestaurants = res.data.type.restaurants;
+          this.restaurants = res.data.restaurants;
           this.isLoaded = true;
-          if (this.isLoaded) this.activeType = res.data.type;
         });
     },
     changeActiveRestaurants(type) {
@@ -186,11 +170,14 @@ export default {
   }
 
   .filter-list {
-    li {
+    display: flex;
+    flex-direction: column;
+    li, a, a:visited {
+      color: black;
       border-radius: 20px;
       border: 0.5px solid grey;
       padding: 10px;
-      margin: 10px 0;
+      margin: 5px 0;
       z-index: 3;
       cursor: pointer;
       transition: all 0.2s;

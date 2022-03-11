@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class RestaurantController extends Controller
 {
     public function index(){
-        $restaurants = Restaurant::all();
+        $restaurants = Restaurant::with('types')->get();
         $restaurants->each(function($restaurant){
             $restaurant->cover = $this->makeImagePath($restaurant->cover);
         });

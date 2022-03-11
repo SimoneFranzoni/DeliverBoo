@@ -10,8 +10,10 @@
       <div class="row">
         <div class="col-6">
           <div class="name">
-            {{restaurant.name}}
-            <small>Tipologia: {{type.name}}</small>
+            {{restaurant.name}} <br>
+            <small v-if="this.$route.name==='restaurantsAll'">
+              Tipologia: <small v-for="(type, index) in restaurant.types" :key="`alltypes${index}`">{{type.name}}</small>  
+            </small>
           </div>
           <div class="città">
             {{restaurant.city}}
@@ -38,7 +40,7 @@ export default {
     name:'RestaurantBox',
     props: {
       restaurant: Object, 
-      type: Object
+      types: Array
     }
 }
 </script>
@@ -71,12 +73,9 @@ export default {
 
     }
 
-    .restaurant-img{
-      //background-image: url(".../public/img/pexels-marcus-herzberg-1058277.jpg");
-      // background-color: $primary-color; 
+    .restaurant-img{ 
       max-height: 110px;
       width: 25%;
-      // margin-left: 10px;
       border-radius: 15px;
 
       img {
@@ -91,7 +90,6 @@ export default {
     .name{
       font-size: 20px;
       small {
-        display: block;
         font-style: italic;
         font-size: 12px;
         padding-bottom: 10px;
