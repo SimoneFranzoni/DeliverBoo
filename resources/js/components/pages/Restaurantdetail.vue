@@ -278,32 +278,32 @@ export default {
 
       getAntipasti: function() {
         return this.activeRestaurant.plates.filter(function(plate) {
-          return plate.category === 'Antipasto'
+          return (plate.category === 'Antipasto' && plate.is_available === 1)
         })
       },  
       getPrimi: function() {
         return this.activeRestaurant.plates.filter(plate => {
-          return plate.category === 'Primo'
+          return (plate.category === 'Primo' && plate.is_available === 1)
         })
       },  
       getSecondi: function() {
         return this.activeRestaurant.plates.filter(plate => {
-          return plate.category === 'Secondo'
+          return (plate.category === 'Secondo' && plate.is_available === 1)
         })
       },  
       getContorni: function() {
         return this.activeRestaurant.plates.filter(plate => {
-          return plate.category === 'Contorno'
+          return (plate.category === 'Contorno' && plate.is_available === 1)
         })
       },  
       getFrutta: function() {
         return this.activeRestaurant.plates.filter(plate => {
-          return plate.category === 'Frutta'
+          return (plate.category === 'Frutta' && plate.is_available === 1)
         })
       },  
       getDessert: function() {
         return this.activeRestaurant.plates.filter(plate => {
-          return plate.category === 'Dessert';
+          return (plate.category === 'Dessert' && plate.is_available === 1)
         })
       },  
 
