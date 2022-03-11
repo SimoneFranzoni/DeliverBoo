@@ -11,12 +11,8 @@
 
           <div class="cart">
             <i class="fas fa-shopping-cart"></i>
-
-            <span id="add"
-            @click="saveItem(plate, string ='più')">+</span> 
-            
-            <span id="remove"  @click="saveItem(plate, string = 'meno')">-</span>
-
+            <span id="remove" @click="saveItem(plate, string = 'meno')">-</span>
+            <span id="add" @click="saveItem(plate, string ='più')">+</span> 
           </div>
 
       </div>
@@ -89,12 +85,12 @@ export default {
     }
 
     .name{
-        font-weight: bold;
-        font-size: 20px;
+      font-weight: bold;
+      font-size: 20px;
     }
 
     .price{
-        font-weight: bold;
+      font-weight: bold;
     }
 
     .price, .cart {
@@ -107,15 +103,32 @@ export default {
       width: 150px;
       font-size: 18px;
       color: $primary-color;
+
       i {
         padding-right: 5px;
       }
+
       span {
         color: black;
+        height: 10px;
+        padding: 0 8px;
         border: 1px solid black;
-        padding: 5px 12px;
         border-radius: 7px;
+        
+        &:hover{
+          color: $primary-color;
+          border: 1px solid $primary-color;
+        }
       }
+
+      #add{
+        padding: 0 8px;
+      }
+
+      #remove{
+        padding: 0 9px;
+      }
+
     }
 
     .right {
@@ -141,5 +154,6 @@ export default {
     span.disabled{
       pointer-events: none;
     }
+
   }
 </style>

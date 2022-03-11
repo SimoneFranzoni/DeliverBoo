@@ -294,8 +294,6 @@ export default {
   .types-row {
     width: 100%;
     height: 150px;
-    //allinea le box con il titolo sopra
-    margin: 0 1px;
     padding: 10px;
     display: flex;
     justify-content: space-between;

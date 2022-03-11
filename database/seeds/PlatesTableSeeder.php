@@ -17,7 +17,7 @@ class PlatesTableSeeder extends Seeder
     // $categories = [
     //   'Antipasto', 'Primo', 'Secondo', 'Contorno', 'Frutta', 'Dessert'
     // ];
-    for ($i = 0; $i < 10; $i++) {
+    // for ($i = 0; $i < 10; $i++) {
 
 
       
@@ -30,7 +30,7 @@ class PlatesTableSeeder extends Seeder
         $newPlate->category = $plate['category'];
 
         if ($newPlate->category === 'Antipasto') {
-          $numberPlateRandom = $this->getRandomNumber(442, 473);
+          $numberPlateRandom = $this->getRandomNumber(445, 473);
           $newPlate->cover = $this->getImgRestaurant($numberPlateRandom);
           $newPlate->cover_original_name = 'plate (' . $numberPlateRandom . ').jpg';
         } elseif ($newPlate->category === 'Primo') {
@@ -80,7 +80,7 @@ class PlatesTableSeeder extends Seeder
       //   $newPlate->category = $categories[array_rand($categories, 1)];
       //   $newPlate->save();
       // }
-    }
+    // }
   }
 
   public function getRandomNumber($min, $max)

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,6 +36,13 @@ Route::middleware('auth')
         Route::resource('miei-ristoranti.piatti','RestaurantPlatesController');
 
         // Rette ordini
+        
+    });
+
+    Route::namespace('Admin')
+    ->name('admin.')
+    ->prefix('review')
+    ->group(function(){
         Route::resource('miei-ristoranti.ordini','OrdersController');
     });
 
