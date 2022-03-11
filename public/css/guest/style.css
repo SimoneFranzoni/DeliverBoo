@@ -10078,10 +10078,12 @@ a, a:hover, a:visited {
   border-radius: 10px;
   background-color: #45CCBC;
   color: white;
+  transition: transform 0.1s;
 }
 .ac-btn:hover {
+  transform: scale(1.05, 1.05);
   color: white;
-  background-color: #45CCBC;
+  background-color: #2e5a55;
 }
 
 .dropdown-item.ac-btn {
