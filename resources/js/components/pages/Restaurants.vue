@@ -240,6 +240,9 @@ export default {
     z-index: 2000;
     overflow-y: auto;
     margin: 20px 0;
+    .filter-list {
+      z-index: 2000;
+    }
   }
 
   .restaurant-column {
