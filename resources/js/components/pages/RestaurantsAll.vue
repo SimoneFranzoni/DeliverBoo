@@ -1,26 +1,6 @@
 <template>
   <div class="wrapper">
     <div class="container">
-      <!-- <div>Scelti per te</div> -->
-      <!-- <div class="row types-row pb-4">
-          <router-link :to="{name: 'restaurants', params: {slug: type.slug}}"
-            class="typebox"
-            v-for="(type, index) in randomTypes"
-            :key="`randomType${index}`"
-            @click="
-              changeActiveRestaurants(type),
-                (randomTypeCounter = index),
-                (counter = -1)
-            "
-            :class="{ active: randomTypeCounter === index }"
-          >
-            <div class="boximg_f">
-              <img :src="type.img" :alt="type.name" />
-            </div>
-            <div class="title">{{ type.name }}</div>
-          </router-link>
-
-      </div> -->
       
       <div class="row">
         <div class="d-none d-lg-block col-3 filter-column">
@@ -43,7 +23,7 @@
 
         <div v-if="filter_close">
           <div @click="toggleMenu" class="filter d-block d-lg-none ml-3">
-            <i class="far fa-filter"></i>
+            <i class="fas fa-filter"></i> Filtra
           </div>
         </div>
         <div v-else>
@@ -51,15 +31,18 @@
             <div @click="toggleMenu" class="filter">X</div>
             <div>Tutte le cucine (A, Z)</div>
             <ul class="filter-list">
-              <li
-                v-for="(type, index) in types"
-                :key="`type2${index}`"
-                @click="changeActiveRestaurants(type), (counter = index)"
-                :class="{ active: counter === index }"
-                class="mx-2"
+              <router-link :to="{name: 'restaurants', params: {slug: type.slug}}"
+              v-for="(type, index) in types"
+              :key="`type${index}`"
+              @click="
+                changeActiveRestaurants(type),
+                  (counter = index),
+                  (randomTypeCounter = -1)
+              "
+              :class="{ active: counter === index }"
               >
                 {{ type.name }}
-              </li>
+              </router-link>
             </ul>
           </div>
         </div>
@@ -228,7 +211,7 @@ export default {
     cursor: pointer;
     text-align: center;
     margin-bottom: 15px;
-    padding: 8px 10px;
+    padding: 5px;
     border-radius: 10px;
     width: 70px;
     height: 35px;

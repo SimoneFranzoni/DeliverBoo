@@ -10,20 +10,21 @@
             <div class="box-ristorante">
               <h2 class="pb-3 fw-bold">Inserisci i dati per la spedizione</h2>
               <div class="row">
+                
                 <!-- FORM -->
-                <form method="" action="footer.blade.php" class="form_payment">
+                <form method="POST" action=""  class="form_payment">
                   <div class="row">
                     <!-- Nome -->
                     <div class="col-6">
                       <label
-                        for="validationCustom01"
+                        for="name"
                         class="form-label fw-bold fw-bold"
                         >Nome</label
                       >
                       <input
                         type="text"
                         class="form-control"
-                        id="validationCustom01"
+                        id="name"
                         v-model="name"
                         name="name"
                         placeholder="Inserisci il nome"
@@ -34,13 +35,13 @@
 
                     <!-- Cognome -->
                     <div class="col-6">
-                      <label for="validationCustom02" class="form-label fw-bold"
+                      <label for="lastname" class="form-label fw-bold"
                         >Cognome</label
                       >
                       <input
                         type="text"
                         class="form-control"
-                        id="validationCustom02"
+                        id="lastname"
                         name="lastname"
                         v-model="lastname"
                         placeholder="Inserisci il cognome"
@@ -51,13 +52,13 @@
 
                     <!-- Città -->
                     <div class="col-6">
-                      <label for="validationCustom02" class="form-label fw-bold"
+                      <label for="address" class="form-label fw-bold"
                         >Indirizzo:</label
                       >
                       <input
                         type="text"
                         class="form-control"
-                        id="validationCustom02"
+                        id="address"
                         name="address"
                         v-model="address"
                         placeholder="Inserisci un indirizzo"
@@ -70,13 +71,13 @@
 
                     <!-- CAP -->
                     <div class="col-6">
-                      <label for="validationCustom02" class="form-label fw-bold"
+                      <label for="cap" class="form-label fw-bold"
                         >CAP:</label
                       >
                       <input
                         type="text"
                         class="form-control"
-                        id="validationCustom02"
+                        id="cap"
                         name="cap"
                         v-model="cap"
                         placeholder="Inserisci un CAP"
@@ -89,13 +90,13 @@
 
                     <!-- Città -->
                     <div class="col-6">
-                      <label for="validationCustom02" class="form-label fw-bold"
+                      <label for="city" class="form-label fw-bold"
                         >Città:</label
                       >
                       <input
                         type="text"
                         class="form-control"
-                        id="validationCustom02"
+                        id="city"
                         name="city"
                         v-model="city"
                         placeholder="Inserisci una città"
@@ -108,13 +109,13 @@
 
                     <!-- Provincia -->
                     <div class="col-6">
-                      <label for="validationCustom02" class="form-label fw-bold"
+                      <label for="province" class="form-label fw-bold"
                         >Provincia:</label
                       >
                       <input
                         type="text"
                         class="form-control"
-                        id="validationCustom02"
+                        id="province"
                         name="province"
                         v-model="province"
                         placeholder="Inserisci una provincia"
@@ -128,13 +129,13 @@
 
                     <!-- Cellulare -->
                     <div class="col-6">
-                      <label for="validationCustom02" class="form-label fw-bold"
+                      <label for="phone" class="form-label fw-bold"
                         >Telefono:</label
                       >
                       <input
                         type="text"
                         class="form-control"
-                        id="validationCustom02"
+                        id="phone"
                         name="phone"
                         v-model="phone"
                         placeholder="Inserisci un numero di telefono"
@@ -147,13 +148,13 @@
 
                     <!-- Campanello -->
                     <div class="col-6">
-                      <label for="validationCustom02" class="form-label fw-bold"
+                      <label for="doorbell" class="form-label fw-bold"
                         >Nome sul campanello:</label
                       >
                       <input
                         type="text"
                         class="form-control"
-                        id="validationCustom02"
+                        id="doorbell"
                         name="doorbell"
                         v-model="doorbell"
                         placeholder="Famiglia Rossi"
@@ -167,14 +168,14 @@
                     <!-- Mail -->
                     <div class="col-12">
                       <label
-                        for="exampleFormControlInput1"
+                        for="email"
                         class="form-label fw-bold"
                         >Email</label
                       >
                       <input
                         type="email"
                         class="form-control"
-                        id="exampleFormControlInput1"
+                        id="email"
                         name="email"
                         v-model="email"
                         placeholder="name@example.com"
@@ -184,13 +185,13 @@
                     <!-- Text Area -->
                     <div class="col-12">
                       <label
-                        for="exampleFormControlTextarea1"
+                        for="note"
                         class="form-label fw-bold"
                         >Notazioni sull'ordine:</label
                       >
                       <textarea
                         class="form-control"
-                        id="exampleFormControlTextarea1"
+                        id="note"
                         name="note"
                         v-model="note"
                         rows="3"
@@ -200,13 +201,13 @@
                     <!-- CAMPI NASCOSTI -->
                     <!-- Totale -->
                     <div class="col-6 invisible">
-                      <label for="validationCustom02" class="form-label fw-bold"
+                      <label for="total" class="form-label fw-bold"
                         >Totale:</label
                       >
                       <input
                         type="text"
                         class="form-control"
-                        id="validationCustom02"
+                        id="total"
                         name="total"
                         v-model="getSubTotal"
                         placeholder="Inserisci una provincia"
@@ -272,15 +273,47 @@
                     <div class="total-text row text-center pt-4">
                       <h4 class="fw-bold">
                         TOTALE:
-                        <span class="total-pay">€{{ getSubTotal }}</span>
+                        <span class="total-pay">€{{ subTotal }}</span>
                       </h4>
                     </div>
 
                     <!-- Submit -->
-                    <div class="col-12 d-flex justify-content-center">
-                      <button  class="ac-btn" type="submit">
-                        Vai al pagamento
+                    <div class="col-12 d-flex flex-column align-items-center">
+                      <div v-if="isLoading">
+
+                    </div>
+                      <div v-else>
+                        <v-braintree
+                        :authorization="tokenApi"
+                        locale="it_IT"
+                        @success="onSuccess"
+                        @error="onError"
+                      >
+                      <template #button="slotProps">
+                        <button 
+                        @click="slotProps.submit" 
+                        ref="paymentBtnRef" 
+                        class="d-none" />
+                      </template>
+                      
+                      </v-braintree>
+                        <!-- v-if="!disableBuyButton" -->
+                      <button
+                        class="w-full btn-success mt-5"
+                        @click.prevent="beforeBuy"
+                      >
+                        Procedi con l'acquisto 🎉
                       </button>
+
+                      <div class="trans-ok"
+                      v-if="transOk">
+                        <p>Transazione Inviata</p>
+                      </div>
+                    </div>
+                      
+                      <!-- <button  class="ac-btn" type="submit">
+                        Vai al pagamento
+                      </button> -->
                     </div>
                   </div>
                 </form>
@@ -290,6 +323,8 @@
         </div>
         <div class="col-lg-4 slider d-none d-lg-block">
           <div class="col-12 right-column">
+
+            <!-- Carrello -->
             <div class="carrello">
               <div class="row justify-content-around align-items-center">
                 <h2 class="fw-bold">
@@ -326,13 +361,26 @@
                 "
               >
                 <div class="fw-bold">Totale</div>
-                <div class="fw-bold">€{{ getSubTotal }}</div>
+                <div class="fw-bold">€{{ subTotal }}</div>
+              </div>
+            </div>
+
+            <!-- Fine Carrello  -->
+
+            <div class="box-pagamento mt-4">
+              <div class="box-btn d-flex flex-column align-items-center">
+
+                
+
+  
+                <!-- <button class="btn-success p-3">Conferma Pagamento</button> -->
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    
   </div>
 </template>
 
@@ -346,6 +394,11 @@ export default {
   },
   data() {
     return {
+      transOk: 'false',
+      isLoading: true,
+      tokenApi: '',
+      apiUrlGenerateToken: '/api/orders/generate',
+      apiMakePayment: '/api/orders/makepayment',
       apiUrl: "http://127.0.0.1:8000/api/ristoranti/",
       activeRestaurant: {},
       plates: [],
@@ -358,25 +411,31 @@ export default {
       isCart: true,
       alphabet: "QWERTYUIOPLKJHGFDSAZXCVBNM",
       codeOrder: '',
+      
+        token: "",
+        name: "",
+        lastname: "",
+        address: "",
+        city: "",
+        cap: null,
+        province: "",
+        phone: "",
+        doorbell: "",
+        email: "",
+        note: "",
+        total: "",
+        hiddenInput: false,
+        
+      
 
       //   FORM
-      name: "",
-      lastname: "",
-      address: "",
-      city: "",
-      cap: null,
-      province: "",
-      phone: "",
-      doorbell: "",
-      email: "",
-      note: "",
-      total: "",
-      hiddenInput: false,
+      
     };
   },
   mounted() {
     this.getActiveRestaurant();
     this.getTrueCart();
+    this.generateTokenApi();
     // this.getRandomNumber();
     this.codeRandom();
   },
@@ -395,7 +454,20 @@ export default {
   },
 
   methods: {
+
+    generateTokenApi(){
+      
+      axios.get(this.apiUrlGenerateToken).then((res) => {
+        this.tokenApi = res.data.token;
+        this.isLoading = false;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    },
+
     getActiveRestaurant() {
+      this.transOk= false;
       this.isLoaded = false;
       this.activeRestaurant = {};
       axios.get(this.apiUrl + this.$route.params.slug).then((res) => {
@@ -423,7 +495,7 @@ export default {
     },
 
     getTrueCart() {
-      console.log("cart all avvio", this.cart);
+      console.log("cart all avvio da getTrueCart", this.cart);
       if (!this.cart) {
         this.isCart = false;
       } else if (this.cart.length === 0) {
@@ -503,7 +575,7 @@ export default {
     // },
 
     codeRandom() {
-      console.log("ciao mondo");
+      console.log("funzione CodeRandom");
       let code =
         this.getRandomNumber(1, 9) +
         this.alphabet.substr(this.getRandomNumber(1, 28), 1) +
@@ -511,13 +583,57 @@ export default {
         this.alphabet.substr(this.getRandomNumber(1, 28), 1) +
         // + (this.getRandomNumber(1, 9))
         this.alphabet.substr(this.getRandomNumber(1, 28), 1);
-      console.log("code", code);
       this.codeOrder = code
-      return codeOrder;
     },
     getRandomNumber(min, max) {
       return Math.floor(Math.random() * (max - min + 1) + min);
     },
+
+    onLoad(){
+      alert('loading')
+    },
+
+    beforeBuy () {
+      this.$refs.paymentBtnRef.click()
+    },
+
+    onSuccess (payload) {
+      let gToken = payload.nonce;
+      this.token = gToken;
+      this.buy();
+      console.log(this.token);
+      // this.buy();
+      // Do something great with the nonce...
+    },
+    onError (error) {
+      console.log('Errore');
+      let message = error.message;
+      // Whoops, an error has occured while trying to get the nonce
+    },
+
+    buy(){
+      axios.post(this.apiMakePayment, {
+        
+        token: this.token,
+        restaurant_id: this.cart[0].restaurant_id,
+        name: this.name,
+        surname: this.lastname,
+        address: this.address,
+        CAP: this.cap,
+        city: this.city,
+        province: this.province,
+        phone: this.phone,
+        doorbell: this.doorbell,
+        email: this.email,
+        note: this.note,
+        total_price: this.subTotal,
+        cart: this.cart,
+      }).then((res) => {
+        this.transOk= true,
+        console.log('click res' ,res);
+
+      });
+    }
   },
 };
 </script>

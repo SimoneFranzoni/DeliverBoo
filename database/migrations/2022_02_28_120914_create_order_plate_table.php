@@ -27,6 +27,9 @@ class CreateOrderPlateTable extends Migration
             ->references('id')
             ->on('orders')
             ->onDelete('cascade');
+
+            // Quantità del piatto
+            $table->integer('quantity')->default(1);
     
             $table->timestamps();
         });
