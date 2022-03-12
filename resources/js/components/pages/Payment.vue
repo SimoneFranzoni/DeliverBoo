@@ -298,12 +298,13 @@
                       
                       </v-braintree>
                         <!-- v-if="!disableBuyButton" -->
-                      <button
-                        class="w-full btn-success mt-5"
+                      <router-link
                         @click.prevent="beforeBuy"
+                        class="ac-bnt w-full btn-success mt-5"
+                        :to="{name: 'orderSuccess', params: {slug: activeRestaurant.slug}}"
                       >
                         Procedi con l'acquisto 🎉
-                      </button>
+                      </router-link>
 
                       <div class="trans-ok"
                       v-if="transOk">
@@ -612,6 +613,7 @@ export default {
     },
 
     buy(){
+      console.log('CART INVIATO->>>', this.cart);
       axios.post(this.apiMakePayment, {
         
         token: this.token,
