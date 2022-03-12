@@ -22,22 +22,25 @@
      
         <div>CLIENTE {{$key+1}} : {{$order->name}} {{$order->surname}}</div> 
         <div>EMAIL : {{$order->email}}</div> 
-        <div>TELEFONO : {{$order->telephone_guest}}</div> 
-        <div>INDIRIZZO : {{$order->telephone_guest}}</div> 
+        <div>TELEFONO : {{$order->phone}}</div> 
+        <div>INDIRIZZO : {{$order->address}}</div> 
+        <div>TOTALE : {{$order->total_price}}</div> 
 
         @foreach ( $order->plates as $plate )
           <div>piatto :  {{$plate->name}}   prezzo : {{$plate->price}}</div>
         @endforeach 
 
-        <div>
-          PREZZO ORDINE :  <?php
-                                $total = 0 ; 
-                                foreach ($order->plates as $plate){
-                                    $total = $total + $plate->price ;
-                                }
-                                echo $total;     
-                          ?> euro
-        </div> 
+        {{-- <div>
+          PREZZO ORDINE :  
+          <?php
+                                // $total = 0 ; 
+                                // foreach ($order->plates as $plate){
+                                //     $total = $total + $plate->price ;
+                                // }
+                                // echo $total;     
+                          ?> 
+                          euro
+        </div>  --}}
       
    
     </li> 

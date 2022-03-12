@@ -8,15 +8,17 @@
     {{session('deleted')}}
   </div>
   @endif
+
+
   <div >
     @if (count($piatti)=== 0)
     <div style="margin:50px;">
       <h3 class="card-team5 text-center text-danger">Non sono presenti piatti</h3>
-      
     </div>
+      
     
     @else
-    <div class="d-flex flex-wrap">
+    <div class="wrapper d-flex flex-wrap">
 
       <h1  class="col-12 col-md-8  my-3">{{$ristorante->name}}</h1>
 
@@ -34,13 +36,13 @@
       
     
 
-    <div class="plate-slider-team5 p-0">
+    <div class="plate-slider-team5">
       @foreach ($piatti as $piatto)
         <div class="card-piatti-team5 ">
           <div class="  d-flex align-items-center justify-content-between">
            
-              <a class=" col-6" href="{{route('admin.miei-ristoranti.piatti.show',[$ristorante->slug,$piatto->slug])}}">
-                <div class="left card-piatti-team5-left ml-3 d-flex col-12">
+              <a class=" col-7" href="{{route('admin.miei-ristoranti.piatti.show',[$ristorante->slug,$piatto->slug])}}">
+                <div class="card-piatti-team5-left ml-3 d-flex col-12">
                   <div class="plate-img">
                     @if ($piatto->cover)
                       <img src="{{asset('storage/' . $piatto->cover)}}" alt="{{$piatto->name}}">
@@ -66,7 +68,7 @@
                 </div>
               </a>
           
-            <div class="d-flex col-12 col-md-6 justify-content-end plate-button">
+            <div class="d-flex col-12 col-md-4 justify-content-end plate-button">
 
               <a  href="{{route('admin.miei-ristoranti.piatti.edit',[$ristorante->slug,$piatto->slug])}}">
                 <button type="button" class="btn-team5" > Modifica</button>
@@ -83,14 +85,15 @@
       @endforeach
     </div>
 
-    {{-- small view --}}
+    
+    {{-- small view **************************************************************************--}}
     <div class="small-plate-slider-team5 p-0">
       <div class="small-card-piatti-team5">
         <div class="d-flex col-12 flex-wrap justify-content-between text-center">
           @foreach ($piatti as $piatto)
           
           
-            <div class="left p-0 d-flex col-12 ">
+            <div class="small-card-left col-12 ">
               <div class="plate-img col-5 p-0">
                 <a  href="{{route('admin.miei-ristoranti.piatti.show',[$ristorante->slug,$piatto->slug])}}">
                 @if ($piatto->cover)
@@ -116,7 +119,7 @@
                     @endif  
                   </span>
                 </div>
-                <div class="d-flex justify-content-center justify-md-end card-plate-button d-none">
+                <div class="card-plate-button d-flex justify-content-center justify-md-end  d-none">
                   <a  href="{{route('admin.miei-ristoranti.piatti.edit',[$ristorante->slug,$piatto->slug])}}">
                     <button type="button" class="btn-team5" > Modifica</button>
                   </a> 

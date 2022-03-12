@@ -1,147 +1,154 @@
-.badge-team5{
-  background-color: darken($primary-color, 20);
-  color:rgb(255, 255, 255);
-  padding: 0 5px;
-  border-radius: 3px;
-}
 
-
-.plate-info-price-available{
-  background-color: white;
-  margin:0;
-  font-size: 12px;
-  width:90%;
-  margin:auto;
-}
-
-
-.plate-button{
-  height: fit-content; 
-}
-
-
-.info-restaurant-team5{
-  padding:20px;
-  border-radius: 10px;
-}
-
-.plate-img{ 
-  max-height: 110px;
-  width: 40%;
-  border-radius: 15px;
-
-  img {
-    width: 100px;
-    height: 80px;
-    border-radius: 15px;
-    overflow: hidden;
-    object-fit: cover;
+  // caratteristiche riquadro tasti vedi ordine e nuovo ristorante
+    
+  .right-dashboard-plates-team5{
+    margin-top:14px;
+    a{
+      height: 40px;
+      .btn-team5{
+        min-width: 110px;
+      }
+    }
   }
-}  
   
-
-.right-dashboard-plates-team5{
-  margin-top:14px;
-  a{
-    height: 40px;
-    .btn-team5{
- 
-      min-width: 110px;
+   
+  
+.plate-slider-team5{
+  padding:0;
+  height: 60vh;
+  overflow: scroll;
+  scrollbar-width: thin;
+    // caratteristiche card piatti 
+  .card-piatti-team5{
+  
+    text-align: center;
+    font-size: 14px;
+    // border-bottom: 1px solid black;
+    padding: 10px 0;
+    width:90%;
+    margin:auto;
+    .card-piatti-team5-left{ 
+      transition: all 0.3s;
+      font-size: 12px;
+      padding: 10px;
+      margin-left: 10px;
+      box-shadow: 0 0 8px gray;
+      border-radius: 10px;
+      color:black;
+      .name{
+        height:45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      &:hover{
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        font-weight: bold;
+        transform: scale(1.05, 1.1);
+      }
     }
   }
 }
+  // ****************************************************
+   
 
 
-.card-piatti-team5{
 
-  text-align: center;
-  font-size: 14px;
-  border-bottom: 1px solid black;
-  padding: 10px 0;
-  width:90%;
-  margin:auto;
-  .card-piatti-team5-left{ 
-  transition: all 0.3s;
-  font-size: 12px;
-  padding: 10px;
-  margin: 10px;
-  margin-left: 10px;
-  box-shadow: 0 0 8px gray;
-  border-radius: 10px;
-  color:black;
-  .name{
-    height:45px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  &:hover{
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    font-weight: bold;
-    transform: scale(1.05, 1.1);
-  }
-  }
-}
- .right-dashboard-plates-team5{
-   width :50%;
-   margin:auto;
- }
-
-
-@media screen and (max-width: 992px) {
-  .plate-slider-team5{
-    box-shadow: none;
-    height:fit-content;
-    font-size: 12px;
-  }     
-}
-@media screen and (min-width: 768px){
-  .small-card-piatti-team5{
-    display: none;
-  }
-}
-
-@media screen and(max-width: 768px) {
   
-  .plate-slider-team5{
-    display: none;
+  // caratteristiche slider in large vuew
+  @media screen and (max-width: 992px) {
+    .plate-slider-team5{
+      box-shadow: none;
+      height:fit-content;
+      font-size: 12px;
+      scrollbar-width:none;
+    }     
   }
-  .left{
-      
-    font-size: 12px;
-    padding: 10px;
-    margin: 10px;
-    margin-left: 10px;
-    box-shadow: 0 0 8px gray;
-    border-radius: 10px;
-    color:black;
-  
-    .name{
-      height:45px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+  // **********************************************
+
+
+
+  // Display none per le card presenti in small vuew
+  @media screen and (min-width: 768px){
+    .small-card-piatti-team5{
+      display: none;
     }
     
-  }
-  
-  }
-    
-.plate-img{ 
-  max-height: 110px;
-  width: 100%;
-  border-radius: 15px;
-  a{
-
-    img {
-      width: 100%;
-      height: 100%;
+    // caratteristiche piatti in medium view
+    .plate-img{ 
+      max-height: 110px;
+      width: 40%;
       border-radius: 15px;
-      overflow: hidden;
-      object-fit: cover;
-    }
+    
+      img {
+        width: 100px;
+        height: 80px;
+        border-radius: 15px;
+      }
+    }  
   }
-}  
+  // ****************************************************
+
+
+
+
+
+  // small view ***************************************
+  
+  @media screen and(max-width: 768px) {
+    
+    .plate-slider-team5{
+      display: none;
+    }
+    div{
+      .small-plate-slider-team5{
+       
+        .small-card-left{
+          padding: 0;
+          display: flex;
+            
+          font-size: 12px;
+          padding: 10px;
+          margin: 10px;
+          margin-left: 10px;
+          box-shadow: 0 0 8px gray;
+          border-radius: 10px;
+          color:black;
+        
+          .name{
+            height:45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          
+        }
+
+      }
+    }
+
+    //  caratteristiche contenitore piatti in small view
+    .plate-img{ 
+      max-height: 110px;
+      width: 100%;
+      border-radius: 15px;
+      a{
+    
+        img {
+          width: 100%;
+          height: 100%;
+          border-radius: 15px;
+          overflow: hidden;
+          object-fit: cover;
+        }
+      }
+    }  
+
+  }
+      
+
+
+
   
 
 
