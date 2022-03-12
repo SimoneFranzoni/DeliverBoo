@@ -6,22 +6,17 @@
 }
 
 
-.img-team5{
-  img{
-    width: 100%;
-  }
-}
-
-h5,h6{
-  height: 40px;
-}
 .plate-info-price-available{
   background-color: white;
   margin:0;
   font-size: 12px;
   width:90%;
   margin:auto;
- 
+}
+
+
+.plate-button{
+  height: fit-content; 
 }
 
 
@@ -30,201 +25,124 @@ h5,h6{
   border-radius: 10px;
 }
 
-.restaurant-index-img-team5{
-  
-  border:2px solid white;
-  
-}
+.plate-img{ 
+  max-height: 110px;
+  width: 40%;
+  border-radius: 15px;
 
-.slider-team5{
-  max-width: 700px;
-  box-shadow:inset 0 0 10px #000000;
-  height: 220px;
-  scrollbar-width: none;
-  overflow-y: scroll;
-  .flip-card-team5{
-    margin: 10px;
+  img {
+    width: 100px;
+    height: 80px;
+    border-radius: 15px;
+    overflow: hidden;
+    object-fit: cover;
   }
-  border-radius: 10px;
-}
+}  
   
-  
-  
-
-
-
 
 .right-dashboard-plates-team5{
-  // border-top: 3px  solid darken($primary-color, 40);
-  // border-bottom: 2px solid white ;
-  max-height: 200px;
-  min-width: 180px;
-  border-bottom: 1px solid #ffffff;
-  // background-color:rgba($color: #ffffff, $alpha: 0.3);
-  border-radius: 25px;
-  // box-shadow:inset 0 0 10px #000000;
-
-}
-
-
-/**************************flip-card****************/
-.flip-card-back,.flip-card-front,.img-frame-team5{
-  // background-image: linear-gradient(to left,lighten($primary-color,10),darken($primary-color,10));
-  box-shadow: 2px 2px 4px darken($primary-color,40);
-  // color:white;
-}
-.slider-team5{
-  background-color:rgba($color: #ffffff, $alpha: 0.3);
-}
-
-
-@media screen and (min-width: 992px) {
-  .slider-team5{
-    display: flex;
-    flex-wrap: wrap;
-   
-  }
-  .img-team5{
-    img{
-    object-fit: cover;
-    object-position: center;
-     height: 120px;
-     width: 100%;
-   }
-  }
-
-.flip-card {
+  margin-top:14px;
+  a{
+    height: 40px;
+    .btn-team5{
  
-  background-color: transparent;
-  min-width: 180px;
-  height: 200px;
-  perspective: 1000px; /* Remove this if you don't want the 3D effect */
-}
-
-/* This container is needed to position the front and back side */
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: all 0.8s;
-  transform-style: preserve-3d;
-}
-
-/* Do an horizontal flip when you move the mouse over the flip box container */
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
-}
-
-/* Position the front and back side */
-.flip-card-front, .flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden; /* Safari */
-  backface-visibility: hidden;
-}
-
-/* Style the front side (fallback if image is missing) */
-.flip-card-front {
-  // color: white;
-  overflow: hidden;
-
-}
-
-/* Style the back side */
-.flip-card-back {
-  // color:white;
-  background-color: white;
-  transform: rotateY(180deg);
-}
-.card-front-bottom-team5{
-
-  font-size:14px !important;
-}
-.tableview-team5{
-  display: none;
-}
-}
-/**************************flip-card****************/
-
-  
-
-@media screen and (max-width: 991px){
-
-  .restaurant-name-team5{
-    background-image: linear-gradient(to left,$primary-color,darken($primary-color,40));
+      min-width: 110px;
+    }
   }
-  .flip-card{
+}
+
+
+.card-piatti-team5{
+
+  text-align: center;
+  font-size: 14px;
+  border-bottom: 1px solid black;
+  padding: 10px 0;
+  width:90%;
+  margin:auto;
+  .card-piatti-team5-left{ 
+  transition: all 0.3s;
+  font-size: 12px;
+  padding: 10px;
+  margin: 10px;
+  margin-left: 10px;
+  box-shadow: 0 0 8px gray;
+  border-radius: 10px;
+  color:black;
+  .name{
+    height:45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &:hover{
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    font-weight: bold;
+    transform: scale(1.05, 1.1);
+  }
+  }
+}
+ .right-dashboard-plates-team5{
+   width :50%;
+   margin:auto;
+ }
+
+
+@media screen and (max-width: 992px) {
+  .plate-slider-team5{
+    box-shadow: none;
+    height:fit-content;
+    font-size: 12px;
+  }     
+}
+@media screen and (min-width: 768px){
+  .small-card-piatti-team5{
     display: none;
   }
-  .container-team5{
-    flex-wrap: nowrap !important;
+}
 
+@media screen and(max-width: 768px) {
+  
+  .plate-slider-team5{
+    display: none;
   }
-  .slider-team5{
-    display: flex;
-    flex-wrap: nowrap;
-    height: 400px;
-    scrollbar-width:none;
-    overflow-x: scroll;
-
-  }
-  .tableview-team5{
-    margin:20px 0px;
+  .left{
+      
+    font-size: 12px;
+    padding: 10px;
+    margin: 10px;
+    margin-left: 10px;
+    box-shadow: 0 0 8px gray;
+    border-radius: 10px;
+    color:black;
+  
+    .name{
+      height:45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
     
-    .img-frame-team5{
-     height: 360px;
-     border: 1px solid darken($primary-color,30);
-    width:90%;
-    margin:auto;
-     .img-team5{
-       overflow: hidden;
-       width:90%;
-       margin:8px auto;
-       border-radius: 300px;
-       border:4px solid white;
-       img{
-        height: 160px;
-        width: 100%;
-        object-fit: cover;
-        object-position: center;
-      }
-     }
-   }
-    .plate-name{
-      color:rgb(255, 255, 255);
-      text-align: center;
-      .plate-info{
-        height: 75px;
-        margin:10px 0;
-        overflow: hidden;
-      }
-      .plate-info-price-available{
-        background-color: white;
-        margin:0;
-        font-size: 12px;
-        width:90%;
-        margin:auto;
-      }
-    }
-  
- }  
-}
-
-@media screen and(max-width: 767px) {
-
-  .restaurant-name-team5{
-    background-image: linear-gradient(to left,$primary-color,darken($primary-color,40));
   }
- 
+  
+  }
+    
+.plate-img{ 
+  max-height: 110px;
+  width: 100%;
+  border-radius: 15px;
+  a{
 
-  .img-team5{
-    img{
-      object-fit: cover;
-      object-position: center;
+    img {
       width: 100%;
+      height: 100%;
+      border-radius: 15px;
+      overflow: hidden;
+      object-fit: cover;
     }
-  
   }
-}
+}  
+  
+
+
+ 

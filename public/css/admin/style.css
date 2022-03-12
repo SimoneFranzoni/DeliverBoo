@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap);@charset "UTF-8";
 /*!
  * Bootstrap v4.6.1 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
@@ -13052,8 +13052,12 @@ h3 {
   color: white;
   border: none;
   margin: 5px;
-  background-color: #32b6a7;
+  background-color: #45CCBC;
   transition: all 0.18s;
+}
+.btn-team5:hover {
+  transform: scale(1.05);
+  background-color: #65d5c8;
 }
 
 .btn-dashboard-team5 {
@@ -13092,30 +13096,33 @@ h1 {
 
 .restaurant-slider-team5 {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  padding: 20px;
   height: 322px;
   border-radius: 20px;
   scrollbar-width: none;
   overflow-y: scroll;
   margin-bottom: 20px;
 }
-
-.card-team5 {
-  color: #45CCBC;
-  width: 90%;
-  padding-bottom: 20px;
-  margin: 20px auto;
-  border-bottom: 1px solid grey;
+.restaurant-slider-team5 :last-child {
+  border: none;
 }
-.card-team5 h3 {
+.restaurant-slider-team5 .card-team5 {
+  width: 100%;
+  padding-bottom: 20px;
+  margin: 20px 0;
+  border-bottom: 1px solid black;
+  padding: 10px 0;
+}
+.restaurant-slider-team5 .card-team5 h3 {
   margin: 0px;
   padding: 5px 20px;
   transition: all 0.2s;
 }
-.card-team5 h3:hover {
+.restaurant-slider-team5 .card-team5 h3:hover {
   transform: scale(1.1) !important;
 }
-.card-team5 h3 a {
-  color: #1a5e56 !important;
+.restaurant-slider-team5 .card-team5 h3 a {
+  color: black;
 }
 
 .badge-team5 {
@@ -13123,14 +13130,6 @@ h1 {
   color: white;
   padding: 0 5px;
   border-radius: 3px;
-}
-
-.img-team5 img {
-  width: 100%;
-}
-
-h5, h6 {
-  height: 40px;
 }
 
 .plate-info-price-available {
@@ -13141,186 +13140,125 @@ h5, h6 {
   margin: auto;
 }
 
+.plate-button {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
 .info-restaurant-team5 {
   padding: 20px;
   border-radius: 10px;
 }
 
-.restaurant-index-img-team5 {
-  border: 2px solid white;
+.plate-img {
+  max-height: 110px;
+  width: 40%;
+  border-radius: 15px;
 }
-
-.slider-team5 {
-  max-width: 700px;
-  box-shadow: inset 0 0 10px #000000;
-  height: 220px;
-  scrollbar-width: none;
-  overflow-y: scroll;
-  border-radius: 10px;
-}
-.slider-team5 .flip-card-team5 {
-  margin: 10px;
+.plate-img img {
+  width: 100px;
+  height: 80px;
+  border-radius: 15px;
+  overflow: hidden;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .right-dashboard-plates-team5 {
-  max-height: 200px;
-  min-width: 180px;
-  border-bottom: 1px solid #ffffff;
-  border-radius: 25px;
+  margin-top: 14px;
+}
+.right-dashboard-plates-team5 a {
+  height: 40px;
+}
+.right-dashboard-plates-team5 a .btn-team5 {
+  min-width: 110px;
 }
 
-/**************************flip-card****************/
-.flip-card-back, .flip-card-front, .img-frame-team5 {
-  box-shadow: 2px 2px 4px #0f3631;
+.card-piatti-team5 {
+  text-align: center;
+  font-size: 14px;
+  border-bottom: 1px solid black;
+  padding: 10px 0;
+  width: 90%;
+  margin: auto;
+}
+.card-piatti-team5 .card-piatti-team5-left {
+  transition: all 0.3s;
+  font-size: 12px;
+  padding: 10px;
+  margin: 10px;
+  margin-left: 10px;
+  box-shadow: 0 0 8px gray;
+  border-radius: 10px;
+  color: black;
+}
+.card-piatti-team5 .card-piatti-team5-left .name {
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-piatti-team5 .card-piatti-team5-left:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+  transform: scale(1.05, 1.1);
 }
 
-.slider-team5 {
-  background-color: rgba(255, 255, 255, 0.3);
+.right-dashboard-plates-team5 {
+  width: 50%;
+  margin: auto;
 }
 
-@media screen and (min-width: 992px) {
-  .slider-team5 {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .img-team5 img {
-    -o-object-fit: cover;
-       object-fit: cover;
-    -o-object-position: center;
-       object-position: center;
-    height: 120px;
-    width: 100%;
-  }
-
-  .flip-card {
-    background-color: transparent;
-    min-width: 180px;
-    height: 200px;
-    perspective: 1000px;
-    /* Remove this if you don't want the 3D effect */
-  }
-
-  /* This container is needed to position the front and back side */
-  .flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: all 0.8s;
-    transform-style: preserve-3d;
-  }
-
-  /* Do an horizontal flip when you move the mouse over the flip box container */
-  .flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
-  }
-
-  /* Position the front and back side */
-  .flip-card-front, .flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden;
-    /* Safari */
-    backface-visibility: hidden;
-  }
-
-  /* Style the front side (fallback if image is missing) */
-  .flip-card-front {
-    overflow: hidden;
-  }
-
-  /* Style the back side */
-  .flip-card-back {
-    background-color: white;
-    transform: rotateY(180deg);
-  }
-
-  .card-front-bottom-team5 {
-    font-size: 14px !important;
-  }
-
-  .tableview-team5 {
-    display: none;
-  }
-}
-/**************************flip-card****************/
-@media screen and (max-width: 991px) {
-  .restaurant-name-team5 {
-    background-image: linear-gradient(to left, #45CCBC, #0f3631);
-  }
-
-  .flip-card {
-    display: none;
-  }
-
-  .container-team5 {
-    flex-wrap: nowrap !important;
-  }
-
-  .slider-team5 {
-    display: flex;
-    flex-wrap: nowrap;
-    height: 400px;
-    scrollbar-width: none;
-    overflow-x: scroll;
-  }
-
-  .tableview-team5 {
-    margin: 20px 0px;
-  }
-  .tableview-team5 .img-frame-team5 {
-    height: 360px;
-    border: 1px solid #1a5e56;
-    width: 90%;
-    margin: auto;
-  }
-  .tableview-team5 .img-frame-team5 .img-team5 {
-    overflow: hidden;
-    width: 90%;
-    margin: 8px auto;
-    border-radius: 300px;
-    border: 4px solid white;
-  }
-  .tableview-team5 .img-frame-team5 .img-team5 img {
-    height: 160px;
-    width: 100%;
-    -o-object-fit: cover;
-       object-fit: cover;
-    -o-object-position: center;
-       object-position: center;
-  }
-  .tableview-team5 .plate-name {
-    color: white;
-    text-align: center;
-  }
-  .tableview-team5 .plate-name .plate-info {
-    height: 75px;
-    margin: 10px 0;
-    overflow: hidden;
-  }
-  .tableview-team5 .plate-name .plate-info-price-available {
-    background-color: white;
-    margin: 0;
+@media screen and (max-width: 992px) {
+  .plate-slider-team5 {
+    box-shadow: none;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
     font-size: 12px;
-    width: 90%;
-    margin: auto;
   }
 }
-@media screen and (max-width: 767px) {
-  .restaurant-name-team5 {
-    background-image: linear-gradient(to left, #45CCBC, #0f3631);
+@media screen and (min-width: 768px) {
+  .small-card-piatti-team5 {
+    display: none;
+  }
+}
+@media screen and (max-width: 768px) {
+  .plate-slider-team5 {
+    display: none;
   }
 
-  .img-team5 img {
-    -o-object-fit: cover;
-       object-fit: cover;
-    -o-object-position: center;
-       object-position: center;
-    width: 100%;
+  .left {
+    font-size: 12px;
+    padding: 10px;
+    margin: 10px;
+    margin-left: 10px;
+    box-shadow: 0 0 8px gray;
+    border-radius: 10px;
+    color: black;
+  }
+  .left .name {
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
+.plate-img {
+  max-height: 110px;
+  width: 100%;
+  border-radius: 15px;
+}
+.plate-img a img {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  overflow: hidden;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .img-show-team5 {
   width: 100%;
   max-height: 300px;
@@ -13335,4 +13273,9 @@ h5, h6 {
   -o-object-fit: center;
      object-fit: center;
   width: 100%;
+}
+
+body {
+  font-family: "PT Sans", sans-serif;
+  background-color: #fafafa;
 }

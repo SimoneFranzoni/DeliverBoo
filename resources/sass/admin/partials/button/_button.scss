@@ -7,13 +7,13 @@
   // border-top:1px solid white;
   // box-shadow: 3px 3px 10px  rgb(39, 39, 39);
   margin: 5px;
-  background-color:darken($primary-color,8);
-  // &:hover{
-  //   transform: scale(1.05);
+  background-color:$primary-color;
+  &:hover{
+    transform: scale(1.05);
   
-  //   background-color: lighten($primary-color,8);
+    background-color: lighten($primary-color,8);
     
-  // }
+  }
   transition: all 0.18s;
 }
 

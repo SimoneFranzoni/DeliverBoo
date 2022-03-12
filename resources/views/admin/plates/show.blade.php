@@ -56,7 +56,7 @@
     {{-- bottone indietro --}}
     <h2 class="mt-4">
       <a  href="{{route('admin.miei-ristoranti.piatti.index',$ristorante->slug)}}">
-          <button class="btn-team5 btn-back-team5">Back <<</button> 
+          <button class="btn-team5">Back <<</button> 
       </a>
     </h2>  
  
