@@ -129,8 +129,8 @@
                                 <div class="d-flex justify-content-between p-0">
                                     <div class="p-0">
                                         <span class="amount-plates">{{item.quantity}}</span>
-                                        <span class="add-plate" @click="cartArray(item, string ='più')">+ </span> 
                                         <span class="del-plate" @click="cartArray(item, string = 'meno')">-</span>
+                                        <span class="add-plate" @click="cartArray(item, string ='più')">+ </span> 
                                     </div>
                                      € {{item.price}}
                                 </div>
@@ -207,9 +207,9 @@
                                 </div>
                                 <div class="d-flex justify-content-between p-0">
                                     <div class="p-0">
-                                        <span class="amount-plates">{{item.quantity}}</span>
-                                        <span class="add-plate" @click="cartArray(item, string ='più')">+ </span> 
+                                        <span class="amount-plates">{{item.quantity}}</span> 
                                         <span class="del-plate" @click="cartArray(item, string = 'meno')">-</span>
+                                        <span class="add-plate" @click="cartArray(item, string ='più')">+ </span>
                                     </div>
                                      € {{item.price}}
                                 </div>
@@ -451,7 +451,7 @@ h4:first-of-type {
     border: 1px solid black;
     line-height: 15px;
     text-align: center;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 0px;
     transition: all 0.2s;
     cursor:pointer;
@@ -528,7 +528,7 @@ h4:first-of-type {
                 }
 
                 .bar {
-                    width: 2px;
+                    width: 1px;
                     background-color: black;
                 }
             }

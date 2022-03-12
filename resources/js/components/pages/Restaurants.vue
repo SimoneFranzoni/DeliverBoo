@@ -41,7 +41,7 @@
 
         <div v-if="filter_close">
           <div @click="toggleMenu" class="filter d-block d-lg-none ml-3">
-            <i class="far fa-filter"></i>
+            <i class="fas fa-filter"></i>
           </div>
         </div>
         <div v-else>
@@ -224,7 +224,7 @@ export default {
     cursor: pointer;
     text-align: center;
     margin-bottom: 15px;
-    padding: 8px 10px;
+    padding: 5px;
     border-radius: 10px;
     width: 70px;
     height: 35px;
@@ -286,8 +286,6 @@ export default {
   .types-row {
     width: 100%;
     height: 150px;
-    //allinea le box con il titolo sopra
-    margin: 0 1px;
     padding: 10px;
     display: flex;
     justify-content: space-between;
