@@ -44,11 +44,11 @@
     @endforeach 
   </ul>     
      
-  <h2 class="d-inline-block mt-4">
+
     <a  href="{{route('admin.miei-ristoranti.piatti.index',$restaurant->slug)}}">
-       <button class="btn-team5 btn-back-team5">Vai al Ristorante</button> 
+       <button class="btn-team5">Vai al Ristorante</button> 
     </a>
-  </h2>
+  
 
  
 </div>  
