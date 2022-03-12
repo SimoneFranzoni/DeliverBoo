@@ -142,11 +142,11 @@
    </form>
     
    {{-- link di pagina precedente --}}
-   <h2 class="mt-4">
+   
       <a  href="{{route('admin.miei-ristoranti.index')}}">
          <button class="btn-team5">Back <<</button> 
       </a>
-   </h2>
+  
 </div>   
 
 @endsection

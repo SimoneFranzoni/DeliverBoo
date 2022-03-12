@@ -149,11 +149,11 @@
   
   
   {{-- link di pagina precedente --}}
-<h2 >
+
    <a  href="{{route('admin.miei-ristoranti.index')}}">
      <button class="btn-team5 ">Back <<</button>
    </a>
-</h2>
+
 
  {{-- paginazione bootstrap --}}
  
