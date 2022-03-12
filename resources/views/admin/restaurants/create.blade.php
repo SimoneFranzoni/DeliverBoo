@@ -1,7 +1,7 @@
 @extends('admin.home')
 
 @section('dashboard-content')
-<div class="container">
+<div class="container container-restaurants p-3 mb-4">
    <h2 class="mt-4">Crea il tuo ristorante</h1>
    
    <form action="{{route('admin.miei-ristoranti.store')}}"

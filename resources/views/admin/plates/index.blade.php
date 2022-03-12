@@ -12,8 +12,14 @@
 
   <div >
     @if (count($piatti)=== 0)
-    <div style="margin:50px;">
-      <h3 class="card-team5 text-center text-danger">Non sono presenti piatti</h3>
+    <div style=" margin-top: 20px;    text-align: center;
+    border-radius: 20px;
+    padding:20px 0;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    background-color: white;
+    color: black;
+    ">
+      <h3 class="card-team5 text-center">Non sono presenti piatti</h3>
     </div>
       
     
@@ -68,7 +74,7 @@
                 </div>
               </a>
           
-            <div class="d-flex col-12 col-md-4 justify-content-end plate-button">
+            <div class="d-flex col-12 col-md-4 justify-content-end card-piatti-team5-right">
 
               <a  href="{{route('admin.miei-ristoranti.piatti.edit',[$ristorante->slug,$piatto->slug])}}">
                 <button type="button" class="btn-team5" > Modifica</button>

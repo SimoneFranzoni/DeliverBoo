@@ -3,7 +3,7 @@
 @section('dashboard-content')
 
 
-<div class="container">
+<div class="container container-restaurants p-3 mb-4">
    <h2 class="mt-4">Modifica il tuo ristorante</h2>
   
    <form action="{{route('admin.miei-ristoranti.update', $restaurant)}}"

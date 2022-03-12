@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="background-team5">
+<div class="background-team5 ">
 <div class="container p-0 homeAdmin">
     <div class="row">
         <div class="mx-3 m-lg-0 col-lg-3">
@@ -30,7 +30,7 @@
             </div>
         </div>
     
-        <div class="col-lg-9 px-5">
+        <div class="box-trasparent col-lg-9 px-5">
             
                 @yield('dashboard-content')
     

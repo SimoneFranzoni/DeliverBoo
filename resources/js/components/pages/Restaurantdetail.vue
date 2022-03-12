@@ -34,7 +34,7 @@
                         </li>
                         <li>
                             <div class="bar"></div>
-                            <a @click="removeArray()" href="#dessert"
+                            <a href="#dessert"
                                 >Dessert</a
                             >
                         </li>

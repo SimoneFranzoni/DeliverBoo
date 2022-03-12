@@ -299,8 +299,8 @@
                       </v-braintree>
                         <!-- v-if="!disableBuyButton" -->
                       <button
-                        class="w-full btn-success mt-5"
                         @click.prevent="beforeBuy"
+                        class="ac-bnt w-full btn-success mt-5"
                       >
                         Procedi con l'acquisto 🎉
                       </button>
@@ -612,6 +612,7 @@ export default {
     },
 
     buy(){
+      console.log('CART INVIATO->>>', this.cart);
       axios.post(this.apiMakePayment, {
         
         token: this.token,
@@ -631,7 +632,7 @@ export default {
       }).then((res) => {
         this.transOk= true,
         console.log('click res' ,res);
-
+        location.href = '/order/' + this.activeRestaurant.slug;
       });
     }
   },
