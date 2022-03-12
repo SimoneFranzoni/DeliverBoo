@@ -1,6 +1,6 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
-
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
 // Variables
 @import '../variables';
 
@@ -34,3 +34,8 @@
 @import 'partials/plates/editPlate.scss';
 @import 'partials/plates/createPlate.scss';
 
+body {
+  font-family: 'PT Sans', sans-serif;
+  background-color: $bg-color;
+
+}

@@ -2,10 +2,10 @@
 
 @section('content')
 <div class="background-team5">
-<div class="container homeAdmin">
+<div class="container p-0 homeAdmin">
     <div class="row">
-        <div class="col-lg-3">
-            <div class="dash-board-team5 mt-5">
+        <div class="mx-3 m-lg-0 col-lg-3">
+            <div class="dash-board-team5 mt-3">
                 <h2 class="dash-board-top-team5">
                     Ciao {{$user->name}}
                 </h2>
@@ -30,7 +30,7 @@
             </div>
         </div>
     
-        <div class="col-lg-9">
+        <div class="col-lg-9 px-5">
             
                 @yield('dashboard-content')
     
