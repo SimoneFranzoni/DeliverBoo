@@ -298,13 +298,12 @@
                       
                       </v-braintree>
                         <!-- v-if="!disableBuyButton" -->
-                      <router-link
+                      <button
                         @click.prevent="beforeBuy"
                         class="ac-bnt w-full btn-success mt-5"
-                        :to="{name: 'orderSuccess', params: {slug: activeRestaurant.slug}}"
                       >
                         Procedi con l'acquisto 🎉
-                      </router-link>
+                      </button>
 
                       <div class="trans-ok"
                       v-if="transOk">
@@ -633,7 +632,7 @@ export default {
       }).then((res) => {
         this.transOk= true,
         console.log('click res' ,res);
-
+        location.href = '/order/' + this.activeRestaurant.slug;
       });
     }
   },

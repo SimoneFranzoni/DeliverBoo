@@ -3,6 +3,7 @@
     
   .right-dashboard-plates-team5{
     margin-top:14px;
+    
     a{
       height: 40px;
       .btn-team5{
@@ -16,11 +17,14 @@
 .plate-slider-team5{
   padding:0;
   height: 60vh;
-  overflow: scroll;
+  // overflow: scroll;
   scrollbar-width: thin;
+  background-color: rgb(255, 255, 255, 0.4);
+  border-radius: 10px;
+
+  
     // caratteristiche card piatti 
   .card-piatti-team5{
-  
     text-align: center;
     font-size: 14px;
     // border-bottom: 1px solid black;
@@ -32,9 +36,33 @@
       font-size: 12px;
       padding: 10px;
       margin-left: 10px;
+      box-shadow: 0 0 8px $primary-color;
+      border-radius: 10px;
+      color:black;
+      background-color: rgb(255, 255, 255);
+
+      .name{
+        height:45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      &:hover{
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        font-weight: bold;
+        transform: scale(1.05, 1.1);
+      }
+    }
+    .card-piatti-team5-right{ 
+      transition: all 0.3s;
+      font-size: 12px;
+      padding: 10px;
+      margin-left: 10px;
       box-shadow: 0 0 8px gray;
       border-radius: 10px;
       color:black;
+      background-color: white;
+
       .name{
         height:45px;
         display: flex;
@@ -62,6 +90,7 @@
       height:fit-content;
       font-size: 12px;
       scrollbar-width:none;
+      
     }     
   }
   // **********************************************
@@ -72,6 +101,7 @@
   @media screen and (min-width: 768px){
     .small-card-piatti-team5{
       display: none;
+      background-color: white;
     }
     
     // caratteristiche piatti in medium view
@@ -104,6 +134,7 @@
       .small-plate-slider-team5{
        
         .small-card-left{
+          background-color: white;
           padding: 0;
           display: flex;
             

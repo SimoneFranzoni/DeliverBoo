@@ -13076,9 +13076,12 @@ h3 {
 
 .background-team5 {
   min-height: calc(100vh - 80px);
+  background-image: url("https://images.pexels.com/photos/2641886/pexels-photo-2641886.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+  background-size: cover;
 }
 .background-team5 .dash-board-team5 {
-  border-radius: 40px;
+  border-radius: 20px;
+  background-color: white;
   padding: 50px 0;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
 }
@@ -13087,21 +13090,30 @@ h3 {
   line-height: 30px;
 }
 
+@media screen and (max-width: 768px) {
+  .background-team5 {
+    background-image: url("https://images.pexels.com/photos/3206433/pexels-photo-3206433.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    background-size: cover;
+  }
+}
 h1 {
   text-align: center;
   border-radius: 20px;
   padding: 20px 0;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  background-color: white;
 }
 
 .restaurant-slider-team5 {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
   padding: 20px;
-  height: 322px;
   border-radius: 20px;
   scrollbar-width: none;
   overflow-y: scroll;
+  scrollbar-width: none;
   margin-bottom: 20px;
+  background-color: white;
+  height: calc(100vh - 300px);
 }
 .restaurant-slider-team5 :last-child {
   border: none;
@@ -13125,6 +13137,30 @@ h1 {
   color: black;
 }
 
+.container-restaurants {
+  background-color: rgba(255, 255, 255, 0.9);
+  margin-top: 30px;
+  border-radius: 20px;
+}
+.container-restaurants label {
+  font-weight: 900;
+}
+.container-restaurants input, .container-restaurants textarea, .container-restaurants select {
+  box-shadow: 0 0 3px #13353f;
+}
+
+.container-restaurants {
+  background-color: rgba(255, 255, 255, 0.9);
+  margin-top: 30px;
+  border-radius: 20px;
+}
+.container-restaurants label {
+  font-weight: 900;
+}
+.container-restaurants input, .container-restaurants textarea, .container-restaurants select {
+  box-shadow: 0 0 3px #13353f;
+}
+
 .right-dashboard-plates-team5 {
   margin-top: 14px;
 }
@@ -13138,8 +13174,9 @@ h1 {
 .plate-slider-team5 {
   padding: 0;
   height: 60vh;
-  overflow: scroll;
   scrollbar-width: thin;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
 }
 .plate-slider-team5 .card-piatti-team5 {
   text-align: center;
@@ -13153,9 +13190,10 @@ h1 {
   font-size: 12px;
   padding: 10px;
   margin-left: 10px;
-  box-shadow: 0 0 8px gray;
+  box-shadow: 0 0 8px #45CCBC;
   border-radius: 10px;
   color: black;
+  background-color: white;
 }
 .plate-slider-team5 .card-piatti-team5 .card-piatti-team5-left .name {
   height: 45px;
@@ -13164,6 +13202,27 @@ h1 {
   justify-content: center;
 }
 .plate-slider-team5 .card-piatti-team5 .card-piatti-team5-left:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+  transform: scale(1.05, 1.1);
+}
+.plate-slider-team5 .card-piatti-team5 .card-piatti-team5-right {
+  transition: all 0.3s;
+  font-size: 12px;
+  padding: 10px;
+  margin-left: 10px;
+  box-shadow: 0 0 8px gray;
+  border-radius: 10px;
+  color: black;
+  background-color: white;
+}
+.plate-slider-team5 .card-piatti-team5 .card-piatti-team5-right .name {
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.plate-slider-team5 .card-piatti-team5 .card-piatti-team5-right:hover {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   font-weight: bold;
   transform: scale(1.05, 1.1);
@@ -13182,6 +13241,7 @@ h1 {
 @media screen and (min-width: 768px) {
   .small-card-piatti-team5 {
     display: none;
+    background-color: white;
   }
 
   .plate-img {
@@ -13201,6 +13261,7 @@ h1 {
   }
 
   div .small-plate-slider-team5 .small-card-left {
+    background-color: white;
     padding: 0;
     display: flex;
     font-size: 12px;
@@ -13232,7 +13293,16 @@ h1 {
        object-fit: cover;
   }
 }
-.img-show-team5 {
+.container-show-plates {
+  background: white;
+  background: linear-gradient(100deg, rgba(255, 255, 255, 0.9808298319) 0%, rgba(255, 255, 255, 0.9444152661) 35%, rgba(255, 255, 255, 0.9220063025) 48%, rgba(255, 255, 255, 0.8603816527) 62%, rgba(255, 255, 255, 0.4682247899) 77%, rgba(18, 20, 22, 0) 100%);
+  border-radius: 20px;
+  padding: 20px;
+}
+.container-show-plates h4 {
+  font-weight: 900;
+}
+.container-show-plates .img-show-team5 {
   width: 100%;
   max-height: 300px;
   border-radius: 300px;
@@ -13240,12 +13310,36 @@ h1 {
   border: 8px solid white !important;
   margin: auto;
 }
-.img-show-team5 img {
+.container-show-plates .img-show-team5 img {
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-fit: center;
      object-fit: center;
   width: 100%;
+}
+
+.container-plates {
+  background-color: rgba(255, 255, 255, 0.9);
+  margin-top: 30px;
+  border-radius: 20px;
+}
+.container-plates label {
+  font-weight: 900;
+}
+.container-plates input, .container-plates textarea, .container-plates select {
+  box-shadow: 0 0 3px #13353f;
+}
+
+.container-plates {
+  background-color: rgba(255, 255, 255, 0.9);
+  margin-top: 30px;
+  border-radius: 20px;
+}
+.container-plates label {
+  font-weight: 900;
+}
+.container-plates input, .container-plates textarea, .container-plates select {
+  box-shadow: 0 0 3px #13353f;
 }
 
 body {

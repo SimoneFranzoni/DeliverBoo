@@ -1,7 +1,7 @@
 @extends('admin.home')
 @section('dashboard-content')
-<div class="container pt-4">
-  <div class="row my-4">
+<div class="container container-show-plates mt-4 pt-3  mb-4">
+  <div class="row  my-4">
     <div class="col-12 col-sm-5">
       <h4>Nome del piatto </h4>
       <p>{{$piatto->name}}</p>
@@ -33,9 +33,9 @@
     <p>{{$piatto->price}}€</p>
     <h4>Disponibilità</h4>
     @if($piatto->is_available)
-      <span class="bg-success text-white px-1"><strong>Disponibile</strong></span>
+      <span class="badge bg-success text-white px-1"><strong>Disponibile</strong></span>
       @else
-          <span class="bg-danger text-white px-1"><strong>Non disponibile</strong></span> 
+          <span class="badge bg-danger text-white px-1"><strong>Non disponibile</strong></span> 
       @endif  
     <p>{{$piatto->is_availeble}}</p>
     {{-- bottoni modifica e elimina --}}
@@ -54,11 +54,11 @@
 
     </div> 
     {{-- bottone indietro --}}
-    <h2 class="mt-4">
-      <a  href="{{route('admin.miei-ristoranti.piatti.index',$ristorante->slug)}}">
+
+      <a class="my-4"  href="{{route('admin.miei-ristoranti.piatti.index',$ristorante->slug)}}">
           <button class="btn-team5">Back <<</button> 
       </a>
-    </h2>  
+ 
  
 @endsection
   
