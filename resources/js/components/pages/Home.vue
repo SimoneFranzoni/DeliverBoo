@@ -14,7 +14,7 @@
       v-for="(rest, index) in randomRestaurants"
       :key="`randomrest${index}`"
       >
-      <router-link @click.native="confirmChange" :to="{name:'restaurantdetail', params: {slug: rest.slug}}">
+      <router-link  :to="{name:'restaurantdetail', params: {slug: rest.slug}}">
         <img :src="rest.cover" :alt="rest.name">
         <div class="title">
           {{rest.name}}
@@ -120,14 +120,14 @@ export default {
     getRandomNumber(min, max) {
            return Math.floor(Math.random() * (max - min + 1) + min);
         },
-        
-    confirmChange() {
-      let text = 'Attenzione! Se cambi ristorante perderai quello che hai messo nel carrello.';
 
-        if (!confirm(text)) {
-          history.back()
-        }
-    }
+    // confirmChange() {
+    //   let text = 'Attenzione! Se cambi ristorante perderai quello che hai messo nel carrello.';
+
+    //     if (!confirm(text)) {
+    //       history.back()
+    //     }
+    // }
     
   }
 }

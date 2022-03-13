@@ -72,7 +72,6 @@
               v-for="(restaurant, index) in activeRestaurants"
               :key="`restaurant${index}`"
               :restaurant="restaurant"
-              @click.native="confirmChange"
 
             />
           </div>
@@ -170,21 +169,21 @@ export default {
         this.filter_close = true;
       }
     },
-    confirmChange() {
-        let text = 'Attenzione! Se cambi ristorante perderai quello che hai messo nel carrello.';
+    // confirmChange() {
+    //     let text = 'Attenzione! Se cambi ristorante perderai quello che hai messo nel carrello.';
 
-            if (!confirm(text)) {
-              history.back()
-            }  
+    //         if (!confirm(text)) {
+    //           history.back()
+    //         }  
             
 
 
             
-        //     if (JSON.parse(localStorage.getItem('items'))[0].restaurant_id != this.activeRestaurants[i].id) {
-        //  } 
+    //     //     if (JSON.parse(localStorage.getItem('items'))[0].restaurant_id != this.activeRestaurants[i].id) {
+    //     //  } 
         
             
-      }
+    //   }
   },
 };
 </script>
