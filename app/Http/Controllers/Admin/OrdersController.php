@@ -25,7 +25,6 @@ $note = $_GET['note'];
 // $product = $_GET['product'];
 // $quantity = $_GET['quantity'];
 $totalPrice = $_GET['total'];
-
 echo $name . $lastname . 'è felice';
 }
 
@@ -109,9 +108,9 @@ class OrdersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,$id)
     {
-        //
+        dd($request->all(),$id);
     }
 
     /**

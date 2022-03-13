@@ -13105,14 +13105,11 @@ h1 {
 }
 
 .restaurant-slider-team5 {
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-  padding: 20px;
   border-radius: 20px;
   scrollbar-width: none;
   overflow-y: scroll;
   scrollbar-width: none;
   margin-bottom: 20px;
-  background-color: white;
   height: calc(100vh - 300px);
 }
 .restaurant-slider-team5 :last-child {
@@ -13122,8 +13119,11 @@ h1 {
   width: 100%;
   padding-bottom: 20px;
   margin: 20px 0;
-  border-bottom: 1px solid black;
   padding: 10px 0;
+  align-items: center;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
 }
 .restaurant-slider-team5 .card-team5 h3 {
   margin: 0px;
@@ -13135,6 +13135,12 @@ h1 {
 }
 .restaurant-slider-team5 .card-team5 h3 a {
   color: black;
+}
+.restaurant-slider-team5 .card-team5 h3 .button-container-restautant {
+  height: 100%;
+}
+.restaurant-slider-team5 .card-team5 h3 .button-container-restautant a {
+  height: 100%;
 }
 
 .container-restaurants {
@@ -13174,9 +13180,10 @@ h1 {
 .plate-slider-team5 {
   padding: 0;
   height: 60vh;
-  scrollbar-width: thin;
+  overflow: scroll;
+  scrollbar-width: none;
   background-color: rgba(255, 255, 255, 0.4);
-  border-radius: 10px;
+  border-radius: 20px;
 }
 .plate-slider-team5 .card-piatti-team5 {
   text-align: center;
