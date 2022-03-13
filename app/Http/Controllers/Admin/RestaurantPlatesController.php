@@ -66,7 +66,7 @@ class RestaurantPlatesController extends Controller
             $data['cover_original_name'] = $request->file('cover')->getClientOriginalName();
             
             // salvare l'immagine e salvare il percorso
-            $image_path = Storage::put('uploads', $data['cover']);
+            $image_path = Storage::put('storage/uploads', $data['cover']);
             $data['cover'] = $image_path;
         }
         else{

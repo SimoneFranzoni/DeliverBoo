@@ -23,7 +23,7 @@ class RestaurantController extends Controller
         $restaurant->cover = $this->makeImagePath($restaurant->cover);
 
         $restaurant->plates->each(function($plate){
-            $plate->cover = $this->makeImagePath($plate->cover);
+            $plate->cover = $this->makeImagePathPlate($plate->cover);
         });
         return response()->json(compact('restaurant'));
     }
@@ -55,6 +55,13 @@ class RestaurantController extends Controller
 
         return $cover;
     }
+
+    private function makeImagePathPlate($cover){
+        $cover = url($cover);
+        return $cover;
+    }
+
+
     public function orderProva(Request $request){
         dump($request->all());
     }

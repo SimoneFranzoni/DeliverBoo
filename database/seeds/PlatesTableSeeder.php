@@ -28,6 +28,10 @@ class PlatesTableSeeder extends Seeder
         $newPlate->ingrediants = $plate['ingradiants'];
         $newPlate->price = $plate['price'];
         $newPlate->category = $plate['category'];
+        if(!empty($plate['cover'])){
+          $newPlate->cover = $plate['cover'];
+          $newPlate->cover_original_name = $plate['cover_original_name'];
+        } else {
 
         if ($newPlate->category === 'Antipasto') {
           $numberPlateRandom = $this->getRandomNumber(445, 473);
@@ -54,6 +58,7 @@ class PlatesTableSeeder extends Seeder
           $newPlate->cover = $this->getImgRestaurant($numberPlateRandom);
           $newPlate->cover_original_name = 'plate (' . $numberPlateRandom . ').jpg';
         }
+      }
 
         $newPlate->is_available = $faker->boolean(80);
         $newPlate->slug = Plate::generateSlug($newPlate->name);
@@ -92,17 +97,17 @@ class PlatesTableSeeder extends Seeder
   private function getImgRestaurant($numberPlateRandom)
   {
     if ($numberPlateRandom > 0 && $numberPlateRandom < 291) {
-      $imgPath = 'uploads/img/plates/secondi/restaurant (' . $numberPlateRandom . ').jpg';
+      $imgPath = 'storage/uploads/img/plates/secondi/restaurant (' . $numberPlateRandom . ').jpg';
     } elseif ($numberPlateRandom > 290 && $numberPlateRandom < 297) {
-      $imgPath = 'uploads/img/plates/frutta/restaurant (' . $numberPlateRandom . ').jpg';
+      $imgPath = 'storage/uploads/img/plates/frutta/restaurant (' . $numberPlateRandom . ').jpg';
     } elseif ($numberPlateRandom > 296 && $numberPlateRandom < 405) {
-      $imgPath = 'uploads/img/plates/dessert/restaurant (' . $numberPlateRandom . ').jpg';
+      $imgPath = 'storage/uploads/img/plates/dessert/restaurant (' . $numberPlateRandom . ').jpg';
     } elseif ($numberPlateRandom > 404 && $numberPlateRandom < 442) {
-      $imgPath = 'uploads/img/plates/contorno/restaurant (' . $numberPlateRandom . ').jpg';
+      $imgPath = 'storage/uploads/img/plates/contorno/restaurant (' . $numberPlateRandom . ').jpg';
     } elseif ($numberPlateRandom > 441 && $numberPlateRandom < 474) {
-      $imgPath = 'uploads/img/plates/antipasto/restaurant (' . $numberPlateRandom . ').jpg';
+      $imgPath = 'storage/uploads/img/plates/antipasto/restaurant (' . $numberPlateRandom . ').jpg';
     } elseif ($numberPlateRandom > 473 && $numberPlateRandom < 533) {
-      $imgPath = 'uploads/img/plates/primi/restaurant (' . $numberPlateRandom . ').jpg';
+      $imgPath = 'storage/uploads/img/plates/primi/restaurant (' . $numberPlateRandom . ').jpg';
     }
     return $imgPath;
   }
