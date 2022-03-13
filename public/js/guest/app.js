@@ -2103,6 +2103,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "OrderSuccess",
@@ -31402,7 +31409,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".payment-success[data-v-275c022a] {\n  position: relative;\n}\n.payment-success .bg[data-v-275c022a] {\n  width: 100%;\n  height: 80vh;\n  position: absolute;\n  z-index: -100;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.payment-success .bg img[data-v-275c022a] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  display: block;\n  width: 100%;\n  height: 100%;\n  z-index: -100;\n  overflow: hidden;\n}\n.payment-success .container[data-v-275c022a] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  text-align: center;\n  height: 80vh;\n}\n.payment-success .container .col-6[data-v-275c022a] {\n  width: 100%;\n}\n.payment-success .container .col-6 .box-ristorante[data-v-275c022a] {\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  border-radius: 20px;\n  background-color: rgba(255, 255, 255, 0.9);\n  padding: 20px;\n}\n.payment-success .container .col-6 .box-ristorante svg[data-v-275c022a] {\n  fill: #45CCBC;\n  width: 80px;\n  position: relative;\n  top: -40px;\n}\n.payment-success .container .col-6 .box-ristorante h2[data-v-275c022a] {\n  position: relative;\n  top: -20px;\n  font-size: 28px;\n}\n.payment-success .container .col-6 .box-ristorante h2 span[data-v-275c022a] {\n  font-size: 38px;\n}\n.payment-success .fw-bold[data-v-275c022a] {\n  font-weight: bold;\n  z-index: 10000;\n}", ""]);
+exports.push([module.i, ".payment-success[data-v-275c022a] {\n  position: relative;\n}\n.payment-success .bg[data-v-275c022a] {\n  width: 100%;\n  height: 80vh;\n  position: absolute;\n  z-index: -100;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.payment-success .bg img[data-v-275c022a] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  display: block;\n  width: 100%;\n  height: 100%;\n  z-index: -100;\n  overflow: hidden;\n}\n.payment-success .container[data-v-275c022a] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  text-align: center;\n  height: 80vh;\n}\n.payment-success .container .col-6[data-v-275c022a] {\n  width: 100%;\n}\n.payment-success .container .col-6 .box-ristorante[data-v-275c022a] {\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  border-radius: 20px;\n  background-color: rgba(255, 255, 255, 0.9);\n  padding: 20px;\n}\n.payment-success .container .col-6 .box-ristorante svg[data-v-275c022a] {\n  fill: #45CCBC;\n  width: 80px;\n  position: relative;\n  top: -40px;\n}\n.payment-success .container .col-6 .box-ristorante h2[data-v-275c022a] {\n  position: relative;\n  top: -20px;\n  font-size: 28px;\n}\n.payment-success .container .col-6 .box-ristorante h2 span[data-v-275c022a] {\n  font-size: 38px;\n}\n.payment-success .container .col-6 .box-ristorante .all[data-v-275c022a] {\n  margin-top: 15px;\n}\n.payment-success .fw-bold[data-v-275c022a] {\n  font-weight: bold;\n  z-index: 10000;\n}", ""]);
 
 // exports
 
@@ -64187,11 +64194,24 @@ var render = function () {
           _vm._v(" "),
           _c("h5", [
             _vm._v(
-              "Riceverai a breve una mail di conferma della ricezione dell'ordine."
+              "\n          Riceverai a breve una mail di conferma della ricezione dell'ordine.\n        "
             ),
           ]),
           _vm._v(" "),
           _c("h5", [_vm._v("Grazie per averci scelto.")]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "all" },
+            [
+              _c("router-link", { attrs: { to: { name: "restaurantsAll" } } }, [
+                _c("div", { staticClass: "ac-btn  px-5" }, [
+                  _vm._v("Torna ai ristoranti"),
+                ]),
+              ]),
+            ],
+            1
+          ),
         ]),
       ]),
     ]),
