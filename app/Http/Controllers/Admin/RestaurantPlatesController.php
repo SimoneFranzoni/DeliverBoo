@@ -59,6 +59,7 @@ class RestaurantPlatesController extends Controller
         $request->validate($this->generateErrorMessages()['field'],$this->generateErrorMessages()['messages']);
         $ristorante= Restaurant::where('id',$idRistorante)->first();
         $data = $request->all();
+        $nuovoPiatto = new Plate();
 
         if(array_key_exists('cover', $data)){
             
@@ -66,15 +67,16 @@ class RestaurantPlatesController extends Controller
             $data['cover_original_name'] = $request->file('cover')->getClientOriginalName();
             
             // salvare l'immagine e salvare il percorso
-            $image_path = Storage::put('storage/uploads', $data['cover']);
+            $image_path = Storage::put('uploads', $data['cover']);
             $data['cover'] = $image_path;
+            $nuovoPiatto-> cover_up_by_user = 1;
         }
         else{
             $data['cover'] = 'https://via.placeholder.com/350x290/45CCBC/FFFFFF?Text=DeliverBoo+plates';
             $data['cover_original_name'] = "DeliveBoo Restaurant";
         }
 
-        $nuovoPiatto = new Plate();
+        
         $nuovoPiatto->fill($data);
         $nuovoPiatto->slug = Plate::generateSlug($nuovoPiatto->name);
         $nuovoPiatto->restaurant_id = $ristorante->id;
@@ -142,7 +144,9 @@ class RestaurantPlatesController extends Controller
             $data['cover'] = $image_path;
 
         }
-        $piattoModificato = $piattoDaModificare->update($data);
+
+        $piattoDaModificare->cover_up_by_user = 1;
+        $piattoDaModificare->update($data);
 
         return redirect()->route('admin.miei-ristoranti.piatti.show',[$ristorante->slug,$piattoDaModificare->slug]);
     }
