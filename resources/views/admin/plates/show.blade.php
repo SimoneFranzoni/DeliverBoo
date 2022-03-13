@@ -1,13 +1,13 @@
 @extends('admin.home')
 @section('dashboard-content')
-<div class="container pt-4">
-  <div class="row my-4">
+<div class="container container-show-plates mt-4 pt-3  mb-4">
+  <div class="row  my-4">
     <div class="col-12 col-sm-5">
-      <h3>Nome del piatto </h3>
+      <h4>Nome del piatto </h4>
       <p>{{$piatto->name}}</p>
-      <h3>Categoria </h3>
+      <h4>Categoria </h4>
       <p>{{$piatto->category}}</p>
-      <h3>Ingredienti </h3>
+      <h4>Ingredienti </h4>
       <p>{{$piatto->ingrediants}}</p>
     </div>  
       @if ($piatto->cover)
@@ -27,15 +27,15 @@
     
 
   </div>
-    <h3>Descrizione</h3>
+    <h4>Descrizione</h4>
     <p>{{$piatto->description}}</p>
-    <h3>Prezzo</h3>
+    <h4>Prezzo</h4>
     <p>{{$piatto->price}}€</p>
-    <h3>Disponibilità</h3>
+    <h4>Disponibilità</h4>
     @if($piatto->is_available)
-      <span class="bg-success text-white px-1"><strong>Disponibile</strong></span>
+      <span class="badge bg-success text-white px-1"><strong>Disponibile</strong></span>
       @else
-          <span class="bg-danger text-white px-1"><strong>Non disponibile</strong></span> 
+          <span class="badge bg-danger text-white px-1"><strong>Non disponibile</strong></span> 
       @endif  
     <p>{{$piatto->is_availeble}}</p>
     {{-- bottoni modifica e elimina --}}
@@ -54,11 +54,11 @@
 
     </div> 
     {{-- bottone indietro --}}
-    <h2 class="mt-4">
-      <a  href="{{route('admin.miei-ristoranti.piatti.index',$ristorante->slug)}}">
-          <button class="btn-team5 btn-back-team5">Back <<</button> 
+
+      <a class="my-4"  href="{{route('admin.miei-ristoranti.piatti.index',$ristorante->slug)}}">
+          <button class="btn-team5">Back <<</button> 
       </a>
-    </h2>  
+ 
  
 @endsection
   

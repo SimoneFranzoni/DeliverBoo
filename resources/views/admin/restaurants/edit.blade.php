@@ -3,7 +3,7 @@
 @section('dashboard-content')
 
 
-<div class="container">
+<div class="container container-restaurants p-3 mb-4">
    <h2 class="mt-4">Modifica il tuo ristorante</h2>
   
    <form action="{{route('admin.miei-ristoranti.update', $restaurant)}}"
@@ -132,16 +132,15 @@
    </form>
   
    {{-- link di pagina precedente --}}
-   <h2 class="d-inline-block mt-4 mr-4">
+   <div class="my-3">
       <a  href="{{route('admin.miei-ristoranti.index')}}">
-         <button class="btn-team5 btn-back-team5">Elenco Ristoranti</button> 
+         <button class="btn-team5">Elenco Ristoranti</button> 
       </a>
-    </h2>
-   <h2 class="d-inline-block mt-4">
+  
       <a  href="{{route('admin.miei-ristoranti.piatti.index',$restaurant->slug)}}">
-         <button class="btn-team5 btn-back-team5">Vai al Ristorante</button> 
+         <button class="btn-team5">Vai al Ristorante</button> 
       </a>
-    </h2>
+   </div> 
 </div>   
 
 
