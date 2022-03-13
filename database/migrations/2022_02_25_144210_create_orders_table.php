@@ -28,7 +28,7 @@ class CreateOrdersTable extends Migration
             $table->text('note');
             $table->integer('total_price');
             $table->string('slug');
-
+            $table->boolean('processed')->default(false);
             $table->timestamps();
         });
     }

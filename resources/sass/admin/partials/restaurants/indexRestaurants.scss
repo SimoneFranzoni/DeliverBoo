@@ -7,14 +7,11 @@
     background-color: white;
   }
 .restaurant-slider-team5{
-  box-shadow: 0 3px 10px rgba(0,0,0,0.3);
-  padding:20px;
   border-radius: 20px;
   scrollbar-width: none;
   overflow-y: scroll;
   scrollbar-width: none;
   margin-bottom:20px;
-  background-color: white;
   height: calc(100vh - 300px);
   :last-child{
     border:none;
@@ -23,8 +20,12 @@
     width: 100%;
     padding-bottom:20px;
     margin: 20px 0;
-    border-bottom: 1px solid black;
     padding: 10px 0;
+    align-items: center;
+    background-color: white;
+    border-radius: 20px;
+  
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
     h3{
       margin:0px;
       padding: 5px 20px;
@@ -36,6 +37,14 @@
       a{
         color:black;
       }
+
+      .button-container-restautant{
+        height: 100%;
+        a{
+          height:100%
+        }
+      }
     }
+
   }
 }
