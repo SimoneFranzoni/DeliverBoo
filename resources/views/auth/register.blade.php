@@ -7,7 +7,12 @@
             <div class="">
                 <h1 class="text-center mt-3">{{ __('Register') }}</h1>
 
-                <div class="card-body">
+                <div class="card-body"
+                style=" background-color: rgb(255, 255, 255, 0.4);
+                        border-radius:20px;
+                        color:black;
+                "
+                >
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 

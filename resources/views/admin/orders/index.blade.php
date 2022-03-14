@@ -3,7 +3,13 @@
 
        
 <div class="container ">
-  
+
+
+  @if(session('deleted'))
+  <div class="alert alert-danger" role="alert">
+    {{session('deleted')}}
+  </div>
+  @endif
   {{-- info ristorante --}}
   <div class="d-md-flex justify-content-between mb-5">
     <div class="col-md-8 mt-3">
@@ -26,13 +32,14 @@
           <div>EMAIL : {{$order->email}}</div> 
           <div>TELEFONO : {{$order->phone}}</div> 
           <div>INDIRIZZO : {{$order->address}}</div> 
+          <div>PIATTI:</div> 
       
           @foreach ( $order->plates as $plate )
-            <div>{{$plate->quantity}}</div>
+            <div >{{$plate->pivot->quantity}} -  {{$plate->name}}</div>
           @endforeach 
           <div>TOTALE : {{$order->total_price}}</div> 
 
-          <form class="d-inline-block"
+          <form class="d-inline-block" onsubmit="return confirm('Confermi eliminazione ristorant')"
             action="{{route('admin.miei-ristoranti.ordini.update',[$order,$restaurant->slug])}}" method="POST">
                 @csrf
                 @method('PUT')
