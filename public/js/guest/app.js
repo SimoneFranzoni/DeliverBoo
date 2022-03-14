@@ -64852,7 +64852,7 @@ var render = function () {
                                     },
                                     [
                                       _vm._v(
-                                        "\n                        Procedi con l'acquisto 🎉\n                      "
+                                        "\n                      Procedi con l'acquisto 🎉\n                    "
                                       ),
                                     ]
                                   ),
