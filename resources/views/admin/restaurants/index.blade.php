@@ -19,16 +19,25 @@
       <div class="restaurant-slider-team5 ">
         @foreach ($ristoranti as $ristorante)
           <div class="">
-            <div class="card-team5 d-flex flex-wrap justify-content-between">
+            <div class="card-team5 d-flex flex-wrap justify-content-between align-item-center">
               <div class="col-12 col-md-8 d-flex align-items-center">
+                {{-- immagine ristorante --}}
+                <div class="plate-img col-3 p-0">
+                  @if ($ristorante->cover)
+                    <img class="img-restaurant" src="{{asset('storage/' . $ristorante->cover)}}" alt="{{$ristorante->name}}">
+                  @else
+                    <img class="img-restaurant" src="https://via.placeholder.com/350x290/45CCBC/FFFFFF?Text=DeliverBoo+restaurant" alt="{{$ristorante->name}}">
+                  @endif
+                </div>
+                {{-- ******************************************** --}}
+
                 <h3><a href="{{route('admin.miei-ristoranti.piatti.index',$ristorante->slug)}}">{{$ristorante->name}}</a></h3>
 
               </div>
-              <div class="d-flex col-12 col-md-4">
+              <div class="d-flex col-12 col-md-4 button-container-restautant">
                 <a  href="{{route('admin.miei-ristoranti.edit', $ristorante->slug)}}">
                   <button class="btn-team5 mr-1">Modifica</button>  
                 </a>
-
                 <form class="d-inline-block" onsubmit="return confirm('Confermi eliminazione ristorante: {{$ristorante->name}}')"
                   action="{{ route('admin.miei-ristoranti.destroy', $ristorante)}}" method="POST">
                       @csrf
