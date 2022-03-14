@@ -13075,7 +13075,7 @@ h3 {
 }
 
 .background-team5 {
-  min-height: calc(100vh - 80px);
+  min-height: calc(100vh - 90px);
   background-image: url("https://images.pexels.com/photos/2641886/pexels-photo-2641886.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
   background-size: cover;
 }

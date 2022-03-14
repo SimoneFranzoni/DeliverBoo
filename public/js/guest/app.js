@@ -2003,7 +2003,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     this.getApiTypes();
     this.getApiRestaurants();
     this.isLoaded = true;
-    console.log('localstorage', localStorage);
+    console.log('localstorage', localStorage.getItem('items'));
   },
   data: function data() {
     return {
@@ -3076,6 +3076,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     };
   },
   mounted: function mounted() {
+    console.log('local', localStorage.getItem('items'));
     this.getActiveRestaurant();
     this.getTrueCart();
   },
@@ -82253,16 +82254,20 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   }, {
     path: '/restaurantdetail/:slug',
     name: 'restaurantdetail',
-    component: _components_pages_Restaurantdetail_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
-    beforeEnter: function beforeEnter(to, from, next) {
-      var text = 'Attenzione! Se cambi ristorante perderai quello che hai nel carrello.';
+    component: _components_pages_Restaurantdetail_vue__WEBPACK_IMPORTED_MODULE_5__["default"] // beforeEnter: (to, from, next) => {
+    //   let text = 'Attenzione! Se cambi ristorante perderai quello che hai nel carrello.';
+    //   // if (localStorage.getItem('items') !== null && JSON.parse(localStorage.getItem)) {
+    //     console.log(JSON.parse(localStorage.getItem('items')));
+    //     console.log(to)
+    //   if (!JSON.parse(localStorage.getItem('items'))) {
+    //     if(confirm(text)) {
+    //       next()
+    //     } else {
+    //       next(false)
+    //     }
+    //   } else next()
+    // }
 
-      if (confirm(text) && localStorage.length > 0) {
-        next();
-      } else {
-        next(false);
-      }
-    }
   }, {
     path: '/payment/:slug',
     name: 'payment',
@@ -82287,7 +82292,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/albertonicolaciufici/Desktop/Boolean/Progetto Finale/DeliverBoo/resources/js/guest/app.js */"./resources/js/guest/app.js");
+module.exports = __webpack_require__(/*! C:\Users\franc\Documents\Francesco\BOOLEAN\Esercizi\PORTFOLIO\progetto finale\DeliverBoo\DeliverBoo\resources\js\guest\app.js */"./resources/js/guest/app.js");
 
 
 /***/ })
