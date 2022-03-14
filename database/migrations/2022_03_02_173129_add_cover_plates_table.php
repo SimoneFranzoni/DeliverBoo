@@ -16,6 +16,7 @@ class AddCoverPlatesTable extends Migration
         Schema::table('plates', function (Blueprint $table) {
             $table->string('cover')->nullable()->after('slug');
             $table->string('cover_original_name')->nullable()->after('slug');
+            $table->boolean('cover_up_by_user')->nullable()->after('slug');
         });
     }
 
@@ -29,6 +30,7 @@ class AddCoverPlatesTable extends Migration
         Schema::table('plates', function (Blueprint $table) {
             $table->dropColumn('cover');
             $table->dropColumn('cover_original_name');
+            $table->dropColumn('cover_up_by_user');
         });
     }
 }
