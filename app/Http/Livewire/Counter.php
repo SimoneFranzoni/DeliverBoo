@@ -15,7 +15,7 @@ class Counter extends Component
         $myRestaurantOrder=[];
         $user = Auth::user();
         $restaurants= Restaurant::where('user_id',$user->id)->get();
-        
+        $printOrder=false;
         foreach($restaurants as $restaurant)
         {
             array_push($arrayOrders,Order::where('restaurant_id',$restaurant->id)->get())  ;
@@ -23,32 +23,33 @@ class Counter extends Component
 
 
         foreach($arrayOrders as $orders){
-            { 
+            
                  foreach($orders as $order){
-                     array_push($myRestaurantOrder,$order->restaurant_id);
-                 }
-            }
+                    if($order->processed===0){
+                        $printOrder=true;
+                        array_push($myRestaurantOrder,$order->restaurant_id);
+                    }
+                }
+            
         }
+       
         $singleOrder=[];
-     
-         foreach($myRestaurantOrder as $id) {
+        foreach($myRestaurantOrder as $id) {
             if(!in_array($id,$singleOrder))
             {
                 array_push($singleOrder,$id);
-        
             }
-         }  
-         return view('livewire.counter',compact('restaurants','singleOrder'));
-     }
+        }  
+        
+        return view('livewire.counter',compact('restaurants','singleOrder','printOrder'));
+    
+    }
+        
 
-     public function update(Request $request, $id)
-     {
-         
-     }
+}
 
                      
             
       
 
 
-}
