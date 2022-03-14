@@ -300,7 +300,7 @@
                         <!-- v-if="!disableBuyButton" -->
                       <button
                         @click.prevent="beforeBuy"
-                        class="ac-bnt w-full btn-success mt-5"
+                        class="ac-btn w-full mt-5"
                       >
                         Procedi con l'acquisto 🎉
                       </button>
