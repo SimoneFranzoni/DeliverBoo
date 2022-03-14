@@ -145,13 +145,15 @@
                             <div class="fw-bold">€{{getSubTotal}}</div>
                         </div>
 
-                        <div class="d-flex justify-content-center">
+                        <div class="buttons">
                             <router-link 
                             v-if="isLoaded"
                             
                             class="ac-btn" :to="{name: 'payment', params: {slug: activeRestaurant.slug}}">
                                 Vai al pagamento
                             </router-link>
+
+                            <div class="ac-btn remove" @click="removeArray">Svuota il carrello</div>
                         </div>
                     </div>
                     
@@ -222,13 +224,15 @@
                             <div class="fw-bold">€{{getSubTotal}}</div>
                         </div>
 
-                        <div class="d-flex justify-content-center">
+                        <div class="buttons">
                             <router-link 
                             v-if="isLoaded"
-
+                            
                             class="ac-btn" :to="{name: 'payment', params: {slug: activeRestaurant.slug}}">
                                 Vai al pagamento
                             </router-link>
+
+                            <div class="ac-btn remove" @click="removeArray">Svuota il carrello</div>
                         </div>
                     </div>
                     
@@ -619,6 +623,16 @@ h4:first-of-type {
           }
         }
 
+        .buttons {
+          display: flex;
+          gap: 25px;
+          justify-content: center;
+          .ac-btn.remove {
+            background-color: darken(rgb(245, 123, 123), 10);
+            cursor: pointer;
+          }
+        }
+
         .carrello-empty{
            color:lightgrey;
            height:220px;
@@ -706,6 +720,16 @@ h4:first-of-type {
 
           div {
             padding: 10px 15px;
+          }
+        }
+
+        .buttons {
+          display: flex;
+          gap: 25px;
+          justify-content: center;
+          .ac-btn.remove {
+            background-color: darken(rgb(245, 123, 123), 10);
+            cursor: pointer;
           }
         }
 
