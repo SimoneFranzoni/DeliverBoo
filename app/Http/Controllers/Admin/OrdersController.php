@@ -25,7 +25,6 @@ $note = $_GET['note'];
 // $product = $_GET['product'];
 // $quantity = $_GET['quantity'];
 $totalPrice = $_GET['total'];
-
 echo $name . $lastname . 'è felice';
 }
 
@@ -42,10 +41,15 @@ class OrdersController extends Controller
         $user = Auth::user();
         $restaurant= Restaurant::where('slug',$slug)->first();
         $orders = Order::where('restaurant_id',$restaurant->id)->with('plates')->get();
-      
+     
+       $printOrder = false;
+        foreach($orders as $order) {
+            if($order->processed===0){
+                $printOrder = true;
+          }
+        }
         
-        
-        return view('admin.orders.index',compact('restaurant','orders','user'));
+        return view('admin.orders.index',compact('restaurant','orders','user','printOrder'));
     }
 
     /**
@@ -97,9 +101,9 @@ class OrdersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $order,$id)
     {
-        //
+       
     }
 
     /**
@@ -109,9 +113,14 @@ class OrdersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id_order,$restaurant_slug)
     {
-        //
+       
+         $order = Order::where('id',$id_order)->first();
+         $order->processed=1;
+         $order->save();
+ 
+         return redirect()->route('admin.miei-ristoranti.ordini.index',[$restaurant_slug]);
     }
 
     /**

@@ -64837,8 +64837,7 @@ var render = function () {
                                   _c(
                                     "button",
                                     {
-                                      staticClass:
-                                        "ac-bnt w-full btn-success mt-5",
+                                      staticClass: "ac-btn w-full mt-5",
                                       on: {
                                         click: function ($event) {
                                           $event.preventDefault()
@@ -82202,7 +82201,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Simone\Documents\Boolean\Progetto Finale\DeliverBoo\resources\js\guest\app.js */"./resources/js/guest/app.js");
+module.exports = __webpack_require__(/*! C:\Users\ssimo\Documents\boolean\html\lara\progetto-finale\DeliverBoo\resources\js\guest\app.js */"./resources/js/guest/app.js");
 
 
 /***/ })

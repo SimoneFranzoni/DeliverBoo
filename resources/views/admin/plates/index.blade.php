@@ -12,6 +12,20 @@
 
   <div >
     @if (count($piatti)=== 0)
+    <div class="wrapper d-flex flex-wrap">
+
+      <h1  class="col-12 col-md-8  my-3">{{$ristorante->name}}</h1>
+
+      <div class="col-12 col-md-3 offset-md-1 right-dashboard-plates-team5 ">
+        <a  href="{{route('admin.miei-ristoranti.piatti.create',$ristorante->slug)}}">
+          <button class="btn-team5">Nuovo piatto</button>
+        </a>
+    
+        <a  href="{{route('admin.miei-ristoranti.ordini.index',$ristorante->slug)}}">
+          <button  class="btn-team5">Vedi Ordini</button>
+        </a>
+      </div> 
+    </div>
     <div style=" margin-top: 20px;    text-align: center;
     border-radius: 20px;
     padding:20px 0;
@@ -37,8 +51,7 @@
           <button  class="btn-team5">Vedi Ordini</button>
         </a>
       </div> 
-    </div>
-      
+    </div> 
       
     
 
