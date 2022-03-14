@@ -274,6 +274,7 @@ export default {
       }
     },
     mounted() {
+     console.log('local', localStorage.getItem('items')); 
      this.getActiveRestaurant();    
      this.getTrueCart();
      
@@ -323,7 +324,7 @@ export default {
         return this.subTotal = sum;
       }
     },
-    
+   
     methods : {
       getActiveRestaurant() {
         

@@ -36,16 +36,19 @@ const router = new VueRouter({
       path: '/restaurantdetail/:slug',
       name: 'restaurantdetail',
       component: Restaurantdetail,
-      beforeEnter: (to, from, next) => {
-        let text = 'Attenzione! Se cambi ristorante perderai quello che hai nel carrello.';
-        if (localStorage.getItem('items') !== null ) {
-          if(confirm(text)) {
-            next()
-          } else {
-            next(false)
-          }
-        } else next()
-      }
+      // beforeEnter: (to, from, next) => {
+      //   let text = 'Attenzione! Se cambi ristorante perderai quello che hai nel carrello.';
+      //   // if (localStorage.getItem('items') !== null && JSON.parse(localStorage.getItem)) {
+      //     console.log(JSON.parse(localStorage.getItem('items')));
+      //     console.log(to)
+      //   if (!JSON.parse(localStorage.getItem('items'))) {
+      //     if(confirm(text)) {
+      //       next()
+      //     } else {
+      //       next(false)
+      //     }
+      //   } else next()
+      // }
     },
     {
       path: '/payment/:slug',
