@@ -46,11 +46,18 @@
           <div @click="toggleMenu" class="filter d-block d-lg-none ml-3">
             <i class="fas fa-filter"></i>
           </div>
+          
         </div>
         <div v-else>
           <div class="hamburger px-2">
-            <div @click="toggleMenu" class="filter">X</div>
-            <div>Tutte le cucine (A, Z)</div>
+            <div class="buttons">
+              <div @click="toggleMenu" class="filter">X</div>
+              <router-link class="all" :to="{name: 'restaurantsAll'}">
+                <div class="ac-btn">Azzera filtri</div>
+              </router-link>
+            </div>
+            <div class="all">Tutte le cucine (A, Z)</div>
+            
             <ul class="filter-list">
               <li
                 v-for="(type, index) in types"
@@ -256,6 +263,10 @@ export default {
     .filter-list {
       z-index: 2000;
     }
+    .buttons {
+      display: flex;
+      gap: 20px;
+    }
   }
 
   .restaurant-column {
@@ -305,7 +316,7 @@ export default {
     align-items: center;
     flex-wrap: nowrap;
     scrollbar-width: none;
-    // overflow-y: scroll;
+    overflow-y: auto;
   }
 
   .typebox {
