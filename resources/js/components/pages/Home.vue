@@ -67,7 +67,7 @@ export default {
     this.getApiTypes();
     this.getApiRestaurants();
     this.isLoaded = true;
-    console.log('localstorage',localStorage)
+    console.log('localstorage',localStorage.getItem('items'))
   },
   data(){
     return {

@@ -38,11 +38,13 @@ const router = new VueRouter({
       component: Restaurantdetail,
       beforeEnter: (to, from, next) => {
         let text = 'Attenzione! Se cambi ristorante perderai quello che hai nel carrello.';
-        if(confirm(text) && localStorage.length > 0) {
-          next()
-        } else {
-          next(false)
-        }
+        if (localStorage.getItem('items') !== null ) {
+          if(confirm(text)) {
+            next()
+          } else {
+            next(false)
+          }
+        } else next()
       }
     },
     {
