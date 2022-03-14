@@ -10,7 +10,7 @@ class Order extends Model
         return $this->belongsToMany('App\Restaurant');
     }
     public function plates(){
-        return $this->belongsToMany('App\Plate');
+        return $this->belongsToMany('App\Plate')->withPivot('quantity');
     }
    protected $fillable= [
     'name',

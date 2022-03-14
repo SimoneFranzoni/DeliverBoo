@@ -23,6 +23,7 @@
     <link href="{{ asset('css/admin/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/guest/style.css') }}" rel="stylesheet">
     @livewireScripts('counter')
+    
 </head>
 <body>
     <div id="app">
