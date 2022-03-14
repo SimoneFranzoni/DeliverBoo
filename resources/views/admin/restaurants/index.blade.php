@@ -24,7 +24,11 @@
                 {{-- immagine ristorante --}}
                 <div class="plate-img col-3 p-0">
                   @if ($ristorante->cover)
-                    <img class="img-restaurant" src="{{asset('storage/' . $ristorante->cover)}}" alt="{{$ristorante->name}}">
+                    @if($ristorante->cover_up_by_user)
+                      <img class="img-restaurant" src="{{asset('storage/' . $ristorante->cover)}}" alt="{{$ristorante->name}}">
+                    @else 
+                    <img src="{{asset($ristorante->cover)}}" alt="{{$ristorante->name}}">
+                    @endif
                   @else
                     <img class="img-restaurant" src="https://via.placeholder.com/350x290/45CCBC/FFFFFF?Text=DeliverBoo+restaurant" alt="{{$ristorante->name}}">
                   @endif
