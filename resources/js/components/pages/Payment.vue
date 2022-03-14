@@ -269,7 +269,7 @@
                     </div>
 
                     <!-- Submit -->
-                    <div class="col-12 d-flex flex-column align-items-center">
+                    <div class="col-12 d-flex flex-column align-items-center text-center">
                       <div v-if="isLoading"></div>
                       <div v-else>
                         <v-braintree
@@ -289,7 +289,7 @@
                         <!-- v-if="!disableBuyButton" -->
                       <button
                         @click.prevent="beforeBuy"
-                        class="ac-btn w-full mt-5"
+                        class="ac-btn w-full mt-5 "
                       >
                         Procedi con l'acquisto 🎉
                       </button>

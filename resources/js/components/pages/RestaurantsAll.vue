@@ -4,7 +4,8 @@
       
       <div class="row">
         <div class="d-none d-lg-block col-3 filter-column">
-          <div>Tutte le cucine (A, Z)</div>
+          <div class="all">Tutte le cucine (A, Z)</div>
+          
           <ul class="filter-list">
             <router-link :to="{name: 'restaurants', params: {slug: type.slug}}"
               v-for="(type, index) in types"
@@ -23,7 +24,7 @@
 
         <div v-if="filter_close">
           <div @click="toggleMenu" class="filter d-block d-lg-none ml-3">
-            <i class="fas fa-filter"></i> Filtra
+            <i class="fas fa-filter"></i>
           </div>
         </div>
         <div v-else>
@@ -168,7 +169,7 @@ export default {
     overflow-y: auto;
     z-index: 1;
   }
-
+  
   .filter-list {
     display: flex;
     flex-direction: column;

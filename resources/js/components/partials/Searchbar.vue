@@ -9,7 +9,7 @@
       type="text" name="restsearch" id="restsearch" placeholder="Cerca qui una tipologia di ristorante..."
       v-model="searchedValue"
       @keyup="$emit('triggerSearch', searchedValue)">
-      <!-- <router-link :to="{name: 'restaurants', params: {slug: type.slug}}"> -->
+
     </div>
     <div class="all">
       <router-link :to="{name: 'restaurantsAll'}">

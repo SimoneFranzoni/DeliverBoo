@@ -1,6 +1,9 @@
 <template>
 
- <router-link class="box" :to="{name: 'restaurantdetail', params: {slug: restaurant.slug}}">
+ <router-link 
+
+ class="box" :to="{name: 'restaurantdetail', params: {slug: restaurant.slug}}"
+ >
 
     <!--:style="{ backgroundImage: `url(${restaurant.cover})`}"-->
     <div class="restaurant-img float-left">
@@ -41,6 +44,9 @@ export default {
     props: {
       restaurant: Object, 
       types: Array
+    },
+    methods: {
+      
     }
 }
 </script>

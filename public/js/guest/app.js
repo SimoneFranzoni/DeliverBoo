@@ -1987,6 +1987,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Home',
@@ -1994,34 +1998,44 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     Jumbotron: _partials_Jumbotron_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   mounted: function mounted() {
+    console.log(this.isLoaded);
+    this.isLoaded = false;
     this.getApiTypes();
     this.getApiRestaurants();
+    this.isLoaded = true;
+    console.log('localstorage', localStorage);
   },
   data: function data() {
     return {
       types: [],
       type: {},
       restaurants: [],
-      randomRestaurants: []
+      randomRestaurants: [],
+      isLoaded: false
     };
   },
   methods: {
     getApiTypes: function getApiTypes() {
       var _this = this;
 
+      this.isLoaded = false;
       this.types = [];
       axios.get('http://127.0.0.1:8000/api/tipo/').then(function (res) {
-        _this.types = res.data.types; // console.log(this.types);
+        _this.types = res.data.types;
+        _this.isLoaded = true; // console.log(this.types);
       });
     },
     getApiRestaurants: function getApiRestaurants() {
       var _this2 = this;
 
+      this.isLoaded = false;
       this.restaurants = [];
       axios.get('http://127.0.0.1:8000/api/ristoranti/').then(function (res) {
         _this2.restaurants = res.data.restaurants;
 
         _this2.getRandomRestaurants();
+
+        _this2.isLoaded = true;
       });
     },
     getRandomRestaurants: function getRandomRestaurants() {
@@ -2064,7 +2078,13 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     },
     getRandomNumber: function getRandomNumber(min, max) {
       return Math.floor(Math.random() * (max - min + 1) + min);
-    }
+    } // confirmChange() {
+    //   let text = 'Attenzione! Se cambi ristorante perderai quello che hai messo nel carrello.';
+    //     if (!confirm(text)) {
+    //       history.back()
+    //     }
+    // }
+
   }
 });
 
@@ -3030,6 +3050,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Restaurantdetail',
@@ -3295,6 +3319,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Restaurants",
@@ -3419,6 +3446,7 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
+//
 //
 //
 //
@@ -3749,12 +3777,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'RestaurantBox',
   props: {
     restaurant: Object,
     types: Array
-  }
+  },
+  methods: {}
 });
 
 /***/ }),
@@ -31427,7 +31459,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#stickyMenu[data-v-0f5c5f38] {\n  position: -webkit-sticky;\n  position: sticky;\n  top: -25px;\n}\nh4[data-v-0f5c5f38] {\n  margin: 20px 0;\n}\nh4[data-v-0f5c5f38]:first-of-type {\n  margin-top: 0 !important;\n  margin-bottom: 20px !important;\n}\n.del-plate[data-v-0f5c5f38],\n.add-plate[data-v-0f5c5f38] {\n  width: 40px;\n  height: 20px;\n  display: inline-block;\n  font-size: 20px;\n  border: 1px solid black;\n  line-height: 15px;\n  text-align: center;\n  border-radius: 10px;\n  padding: 0px;\n  transition: all 0.2s;\n  cursor: pointer;\n}\n.del-plate[data-v-0f5c5f38]:hover,\n.add-plate[data-v-0f5c5f38]:hover {\n  border: 1px solid #45CCBC;\n  color: #45CCBC;\n  font-size: 24px;\n}\n.amount-plates[data-v-0f5c5f38],\n.del-plate[data-v-0f5c5f38],\n.add-plate[data-v-0f5c5f38] {\n  width: 40px;\n  height: 20px;\n  display: inline-block;\n  line-height: 15px;\n  text-align: center;\n  padding: 0px;\n}\n.bg[data-v-0f5c5f38] {\n  width: 100%;\n  height: 400px;\n  position: relative;\n  z-index: -100;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.bg img[data-v-0f5c5f38] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  display: block;\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  top: 0;\n  left: 0;\n  z-index: -100;\n  overflow: hidden;\n}\n.nav-menu ul li[data-v-0f5c5f38] {\n  display: flex;\n  justify-content: flex-start;\n  align-items: center;\n}\n.nav-menu ul li[data-v-0f5c5f38]:last-child {\n  margin-bottom: 30px;\n}\n.nav-menu ul li .bar[data-v-0f5c5f38] {\n  width: 1px;\n  height: 50px;\n  background-color: lightgrey;\n  margin-right: 10px;\n}\n.nav-menu ul li a[data-v-0f5c5f38] {\n  color: #333232;\n  text-decoration: none;\n  font-size: 15px;\n  transition: transform 0.5s;\n}\n.nav-menu ul li[data-v-0f5c5f38]:hover {\n  font-weight: bold;\n}\n.nav-menu ul li:hover a[data-v-0f5c5f38] {\n  transform: translateX(10px);\n}\n.nav-menu ul li:hover .bar[data-v-0f5c5f38] {\n  width: 1px;\n  background-color: black;\n}\n.nav-menu a.ac-btn[data-v-0f5c5f38] {\n  font-size: 17px;\n}\n.central-column[data-v-0f5c5f38] {\n  position: relative;\n  padding-bottom: 100px;\n}\n.central-column .box-ristorante[data-v-0f5c5f38] {\n  position: absolute;\n  width: 95%;\n  top: -150px;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  padding: 40px 0;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  border-radius: 20px;\n  background-color: white;\n}\n.central-column .row.address[data-v-0f5c5f38] {\n  padding-bottom: 25px;\n}\n.central-column .type[data-v-0f5c5f38] {\n  background-color: #eeebeb;\n  transition: all 0.2s;\n  margin: 0 5px;\n  display: inline-block;\n  padding: 0 5px;\n  font-size: 20px;\n  font-weight: bold;\n  cursor: default;\n}\n.central-column .menu[data-v-0f5c5f38] {\n  margin-top: 100px;\n  padding-top: 200px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n}\n.right-column[data-v-0f5c5f38] {\n  position: relative;\n}\n.right-column .carrello[data-v-0f5c5f38] {\n  position: absolute;\n  top: -150px;\n  width: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  border-radius: 20px;\n  padding-left: 10px;\n  background-color: white;\n  padding: 20px;\n}\n.right-column .carrello .line[data-v-0f5c5f38] {\n  background-color: grey;\n  width: 100%;\n  height: 1px;\n  margin: 10px 0;\n}\n.right-column .carrello .plate-order div[data-v-0f5c5f38] {\n  padding: 10px 15px;\n}\n.right-column .carrello .carrello-empty[data-v-0f5c5f38] {\n  color: lightgrey;\n  height: 220px;\n  padding: 20px;\n  text-align: center;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n.right-column .carrello .carrello-empty i[data-v-0f5c5f38] {\n  font-size: 40px;\n  color: lightgrey;\n}\n.right-column .carrello .carrello-empty .fake-button[data-v-0f5c5f38] {\n  background-color: lightgrey;\n  color: white;\n  height: 33px;\n  border-radius: 10px;\n  line-height: 33px;\n}\n.fw-bold[data-v-0f5c5f38] {\n  font-weight: bold;\n}\n.carrello-mobile[data-v-0f5c5f38] {\n  width: 100%;\n  height: 75px;\n  position: fixed;\n  bottom: 0;\n  left: 0;\n  z-index: 1000;\n  margin-top: 100px;\n  box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.3);\n  background-color: #45CCBC;\n  margin: 0;\n  color: white;\n  cursor: pointer;\n}\n#full-screen-cart[data-v-0f5c5f38] {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100vh;\n  background-color: white;\n  box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.3);\n  z-index: 2000;\n  overflow-y: auto;\n}\n#full-screen-cart .close-cart-btn[data-v-0f5c5f38] {\n  position: absolute;\n  top: 40px;\n  right: 40px;\n  background-color: #45CCBC;\n  color: white;\n  width: 40px;\n  height: 40px;\n  border-radius: 50px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n}\n#full-screen-cart .carrello[data-v-0f5c5f38] {\n  position: absolute;\n  top: 15%;\n  width: 100%;\n  height: 100%;\n  padding-left: 10px;\n  padding: 20px;\n}\n#full-screen-cart .carrello .line[data-v-0f5c5f38] {\n  background-color: grey;\n  width: 100%;\n  height: 1px;\n  margin: 10px 0;\n}\n#full-screen-cart .carrello .plate-order div[data-v-0f5c5f38] {\n  padding: 10px 15px;\n}\n#full-screen-cart .carrello .carrello-empty[data-v-0f5c5f38] {\n  color: lightgrey;\n  height: 220px;\n  padding: 20px;\n  text-align: center;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n#full-screen-cart .carrello .carrello-empty i[data-v-0f5c5f38] {\n  font-size: 40px;\n  color: lightgrey;\n}\n#full-screen-cart .carrello .carrello-empty .fake-button[data-v-0f5c5f38] {\n  background-color: lightgrey;\n  color: white;\n  height: 33px;\n  border-radius: 10px;\n  line-height: 33px;\n}", ""]);
+exports.push([module.i, "#stickyMenu[data-v-0f5c5f38] {\n  position: -webkit-sticky;\n  position: sticky;\n  top: -25px;\n}\nh4[data-v-0f5c5f38] {\n  margin: 20px 0;\n}\nh4[data-v-0f5c5f38]:first-of-type {\n  margin-top: 0 !important;\n  margin-bottom: 20px !important;\n}\n.del-plate[data-v-0f5c5f38],\n.add-plate[data-v-0f5c5f38] {\n  width: 40px;\n  height: 20px;\n  display: inline-block;\n  font-size: 20px;\n  border: 1px solid black;\n  line-height: 15px;\n  text-align: center;\n  border-radius: 10px;\n  padding: 0px;\n  transition: all 0.2s;\n  cursor: pointer;\n}\n.del-plate[data-v-0f5c5f38]:hover,\n.add-plate[data-v-0f5c5f38]:hover {\n  border: 1px solid #45CCBC;\n  color: #45CCBC;\n  font-size: 24px;\n}\n.amount-plates[data-v-0f5c5f38],\n.del-plate[data-v-0f5c5f38],\n.add-plate[data-v-0f5c5f38] {\n  width: 40px;\n  height: 20px;\n  display: inline-block;\n  line-height: 15px;\n  text-align: center;\n  padding: 0px;\n}\n.bg[data-v-0f5c5f38] {\n  width: 100%;\n  height: 400px;\n  position: relative;\n  z-index: -100;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.bg img[data-v-0f5c5f38] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  display: block;\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  top: 0;\n  left: 0;\n  z-index: -100;\n  overflow: hidden;\n}\n.nav-menu ul li[data-v-0f5c5f38] {\n  display: flex;\n  justify-content: flex-start;\n  align-items: center;\n}\n.nav-menu ul li[data-v-0f5c5f38]:last-child {\n  margin-bottom: 30px;\n}\n.nav-menu ul li .bar[data-v-0f5c5f38] {\n  width: 1px;\n  height: 50px;\n  background-color: lightgrey;\n  margin-right: 10px;\n}\n.nav-menu ul li a[data-v-0f5c5f38] {\n  color: #333232;\n  text-decoration: none;\n  font-size: 15px;\n  transition: transform 0.5s;\n}\n.nav-menu ul li[data-v-0f5c5f38]:hover {\n  font-weight: bold;\n}\n.nav-menu ul li:hover a[data-v-0f5c5f38] {\n  transform: translateX(10px);\n}\n.nav-menu ul li:hover .bar[data-v-0f5c5f38] {\n  width: 1px;\n  background-color: black;\n}\n.nav-menu a.ac-btn[data-v-0f5c5f38] {\n  font-size: 17px;\n}\n.central-column[data-v-0f5c5f38] {\n  position: relative;\n  padding-bottom: 100px;\n}\n.central-column .box-ristorante[data-v-0f5c5f38] {\n  position: absolute;\n  width: 95%;\n  top: -150px;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  padding: 40px 0;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  border-radius: 20px;\n  background-color: white;\n}\n.central-column .row.address[data-v-0f5c5f38] {\n  padding-bottom: 25px;\n}\n.central-column .type[data-v-0f5c5f38] {\n  background-color: #eeebeb;\n  transition: all 0.2s;\n  margin: 0 5px;\n  display: inline-block;\n  padding: 0 5px;\n  font-size: 20px;\n  font-weight: bold;\n  cursor: default;\n}\n.central-column .menu[data-v-0f5c5f38] {\n  margin-top: 100px;\n  padding-top: 200px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n}\n.right-column[data-v-0f5c5f38] {\n  position: relative;\n}\n.right-column .carrello[data-v-0f5c5f38] {\n  position: absolute;\n  top: -150px;\n  width: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  border-radius: 20px;\n  padding-left: 10px;\n  background-color: white;\n  padding: 20px;\n}\n.right-column .carrello .line[data-v-0f5c5f38] {\n  background-color: grey;\n  width: 100%;\n  height: 1px;\n  margin: 10px 0;\n}\n.right-column .carrello .plate-order div[data-v-0f5c5f38] {\n  padding: 10px 15px;\n}\n.right-column .carrello .buttons[data-v-0f5c5f38] {\n  display: flex;\n  gap: 25px;\n  justify-content: center;\n}\n.right-column .carrello .buttons .ac-btn.remove[data-v-0f5c5f38] {\n  background-color: #f14c4c;\n  cursor: pointer;\n}\n.right-column .carrello .carrello-empty[data-v-0f5c5f38] {\n  color: lightgrey;\n  height: 220px;\n  padding: 20px;\n  text-align: center;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n.right-column .carrello .carrello-empty i[data-v-0f5c5f38] {\n  font-size: 40px;\n  color: lightgrey;\n}\n.right-column .carrello .carrello-empty .fake-button[data-v-0f5c5f38] {\n  background-color: lightgrey;\n  color: white;\n  height: 33px;\n  border-radius: 10px;\n  line-height: 33px;\n}\n.fw-bold[data-v-0f5c5f38] {\n  font-weight: bold;\n}\n.carrello-mobile[data-v-0f5c5f38] {\n  width: 100%;\n  height: 75px;\n  position: fixed;\n  bottom: 0;\n  left: 0;\n  z-index: 1000;\n  margin-top: 100px;\n  box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.3);\n  background-color: #45CCBC;\n  margin: 0;\n  color: white;\n  cursor: pointer;\n}\n#full-screen-cart[data-v-0f5c5f38] {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100vh;\n  background-color: white;\n  box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.3);\n  z-index: 2000;\n  overflow-y: auto;\n}\n#full-screen-cart .close-cart-btn[data-v-0f5c5f38] {\n  position: absolute;\n  top: 40px;\n  right: 40px;\n  background-color: #45CCBC;\n  color: white;\n  width: 40px;\n  height: 40px;\n  border-radius: 50px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n}\n#full-screen-cart .carrello[data-v-0f5c5f38] {\n  position: absolute;\n  top: 15%;\n  width: 100%;\n  height: 100%;\n  padding-left: 10px;\n  padding: 20px;\n}\n#full-screen-cart .carrello .line[data-v-0f5c5f38] {\n  background-color: grey;\n  width: 100%;\n  height: 1px;\n  margin: 10px 0;\n}\n#full-screen-cart .carrello .plate-order div[data-v-0f5c5f38] {\n  padding: 10px 15px;\n}\n#full-screen-cart .carrello .buttons[data-v-0f5c5f38] {\n  display: flex;\n  gap: 25px;\n  justify-content: center;\n}\n#full-screen-cart .carrello .buttons .ac-btn.remove[data-v-0f5c5f38] {\n  background-color: #f14c4c;\n  cursor: pointer;\n}\n#full-screen-cart .carrello .carrello-empty[data-v-0f5c5f38] {\n  color: lightgrey;\n  height: 220px;\n  padding: 20px;\n  text-align: center;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n#full-screen-cart .carrello .carrello-empty i[data-v-0f5c5f38] {\n  font-size: 40px;\n  color: lightgrey;\n}\n#full-screen-cart .carrello .carrello-empty .fake-button[data-v-0f5c5f38] {\n  background-color: lightgrey;\n  color: white;\n  height: 33px;\n  border-radius: 10px;\n  line-height: 33px;\n}", ""]);
 
 // exports
 
@@ -31446,7 +31478,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".wrapper[data-v-31969ab0] {\n  padding-top: 50px;\n}\n.wrapper .filter-column[data-v-31969ab0] {\n  width: 100%;\n  height: 700px;\n  overflow-y: auto;\n  z-index: 1;\n}\n.wrapper .filter-list li[data-v-31969ab0] {\n  border-radius: 20px;\n  border: 0.5px solid grey;\n  padding: 10px;\n  margin: 10px 0;\n  z-index: 3;\n  cursor: pointer;\n  transition: all 0.2s;\n}\n.wrapper .filter-list li.active[data-v-31969ab0] {\n  transform: translate(8px);\n  border: none;\n  font-weight: bold;\n  font-size: 18px;\n  background-color: #45CCBC;\n  color: white;\n}\n.wrapper .filter-list li[data-v-31969ab0]:hover {\n  transform: translate(8px);\n  border: none;\n  font-weight: bold;\n  font-size: 18px;\n  background-color: #45CCBC;\n  color: white;\n}\n.wrapper .filter[data-v-31969ab0] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background-color: #45CCBC;\n  color: white;\n  font-size: 18px;\n  cursor: pointer;\n  text-align: center;\n  margin-bottom: 15px;\n  padding: 5px;\n  border-radius: 10px;\n  width: 70px;\n  height: 35px;\n}\n.wrapper .hamburger[data-v-31969ab0] {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100vh;\n  background-color: white;\n  z-index: 2000;\n  overflow-y: auto;\n  margin: 20px 0;\n}\n.wrapper .hamburger .filter-list[data-v-31969ab0] {\n  z-index: 2000;\n}\n.wrapper .restaurant-column[data-v-31969ab0] {\n  z-index: 1;\n  height: 700px;\n  overflow-y: auto;\n}\n.wrapper .restaurant-column .restaurant-box-row[data-v-31969ab0] {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n}\n.wrapper .search-input[data-v-31969ab0] {\n  display: flex;\n  align-items: center;\n  width: 100%;\n}\n.wrapper .search-input input[data-v-31969ab0] {\n  width: 90%;\n  margin-right: 5px;\n  padding: 5px 10px;\n  border-radius: 10px;\n  border: 1px solid rgba(0, 0, 0, 0.3);\n  caret-color: #45CCBC;\n}\n.wrapper .search-input input[data-v-31969ab0]:focus {\n  outline: 2px solid #45CCBC;\n}\n.wrapper .search-input .ac-btn[data-v-31969ab0] {\n  width: 60px;\n  text-align: center;\n  font-size: 16px;\n}\n.wrapper .types-row[data-v-31969ab0] {\n  width: 100%;\n  height: 150px;\n  padding: 10px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  flex-wrap: nowrap;\n  scrollbar-width: none;\n}\n.wrapper .typebox[data-v-31969ab0] {\n  display: flex;\n  justify-content: center;\n  align-items: flex-end;\n  text-align: center;\n  height: 100px;\n  width: 180px;\n  min-width: 100px;\n  border-radius: 20px;\n  background-color: #45CCBC;\n  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);\n  margin-right: 10px;\n  transition: transform 0.3s;\n  position: relative;\n  overflow: hidden;\n  cursor: pointer;\n}\n.wrapper .typebox.active[data-v-31969ab0] {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  transform: scale(1.05, 1.1);\n  font-weight: bold;\n  border: 2px solid white;\n}\n.wrapper .typebox .boximg_f[data-v-31969ab0] {\n  position: absolute;\n  top: 0px;\n  left: 0px;\n  height: 100px;\n  width: 180px;\n  z-index: 100;\n}\n.wrapper .typebox .boximg_f img[data-v-31969ab0] {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  -o-object-position: center;\n     object-position: center;\n}\n.wrapper .typebox .title[data-v-31969ab0] {\n  width: 100%;\n  font-size: 15px;\n  color: white;\n  z-index: 200;\n  background-color: #45CCBC;\n}\n.wrapper .typebox[data-v-31969ab0]:hover {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  transform: scale(1.05, 1.1);\n  font-weight: bold;\n}", ""]);
+exports.push([module.i, ".wrapper[data-v-31969ab0] {\n  padding-top: 50px;\n}\n.wrapper .filter-column[data-v-31969ab0] {\n  width: 100%;\n  height: 700px;\n  overflow-y: auto;\n  z-index: 1;\n}\n.wrapper .filter-column .all[data-v-31969ab0] {\n  display: inline-block;\n}\n.wrapper .filter-column .all .ac-btn[data-v-31969ab0] {\n  margin-left: 20px;\n}\n.wrapper .filter-list li[data-v-31969ab0] {\n  border-radius: 20px;\n  border: 0.5px solid grey;\n  padding: 10px;\n  margin: 10px 0;\n  z-index: 3;\n  cursor: pointer;\n  transition: all 0.2s;\n}\n.wrapper .filter-list li.active[data-v-31969ab0] {\n  transform: translate(8px);\n  border: none;\n  font-weight: bold;\n  font-size: 18px;\n  background-color: #45CCBC;\n  color: white;\n}\n.wrapper .filter-list li[data-v-31969ab0]:hover {\n  transform: translate(8px);\n  border: none;\n  font-weight: bold;\n  font-size: 18px;\n  background-color: #45CCBC;\n  color: white;\n}\n.wrapper .filter[data-v-31969ab0] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background-color: #45CCBC;\n  color: white;\n  font-size: 18px;\n  cursor: pointer;\n  text-align: center;\n  margin-bottom: 15px;\n  padding: 5px;\n  border-radius: 10px;\n  width: 70px;\n  height: 35px;\n}\n.wrapper .hamburger[data-v-31969ab0] {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100vh;\n  background-color: white;\n  z-index: 2000;\n  overflow-y: auto;\n  margin: 20px 0;\n}\n.wrapper .hamburger .filter-list[data-v-31969ab0] {\n  z-index: 2000;\n}\n.wrapper .restaurant-column[data-v-31969ab0] {\n  z-index: 1;\n  height: 700px;\n  overflow-y: auto;\n}\n.wrapper .restaurant-column .restaurant-box-row[data-v-31969ab0] {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n}\n.wrapper .search-input[data-v-31969ab0] {\n  display: flex;\n  align-items: center;\n  width: 100%;\n}\n.wrapper .search-input input[data-v-31969ab0] {\n  width: 90%;\n  margin-right: 5px;\n  padding: 5px 10px;\n  border-radius: 10px;\n  border: 1px solid rgba(0, 0, 0, 0.3);\n  caret-color: #45CCBC;\n}\n.wrapper .search-input input[data-v-31969ab0]:focus {\n  outline: 2px solid #45CCBC;\n}\n.wrapper .search-input .ac-btn[data-v-31969ab0] {\n  width: 60px;\n  text-align: center;\n  font-size: 16px;\n}\n.wrapper .types-row[data-v-31969ab0] {\n  width: 100%;\n  height: 150px;\n  padding: 10px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  flex-wrap: nowrap;\n  scrollbar-width: none;\n}\n.wrapper .typebox[data-v-31969ab0] {\n  display: flex;\n  justify-content: center;\n  align-items: flex-end;\n  text-align: center;\n  height: 100px;\n  width: 180px;\n  min-width: 100px;\n  border-radius: 20px;\n  background-color: #45CCBC;\n  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);\n  margin-right: 10px;\n  transition: transform 0.3s;\n  position: relative;\n  overflow: hidden;\n  cursor: pointer;\n}\n.wrapper .typebox.active[data-v-31969ab0] {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  transform: scale(1.05, 1.1);\n  font-weight: bold;\n  border: 2px solid white;\n}\n.wrapper .typebox .boximg_f[data-v-31969ab0] {\n  position: absolute;\n  top: 0px;\n  left: 0px;\n  height: 100px;\n  width: 180px;\n  z-index: 100;\n}\n.wrapper .typebox .boximg_f img[data-v-31969ab0] {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  -o-object-position: center;\n     object-position: center;\n}\n.wrapper .typebox .title[data-v-31969ab0] {\n  width: 100%;\n  font-size: 15px;\n  color: white;\n  z-index: 200;\n  background-color: #45CCBC;\n}\n.wrapper .typebox[data-v-31969ab0]:hover {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  transform: scale(1.05, 1.1);\n  font-weight: bold;\n}", ""]);
 
 // exports
 
@@ -64173,12 +64205,10 @@ var render = function () {
           ]),
           _vm._v(" "),
           _c("h5", [
-            _vm._v(
-              "\n          Riceverai a breve una mail di conferma della ricezione dell'ordine.\n        "
-            ),
+            _vm._v("\n          Riceverai a breve il tuo ordine.\n        "),
           ]),
           _vm._v(" "),
-          _c("h5", [_vm._v("Grazie per averci scelto.")]),
+          _c("h5", [_vm._v("Grazie per averci scelto!")]),
           _vm._v(" "),
           _c(
             "div",
@@ -64803,7 +64833,7 @@ var render = function () {
                         "div",
                         {
                           staticClass:
-                            "col-12 d-flex flex-column align-items-center",
+                            "col-12 d-flex flex-column align-items-center text-center",
                         },
                         [
                           _vm.isLoading
@@ -64839,7 +64869,7 @@ var render = function () {
                                   _c(
                                     "button",
                                     {
-                                      staticClass: "ac-btn w-full mt-5",
+                                      staticClass: "ac-btn w-full mt-5 ",
                                       on: {
                                         click: function ($event) {
                                           $event.preventDefault()
@@ -65268,7 +65298,7 @@ var render = function () {
                   _vm._v(" "),
                   _c(
                     "div",
-                    { staticClass: "d-flex justify-content-center" },
+                    { staticClass: "buttons" },
                     [
                       _vm.isLoaded
                         ? _c(
@@ -65289,6 +65319,15 @@ var render = function () {
                             ]
                           )
                         : _vm._e(),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "ac-btn remove",
+                          on: { click: _vm.removeArray },
+                        },
+                        [_vm._v("Svuota il carrello")]
+                      ),
                     ],
                     1
                   ),
@@ -65403,7 +65442,7 @@ var render = function () {
                 _vm._v(" "),
                 _c(
                   "div",
-                  { staticClass: "d-flex justify-content-center" },
+                  { staticClass: "buttons" },
                   [
                     _vm.isLoaded
                       ? _c(
@@ -65424,6 +65463,15 @@ var render = function () {
                           ]
                         )
                       : _vm._e(),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "ac-btn remove",
+                        on: { click: _vm.removeArray },
+                      },
+                      [_vm._v("Svuota il carrello")]
+                    ),
                   ],
                   1
                 ),
@@ -65612,32 +65660,49 @@ var render = function () {
       ),
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "d-none d-lg-block col-3 filter-column" }, [
-          _c("div", [_vm._v("Tutte le cucine (A, Z)")]),
-          _vm._v(" "),
-          _c(
-            "ul",
-            { staticClass: "filter-list" },
-            _vm._l(_vm.types, function (type, index) {
-              return _c(
-                "li",
-                {
-                  key: "type" + index,
-                  class: { active: _vm.counter === index },
-                  on: {
-                    click: function ($event) {
-                      _vm.changeActiveRestaurants(type),
-                        (_vm.counter = index),
-                        (_vm.randomTypeCounter = -1)
+        _c(
+          "div",
+          { staticClass: "d-none d-lg-block col-3 filter-column" },
+          [
+            _c("div", { staticClass: "all" }, [
+              _vm._v("Tutte le cucine (A, Z)"),
+            ]),
+            _vm._v(" "),
+            _c(
+              "router-link",
+              { staticClass: "all", attrs: { to: { name: "restaurantsAll" } } },
+              [_c("div", { staticClass: "ac-btn" }, [_vm._v("Azzera filtri")])]
+            ),
+            _vm._v(" "),
+            _c(
+              "ul",
+              { staticClass: "filter-list" },
+              _vm._l(_vm.types, function (type, index) {
+                return _c(
+                  "li",
+                  {
+                    key: "type" + index,
+                    class: { active: _vm.counter === index },
+                    on: {
+                      click: function ($event) {
+                        _vm.changeActiveRestaurants(type),
+                          (_vm.counter = index),
+                          (_vm.randomTypeCounter = -1)
+                      },
                     },
                   },
-                },
-                [_vm._v("\n            " + _vm._s(type.name) + "\n          ")]
-              )
-            }),
-            0
-          ),
-        ]),
+                  [
+                    _vm._v(
+                      "\n            " + _vm._s(type.name) + "\n          "
+                    ),
+                  ]
+                )
+              }),
+              0
+            ),
+          ],
+          1
+        ),
         _vm._v(" "),
         _vm.filter_close
           ? _c("div", [
@@ -65742,7 +65807,7 @@ var render = function () {
     _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "d-none d-lg-block col-3 filter-column" }, [
-          _c("div", [_vm._v("Tutte le cucine (A, Z)")]),
+          _c("div", { staticClass: "all" }, [_vm._v("Tutte le cucine (A, Z)")]),
           _vm._v(" "),
           _c(
             "ul",
@@ -65779,10 +65844,7 @@ var render = function () {
                   staticClass: "filter d-block d-lg-none ml-3",
                   on: { click: _vm.toggleMenu },
                 },
-                [
-                  _c("i", { staticClass: "fas fa-filter" }),
-                  _vm._v(" Filtra\n        "),
-                ]
+                [_c("i", { staticClass: "fas fa-filter" })]
               ),
             ])
           : _c("div", [
@@ -82191,7 +82253,16 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   }, {
     path: '/restaurantdetail/:slug',
     name: 'restaurantdetail',
-    component: _components_pages_Restaurantdetail_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
+    component: _components_pages_Restaurantdetail_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
+    beforeEnter: function beforeEnter(to, from, next) {
+      var text = 'Attenzione! Se cambi ristorante perderai quello che hai nel carrello.';
+
+      if (confirm(text) && localStorage.length > 0) {
+        next();
+      } else {
+        next(false);
+      }
+    }
   }, {
     path: '/payment/:slug',
     name: 'payment',
@@ -82216,7 +82287,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Simone\Documents\Boolean\Progetto Finale\DeliverBoo\resources\js\guest\app.js */"./resources/js/guest/app.js");
+module.exports = __webpack_require__(/*! /Users/albertonicolaciufici/Desktop/Boolean/Progetto Finale/DeliverBoo/resources/js/guest/app.js */"./resources/js/guest/app.js");
 
 
 /***/ })

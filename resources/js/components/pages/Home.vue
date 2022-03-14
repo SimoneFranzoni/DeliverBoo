@@ -1,11 +1,12 @@
 <template>
-  <div class="container">
+  <div class="container" >
 
     <!-- header da home.blade.php per controlli auth-->
 
     <!-- jumbotron con ricerca-->
     <Jumbotron @triggerSearch="triggerSearch"/>
 
+    
 
     <!-- ristoranti random -->
     <h3 class="marg">Le nostre selezioni</h3>
@@ -14,7 +15,7 @@
       v-for="(rest, index) in randomRestaurants"
       :key="`randomrest${index}`"
       >
-      <router-link :to="{name:'restaurantdetail', params: {slug: rest.slug}}">
+      <router-link  :to="{name:'restaurantdetail', params: {slug: rest.slug}}">
         <img :src="rest.cover" :alt="rest.name">
         <div class="title">
           {{rest.name}}
@@ -41,11 +42,14 @@
     </div>
 
 
+    
+
     <!-- footer da home.blade.php-->
 
 
     
   </div>
+  
 </template>
 
 <script>
@@ -58,33 +62,43 @@ export default {
   
   },
   mounted(){
+    console.log(this.isLoaded);
+    this.isLoaded = false;
     this.getApiTypes();
     this.getApiRestaurants();
+    this.isLoaded = true;
+    console.log('localstorage',localStorage)
   },
   data(){
     return {
       types: [],
       type: {},
       restaurants: [],
-      randomRestaurants: []
+      randomRestaurants: [],
+      isLoaded: false
     }
   },
+
   methods: {
     getApiTypes() {
+      this.isLoaded = false
       this.types = [];
       axios.get('http://127.0.0.1:8000/api/tipo/')
       .then(res => {
         this.types = res.data.types;
+        this.isLoaded = true;
       // console.log(this.types);
       })
     },
 
     getApiRestaurants() {
+      this.isLoaded = false
       this.restaurants = [];
       axios.get('http://127.0.0.1:8000/api/ristoranti/')
       .then(res => {
         this.restaurants = res.data.restaurants;
         this.getRandomRestaurants();
+        this.isLoaded = true
       })
     
     },
@@ -119,7 +133,15 @@ export default {
     },
     getRandomNumber(min, max) {
            return Math.floor(Math.random() * (max - min + 1) + min);
-        }
+        },
+
+    // confirmChange() {
+    //   let text = 'Attenzione! Se cambi ristorante perderai quello che hai messo nel carrello.';
+
+    //     if (!confirm(text)) {
+    //       history.back()
+    //     }
+    // }
     
   }
 }
@@ -214,6 +236,10 @@ export default {
     font-size: 20px;
   }
 }
+
+
+
+
 
 @media screen and (max-width: 992px) {
   .restbox {

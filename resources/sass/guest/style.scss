@@ -144,6 +144,14 @@ footer {
         }
       }
     }
+
+    .footer-section.help {
+      small {
+        font-size: small;
+        color: lighten($footer-light,20);
+
+      }
+    }
   }
   .footer-bot {
     margin: 0;

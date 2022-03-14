@@ -35,7 +35,15 @@ const router = new VueRouter({
     {
       path: '/restaurantdetail/:slug',
       name: 'restaurantdetail',
-      component: Restaurantdetail
+      component: Restaurantdetail,
+      beforeEnter: (to, from, next) => {
+        let text = 'Attenzione! Se cambi ristorante perderai quello che hai nel carrello.';
+        if(confirm(text) && localStorage.length > 0) {
+          next()
+        } else {
+          next(false)
+        }
+      }
     },
     {
       path: '/payment/:slug',

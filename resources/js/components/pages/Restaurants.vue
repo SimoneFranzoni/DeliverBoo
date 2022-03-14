@@ -22,7 +22,10 @@
       </div>
       <div class="row">
         <div class="d-none d-lg-block col-3 filter-column">
-          <div>Tutte le cucine (A, Z)</div>
+          <div class="all">Tutte le cucine (A, Z)</div>
+          <router-link class="all" :to="{name: 'restaurantsAll'}">
+           <div class="ac-btn">Azzera filtri</div>
+          </router-link>
           <ul class="filter-list">
             <li
               v-for="(type, index) in types"
@@ -72,8 +75,8 @@
               v-for="(restaurant, index) in activeRestaurants"
               :key="`restaurant${index}`"
               :restaurant="restaurant"
-
             />
+              <!-- @click.native="confirmChange"   -->
           </div>
         </div>
       </div>
@@ -107,6 +110,7 @@ export default {
       isLoaded: false,
     };
   },
+  
   methods: {
     getApiTypes() {
       this.types = [];
@@ -169,6 +173,7 @@ export default {
         this.filter_close = true;
       }
     },
+
   },
 };
 </script>
@@ -183,6 +188,14 @@ export default {
     height: 700px;
     overflow-y: auto;
     z-index: 1;
+
+    .all {
+    display: inline-block;
+    .ac-btn {
+      margin-left: 20px;
+    }
+  }
+
   }
 
   .filter-list {
