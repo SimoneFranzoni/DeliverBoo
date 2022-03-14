@@ -28,34 +28,40 @@ class PlatesTableSeeder extends Seeder
         $newPlate->ingrediants = $plate['ingradiants'];
         $newPlate->price = $plate['price'];
         $newPlate->category = $plate['category'];
+        if(!empty($plate['cover'])){
+          $newPlate->cover = $plate['cover'];
+          $newPlate->cover_original_name = $plate['cover_original_name'];
+        } 
+      //   else {
 
-        if ($newPlate->category === 'Antipasto') {
-          $numberPlateRandom = $this->getRandomNumber(445, 473);
-          $newPlate->cover = $this->getImgRestaurant($numberPlateRandom);
-          $newPlate->cover_original_name = 'plate (' . $numberPlateRandom . ').jpg';
-        } elseif ($newPlate->category === 'Primo') {
-          $numberPlateRandom = $this->getRandomNumber(473, 532);
-          $newPlate->cover = $this->getImgRestaurant($numberPlateRandom);
-          $newPlate->cover_original_name = 'plate (' . $numberPlateRandom . ').jpg';
-        } elseif ($newPlate->category === 'Secondo') {
-          $numberPlateRandom = $this->getRandomNumber(1, 290);
-          $newPlate->cover = $this->getImgRestaurant($numberPlateRandom);
-          $newPlate->cover_original_name = 'plate (' . $numberPlateRandom . ').jpg';
-        } elseif ($newPlate->category === 'Contorno') {
-          $numberPlateRandom = $this->getRandomNumber(405, 441);
-          $newPlate->cover = $this->getImgRestaurant($numberPlateRandom);
-          $newPlate->cover_original_name = 'plate (' . $numberPlateRandom . ').jpg';
-        } elseif ($newPlate->category === 'Frutta') {
-          $numberPlateRandom = $this->getRandomNumber(291, 296);
-          $newPlate->cover = $this->getImgRestaurant($numberPlateRandom);
-          $newPlate->cover_original_name = 'plate (' . $numberPlateRandom . ').jpg';
-        } elseif ($newPlate->category === 'Dessert') {
-          $numberPlateRandom = $this->getRandomNumber(297, 404);
-          $newPlate->cover = $this->getImgRestaurant($numberPlateRandom);
-          $newPlate->cover_original_name = 'plate (' . $numberPlateRandom . ').jpg';
-        }
+      //   if ($newPlate->category === 'Antipasto') {
+      //     $numberPlateRandom = $this->getRandomNumber(445, 473);
+      //     $newPlate->cover = $this->getImgRestaurant($numberPlateRandom);
+      //     $newPlate->cover_original_name = 'plate (' . $numberPlateRandom . ').jpg';
+      //   } elseif ($newPlate->category === 'Primo') {
+      //     $numberPlateRandom = $this->getRandomNumber(473, 532);
+      //     $newPlate->cover = $this->getImgRestaurant($numberPlateRandom);
+      //     $newPlate->cover_original_name = 'plate (' . $numberPlateRandom . ').jpg';
+      //   } elseif ($newPlate->category === 'Secondo') {
+      //     $numberPlateRandom = $this->getRandomNumber(1, 290);
+      //     $newPlate->cover = $this->getImgRestaurant($numberPlateRandom);
+      //     $newPlate->cover_original_name = 'plate (' . $numberPlateRandom . ').jpg';
+      //   } elseif ($newPlate->category === 'Contorno') {
+      //     $numberPlateRandom = $this->getRandomNumber(405, 441);
+      //     $newPlate->cover = $this->getImgRestaurant($numberPlateRandom);
+      //     $newPlate->cover_original_name = 'plate (' . $numberPlateRandom . ').jpg';
+      //   } elseif ($newPlate->category === 'Frutta') {
+      //     $numberPlateRandom = $this->getRandomNumber(291, 296);
+      //     $newPlate->cover = $this->getImgRestaurant($numberPlateRandom);
+      //     $newPlate->cover_original_name = 'plate (' . $numberPlateRandom . ').jpg';
+      //   } elseif ($newPlate->category === 'Dessert') {
+      //     $numberPlateRandom = $this->getRandomNumber(297, 404);
+      //     $newPlate->cover = $this->getImgRestaurant($numberPlateRandom);
+      //     $newPlate->cover_original_name = 'plate (' . $numberPlateRandom . ').jpg';
+      //   }
+      // }
 
-        $newPlate->is_available = $faker->boolean(80);
+        $newPlate->is_available = 1;
         $newPlate->slug = Plate::generateSlug($newPlate->name);
         $newPlate->save();
       }
@@ -89,21 +95,21 @@ class PlatesTableSeeder extends Seeder
     return $numberRandom;
   }
 
-  private function getImgRestaurant($numberPlateRandom)
-  {
-    if ($numberPlateRandom > 0 && $numberPlateRandom < 291) {
-      $imgPath = 'uploads/img/plates/secondi/restaurant (' . $numberPlateRandom . ').jpg';
-    } elseif ($numberPlateRandom > 290 && $numberPlateRandom < 297) {
-      $imgPath = 'uploads/img/plates/frutta/restaurant (' . $numberPlateRandom . ').jpg';
-    } elseif ($numberPlateRandom > 296 && $numberPlateRandom < 405) {
-      $imgPath = 'uploads/img/plates/dessert/restaurant (' . $numberPlateRandom . ').jpg';
-    } elseif ($numberPlateRandom > 404 && $numberPlateRandom < 442) {
-      $imgPath = 'uploads/img/plates/contorno/restaurant (' . $numberPlateRandom . ').jpg';
-    } elseif ($numberPlateRandom > 441 && $numberPlateRandom < 474) {
-      $imgPath = 'uploads/img/plates/antipasto/restaurant (' . $numberPlateRandom . ').jpg';
-    } elseif ($numberPlateRandom > 473 && $numberPlateRandom < 533) {
-      $imgPath = 'uploads/img/plates/primi/restaurant (' . $numberPlateRandom . ').jpg';
-    }
-    return $imgPath;
-  }
+  // private function getImgRestaurant($numberPlateRandom)
+  // {
+  //   if ($numberPlateRandom > 0 && $numberPlateRandom < 291) {
+  //     $imgPath = 'storage/uploads/img/plates/secondi/restaurant (' . $numberPlateRandom . ').jpg';
+  //   } elseif ($numberPlateRandom > 290 && $numberPlateRandom < 297) {
+  //     $imgPath = 'storage/uploads/img/plates/frutta/restaurant (' . $numberPlateRandom . ').jpg';
+  //   } elseif ($numberPlateRandom > 296 && $numberPlateRandom < 405) {
+  //     $imgPath = 'storage/uploads/img/plates/dessert/restaurant (' . $numberPlateRandom . ').jpg';
+  //   } elseif ($numberPlateRandom > 404 && $numberPlateRandom < 442) {
+  //     $imgPath = 'storage/uploads/img/plates/contorno/restaurant (' . $numberPlateRandom . ').jpg';
+  //   } elseif ($numberPlateRandom > 441 && $numberPlateRandom < 474) {
+  //     $imgPath = 'storage/uploads/img/plates/antipasto/restaurant (' . $numberPlateRandom . ').jpg';
+  //   } elseif ($numberPlateRandom > 473 && $numberPlateRandom < 533) {
+  //     $imgPath = 'storage/uploads/img/plates/primi/restaurant (' . $numberPlateRandom . ').jpg';
+  //   }
+  //   return $imgPath;
+  // }
 }

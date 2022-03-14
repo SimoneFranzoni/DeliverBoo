@@ -13,7 +13,11 @@
       @if ($piatto->cover)
         <div class="col-12 col-sm-7 ">
           <div class="img-show-team5  d-flex justify-content-center">
-            <img src="{{asset('storage/'. $piatto->cover)}}" alt="{{ $piatto->cover_original_name }}">
+            @if($piatto->cover_up_by_user)
+              <img src="{{asset('storage/'. $piatto->cover)}}" alt="{{ $piatto->cover_original_name }}">
+            @else
+              <img src="{{asset($piatto->cover)}}" alt="{{$piatto->name}}">
+            @endif  
           </div>
         </div>
         @else

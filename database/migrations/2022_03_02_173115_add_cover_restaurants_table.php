@@ -17,6 +17,7 @@ class AddCoverRestaurantsTable extends Migration
             
             $table->string('cover')->nullable()->after('slug');
             $table->string('cover_original_name')->nullable()->after('slug');
+            $table->boolean('cover_up_by_user')->nullable()->after('slug');
         });
     }
 
@@ -30,6 +31,7 @@ class AddCoverRestaurantsTable extends Migration
         Schema::table('restaurants', function (Blueprint $table) {
             $table->dropColumn('cover');
             $table->dropColumn('cover_original_name');
+            $table->dropColumn('cover_up_by_user');
         });
     }
 }

@@ -2100,6 +2100,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "OrderSuccess",
@@ -31399,7 +31402,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".del-plate[data-v-275c022a],\n.add-plate[data-v-275c022a] {\n  width: 40px;\n  height: 20px;\n  display: inline-block;\n  font-size: 20px;\n  border: 1px solid black;\n  line-height: 15px;\n  text-align: center;\n  border-radius: 8px;\n  padding: 0px;\n  transition: all 0.2s;\n  cursor: pointer;\n}\n.del-plate[data-v-275c022a]:hover,\n.add-plate[data-v-275c022a]:hover {\n  border: 1px solid #45CCBC;\n  color: #45CCBC;\n  font-size: 24px;\n}\n.amount-plates[data-v-275c022a],\n.del-plate[data-v-275c022a],\n.add-plate[data-v-275c022a] {\n  width: 40px;\n  height: 20px;\n  display: inline-block;\n  line-height: 15px;\n  text-align: center;\n  padding: 0px;\n}\n.bg[data-v-275c022a] {\n  width: 100%;\n  height: 400px;\n  position: relative;\n  z-index: -100;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.bg img[data-v-275c022a] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  display: block;\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  top: 0;\n  left: 0;\n  z-index: -100;\n  overflow: hidden;\n}\n.slider[data-v-275c022a] {\n  position: relative;\n  top: -150px;\n}\n.central-column[data-v-275c022a] {\n  position: relative;\n  padding-bottom: 100px;\n  padding-left: 5px !important;\n  padding-right: 0px !important;\n}\n.central-column .box-ristorante[data-v-275c022a] {\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  border-radius: 20px;\n  background-color: white;\n  padding-top: 40px;\n  top: -150px;\n}\n.central-column .box-ristorante .row[data-v-275c022a] {\n  width: 100%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  padding-bottom: 20px;\n}\n.central-column .box-ristorante .row .form_payment[data-v-275c022a] {\n  width: 90%;\n}\n.central-column .box-ristorante .row .form_payment .col-12[data-v-275c022a],\n.central-column .box-ristorante .row .form_payment .col-6[data-v-275c022a] {\n  margin: 5px 0px;\n}\n.central-column .box-ristorante .row .form_payment .total-text[data-v-275c022a] {\n  line-height: 60px;\n}\n.central-column .box-ristorante .row .form_payment .total-text h4[data-v-275c022a] {\n  font-size: 28px;\n}\n.central-column .box-ristorante .row .form_payment .total-text h4 span[data-v-275c022a] {\n  font-size: 38px;\n}\n.central-column .carrello-small[data-v-275c022a] {\n  padding-top: 30px;\n  width: 100%;\n}\n.central-column .carrello-small .line[data-v-275c022a] {\n  background-color: grey;\n  width: 100%;\n  height: 1px;\n  margin: 10px 0;\n}\n.central-column .carrello-small .plate-order div[data-v-275c022a] {\n  padding: 10px 15px;\n}\n.right-column .carrello[data-v-275c022a] {\n  width: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  border-radius: 20px;\n  padding-left: 10px;\n  background-color: white;\n  padding: 40px 20px 20px 20px;\n}\n.right-column .carrello .line[data-v-275c022a] {\n  background-color: grey;\n  width: 100%;\n  height: 1px;\n  margin: 10px 0;\n}\n.right-column .carrello .plate-order div[data-v-275c022a] {\n  padding: 10px 15px;\n}\n.right-column .carrello .carrello-empty[data-v-275c022a] {\n  color: lightgrey;\n  height: 220px;\n  padding: 20px;\n  text-align: center;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n.right-column .carrello .carrello-empty i[data-v-275c022a] {\n  font-size: 40px;\n  color: lightgrey;\n}\n.right-column .carrello .carrello-empty .fake-button[data-v-275c022a] {\n  background-color: lightgrey;\n  color: white;\n  height: 33px;\n  border-radius: 10px;\n  line-height: 33px;\n}\n.fw-bold[data-v-275c022a] {\n  font-weight: bold;\n}\n.carrello-mobile[data-v-275c022a] {\n  width: 100%;\n  height: 75px;\n  position: fixed;\n  bottom: 0;\n  left: 0;\n  z-index: 1000;\n  margin-top: 100px;\n  box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.3);\n  background-color: #45CCBC;\n  margin: 0;\n}", ""]);
+exports.push([module.i, ".payment-success[data-v-275c022a] {\n  position: relative;\n}\n.payment-success .bg[data-v-275c022a] {\n  width: 100%;\n  height: 80vh;\n  position: absolute;\n  z-index: -100;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.payment-success .bg img[data-v-275c022a] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  display: block;\n  width: 100%;\n  height: 100%;\n  z-index: -100;\n  overflow: hidden;\n}\n.payment-success .container[data-v-275c022a] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  text-align: center;\n  height: 80vh;\n}\n.payment-success .container .col-6[data-v-275c022a] {\n  width: 100%;\n}\n.payment-success .container .col-6 .box-ristorante[data-v-275c022a] {\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  border-radius: 20px;\n  background-color: rgba(255, 255, 255, 0.9);\n  padding: 20px;\n}\n.payment-success .container .col-6 .box-ristorante svg[data-v-275c022a] {\n  fill: #45CCBC;\n  width: 80px;\n  position: relative;\n  top: -40px;\n}\n.payment-success .container .col-6 .box-ristorante h2[data-v-275c022a] {\n  position: relative;\n  top: -20px;\n  font-size: 28px;\n}\n.payment-success .container .col-6 .box-ristorante h2 span[data-v-275c022a] {\n  font-size: 38px;\n}\n.payment-success .fw-bold[data-v-275c022a] {\n  font-weight: bold;\n  z-index: 10000;\n}", ""]);
 
 // exports
 
@@ -64151,36 +64154,50 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", { staticClass: "payment-success" }, [
     _c("div", { staticClass: "bg" }, [
       _vm.activeRestaurant.cover
         ? _c("img", { attrs: { src: _vm.activeRestaurant.cover, alt: "" } })
         : _vm._e(),
     ]),
     _vm._v(" "),
-    _vm._m(0),
-  ])
-}
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-lg-8 slider" }, [
-          _c("div", { staticClass: "col-12 central-column" }, [
-            _c("div", { staticClass: "box-ristorante" }, [
-              _c("h2", { staticClass: "pb-3 fw-bold" }, [
-                _vm._v("Inserisci i dati per la spedizione"),
-              ]),
-            ]),
+    _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "col-6" }, [
+        _c("div", { staticClass: "box-ristorante" }, [
+          _c(
+            "svg",
+            {
+              attrs: {
+                xmlns: "http://www.w3.org/2000/svg",
+                viewBox: "0 0 512 512",
+              },
+            },
+            [
+              _c("path", {
+                attrs: {
+                  d: "M0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256zM371.8 211.8C382.7 200.9 382.7 183.1 371.8 172.2C360.9 161.3 343.1 161.3 332.2 172.2L224 280.4L179.8 236.2C168.9 225.3 151.1 225.3 140.2 236.2C129.3 247.1 129.3 264.9 140.2 275.8L204.2 339.8C215.1 350.7 232.9 350.7 243.8 339.8L371.8 211.8z",
+                },
+              }),
+            ]
+          ),
+          _vm._v(" "),
+          _c("h2", { staticClass: "fw-bold" }, [
+            _vm._v("PAGAMENTO AVVENUTO CON SUCCESSO"),
           ]),
+          _vm._v(" "),
+          _c("h5", [
+            _vm._v(
+              "Riceverai a breve una mail di conferma della ricezione dell'ordine."
+            ),
+          ]),
+          _vm._v(" "),
+          _c("h5", [_vm._v("Grazie per averci scelto.")]),
         ]),
       ]),
-    ])
-  },
-]
+    ]),
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -64820,8 +64837,7 @@ var render = function () {
                                   _c(
                                     "button",
                                     {
-                                      staticClass:
-                                        "ac-bnt w-full btn-success mt-5",
+                                      staticClass: "ac-btn w-full mt-5",
                                       on: {
                                         click: function ($event) {
                                           $event.preventDefault()
