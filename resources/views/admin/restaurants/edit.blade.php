@@ -111,12 +111,20 @@
             </div>
          @enderror
 
+         {{-- Modifica Cover  --}}
          <div class="my-3">
             @if ($restaurant->cover)
-               <div>
-                  <img width="150" src="{{asset('storage/'. $restaurant->cover)}}" alt="{{$restaurant->cover_original_name}}">
-               </div>
+               @if($restaurant->cover_up_by_user)
+                  <div>
+                     <img width="150" src="{{asset('storage/'. $restaurant->cover)}}" alt="{{$restaurant->cover_original_name}}">
+                  </div>
+               @else
+                  <div>
+                     <img width="150" src="{{asset($restaurant->cover)}}" alt="{{$restaurant->cover_original_name}}">
+                  </div>
+               @endif
             @endif
+
             <label for="cover">Carica un'immagine:</label>
             <input type="file" class="form-control" name="cover" id="cover">
          </div>

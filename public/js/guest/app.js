@@ -64839,8 +64839,7 @@ var render = function () {
                                   _c(
                                     "button",
                                     {
-                                      staticClass:
-                                        "ac-bnt w-full btn-success mt-5",
+                                      staticClass: "ac-btn w-full mt-5",
                                       on: {
                                         click: function ($event) {
                                           $event.preventDefault()

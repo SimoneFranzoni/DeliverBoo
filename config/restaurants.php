@@ -2,14 +2,7 @@
 
 
 
-//Base
-// [
-// 'name'=>'',
-// 'city'=>'',
-// 'address'=>'',
-// 'zip_code'=>'01245',
-// 'phone_number'=>'3252244445',
-// ],
+
 
 return [
   [
@@ -18,7 +11,8 @@ return [
     'address'=>'Via delle balene 45',
     'zip_code'=>'01245',
     'phone_number'=>'3252244445',
-    // 'types' => [15,23]
+    'cover' => 'img/ristoranti/IlGamberoRosso.webp',
+    'cover_original_name' => 'Il Gambero Rosso'
   ],
   [
     'name'=>'La Mucca Assassina',
@@ -26,7 +20,8 @@ return [
     'address'=>'Via dei Platani 7',
     'zip_code'=>'01245',
     'phone_number'=>'3252244445',
-    // 'types' => [4,18,20]
+    'cover' => 'img/ristoranti/LaMuccaAssassina.webp',
+    'cover_original_name' => 'La Mucca Assassina'
   ],
   [
     'name'=>'Vuliò',
@@ -34,6 +29,8 @@ return [
     'address'=>'Via dei giaguari 21',
     'zip_code'=>'01245',
     'phone_number'=>'3252244445',
+    'cover' => 'img/ristoranti/Vulio.webp',
+    'cover_original_name' => 'Vulio'
   ],
   [
     'name'=>'La Treggia',
@@ -41,6 +38,8 @@ return [
     'address'=>'Via Mole 2',
     'zip_code'=>'01245',
     'phone_number'=>'3252244445',
+    'cover' => 'img/ristoranti/LaTreggia.webp',
+    'cover_original_name' => 'La Treggia'
   ],
   [
     'name'=>'The Loft',
@@ -48,13 +47,17 @@ return [
     'address'=>'Via canticchiani 1',
     'zip_code'=>'01245',
     'phone_number'=>'3252244445',
+    'cover' => 'img/ristoranti/TheLoft.webp',
+    'cover_original_name' => 'The Loft'
   ],
   [
     'name'=>'iPhame',
     'city'=>'Milano',
-    'address'=>'Via ANtico 41',
+    'address'=>'Via Antico 41',
     'zip_code'=>'01245',
     'phone_number'=>'3252244445',
+    'cover' => 'img/ristoranti/iPhame.webp',
+    'cover_original_name' => 'iPhame'
   ],
   [
     'name'=>'Nannarella ',
@@ -62,6 +65,8 @@ return [
     'address'=>'Via Ostia 5',
     'zip_code'=>'01245',
     'phone_number'=>'3252244445',
+    'cover' => 'img/ristoranti/Nannarell.webp',
+    'cover_original_name' => 'Nannarella'
   ],
   [
     'name'=>'Terra di Siena ',
@@ -69,6 +74,8 @@ return [
     'address'=>'Via',
     'zip_code'=>'01245',
     'phone_number'=>'3252244445',
+    'cover' => 'img/ristoranti/TerraDiSiena.webp',
+    'cover_original_name' => 'Terra Di Siena'
   ],
   [
     'name'=>'Vanda ',
@@ -76,13 +83,17 @@ return [
     'address'=>'Via dei mari 121',
     'zip_code'=>'01245',
     'phone_number'=>'3252244445',
+    'cover' => 'img/ristoranti/Vanda.webp',
+    'cover_original_name' => 'Vanda'
   ],
   [
-    'name'=>'Pane e Salame ',
+    'name'=>'Pane e Salame',
     'city'=>'Firenze',
     'address'=>'Via Andretti 7',
     'zip_code'=>'01245',
     'phone_number'=>'3252244445',
+    'cover' => 'img/ristoranti/PaneSalame.webp',
+    'cover_original_name' => 'Pane e Salame'
   ],
   [
     'name'=>'Otello ',
@@ -90,6 +101,8 @@ return [
     'address'=>'Via Venuti 18',
     'zip_code'=>'01245',
     'phone_number'=>'3252244445',
+    'cover' => 'img/ristoranti/Otello.webp',
+    'cover_original_name' => 'Otello'
   ],
   [
     'name'=>'Mimì e Cosà ',
@@ -97,6 +110,8 @@ return [
     'address'=>'Via Asiatico 71',
     'zip_code'=>'01245',
     'phone_number'=>'3252244445',
+    'cover' => 'img/ristoranti/MimiECosa.webp',
+    'cover_original_name' => 'Mimi E Cosà'
   ],
   [
     'name'=>'Grazia e Graziella ',
@@ -104,6 +119,8 @@ return [
     'address'=>'Via dei Calamari 52',
     'zip_code'=>'01245',
     'phone_number'=>'3252244445',
+    'cover' => 'img/ristoranti/GraziaEGraziella.webp',
+    'cover_original_name' => 'Grazia E Graziella'
   ],
   [
     'name'=>'Taverna Tintoretto ',
@@ -111,6 +128,8 @@ return [
     'address'=>'Via delle lumache 17',
     'zip_code'=>'01245',
     'phone_number'=>'3252244445',
+    'cover' => 'img/ristoranti/TavernaTintoretto.webp',
+    'cover_original_name' => 'Taverna Tintoretto'
   ],
   [
     'name'=>'CasaManco ',
@@ -118,13 +137,17 @@ return [
     'address'=>'Via Andrade 2',
     'zip_code'=>'01245',
     'phone_number'=>'3252244445',
+    'cover' => 'img/ristoranti/CasaManco.webp',
+    'cover_original_name' => 'Casa Manco'
   ],
   [
-    'name'=>'Ombre Rosse ',
+    'name'=>'Ombre_Rosse',
     'city'=>'Milano',
     'address'=>'Via Fucile 5',
     'zip_code'=>'01245',
     'phone_number'=>'3252244445',
+    'cover' => 'img/ristoranti/Ombre_Rosse.webp',
+    'cover_original_name' => 'Ombre Rosse'
   ],
   [
     'name'=>'Cantina e Cucina ',
@@ -132,6 +155,8 @@ return [
     'address'=>'Via molecole 58',
     'zip_code'=>'01245',
     'phone_number'=>'3252244445',
+    'cover' => 'img/ristoranti/CantinaECucina.webp',
+    'cover_original_name' => 'Cantina e Cucina'
   ],
   [
     'name'=>'Unik Restaurant ',
@@ -139,6 +164,8 @@ return [
     'address'=>'Via Bisanzio 18',
     'zip_code'=>'01245',
     'phone_number'=>'3252244445',
+    'cover' => 'img/ristoranti/UnikRestaurant.webp',
+    'cover_original_name' => 'Unik Restaurant'
   ],
   [
     'name'=>'Boa Sorte ',
@@ -146,6 +173,8 @@ return [
     'address'=>'Via degli astucci 18',
     'zip_code'=>'01245',
     'phone_number'=>'3252244445',
+    'cover' => 'img/ristoranti/BoaSorte.webp',
+    'cover_original_name' => 'Boa Sorte'
   ],
   [
     'name'=>'Prefetti 19 ',
@@ -153,6 +182,8 @@ return [
     'address'=>'Via Astratti 5',
     'zip_code'=>'01245',
     'phone_number'=>'3252244445',
+    'cover' => 'img/ristoranti/Prefetti19.webp',
+    'cover_original_name' => 'Prefetti 19'
   ],
   [
     'name'=>'Il Ritrovo ',
@@ -160,6 +191,8 @@ return [
     'address'=>'Via antica 45',
     'zip_code'=>'01245',
     'phone_number'=>'3252244445',
+    'cover' => 'img/ristoranti/IlRitrovo.webp',
+    'cover_original_name' => 'Il Ritrovo'
   ],
   [
     'name'=>'Mordi e Vai ',
@@ -167,6 +200,8 @@ return [
     'address'=>'Via degli amuleti 41',
     'zip_code'=>'01245',
     'phone_number'=>'3252244445',
+    'cover' => 'img/ristoranti/MordiEVai.webp',
+    'cover_original_name' => 'Mordi e Vai'
   ],
 
 ];
