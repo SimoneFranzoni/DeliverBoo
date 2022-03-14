@@ -20,5 +20,15 @@ class UsersTableSeeder extends Seeder
         $commonUser->password = Hash::make('12345678');
         $commonUser->date_of_birth =$faker->date();
         $commonUser->save();
+
+        for($i = 0; $i < 15; $i++) {
+            $newUser = new User();
+            $newUser->name = $faker->name();
+            $newUser->surname = $faker->name();
+            $newUser->email = $faker->email();
+            $newUser->password = $faker->password();
+            $newUser->date_of_birth =$faker->date();
+            $newUser->save();
+        }
     }
 }

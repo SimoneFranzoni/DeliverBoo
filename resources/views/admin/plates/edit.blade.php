@@ -116,12 +116,18 @@
           </label>
         </div>
 
+        {{-- Immagine Piatto --}}
         <div class="my-3">
           @if ($piatto->cover)
-             <div>
+            @if($piatto->cover_up_by_user)
+              <div>
                 <img width="150" src="{{asset('storage/'. $piatto->cover)}}" alt="{{$piatto->cover_original_name}}">
-             </div>
+              </div>
+            @else
+              <img width="150" src="{{asset($piatto->cover)}}" alt="{{$piatto->cover_original_name}}">
+            @endif
           @endif
+          
           <label for="cover">Carica un'immagine:</label>
           <input type="file" class="form-control" name="cover" id="cover">
        </div>
