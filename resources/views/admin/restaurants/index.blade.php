@@ -22,9 +22,19 @@
             <div class="card-team5 d-flex flex-wrap justify-content-between align-item-center">
               <div class="col-12 col-md-8 d-flex align-items-center">
                 {{-- immagine ristorante --}}
-                <div class="plate-img col-3 p-0">
+                <div 
+                style=" max-height: 110px;
+                       width: 110px;
+                       border-radius: 15px;"
+                class="plate-img col-3 p-0">
                   @if ($ristorante->cover)
-                    <img class="img-restaurant" src="{{asset('storage/' . $ristorante->cover)}}" alt="{{$ristorante->name}}">
+                    <img  
+                    style="width: 100%;
+                           height: 100%;
+                           border-radius: 15px;
+                           overflow: hidden;
+                           object-fit: cover;"
+                    src="{{asset('storage/' . $ristorante->cover)}}" alt="{{$ristorante->name}}">
                   @else
                     <img class="img-restaurant" src="https://via.placeholder.com/350x290/45CCBC/FFFFFF?Text=DeliverBoo+restaurant" alt="{{$ristorante->name}}">
                   @endif
@@ -49,6 +59,9 @@
           </div> 
         @endforeach
       </div>
+
+
+      
     @endif
   
   </div> 
