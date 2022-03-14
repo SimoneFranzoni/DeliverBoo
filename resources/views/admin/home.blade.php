@@ -24,7 +24,7 @@
                     <a href="{{route('admin.miei-ristoranti.create')}}">
                         <button class="btn-team5 btn-dashboard-team5">Nuovo Ristorante</button>
                     </a>
-                    <livewire:counter/>
+                    {{-- <livewire:counter/> --}}
                      
                 </div>
             </div>

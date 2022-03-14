@@ -5,7 +5,7 @@
     @if (count($ristoranti)=== 0)
     <div style="margin:50px;">
 
-      <h3 class="card-team5 text-center text-danger">Non hai ancora registrato i tuoi ristoranti</h3>
+      <h3 id="no-rest"class="card-team5 text-center text-danger">Non hai ancora registrato i tuoi ristoranti</h3>
     </div>
       
       
