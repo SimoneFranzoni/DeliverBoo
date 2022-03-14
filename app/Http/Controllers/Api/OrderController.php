@@ -36,7 +36,7 @@ class OrderController extends Controller
                 'submitForSettlement' => true,
             ],
         ]);
-
+       
         if($result->success){
 
             $new_order = new Order();

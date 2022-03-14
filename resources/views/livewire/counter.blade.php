@@ -1,5 +1,5 @@
 <div>  
-       @if(count($singleOrder)>0)
+       @if($printOrder)
         <h4>ordini presenti :</h4>
 
             @foreach ($restaurants as $restaurant)
@@ -12,18 +12,10 @@
                     
                 @endforeach
             @endforeach
-        @endif
-        
+        @endif      
 </div>
        
-{{-- foreach($arrayOrders as $orders){
-    { 
-         foreach($orders as $order){
-             array_push($myRestaurantOrder,$order);
-         }
-    }
- }
-     --}}
+
 
 
              
