@@ -110,16 +110,7 @@ export default {
       isLoaded: false,
     };
   },
-  beforeRouteLeave(to, from, next) {
-    const answer =
-      window.confirm('Attenzione! Se cambi ristorante perderai quello che hai messo nel carrello.');
-
-    if (answer) {
-      next();
-    } else {
-      next(false);
-    }
-  },
+  
   methods: {
     getApiTypes() {
       this.types = [];

@@ -67,7 +67,7 @@ export default {
     this.getApiTypes();
     this.getApiRestaurants();
     this.isLoaded = true;
-    console.log(this.isLoaded);
+    console.log('localstorage',localStorage)
   },
   data(){
     return {
@@ -78,6 +78,7 @@ export default {
       isLoaded: false
     }
   },
+
   methods: {
     getApiTypes() {
       this.isLoaded = false
