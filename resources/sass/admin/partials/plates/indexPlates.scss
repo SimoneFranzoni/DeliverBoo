@@ -36,7 +36,7 @@
       font-size: 12px;
       padding: 10px;
       margin-left: 10px;
-      box-shadow: 0 0 8px $primary-color;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);     
       border-radius: 10px;
       color:black;
       background-color: rgb(255, 255, 255);
@@ -48,7 +48,7 @@
         justify-content: center;
       }
       &:hover{
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        box-shadow: 0 0 8px $primary-color;
         font-weight: bold;
         transform: scale(1.05, 1.1);
       }
@@ -70,7 +70,7 @@
         justify-content: center;
       }
       &:hover{
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        box-shadow: 0 0 8px $primary-color;
         font-weight: bold;
         transform: scale(1.05, 1.1);
       }

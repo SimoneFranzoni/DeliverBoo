@@ -13116,6 +13116,7 @@ h1 {
   border: none;
 }
 .restaurant-slider-team5 div .card-team5 {
+  box-shadow: 0 0 8px #45CCBC;
   width: 100%;
   padding-bottom: 20px;
   margin: 20px 0;
@@ -13123,7 +13124,6 @@ h1 {
   align-items: center;
   background-color: white;
   border-radius: 20px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
 }
 .restaurant-slider-team5 div .card-team5 h3 {
   margin: 0px;
@@ -13134,7 +13134,12 @@ h1 {
   transform: scale(1.1) !important;
 }
 .restaurant-slider-team5 div .card-team5 h3 a {
+  transition: all 0.2s;
   color: black;
+}
+.restaurant-slider-team5 div .card-team5 h3 a:hover {
+  transform: scale(1.1) !important;
+  color: #45CCBC !important;
 }
 .restaurant-slider-team5 div .card-team5 h3 .button-container-restautant {
   height: 100%;
@@ -13143,6 +13148,50 @@ h1 {
   height: 100%;
 }
 
+@media screen and (max-width: 768px) {
+  .restaurant-slider-team5 {
+    display: none;
+  }
+
+  .small-restaurant-slider-team5 {
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  .small-restaurant-slider-team5 div .card-team5 {
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    margin: 20px 0;
+    padding: 10px 0;
+    align-items: center;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 0 10px #45CCBC;
+  }
+  .small-restaurant-slider-team5 div .card-team5 h3 {
+    margin: 0px;
+    padding: 5px 20px;
+    transition: all 0.2s;
+  }
+  .small-restaurant-slider-team5 div .card-team5 h3:hover {
+    transform: scale(1.1) !important;
+  }
+  .small-restaurant-slider-team5 div .card-team5 h3 a {
+    color: black;
+  }
+  .small-restaurant-slider-team5 div .card-team5 h3 .button-container-restautant {
+    padding: 0;
+    height: 100%;
+  }
+  .small-restaurant-slider-team5 div .card-team5 h3 .button-container-restautant a {
+    height: 100%;
+  }
+}
 .container-restaurants {
   background-color: rgba(255, 255, 255, 0.9);
   margin-top: 30px;
@@ -13197,7 +13246,7 @@ h1 {
   font-size: 12px;
   padding: 10px;
   margin-left: 10px;
-  box-shadow: 0 0 8px #45CCBC;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   color: black;
   background-color: white;
@@ -13209,7 +13258,7 @@ h1 {
   justify-content: center;
 }
 .plate-slider-team5 .card-piatti-team5 .card-piatti-team5-left:hover {
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 8px #45CCBC;
   font-weight: bold;
   transform: scale(1.05, 1.1);
 }
@@ -13230,7 +13279,7 @@ h1 {
   justify-content: center;
 }
 .plate-slider-team5 .card-piatti-team5 .card-piatti-team5-right:hover {
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 8px #45CCBC;
   font-weight: bold;
   transform: scale(1.05, 1.1);
 }

@@ -2,13 +2,19 @@
 
 @section('content')
 <div class="container-fluid background-team5">
-    <div class="row   justify-content-center">
+    <div class="row   justify-content-center"
+    >
         <div class="col-md-8">
             <div class="">
                 <h1 class="text-center  mt-3">{{ __('Login') }}</h2>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+                <div class="card-body " 
+                style=" background-color: rgb(255, 255, 255, 0.4);
+                        border-radius:20px;
+                        color:black
+                ">
+                    <form 
+                    method="POST" action="{{ route('login') }}">
                         @csrf
 
                         <div class="form-group row">

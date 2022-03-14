@@ -41,15 +41,22 @@ class OrdersController extends Controller
         $user = Auth::user();
         $restaurant= Restaurant::where('slug',$slug)->first();
         $orders = Order::where('restaurant_id',$restaurant->id)->with('plates')->get();
-     
-       $printOrder = false;
+        
+    
+        // foreach($orders as $order) {
+        //     foreach($order->plates as $plate){
+        //         dd($plate->pivot->quantity);
+        //     }
+        // }
+
+        $printOrder = false;
         foreach($orders as $order) {
             if($order->processed===0){
                 $printOrder = true;
           }
         }
         
-        return view('admin.orders.index',compact('restaurant','orders','user','printOrder'));
+        return view('admin.orders.index',compact('restaurant','orders','user','printOrder'))->with('deleted', 'ordine evaso correttamente');
     }
 
     /**
@@ -119,7 +126,7 @@ class OrdersController extends Controller
          $order = Order::where('id',$id_order)->first();
          $order->processed=1;
          $order->save();
- 
+        
          return redirect()->route('admin.miei-ristoranti.ordini.index',[$restaurant_slug]);
     }
 
