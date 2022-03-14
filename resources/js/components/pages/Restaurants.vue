@@ -309,7 +309,7 @@ export default {
     align-items: center;
     flex-wrap: nowrap;
     scrollbar-width: none;
-    overflow-y: scroll;
+    // overflow-y: scroll;
   }
 
   .typebox {
