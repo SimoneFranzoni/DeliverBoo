@@ -13107,10 +13107,13 @@ h1 {
 .restaurant-slider-team5 {
   border-radius: 20px;
   scrollbar-width: none;
-  overflow-y: scroll;
+  overflow-y: auto;
   scrollbar-width: none;
   margin-bottom: 20px;
   height: calc(100vh - 300px);
+}
+.restaurant-slider-team5 .restaurant-slider-team5::-webkit-scrollbar {
+  display: none;
 }
 .restaurant-slider-team5 :last-child {
   border: none;
