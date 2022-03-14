@@ -10,15 +10,12 @@
             <div class="box-ristorante">
               <h2 class="pb-3 fw-bold">Inserisci i dati per la spedizione</h2>
               <div class="row">
-                
                 <!-- FORM -->
-                <form method="POST" action=""  class="form_payment">
+                <form method="POST" action="" class="form_payment">
                   <div class="row">
                     <!-- Nome -->
                     <div class="col-6">
-                      <label
-                        for="name"
-                        class="form-label fw-bold fw-bold"
+                      <label for="name" class="form-label fw-bold fw-bold"
                         >Nome</label
                       >
                       <input
@@ -71,9 +68,7 @@
 
                     <!-- CAP -->
                     <div class="col-6">
-                      <label for="cap" class="form-label fw-bold"
-                        >CAP:</label
-                      >
+                      <label for="cap" class="form-label fw-bold">CAP:</label>
                       <input
                         type="text"
                         class="form-control"
@@ -126,7 +121,6 @@
                       </div>
                     </div>
 
-
                     <!-- Cellulare -->
                     <div class="col-6">
                       <label for="phone" class="form-label fw-bold"
@@ -142,7 +136,7 @@
                         required
                       />
                       <div class="valid-feedback">
-                        Inserire una numero  di telefono valido!
+                        Inserire una numero di telefono valido!
                       </div>
                     </div>
 
@@ -161,15 +155,13 @@
                         required
                       />
                       <div class="valid-feedback">
-                        Inserire una numero  di telefono valido!
+                        Inserire una numero di telefono valido!
                       </div>
                     </div>
 
                     <!-- Mail -->
                     <div class="col-12">
-                      <label
-                        for="email"
-                        class="form-label fw-bold"
+                      <label for="email" class="form-label fw-bold"
                         >Email</label
                       >
                       <input
@@ -184,9 +176,7 @@
 
                     <!-- Text Area -->
                     <div class="col-12">
-                      <label
-                        for="note"
-                        class="form-label fw-bold"
+                      <label for="note" class="form-label fw-bold"
                         >Notazioni sull'ordine:</label
                       >
                       <textarea
@@ -241,7 +231,8 @@
                         class="row justify-content-around align-items-center"
                       >
                         <h2 class="fw-bold">
-                          Ordine: <span class="code-ordine">{{ codeOrder }}</span>
+                          Ordine:
+                          <span class="code-ordine">{{ codeOrder }}</span>
                         </h2>
                       </div>
                       <div class="line mt-3"></div>
@@ -279,38 +270,35 @@
 
                     <!-- Submit -->
                     <div class="col-12 d-flex flex-column align-items-center">
-                      <div v-if="isLoading">
-
-                    </div>
+                      <div v-if="isLoading"></div>
                       <div v-else>
                         <v-braintree
-                        :authorization="tokenApi"
-                        locale="it_IT"
-                        @success="onSuccess"
-                        @error="onError"
-                      >
-                      <template #button="slotProps">
-                        <button 
-                        @click="slotProps.submit" 
-                        ref="paymentBtnRef" 
-                        class="d-none" />
-                      </template>
-                      
-                      </v-braintree>
+                          :authorization="tokenApi"
+                          locale="it_IT"
+                          @success="onSuccess"
+                          @error="onError"
+                        >
+                          <template #button="slotProps">
+                            <button
+                              @click="slotProps.submit"
+                              ref="paymentBtnRef"
+                              class="d-none"
+                            />
+                          </template>
+                        </v-braintree>
                         <!-- v-if="!disableBuyButton" -->
-                      <button
-                        @click.prevent="beforeBuy"
-                        class="ac-bnt w-full btn-success mt-5"
-                      >
-                        Procedi con l'acquisto 🎉
-                      </button>
+                        <button
+                          @click.prevent="beforeBuy"
+                          class="ac-bnt w-full btn-success mt-5"
+                        >
+                          Procedi con l'acquisto 🎉
+                        </button>
 
-                      <div class="trans-ok"
-                      v-if="transOk">
-                        <p>Transazione Inviata</p>
+                        <div class="trans-ok" v-if="transOk">
+                          <p>Transazione Inviata</p>
+                        </div>
                       </div>
-                    </div>
-                      
+
                       <!-- <button  class="ac-btn" type="submit">
                         Vai al pagamento
                       </button> -->
@@ -323,7 +311,6 @@
         </div>
         <div class="col-lg-4 slider d-none d-lg-block">
           <div class="col-12 right-column">
-
             <!-- Carrello -->
             <div class="carrello">
               <div class="row justify-content-around align-items-center">
@@ -364,23 +351,16 @@
                 <div class="fw-bold">€{{ subTotal }}</div>
               </div>
             </div>
-
             <!-- Fine Carrello  -->
-
-            <div class="box-pagamento mt-4">
-              <div class="box-btn d-flex flex-column align-items-center">
-
-                
-
-  
-                <!-- <button class="btn-success p-3">Conferma Pagamento</button> -->
-              </div>
+            <div class="box-img-right">
+              <video autoplay muted loop
+            src="" type=""></video>
+              <img src="../../../../public/img/delivey-1.png" alt="" />
             </div>
           </div>
         </div>
       </div>
     </div>
-    
   </div>
 </template>
 
@@ -394,11 +374,11 @@ export default {
   },
   data() {
     return {
-      transOk: 'false',
+      transOk: "false",
       isLoading: true,
-      tokenApi: '',
-      apiUrlGenerateToken: '/api/orders/generate',
-      apiMakePayment: '/api/orders/makepayment',
+      tokenApi: "",
+      apiUrlGenerateToken: "/api/orders/generate",
+      apiMakePayment: "/api/orders/makepayment",
       apiUrl: "http://127.0.0.1:8000/api/ristoranti/",
       activeRestaurant: {},
       plates: [],
@@ -410,26 +390,23 @@ export default {
       subTotal: null,
       isCart: true,
       alphabet: "QWERTYUIOPLKJHGFDSAZXCVBNM",
-      codeOrder: '',
-      
-        token: "",
-        name: "",
-        lastname: "",
-        address: "",
-        city: "",
-        cap: null,
-        province: "",
-        phone: "",
-        doorbell: "",
-        email: "",
-        note: "",
-        total: "",
-        hiddenInput: false,
-        
-      
+      codeOrder: "",
+
+      token: "",
+      name: "",
+      lastname: "",
+      address: "",
+      city: "",
+      cap: null,
+      province: "",
+      phone: "",
+      doorbell: "",
+      email: "",
+      note: "",
+      total: "",
+      hiddenInput: false,
 
       //   FORM
-      
     };
   },
   mounted() {
@@ -454,20 +431,20 @@ export default {
   },
 
   methods: {
-
-    generateTokenApi(){
-      
-      axios.get(this.apiUrlGenerateToken).then((res) => {
-        this.tokenApi = res.data.token;
-        this.isLoading = false;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    generateTokenApi() {
+      axios
+        .get(this.apiUrlGenerateToken)
+        .then((res) => {
+          this.tokenApi = res.data.token;
+          this.isLoading = false;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
 
     getActiveRestaurant() {
-      this.transOk= false;
+      this.transOk = false;
       this.isLoaded = false;
       this.activeRestaurant = {};
       axios.get(this.apiUrl + this.$route.params.slug).then((res) => {
@@ -487,10 +464,10 @@ export default {
         this.isLoaded = true;
       });
     },
-    sendData(){
-      axios.post(this.apiUrl + 'payment')
+    sendData() {
+      axios.post(this.apiUrl + "payment");
       {
-        console.log('ciao mondo');
+        console.log("ciao mondo");
       }
     },
 
@@ -583,21 +560,21 @@ export default {
         this.alphabet.substr(this.getRandomNumber(1, 28), 1) +
         // + (this.getRandomNumber(1, 9))
         this.alphabet.substr(this.getRandomNumber(1, 28), 1);
-      this.codeOrder = code
+      this.codeOrder = code;
     },
     getRandomNumber(min, max) {
       return Math.floor(Math.random() * (max - min + 1) + min);
     },
 
-    onLoad(){
-      alert('loading')
+    onLoad() {
+      alert("loading");
     },
 
-    beforeBuy () {
-      this.$refs.paymentBtnRef.click()
+    beforeBuy() {
+      this.$refs.paymentBtnRef.click();
     },
 
-    onSuccess (payload) {
+    onSuccess(payload) {
       let gToken = payload.nonce;
       this.token = gToken;
       this.buy();
@@ -605,36 +582,36 @@ export default {
       // this.buy();
       // Do something great with the nonce...
     },
-    onError (error) {
-      console.log('Errore');
+    onError(error) {
+      console.log("Errore");
       let message = error.message;
       // Whoops, an error has occured while trying to get the nonce
     },
 
-    buy(){
-      console.log('CART INVIATO->>>', this.cart);
-      axios.post(this.apiMakePayment, {
-        
-        token: this.token,
-        restaurant_id: this.cart[0].restaurant_id,
-        name: this.name,
-        surname: this.lastname,
-        address: this.address,
-        CAP: this.cap,
-        city: this.city,
-        province: this.province,
-        phone: this.phone,
-        doorbell: this.doorbell,
-        email: this.email,
-        note: this.note,
-        total_price: this.subTotal,
-        cart: this.cart,
-      }).then((res) => {
-        this.transOk= true,
-        console.log('click res' ,res);
-        location.href = '/order/' + this.activeRestaurant.slug;
-      });
-    }
+    buy() {
+      console.log("CART INVIATO->>>", this.cart);
+      axios
+        .post(this.apiMakePayment, {
+          token: this.token,
+          restaurant_id: this.cart[0].restaurant_id,
+          name: this.name,
+          surname: this.lastname,
+          address: this.address,
+          CAP: this.cap,
+          city: this.city,
+          province: this.province,
+          phone: this.phone,
+          doorbell: this.doorbell,
+          email: this.email,
+          note: this.note,
+          total_price: this.subTotal,
+          cart: this.cart,
+        })
+        .then((res) => {
+          (this.transOk = true), console.log("click res", res);
+          location.href = "/order/" + this.activeRestaurant.slug;
+        });
+    },
   },
 };
 </script>
@@ -745,16 +722,16 @@ export default {
       }
     }
   }
-  .carrello-small{
+  .carrello-small {
     padding-top: 30px;
     width: 100%;
-        .line {
+    .line {
       background-color: grey;
       width: 100%;
       height: 1px;
       margin: 10px 0;
     }
-        .plate-order {
+    .plate-order {
       div {
         padding: 10px 15px;
       }
@@ -766,6 +743,10 @@ export default {
   //   position: absolute;
   //   right: 0px;
   //   top: 0px;
+  // display: flex;
+  // justify-content: center;
+  // align-items: space-between;
+  // flex-direction: column;
 
   .carrello {
     // position: relative;
@@ -813,22 +794,16 @@ export default {
       }
     }
   }
+  .box-img-right {
+    margin-top: 70px;
+    width: 100%;
+    img {
+      width: 100%;
+    }
+  }
 }
 
 .fw-bold {
   font-weight: bold;
-}
-
-.carrello-mobile {
-  width: 100%;
-  height: 75px;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 1000;
-  margin-top: 100px;
-  box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.3);
-  background-color: $primary-color;
-  margin: 0;
 }
 </style>

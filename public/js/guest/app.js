@@ -2527,26 +2527,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Payment",
@@ -2555,11 +2535,11 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   },
   data: function data() {
     return {
-      transOk: 'false',
+      transOk: "false",
       isLoading: true,
-      tokenApi: '',
-      apiUrlGenerateToken: '/api/orders/generate',
-      apiMakePayment: '/api/orders/makepayment',
+      tokenApi: "",
+      apiUrlGenerateToken: "/api/orders/generate",
+      apiMakePayment: "/api/orders/makepayment",
       apiUrl: "http://127.0.0.1:8000/api/ristoranti/",
       activeRestaurant: {},
       plates: [],
@@ -2571,7 +2551,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       subTotal: null,
       isCart: true,
       alphabet: "QWERTYUIOPLKJHGFDSAZXCVBNM",
-      codeOrder: '',
+      codeOrder: "",
       token: "",
       name: "",
       lastname: "",
@@ -2654,9 +2634,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       });
     },
     sendData: function sendData() {
-      axios.post(this.apiUrl + 'payment');
+      axios.post(this.apiUrl + "payment");
       {
-        console.log('ciao mondo');
+        console.log("ciao mondo");
       }
     },
     getTrueCart: function getTrueCart() {
@@ -2742,7 +2722,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       return Math.floor(Math.random() * (max - min + 1) + min);
     },
     onLoad: function onLoad() {
-      alert('loading');
+      alert("loading");
     },
     beforeBuy: function beforeBuy() {
       this.$refs.paymentBtnRef.click();
@@ -2755,13 +2735,13 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       // Do something great with the nonce...
     },
     onError: function onError(error) {
-      console.log('Errore');
+      console.log("Errore");
       var message = error.message; // Whoops, an error has occured while trying to get the nonce
     },
     buy: function buy() {
       var _this3 = this;
 
-      console.log('CART INVIATO->>>', this.cart);
+      console.log("CART INVIATO->>>", this.cart);
       axios.post(this.apiMakePayment, {
         token: this.token,
         restaurant_id: this.cart[0].restaurant_id,
@@ -2778,8 +2758,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         total_price: this.subTotal,
         cart: this.cart
       }).then(function (res) {
-        _this3.transOk = true, console.log('click res', res);
-        location.href = '/order/' + _this3.activeRestaurant.slug;
+        _this3.transOk = true, console.log("click res", res);
+        location.href = "/order/" + _this3.activeRestaurant.slug;
       });
     }
   }
@@ -31428,7 +31408,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".del-plate[data-v-bb51ee40],\n.add-plate[data-v-bb51ee40] {\n  width: 40px;\n  height: 20px;\n  display: inline-block;\n  font-size: 20px;\n  border: 1px solid black;\n  line-height: 15px;\n  text-align: center;\n  border-radius: 8px;\n  padding: 0px;\n  transition: all 0.2s;\n  cursor: pointer;\n}\n.del-plate[data-v-bb51ee40]:hover,\n.add-plate[data-v-bb51ee40]:hover {\n  border: 1px solid #45CCBC;\n  color: #45CCBC;\n  font-size: 24px;\n}\n.amount-plates[data-v-bb51ee40],\n.del-plate[data-v-bb51ee40],\n.add-plate[data-v-bb51ee40] {\n  width: 40px;\n  height: 20px;\n  display: inline-block;\n  line-height: 15px;\n  text-align: center;\n  padding: 0px;\n}\n.bg[data-v-bb51ee40] {\n  width: 100%;\n  height: 400px;\n  position: relative;\n  z-index: -100;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.bg img[data-v-bb51ee40] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  display: block;\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  top: 0;\n  left: 0;\n  z-index: -100;\n  overflow: hidden;\n}\n.slider[data-v-bb51ee40] {\n  position: relative;\n  top: -150px;\n}\n.central-column[data-v-bb51ee40] {\n  position: relative;\n  padding-bottom: 100px;\n  padding-left: 5px !important;\n  padding-right: 0px !important;\n}\n.central-column .box-ristorante[data-v-bb51ee40] {\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  border-radius: 20px;\n  background-color: white;\n  padding-top: 40px;\n  top: -150px;\n}\n.central-column .box-ristorante .row[data-v-bb51ee40] {\n  width: 100%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  padding-bottom: 20px;\n}\n.central-column .box-ristorante .row .form_payment[data-v-bb51ee40] {\n  width: 90%;\n}\n.central-column .box-ristorante .row .form_payment .col-12[data-v-bb51ee40],\n.central-column .box-ristorante .row .form_payment .col-6[data-v-bb51ee40] {\n  margin: 5px 0px;\n}\n.central-column .box-ristorante .row .form_payment .total-text[data-v-bb51ee40] {\n  line-height: 60px;\n}\n.central-column .box-ristorante .row .form_payment .total-text h4[data-v-bb51ee40] {\n  font-size: 28px;\n}\n.central-column .box-ristorante .row .form_payment .total-text h4 span[data-v-bb51ee40] {\n  font-size: 38px;\n}\n.central-column .carrello-small[data-v-bb51ee40] {\n  padding-top: 30px;\n  width: 100%;\n}\n.central-column .carrello-small .line[data-v-bb51ee40] {\n  background-color: grey;\n  width: 100%;\n  height: 1px;\n  margin: 10px 0;\n}\n.central-column .carrello-small .plate-order div[data-v-bb51ee40] {\n  padding: 10px 15px;\n}\n.right-column .carrello[data-v-bb51ee40] {\n  width: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  border-radius: 20px;\n  padding-left: 10px;\n  background-color: white;\n  padding: 40px 20px 20px 20px;\n}\n.right-column .carrello .line[data-v-bb51ee40] {\n  background-color: grey;\n  width: 100%;\n  height: 1px;\n  margin: 10px 0;\n}\n.right-column .carrello .plate-order div[data-v-bb51ee40] {\n  padding: 10px 15px;\n}\n.right-column .carrello .carrello-empty[data-v-bb51ee40] {\n  color: lightgrey;\n  height: 220px;\n  padding: 20px;\n  text-align: center;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n.right-column .carrello .carrello-empty i[data-v-bb51ee40] {\n  font-size: 40px;\n  color: lightgrey;\n}\n.right-column .carrello .carrello-empty .fake-button[data-v-bb51ee40] {\n  background-color: lightgrey;\n  color: white;\n  height: 33px;\n  border-radius: 10px;\n  line-height: 33px;\n}\n.fw-bold[data-v-bb51ee40] {\n  font-weight: bold;\n}\n.carrello-mobile[data-v-bb51ee40] {\n  width: 100%;\n  height: 75px;\n  position: fixed;\n  bottom: 0;\n  left: 0;\n  z-index: 1000;\n  margin-top: 100px;\n  box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.3);\n  background-color: #45CCBC;\n  margin: 0;\n}", ""]);
+exports.push([module.i, ".del-plate[data-v-bb51ee40],\n.add-plate[data-v-bb51ee40] {\n  width: 40px;\n  height: 20px;\n  display: inline-block;\n  font-size: 20px;\n  border: 1px solid black;\n  line-height: 15px;\n  text-align: center;\n  border-radius: 8px;\n  padding: 0px;\n  transition: all 0.2s;\n  cursor: pointer;\n}\n.del-plate[data-v-bb51ee40]:hover,\n.add-plate[data-v-bb51ee40]:hover {\n  border: 1px solid #45CCBC;\n  color: #45CCBC;\n  font-size: 24px;\n}\n.amount-plates[data-v-bb51ee40],\n.del-plate[data-v-bb51ee40],\n.add-plate[data-v-bb51ee40] {\n  width: 40px;\n  height: 20px;\n  display: inline-block;\n  line-height: 15px;\n  text-align: center;\n  padding: 0px;\n}\n.bg[data-v-bb51ee40] {\n  width: 100%;\n  height: 400px;\n  position: relative;\n  z-index: -100;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.bg img[data-v-bb51ee40] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  display: block;\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  top: 0;\n  left: 0;\n  z-index: -100;\n  overflow: hidden;\n}\n.slider[data-v-bb51ee40] {\n  position: relative;\n  top: -150px;\n}\n.central-column[data-v-bb51ee40] {\n  position: relative;\n  padding-bottom: 100px;\n  padding-left: 5px !important;\n  padding-right: 0px !important;\n}\n.central-column .box-ristorante[data-v-bb51ee40] {\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  border-radius: 20px;\n  background-color: white;\n  padding-top: 40px;\n  top: -150px;\n}\n.central-column .box-ristorante .row[data-v-bb51ee40] {\n  width: 100%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  padding-bottom: 20px;\n}\n.central-column .box-ristorante .row .form_payment[data-v-bb51ee40] {\n  width: 90%;\n}\n.central-column .box-ristorante .row .form_payment .col-12[data-v-bb51ee40],\n.central-column .box-ristorante .row .form_payment .col-6[data-v-bb51ee40] {\n  margin: 5px 0px;\n}\n.central-column .box-ristorante .row .form_payment .total-text[data-v-bb51ee40] {\n  line-height: 60px;\n}\n.central-column .box-ristorante .row .form_payment .total-text h4[data-v-bb51ee40] {\n  font-size: 28px;\n}\n.central-column .box-ristorante .row .form_payment .total-text h4 span[data-v-bb51ee40] {\n  font-size: 38px;\n}\n.central-column .carrello-small[data-v-bb51ee40] {\n  padding-top: 30px;\n  width: 100%;\n}\n.central-column .carrello-small .line[data-v-bb51ee40] {\n  background-color: grey;\n  width: 100%;\n  height: 1px;\n  margin: 10px 0;\n}\n.central-column .carrello-small .plate-order div[data-v-bb51ee40] {\n  padding: 10px 15px;\n}\n.right-column .carrello[data-v-bb51ee40] {\n  width: 100%;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  border-radius: 20px;\n  padding-left: 10px;\n  background-color: white;\n  padding: 40px 20px 20px 20px;\n}\n.right-column .carrello .line[data-v-bb51ee40] {\n  background-color: grey;\n  width: 100%;\n  height: 1px;\n  margin: 10px 0;\n}\n.right-column .carrello .plate-order div[data-v-bb51ee40] {\n  padding: 10px 15px;\n}\n.right-column .carrello .carrello-empty[data-v-bb51ee40] {\n  color: lightgrey;\n  height: 220px;\n  padding: 20px;\n  text-align: center;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n.right-column .carrello .carrello-empty i[data-v-bb51ee40] {\n  font-size: 40px;\n  color: lightgrey;\n}\n.right-column .carrello .carrello-empty .fake-button[data-v-bb51ee40] {\n  background-color: lightgrey;\n  color: white;\n  height: 33px;\n  border-radius: 10px;\n  line-height: 33px;\n}\n.right-column .box-img-right[data-v-bb51ee40] {\n  margin-top: 70px;\n  width: 100%;\n}\n.right-column .box-img-right img[data-v-bb51ee40] {\n  width: 100%;\n}\n.fw-bold[data-v-bb51ee40] {\n  font-weight: bold;\n}", ""]);
 
 // exports
 
@@ -64570,7 +64550,7 @@ var render = function () {
                         _vm._v(" "),
                         _c("div", { staticClass: "valid-feedback" }, [
                           _vm._v(
-                            "\n                      Inserire una numero  di telefono valido!\n                    "
+                            "\n                      Inserire una numero di telefono valido!\n                    "
                           ),
                         ]),
                       ]),
@@ -64615,7 +64595,7 @@ var render = function () {
                         _vm._v(" "),
                         _c("div", { staticClass: "valid-feedback" }, [
                           _vm._v(
-                            "\n                      Inserire una numero  di telefono valido!\n                    "
+                            "\n                      Inserire una numero di telefono valido!\n                    "
                           ),
                         ]),
                       ]),
@@ -64750,7 +64730,9 @@ var render = function () {
                             },
                             [
                               _c("h2", { staticClass: "fw-bold" }, [
-                                _vm._v("\n                        Ordine: "),
+                                _vm._v(
+                                  "\n                        Ordine:\n                        "
+                                ),
                                 _c("span", { staticClass: "code-ordine" }, [
                                   _vm._v(_vm._s(_vm.codeOrder)),
                                 ]),
@@ -64871,7 +64853,7 @@ var render = function () {
                                     },
                                     [
                                       _vm._v(
-                                        "\n                      Procedi con l'acquisto 🎉\n                    "
+                                        "\n                        Procedi con l'acquisto 🎉\n                      "
                                       ),
                                     ]
                                   ),
@@ -64965,7 +64947,19 @@ var render = function () {
               ),
             ]),
             _vm._v(" "),
-            _vm._m(1),
+            _c("div", { staticClass: "box-img-right" }, [
+              _c("video", {
+                attrs: { autoplay: "", muted: "", loop: "", src: "", type: "" },
+                domProps: { muted: true },
+              }),
+              _vm._v(" "),
+              _c("img", {
+                attrs: {
+                  src: __webpack_require__(/*! ../../../../public/img/delivey-1.png */ "./public/img/delivey-1.png"),
+                  alt: "",
+                },
+              }),
+            ]),
           ]),
         ]),
       ]),
@@ -65000,16 +64994,6 @@ var staticRenderFns = [
           ),
         ]),
       ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "box-pagamento mt-4" }, [
-      _c("div", {
-        staticClass: "box-btn d-flex flex-column align-items-center",
-      }),
     ])
   },
 ]
@@ -81048,6 +81032,17 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./public/img/delivey-1.png":
+/*!**********************************!*\
+  !*** ./public/img/delivey-1.png ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/delivey-1.png?a65a50996b0ef1675a74386603521711";
+
+/***/ }),
+
 /***/ "./resources/js/bootstrap.js":
 /*!***********************************!*\
   !*** ./resources/js/bootstrap.js ***!
@@ -82222,7 +82217,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\ssimo\Documents\boolean\html\lara\progetto-finale\DeliverBoo\resources\js\guest\app.js */"./resources/js/guest/app.js");
+module.exports = __webpack_require__(/*! C:\Users\franc\Documents\Francesco\BOOLEAN\Esercizi\PORTFOLIO\progetto finale\DeliverBoo\DeliverBoo\resources\js\guest\app.js */"./resources/js/guest/app.js");
 
 
 /***/ })
