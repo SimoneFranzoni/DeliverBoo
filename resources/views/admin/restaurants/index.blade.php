@@ -28,13 +28,26 @@
                        border-radius: 15px;"
                 class="plate-img col-3 p-0">
                   @if ($ristorante->cover)
-                    <img  
+                    {{-- <img  
                     style="width: 100%;
                            height: 100%;
                            border-radius: 15px;
                            overflow: hidden;
                            object-fit: cover;"
-                    src="{{asset('storage/' . $ristorante->cover)}}" alt="{{$ristorante->name}}">
+                    src="{{asset('storage/' . $ristorante->cover)}}" alt="{{$ristorante->name}}"> --}}
+                    @if($ristorante->cover_up_by_user)
+                      <img style="width: 100%;
+                      height: 100%;
+                      border-radius: 15px;
+                      overflow: hidden;
+                      object-fit: cover;" class="img-restaurant" src="{{asset('storage/' . $ristorante->cover)}}" alt="{{$ristorante->name}}">
+                    @else 
+                      <img style="width: 100%;
+                      height: 100%;
+                      border-radius: 15px;
+                      overflow: hidden;
+                      object-fit: cover;" src="{{asset($ristorante->cover)}}" alt="{{$ristorante->name}}">
+                    @endif
                   @else
                     <img class="img-restaurant" src="https://via.placeholder.com/350x290/45CCBC/FFFFFF?Text=DeliverBoo+restaurant" alt="{{$ristorante->name}}">
                   @endif
