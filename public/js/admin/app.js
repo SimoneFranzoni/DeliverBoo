@@ -37351,9 +37351,15 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 __webpack_require__(/*! C:\Users\Simone\Documents\Boolean\Progetto Finale\DeliverBoo\resources\js\admin\app.js */"./resources/js/admin/app.js");
 __webpack_require__(/*! C:\Users\Simone\Documents\Boolean\Progetto Finale\DeliverBoo\resources\sass\admin\style.scss */"./resources/sass/admin/style.scss");
 module.exports = __webpack_require__(/*! C:\Users\Simone\Documents\Boolean\Progetto Finale\DeliverBoo\resources\sass\guest\style.scss */"./resources/sass/guest/style.scss");
+=======
+__webpack_require__(/*! C:\Users\ssimo\Documents\boolean\html\lara\progetto-finale\DeliverBoo\resources\js\admin\app.js */"./resources/js/admin/app.js");
+__webpack_require__(/*! C:\Users\ssimo\Documents\boolean\html\lara\progetto-finale\DeliverBoo\resources\sass\admin\style.scss */"./resources/sass/admin/style.scss");
+module.exports = __webpack_require__(/*! C:\Users\ssimo\Documents\boolean\html\lara\progetto-finale\DeliverBoo\resources\sass\guest\style.scss */"./resources/sass/guest/style.scss");
+>>>>>>> e2d7c8867a2ac33db9eea7d60a975e3b12aacdeb
 
 
 /***/ })
