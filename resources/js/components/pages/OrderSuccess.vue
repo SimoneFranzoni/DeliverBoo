@@ -13,8 +13,15 @@
             />
           </svg>
           <h2 class="fw-bold">PAGAMENTO AVVENUTO CON SUCCESSO</h2>
-          <h5>Riceverai a breve una mail di conferma della ricezione dell'ordine.</h5>
+          <h5>
+            Riceverai a breve una mail di conferma della ricezione dell'ordine.
+          </h5>
           <h5>Grazie per averci scelto.</h5>
+          <div class="all">
+            <router-link :to="{ name: 'restaurantsAll' }">
+              <div class="ac-btn  px-5">Torna ai ristoranti</div>
+            </router-link>
+          </div>
         </div>
       </div>
     </div>
@@ -114,6 +121,9 @@ export default {
           span {
             font-size: 38px;
           }
+        }
+        .all {
+          margin-top: 15px;
         }
       }
     }
