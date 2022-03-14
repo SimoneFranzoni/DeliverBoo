@@ -50,6 +50,7 @@ class RestaurantsController extends Controller
         $user = Auth::user();
         
         $data = $request->all();
+        $new_restaurant = new Restaurant();
         
         
         if(array_key_exists('cover', $data)){
@@ -60,13 +61,14 @@ class RestaurantsController extends Controller
             // salvare l'immagine e salvare il percorso
             $image_path = Storage::put('uploads', $data['cover']);
             $data['cover'] = $image_path;
+            $new_restaurant-> cover_up_by_user = 1;
         }
         else{
             $data['cover'] = 'https://via.placeholder.com/350x290/45CCBC/FFFFFF?Text=DeliverBoo+plates';
             $data['cover_original_name'] = "DeliveBoo Restaurant";
         }
         
-        $new_restaurant = new Restaurant();
+        
         $new_restaurant->user_id = $user->id;
         $new_restaurant->fill($data);
         $new_restaurant->slug = Restaurant::generateSlug($new_restaurant->name);
@@ -135,6 +137,8 @@ class RestaurantsController extends Controller
         if($form_data['name'] != $restaurant->name  ){
             $form_data['slug'] = Restaurant::generateSlug($form_data['name']);
         }
+
+        $restaurant->cover_up_by_user = 1;
         $restaurant->update($form_data);
 
         if(array_key_exists('types',$form_data)){

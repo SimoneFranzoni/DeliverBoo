@@ -49,9 +49,14 @@
            
               <a class=" col-7" href="{{route('admin.miei-ristoranti.piatti.show',[$ristorante->slug,$piatto->slug])}}">
                 <div class="card-piatti-team5-left ml-3 d-flex col-12">
+                  {{-- Immagine Piatto  --}}
                   <div class="plate-img">
                     @if ($piatto->cover)
+                      @if($piatto->cover_up_by_user)
                       <img src="{{asset('storage/' . $piatto->cover)}}" alt="{{$piatto->name}}">
+                      @else
+                      <img src="{{asset($piatto->cover)}}" alt="{{$piatto->name}}">
+                      @endif
                     @else
                       <img  src="https://via.placeholder.com/350x290/45CCBC/FFFFFF?Text=DeliverBoo+restaurant" alt="{{$piatto->name}}">
                     @endif
@@ -102,8 +107,12 @@
             <div class="small-card-left col-12 ">
               <div class="plate-img col-5 p-0">
                 <a  href="{{route('admin.miei-ristoranti.piatti.show',[$ristorante->slug,$piatto->slug])}}">
-                @if ($piatto->cover)
+                  @if ($piatto->cover)
+                  @if($piatto->cover_up_by_user)
                   <img src="{{asset('storage/' . $piatto->cover)}}" alt="{{$piatto->name}}">
+                  @else
+                  <img src="{{asset($piatto->cover)}}" alt="{{$piatto->name}}">
+                  @endif
                 @else
                   <img  src="https://via.placeholder.com/350x290/45CCBC/FFFFFF?Text=DeliverBoo+restaurant" alt="{{$piatto->name}}">
                 @endif
