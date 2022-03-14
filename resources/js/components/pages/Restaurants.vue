@@ -75,8 +75,8 @@
               v-for="(restaurant, index) in activeRestaurants"
               :key="`restaurant${index}`"
               :restaurant="restaurant"
+              @click.native="confirmChange"  
             />
-              <!-- @click.native="confirmChange"   -->
           </div>
         </div>
       </div>
@@ -172,12 +172,12 @@ export default {
         this.filter_close = true;
       }
     },
-    // confirmChange() {
-    //         if (!confirm('Attenzione! Se cambi ristorante perderai quello che hai messo nel carrello.')) {
-    //           location.href = '/restaurants/' + this.activeType.slug;
-    //         }  
+    confirmChange() {
+            if (!confirm('Attenzione! Se cambi ristorante perderai quello che hai messo nel carrello.')) {
+              location.href = '/restaurants/' + this.activeType.slug;
+            }  
             
-    //   }
+      }
   },
 };
 </script>

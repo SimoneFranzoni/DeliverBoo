@@ -14,9 +14,9 @@
           </svg>
           <h2 class="fw-bold">PAGAMENTO AVVENUTO CON SUCCESSO</h2>
           <h5>
-            Riceverai a breve una mail di conferma della ricezione dell'ordine.
+            Riceverai a breve il tuo ordine.
           </h5>
-          <h5>Grazie per averci scelto.</h5>
+          <h5>Grazie per averci scelto!</h5>
           <div class="all">
             <router-link :to="{ name: 'restaurantsAll' }">
               <div class="ac-btn  px-5">Torna ai ristoranti</div>
