@@ -1,18 +1,16 @@
 <template>
-  <div class="container">
+  <div class="container" >
 
     <!-- header da home.blade.php per controlli auth-->
 
     <!-- jumbotron con ricerca-->
     <Jumbotron @triggerSearch="triggerSearch"/>
 
-    <div class="loader" v-if="isLoaded === false">
-      <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
-    </div>
+    
 
     <!-- ristoranti random -->
     <h3 class="marg">Le nostre selezioni</h3>
-    <div class="row" v-if="isLoaded">
+    <div class="row">
       <div class="restbox col-xs-6 col-md-4 col-lg-2"
       v-for="(rest, index) in randomRestaurants"
       :key="`randomrest${index}`"
@@ -29,7 +27,7 @@
 
     <!-- elenco tipologie -->
     <h3>Non sai cosa scegliere? Dai un'occhiata</h3>
-    <div class="types-wrapper" v-if="isLoaded">
+    <div class="types-wrapper">
         <div class="type"
         v-for="(type, index) in types" 
         :key="`type${index}`"
@@ -51,6 +49,7 @@
 
     
   </div>
+  
 </template>
 
 <script>
@@ -63,9 +62,12 @@ export default {
   
   },
   mounted(){
+    console.log(this.isLoaded);
     this.isLoaded = false;
     this.getApiTypes();
     this.getApiRestaurants();
+    this.isLoaded = true;
+    console.log(this.isLoaded);
   },
   data(){
     return {
@@ -95,7 +97,7 @@ export default {
       .then(res => {
         this.restaurants = res.data.restaurants;
         this.getRandomRestaurants();
-        this.isLoaded =  true
+        this.isLoaded = true
       })
     
     },
@@ -235,44 +237,7 @@ export default {
 }
 
 
-.loader {
-  .lds-ring {
-  display: inline-block;
-  position: relative;
-  width: 80px;
-  height: 80px;
-}
-.lds-ring div {
-  box-sizing: border-box;
-  display: block;
-  position: absolute;
-  width: 64px;
-  height: 64px;
-  margin: 8px;
-  border: 8px solid #fff;
-  border-radius: 50%;
-  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: #fff transparent transparent transparent;
-}
-.lds-ring div:nth-child(1) {
-  animation-delay: -0.45s;
-}
-.lds-ring div:nth-child(2) {
-  animation-delay: -0.3s;
-}
-.lds-ring div:nth-child(3) {
-  animation-delay: -0.15s;
-}
-@keyframes lds-ring {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
 
-}
 
 
 @media screen and (max-width: 992px) {
