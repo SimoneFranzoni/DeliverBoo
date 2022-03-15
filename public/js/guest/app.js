@@ -2148,6 +2148,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.getActiveRestaurant();
+    window.localStorage.clear();
   },
   methods: {
     getActiveRestaurant: function getActiveRestaurant() {
@@ -3323,6 +3324,13 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Restaurants",
@@ -3677,6 +3685,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -31422,7 +31431,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".payment-success[data-v-275c022a] {\n  position: relative;\n}\n.payment-success .bg[data-v-275c022a] {\n  width: 100%;\n  height: 80vh;\n  position: absolute;\n  z-index: -100;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.payment-success .bg img[data-v-275c022a] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  display: block;\n  width: 100%;\n  height: 100%;\n  z-index: -100;\n  overflow: hidden;\n}\n.payment-success .container[data-v-275c022a] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  text-align: center;\n  height: 80vh;\n}\n.payment-success .container .col-6[data-v-275c022a] {\n  width: 100%;\n}\n.payment-success .container .col-6 .box-ristorante[data-v-275c022a] {\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  border-radius: 20px;\n  background-color: rgba(255, 255, 255, 0.9);\n  padding: 20px;\n}\n.payment-success .container .col-6 .box-ristorante svg[data-v-275c022a] {\n  fill: #45CCBC;\n  width: 80px;\n  position: relative;\n  top: -40px;\n}\n.payment-success .container .col-6 .box-ristorante h2[data-v-275c022a] {\n  position: relative;\n  top: -20px;\n  font-size: 28px;\n}\n.payment-success .container .col-6 .box-ristorante h2 span[data-v-275c022a] {\n  font-size: 38px;\n}\n.payment-success .container .col-6 .box-ristorante .all[data-v-275c022a] {\n  margin-top: 15px;\n}\n.payment-success .fw-bold[data-v-275c022a] {\n  font-weight: bold;\n  z-index: 10000;\n}", ""]);
+exports.push([module.i, ".payment-success[data-v-275c022a] {\n  position: relative;\n}\n.payment-success .bg[data-v-275c022a] {\n  width: 100%;\n  height: 80vh;\n  position: absolute;\n  z-index: -100;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.payment-success .bg img[data-v-275c022a] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  display: block;\n  width: 100%;\n  height: 100%;\n  z-index: -100;\n  overflow: hidden;\n}\n.payment-success .container[data-v-275c022a] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  text-align: center;\n  height: 80vh;\n}\n.payment-success .container .col-md-6.col-xs-10[data-v-275c022a] {\n  width: 100%;\n}\n.payment-success .container .col-md-6.col-xs-10 .box-ristorante[data-v-275c022a] {\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  border-radius: 20px;\n  background-color: rgba(255, 255, 255, 0.9);\n  padding: 20px;\n}\n.payment-success .container .col-md-6.col-xs-10 .box-ristorante svg[data-v-275c022a] {\n  fill: #45CCBC;\n  width: 80px;\n  position: relative;\n  top: -40px;\n}\n.payment-success .container .col-md-6.col-xs-10 .box-ristorante h2[data-v-275c022a] {\n  position: relative;\n  top: -20px;\n  font-size: 28px;\n}\n.payment-success .container .col-md-6.col-xs-10 .box-ristorante h2 span[data-v-275c022a] {\n  font-size: 38px;\n}\n.payment-success .container .col-md-6.col-xs-10 .box-ristorante .all[data-v-275c022a] {\n  margin-top: 15px;\n}\n.payment-success .fw-bold[data-v-275c022a] {\n  font-weight: bold;\n  z-index: 10000;\n}", ""]);
 
 // exports
 
@@ -31479,7 +31488,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".wrapper[data-v-31969ab0] {\n  padding-top: 50px;\n}\n.wrapper .filter-column[data-v-31969ab0] {\n  width: 100%;\n  height: 700px;\n  overflow-y: auto;\n  z-index: 1;\n}\n.wrapper .filter-column .all[data-v-31969ab0] {\n  display: inline-block;\n}\n.wrapper .filter-column .all .ac-btn[data-v-31969ab0] {\n  margin-left: 20px;\n}\n.wrapper .filter-list li[data-v-31969ab0] {\n  border-radius: 20px;\n  border: 0.5px solid grey;\n  padding: 10px;\n  margin: 10px 0;\n  z-index: 3;\n  cursor: pointer;\n  transition: all 0.2s;\n}\n.wrapper .filter-list li.active[data-v-31969ab0] {\n  transform: translate(8px);\n  border: none;\n  font-weight: bold;\n  font-size: 18px;\n  background-color: #45CCBC;\n  color: white;\n}\n.wrapper .filter-list li[data-v-31969ab0]:hover {\n  transform: translate(8px);\n  border: none;\n  font-weight: bold;\n  font-size: 18px;\n  background-color: #45CCBC;\n  color: white;\n}\n.wrapper .filter[data-v-31969ab0] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background-color: #45CCBC;\n  color: white;\n  font-size: 18px;\n  cursor: pointer;\n  text-align: center;\n  margin-bottom: 15px;\n  padding: 5px;\n  border-radius: 10px;\n  width: 70px;\n  height: 35px;\n}\n.wrapper .hamburger[data-v-31969ab0] {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100vh;\n  background-color: white;\n  z-index: 2000;\n  overflow-y: auto;\n  margin: 20px 0;\n}\n.wrapper .hamburger .filter-list[data-v-31969ab0] {\n  z-index: 2000;\n}\n.wrapper .restaurant-column[data-v-31969ab0] {\n  z-index: 1;\n  height: 700px;\n  overflow-y: auto;\n}\n.wrapper .restaurant-column .restaurant-box-row[data-v-31969ab0] {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n}\n.wrapper .search-input[data-v-31969ab0] {\n  display: flex;\n  align-items: center;\n  width: 100%;\n}\n.wrapper .search-input input[data-v-31969ab0] {\n  width: 90%;\n  margin-right: 5px;\n  padding: 5px 10px;\n  border-radius: 10px;\n  border: 1px solid rgba(0, 0, 0, 0.3);\n  caret-color: #45CCBC;\n}\n.wrapper .search-input input[data-v-31969ab0]:focus {\n  outline: 2px solid #45CCBC;\n}\n.wrapper .search-input .ac-btn[data-v-31969ab0] {\n  width: 60px;\n  text-align: center;\n  font-size: 16px;\n}\n.wrapper .types-row[data-v-31969ab0] {\n  width: 100%;\n  height: 150px;\n  padding: 10px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  flex-wrap: nowrap;\n  scrollbar-width: none;\n}\n.wrapper .typebox[data-v-31969ab0] {\n  display: flex;\n  justify-content: center;\n  align-items: flex-end;\n  text-align: center;\n  height: 100px;\n  width: 180px;\n  min-width: 100px;\n  border-radius: 20px;\n  background-color: #45CCBC;\n  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);\n  margin-right: 10px;\n  transition: transform 0.3s;\n  position: relative;\n  overflow: hidden;\n  cursor: pointer;\n}\n.wrapper .typebox.active[data-v-31969ab0] {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  transform: scale(1.05, 1.1);\n  font-weight: bold;\n  border: 2px solid white;\n}\n.wrapper .typebox .boximg_f[data-v-31969ab0] {\n  position: absolute;\n  top: 0px;\n  left: 0px;\n  height: 100px;\n  width: 180px;\n  z-index: 100;\n}\n.wrapper .typebox .boximg_f img[data-v-31969ab0] {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  -o-object-position: center;\n     object-position: center;\n}\n.wrapper .typebox .title[data-v-31969ab0] {\n  width: 100%;\n  font-size: 15px;\n  color: white;\n  z-index: 200;\n  background-color: #45CCBC;\n}\n.wrapper .typebox[data-v-31969ab0]:hover {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  transform: scale(1.05, 1.1);\n  font-weight: bold;\n}", ""]);
+exports.push([module.i, ".wrapper[data-v-31969ab0] {\n  padding-top: 50px;\n}\n.wrapper .filter-column[data-v-31969ab0] {\n  width: 100%;\n  height: 700px;\n  overflow-y: auto;\n  z-index: 1;\n}\n.wrapper .filter-column .all[data-v-31969ab0] {\n  display: inline-block;\n}\n.wrapper .filter-column .all .ac-btn[data-v-31969ab0] {\n  margin-left: 20px;\n}\n.wrapper .filter-list li[data-v-31969ab0] {\n  border-radius: 20px;\n  border: 0.5px solid grey;\n  padding: 10px;\n  margin: 10px 0;\n  z-index: 3;\n  cursor: pointer;\n  transition: all 0.2s;\n}\n.wrapper .filter-list li.active[data-v-31969ab0] {\n  transform: translate(8px);\n  border: none;\n  font-weight: bold;\n  font-size: 18px;\n  background-color: #45CCBC;\n  color: white;\n}\n.wrapper .filter-list li[data-v-31969ab0]:hover {\n  transform: translate(8px);\n  border: none;\n  font-weight: bold;\n  font-size: 18px;\n  background-color: #45CCBC;\n  color: white;\n}\n.wrapper .filter[data-v-31969ab0] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background-color: #45CCBC;\n  color: white;\n  font-size: 18px;\n  cursor: pointer;\n  text-align: center;\n  margin-bottom: 15px;\n  padding: 5px;\n  border-radius: 10px;\n  width: 70px;\n  height: 35px;\n}\n.wrapper .hamburger[data-v-31969ab0] {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100vh;\n  background-color: white;\n  z-index: 2000;\n  overflow-y: auto;\n  margin: 20px 0;\n}\n.wrapper .hamburger .filter-list[data-v-31969ab0] {\n  z-index: 2000;\n}\n.wrapper .hamburger .buttons[data-v-31969ab0] {\n  display: flex;\n  gap: 20px;\n}\n.wrapper .restaurant-column[data-v-31969ab0] {\n  z-index: 1;\n  height: 700px;\n  overflow-y: auto;\n}\n.wrapper .restaurant-column .restaurant-box-row[data-v-31969ab0] {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n}\n.wrapper .search-input[data-v-31969ab0] {\n  display: flex;\n  align-items: center;\n  width: 100%;\n}\n.wrapper .search-input input[data-v-31969ab0] {\n  width: 90%;\n  margin-right: 5px;\n  padding: 5px 10px;\n  border-radius: 10px;\n  border: 1px solid rgba(0, 0, 0, 0.3);\n  caret-color: #45CCBC;\n}\n.wrapper .search-input input[data-v-31969ab0]:focus {\n  outline: 2px solid #45CCBC;\n}\n.wrapper .search-input .ac-btn[data-v-31969ab0] {\n  width: 60px;\n  text-align: center;\n  font-size: 16px;\n}\n.wrapper .types-row[data-v-31969ab0] {\n  width: 100%;\n  height: 150px;\n  padding: 10px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  flex-wrap: nowrap;\n  scrollbar-width: none;\n  overflow-y: auto;\n}\n.wrapper .typebox[data-v-31969ab0] {\n  display: flex;\n  justify-content: center;\n  align-items: flex-end;\n  text-align: center;\n  height: 100px;\n  width: 180px;\n  min-width: 100px;\n  border-radius: 20px;\n  background-color: #45CCBC;\n  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);\n  margin-right: 10px;\n  transition: transform 0.3s;\n  position: relative;\n  overflow: hidden;\n  cursor: pointer;\n}\n.wrapper .typebox.active[data-v-31969ab0] {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  transform: scale(1.05, 1.1);\n  font-weight: bold;\n  border: 2px solid white;\n}\n.wrapper .typebox .boximg_f[data-v-31969ab0] {\n  position: absolute;\n  top: 0px;\n  left: 0px;\n  height: 100px;\n  width: 180px;\n  z-index: 100;\n}\n.wrapper .typebox .boximg_f img[data-v-31969ab0] {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  -o-object-position: center;\n     object-position: center;\n}\n.wrapper .typebox .title[data-v-31969ab0] {\n  width: 100%;\n  font-size: 15px;\n  color: white;\n  z-index: 200;\n  background-color: #45CCBC;\n}\n.wrapper .typebox[data-v-31969ab0]:hover {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  transform: scale(1.05, 1.1);\n  font-weight: bold;\n}", ""]);
 
 // exports
 
@@ -31536,7 +31545,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".box[data-v-77410197] {\n  width: 100%;\n  height: 120px;\n  padding: 0 15px;\n  margin: 10px 0;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  border-radius: 20px;\n  transition: box-shadow 0.3s ease-in-out;\n  transition: height 0.3s, width 0.3s;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  transition: transform 0.3s;\n  cursor: pointer;\n}\n.box[data-v-77410197]:hover {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  font-weight: bold;\n  transform: scale(1.05, 1.1);\n}\n.box .name[data-v-77410197] {\n  font-weight: bold;\n  font-size: 20px;\n}\n.box .price[data-v-77410197] {\n  font-weight: bold;\n}\n.box .price[data-v-77410197], .box .cart[data-v-77410197] {\n  display: inline-block;\n}\n.box .cart[data-v-77410197] {\n  padding-left: 20px;\n  padding-top: 10px;\n  width: 150px;\n  font-size: 18px;\n  color: #45CCBC;\n}\n.box .cart i[data-v-77410197] {\n  padding-right: 5px;\n}\n.box .cart span[data-v-77410197] {\n  color: black;\n  height: 10px;\n  padding: 0 8px;\n  border: 1px solid black;\n  border-radius: 7px;\n}\n.box .cart span[data-v-77410197]:hover {\n  color: #45CCBC;\n  border: 1px solid #45CCBC;\n}\n.box .cart #add[data-v-77410197] {\n  padding: 0 8px;\n}\n.box .cart #remove[data-v-77410197] {\n  padding: 0 9px;\n}\n.box .right[data-v-77410197] {\n  height: 90%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  display: flex;\n  align-items: center;\n}\n.box .image[data-v-77410197] {\n  width: 130px;\n  border-radius: 15px;\n  max-height: 110px;\n}\n.box .image img[data-v-77410197] {\n  border-radius: 15px;\n  width: 100%;\n  height: 110px;\n  overflow: hidden;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.box span.disabled[data-v-77410197] {\n  pointer-events: none;\n}", ""]);
+exports.push([module.i, ".box[data-v-77410197] {\n  width: 100%;\n  height: 130px;\n  padding: 20px 15px;\n  margin: 10px 0;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  border-radius: 20px;\n  transition: box-shadow 0.3s ease-in-out;\n  transition: height 0.3s, width 0.3s;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);\n  transition: transform 0.3s;\n  cursor: pointer;\n}\n.box[data-v-77410197]:hover {\n  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);\n  font-weight: bold;\n  transform: scale(1.05, 1.1);\n}\n.box .name[data-v-77410197] {\n  font-weight: bold;\n  font-size: 20px;\n}\n.box .price[data-v-77410197] {\n  font-weight: bold;\n}\n.box .price[data-v-77410197], .box .cart[data-v-77410197] {\n  display: inline-block;\n}\n.box .cart[data-v-77410197] {\n  padding-left: 20px;\n  padding-top: 10px;\n  width: 150px;\n  font-size: 18px;\n  color: #45CCBC;\n}\n.box .cart i[data-v-77410197] {\n  padding-right: 5px;\n}\n.box .cart span[data-v-77410197] {\n  color: black;\n  height: 10px;\n  padding: 0 8px;\n  border: 1px solid black;\n  border-radius: 7px;\n}\n.box .cart span[data-v-77410197]:hover {\n  color: #45CCBC;\n  border: 1px solid #45CCBC;\n}\n.box .cart #add[data-v-77410197] {\n  padding: 0 8px;\n}\n.box .cart #remove[data-v-77410197] {\n  padding: 0 9px;\n}\n.box .right[data-v-77410197] {\n  height: 90%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  display: flex;\n  align-items: center;\n}\n.box .image[data-v-77410197] {\n  width: 130px;\n  border-radius: 15px;\n  max-height: 110px;\n}\n.box .image img[data-v-77410197] {\n  border-radius: 15px;\n  width: 100%;\n  height: 110px;\n  overflow: hidden;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.box span.disabled[data-v-77410197] {\n  pointer-events: none;\n}", ""]);
 
 // exports
 
@@ -64182,7 +64191,7 @@ var render = function () {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "col-6" }, [
+      _c("div", { staticClass: "col-xs-10 col-md-6" }, [
         _c("div", { staticClass: "box-ristorante" }, [
           _c(
             "svg",
@@ -65720,11 +65729,33 @@ var render = function () {
               _c("div", { staticClass: "hamburger px-2" }, [
                 _c(
                   "div",
-                  { staticClass: "filter", on: { click: _vm.toggleMenu } },
-                  [_vm._v("X")]
+                  { staticClass: "buttons" },
+                  [
+                    _c(
+                      "div",
+                      { staticClass: "filter", on: { click: _vm.toggleMenu } },
+                      [_vm._v("X")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "all",
+                        attrs: { to: { name: "restaurantsAll" } },
+                      },
+                      [
+                        _c("div", { staticClass: "ac-btn" }, [
+                          _vm._v("Azzera filtri"),
+                        ]),
+                      ]
+                    ),
+                  ],
+                  1
                 ),
                 _vm._v(" "),
-                _c("div", [_vm._v("Tutte le cucine (A, Z)")]),
+                _c("div", { staticClass: "all" }, [
+                  _vm._v("Tutte le cucine (A, Z)"),
+                ]),
                 _vm._v(" "),
                 _c(
                   "ul",
@@ -65995,6 +66026,10 @@ var render = function () {
           _c("div", { staticClass: "name" }, [_vm._v(_vm._s(_vm.plate.name))]),
           _vm._v(" "),
           _c("div", [_vm._v(_vm._s(_vm.plate.description))]),
+          _vm._v(" "),
+          _c("small", [_vm._v(_vm._s(_vm.plate.ingrediants))]),
+          _vm._v(" "),
+          _c("br"),
           _vm._v(" "),
           _c("div", { staticClass: "price" }, [
             _vm._v("€ " + _vm._s(_vm.plate.price)),
@@ -82292,11 +82327,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
 module.exports = __webpack_require__(/*! C:\Users\franc\Documents\Francesco\BOOLEAN\Esercizi\PORTFOLIO\progetto finale\DeliverBoo\DeliverBoo\resources\js\guest\app.js */"./resources/js/guest/app.js");
-=======
-module.exports = __webpack_require__(/*! C:\Users\Simone\Documents\Boolean\Progetto Finale\DeliverBoo\resources\js\guest\app.js */"./resources/js/guest/app.js");
->>>>>>> 5ce9147e41649f81c2f2460a856db953b49bb1ae
 
 
 /***/ })

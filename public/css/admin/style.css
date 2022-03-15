@@ -13096,7 +13096,7 @@ h3 {
     background-size: cover;
   }
 }
-h1 {
+h1, #no-rest {
   text-align: center;
   border-radius: 20px;
   padding: 20px 0;
