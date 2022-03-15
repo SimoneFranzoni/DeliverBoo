@@ -39,7 +39,7 @@
           @endforeach 
           <div>TOTALE : {{$order->total_price}}</div> 
 
-          <form class="d-inline-block" onsubmit="return confirm('Confermi eliminazione ristorant')"
+          <form class="d-inline-block" onsubmit="return confirm('Confermi l\'evasione dell\'ordine?')"
             action="{{route('admin.miei-ristoranti.ordini.update',[$order,$restaurant->slug])}}" method="POST">
                 @csrf
                 @method('PUT')

@@ -4,7 +4,7 @@
       <img :src="activeRestaurant.cover" alt="" v-if="activeRestaurant.cover" />
     </div>
     <div class="container">
-      <div class="col-6">
+      <div class="col-xs-10 col-md-6">
         <div class="box-ristorante">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
             <!--! Font Awesome Pro 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
@@ -48,6 +48,7 @@ export default {
   },
   mounted() {
     this.getActiveRestaurant();
+    window.localStorage.clear();
   },
   methods: {
     getActiveRestaurant() {
@@ -93,7 +94,7 @@ export default {
     align-items: center;
     text-align: center;
     height: 80vh;
-    .col-6 {
+    .col-md-6.col-xs-10 {
       width: 100%;
       .box-ristorante {
         // position: relative;

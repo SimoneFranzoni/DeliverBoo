@@ -7,6 +7,7 @@
       <div class="left">
           <div class="name">{{plate.name}}</div>
           <div>{{plate.description}}</div>
+          <small>{{plate.ingrediants}}</small> <br>
           <div class="price">€ {{plate.price}}</div>
 
           <div class="cart">
@@ -65,8 +66,8 @@ export default {
   
   .box{
     width: 100%;
-    height: 120px;
-    padding: 0 15px;
+    height: 130px;
+    padding: 20px 15px;
     margin: 10px 0;
     display: flex;
     justify-content: space-between;
